@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeroen De Dauw",
+			"Morne Alberts"
+		]
+	},
+	"pageapprovals-description": "Allows approvers to make pages as approved"
+}
