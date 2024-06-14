@@ -1,0 +1,39 @@
+{
+	"name": "professional-wiki/page-approvals",
+	"type": "mediawiki-extension",
+	"description": "Allows approving MediaWiki pages",
+	"keywords": [
+		"MediaWiki",
+		"Approvals",
+		"Verification",
+		"Quality assurance",
+		"Compliance"
+	],
+	"homepage": "https://github.com/ProfessionalWiki/PageApprovals",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Professional.Wiki",
+			"email": "info@Professional.Wiki",
+			"homepage": "https://Professional.Wiki"
+		}
+	],
+	"require": {
+		"php": ">=8.1",
+		"composer/installers": "^2|^1.0.1"
+	},
+	"require-dev": {
+		"vimeo/psalm": "^5.24.0",
+		"phpstan/phpstan": "^1.11.4",
+		"mediawiki/mediawiki-codesniffer": "^43.0.0"
+	},
+	"extra": {
+		"installer-name": "PageApprovals"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true,
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}
