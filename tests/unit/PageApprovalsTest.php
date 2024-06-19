@@ -8,8 +8,17 @@ use PHPUnit\Framework\TestCase;
 
 class PageApprovalsTest extends TestCase {
 
-	public function testTests(): void {
-		$this->assertTrue( PageApprovals::todo() );
+	public function testGetInstanceReturnsNewInstance(): void {
+		$instance = PageApprovals::getInstance();
+
+		$this->assertInstanceOf( PageApprovals::class, $instance );
+	}
+
+	public function testGetInstanceReturnsExistingInstance(): void {
+		$instance1 = PageApprovals::getInstance();
+		$instance2 = PageApprovals::getInstance();
+
+		$this->assertSame( $instance1, $instance2 );
 	}
 
 }

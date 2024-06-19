@@ -6,8 +6,11 @@ namespace ProfessionalWiki\PageApprovals;
 
 class PageApprovals {
 
-	public static function todo(): bool {
-		return true;
+	public static function getInstance(): self {
+		/** @var ?PageApprovals $instance */
+		static $instance = null;
+		$instance ??= new self();
+		return $instance;
 	}
 
 }
