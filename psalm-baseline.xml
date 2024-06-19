@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
+  <file src="src/EntryPoints/REST/ApprovePageApi.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[run]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/EntryPoints/REST/UnapprovePageApi.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[run]]></code>
+    </PossiblyUnusedMethod>
+  </file>
   <file src="src/PageApprovals.php">
-    <UnusedClass>
-      <code><![CDATA[PageApprovals]]></code>
-    </UnusedClass>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getInstance]]></code>
+      <code><![CDATA[newApprovePageApi]]></code>
+      <code><![CDATA[newUnapprovePageApi]]></code>
+    </PossiblyUnusedMethod>
   </file>
 </files>

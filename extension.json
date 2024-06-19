@@ -42,5 +42,18 @@
 	"ResourceModules": {
 	},
 
+	"RestRoutes": [
+		{
+			"path": "/page-approvals/v0/page/{pageId}/approve",
+			"method": [ "POST" ],
+			"factory": "ProfessionalWiki\\PageApprovals\\PageApprovals::newApprovePageApi"
+		},
+		{
+			"path": "/page-approvals/v0/page/{pageId}/unapprove",
+			"method": [ "POST" ],
+			"factory": "ProfessionalWiki\\PageApprovals\\PageApprovals::newUnapprovePageApi"
+		}
+	],
+
 	"manifest_version": 2
 }
