@@ -30,7 +30,8 @@
 
 	"Hooks": {
 		"OutputPageParserOutput": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onOutputPageParserOutput",
-		"LoadExtensionSchemaUpdates": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onLoadExtensionSchemaUpdates"
+		"LoadExtensionSchemaUpdates": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onLoadExtensionSchemaUpdates",
+		"OutputPageBeforeHTML": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onOutputPageBeforeHTML"
 	},
 
 	"config": {
@@ -42,6 +43,19 @@
 	},
 
 	"ResourceModules": {
+		"ext.pageApprovals.modules": {
+			"scripts": [
+				"ApprovePage.js"
+			],
+			"styles": [
+				"PageApprovalsStyles.css"
+			],
+			"dependencies": [
+				"mediawiki.util",
+				"mediawiki.api"
+			],
+			"messages": []
+		}
 	},
 
 	"RestRoutes": [

@@ -1,0 +1,32 @@
+#approveButton, #unapproveButton {
+	padding: 8px 15px;
+	color: white;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+	font-weight: bold;
+}
+
+#approveButton {
+	background-color: #28a745; /* Green */
+}
+
+#approveButton:hover {
+	background-color: #218838;
+}
+
+#unapproveButton {
+	background-color: #dc3545; /* Red */
+}
+
+#unapproveButton:hover {
+	background-color: #c82333;
+}
+
+.page-approval-status {
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: #f8f9fa;
+	border-left: 5px solid #cccccc;
+	color: #333333;
+}
