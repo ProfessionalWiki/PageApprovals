@@ -2,15 +2,19 @@
 
 namespace ProfessionalWiki\PageApprovals\Tests\EntryPoints\REST;
 
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\RequestData;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
+use ProfessionalWiki\PageApprovals\Tests\TestDoubles\FailingPageApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingPageApprovalAuthorizer;
+use Title;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi
- * @group database
+ * @group Database
  */
 class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 	use HandlerTestTrait;
@@ -19,15 +23,22 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 	public function testApprovePageHappyPath(): void {
 		$response = $this->executeHandler(
 			$this->newApprovePageApi(),
-			$this->createValidRequestData( 1 )
+			$this->createValidRequestData( $this->getIdOfExistingPage( 'Test 1' ) )
 		);
 
 		$this->assertSame( 200, $response->getStatusCode() );
-		$this->assertSame( '{ pageId: 1 }', $response->getBody()->getContents() );
 	}
 
 	private function newApprovePageApi(): ApprovePageApi {
-		return new ApprovePageApi();
+		return new ApprovePageApi(
+			new SucceedingPageApprovalAuthorizer()
+		);
+	}
+
+	private function getIdOfExistingPage( string $titleText ): int {
+		$title = Title::newFromText( $titleText );
+		$this->editPage( $title, 'Whatever wikitext' );
+		return MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title )->getId();
 	}
 
 	private function createValidRequestData( int $pageId ): RequestData {
@@ -40,6 +51,30 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 				'Content-Type' => 'application/json'
 			]
 		] );
+	}
+
+	public function testApprovalFailsWithoutPermission(): void {
+		$response = $this->executeHandler(
+			$this->newApprovePageApiWithFailingAuthorizer(),
+			$this->createValidRequestData( $this->getIdOfExistingPage( 'Test 2' ) )
+		);
+
+		$this->assertSame( 403, $response->getStatusCode() );
+	}
+
+	private function newApprovePageApiWithFailingAuthorizer(): ApprovePageApi {
+		return new ApprovePageApi(
+			new FailingPageApprovalAuthorizer()
+		);
+	}
+
+	public function testApprovalFailsForMissingPageId(): void {
+		$response = $this->executeHandler(
+			$this->newApprovePageApi(),
+			$this->createValidRequestData( 404404404 )
+		);
+
+		$this->assertSame( 404, $response->getStatusCode() );
 	}
 
 }
