@@ -29,6 +29,7 @@
 	},
 
 	"Hooks": {
+		"OutputPageParserOutput": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onOutputPageParserOutput"
 	},
 
 	"config": {
