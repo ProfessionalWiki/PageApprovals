@@ -12,7 +12,7 @@ use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingPageApprovalAutho
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi
- * @group database
+ * @group Database
  */
 class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 	use HandlerTestTrait;
