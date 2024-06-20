@@ -5,9 +5,9 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Tests\TestDoubles;
 
 use MediaWiki\Page\PageIdentity;
-use ProfessionalWiki\PageApprovals\Application\PageApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 
-class FailingPageApprovalAuthorizer implements PageApprovalAuthorizer {
+class FailingApprovalAuthorizer implements ApprovalAuthorizer {
 
 	public function canApprove( PageIdentity $page ): bool {
 		return false;
