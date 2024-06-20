@@ -2,9 +2,10 @@
 
 declare( strict_types = 1 );
 
-namespace ProfessionalWiki\PageApprovals;
+namespace ProfessionalWiki\PageApprovals\Tests;
 
 use PHPUnit\Framework\TestCase;
+use ProfessionalWiki\PageApprovals\PageApprovals;
 
 class PageApprovalsTest extends TestCase {
 
