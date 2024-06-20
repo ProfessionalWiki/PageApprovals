@@ -7,7 +7,7 @@ namespace ProfessionalWiki\PageApprovals;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
-use ProfessionalWiki\PageApprovals\Persistence\AuthorityBasedApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer;
 use RequestContext;
 
 class PageApprovals {
