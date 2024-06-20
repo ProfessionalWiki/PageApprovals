@@ -7,7 +7,6 @@ namespace ProfessionalWiki\PageApprovals\EntryPoints\REST;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
-use MediaWiki\Rest\StringStream;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -20,28 +19,37 @@ class ApprovePageApi extends SimpleHandler {
 	}
 
 	public function run( int $pageId ): Response {
-		// TODO: logic
-		$response = $this->getResponseFactory()->create();
-		$response->setBody( new StringStream( "{ pageId: {$pageId} }" ) );
-
 		$page = $this->getPageIdentity( $pageId );
 
 		if ( $page === null ) {
-			$response->setStatus( 404 );
-			return $response;
+			return $this->presentInvalidPage();
 		}
 
 		if ( !$this->authorizer->canApprove( $page ) ) {
-			$response->setStatus( 403 );
-			return $response;
+			return $this->presentAuthorizationFailed();
 		}
 
-		$response->setStatus( 200 );
-		return $response;
+		// TODO: $persistence->markAsApproved( $pageId, $userId );
+		// TODO: $persistence->saveHtml( $pageId, $html );
+		// TODO: $this->presentApproveFailed();
+
+		return $this->presentSuccess();
 	}
 
 	private function getPageIdentity( int $pageId ): ?PageIdentity {
 		return Title::newFromID( $pageId );
+	}
+
+	public function presentSuccess(): Response {
+		return $this->getResponseFactory()->create();
+	}
+
+	public function presentAuthorizationFailed(): Response {
+		return $this->getResponseFactory()->createHttpError( 403 );
+	}
+
+	public function presentInvalidPage(): Response {
+		return $this->getResponseFactory()->createHttpError( 404 );
 	}
 
 	/**
