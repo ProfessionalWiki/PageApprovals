@@ -2,7 +2,7 @@
 
 declare( strict_types = 1 );
 
-namespace ProfessionalWiki\PageApprovals\Persistence;
+namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Authority;

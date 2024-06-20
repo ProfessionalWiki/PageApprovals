@@ -16,7 +16,7 @@
       <code><![CDATA[newUnapprovePageApi]]></code>
     </PossiblyUnusedMethod>
   </file>
-  <file src="src/Persistence/AuthorityBasedApprovalAuthorizer.php">
+  <file src="src/Adapters/AuthorityBasedApprovalAuthorizer.php">
     <UnusedProperty>
       <code><![CDATA[$authority]]></code>
     </UnusedProperty>
