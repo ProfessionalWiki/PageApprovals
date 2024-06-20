@@ -12,9 +12,13 @@
   </file>
   <file src="src/PageApprovals.php">
     <PossiblyUnusedMethod>
-      <code><![CDATA[getInstance]]></code>
       <code><![CDATA[newApprovePageApi]]></code>
       <code><![CDATA[newUnapprovePageApi]]></code>
     </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Persistence/AuthorityBasedPageApprovalAuthorizer.php">
+    <UnusedProperty>
+      <code><![CDATA[$authority]]></code>
+    </UnusedProperty>
   </file>
 </files>
