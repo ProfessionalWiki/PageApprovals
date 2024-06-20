@@ -6,7 +6,7 @@ namespace ProfessionalWiki\PageApprovals\Application;
 
 use MediaWiki\Page\PageIdentity;
 
-interface PageApprovalAuthorizer {
+interface ApprovalAuthorizer {
 
 	public function canApprove( PageIdentity $page ): bool;
 

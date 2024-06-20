@@ -6,9 +6,9 @@ namespace ProfessionalWiki\PageApprovals\Persistence;
 
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Authority;
-use ProfessionalWiki\PageApprovals\Application\PageApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 
-class AuthorityBasedPageApprovalAuthorizer implements PageApprovalAuthorizer {
+class AuthorityBasedApprovalAuthorizer implements ApprovalAuthorizer {
 
 	public function __construct(
 		private Authority $authority

@@ -4,10 +4,10 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals;
 
-use ProfessionalWiki\PageApprovals\Application\PageApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
-use ProfessionalWiki\PageApprovals\Persistence\AuthorityBasedPageApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Persistence\AuthorityBasedApprovalAuthorizer;
 use RequestContext;
 
 class PageApprovals {
@@ -31,8 +31,8 @@ class PageApprovals {
 		);
 	}
 
-	private function newPageApprovalAuthorizer(): PageApprovalAuthorizer {
-		return new AuthorityBasedPageApprovalAuthorizer(
+	private function newPageApprovalAuthorizer(): ApprovalAuthorizer {
+		return new AuthorityBasedApprovalAuthorizer(
 			RequestContext::getMain()->getUser()
 		);
 	}

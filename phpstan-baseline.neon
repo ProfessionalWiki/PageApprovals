@@ -1,6 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property ProfessionalWiki\\\\PageApprovals\\\\Persistence\\\\AuthorityBasedPageApprovalAuthorizer\\:\\:\\$authority is never read, only written\\.$#"
+			message: "#^Property ProfessionalWiki\\\\PageApprovals\\\\Persistence\\\\AuthorityBasedApprovalAuthorizer\\:\\:\\$authority is never read, only written\\.$#"
 			count: 1
-			path: src/Persistence/AuthorityBasedPageApprovalAuthorizer.php
+			path: src/Persistence/AuthorityBasedApprovalAuthorizer.php

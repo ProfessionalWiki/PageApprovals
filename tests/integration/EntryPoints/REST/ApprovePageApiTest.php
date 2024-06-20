@@ -8,8 +8,8 @@ use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
-use ProfessionalWiki\PageApprovals\Tests\TestDoubles\FailingPageApprovalAuthorizer;
-use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingPageApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Tests\TestDoubles\FailingApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingApprovalAuthorizer;
 use Title;
 
 /**
@@ -31,7 +31,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 
 	private function newApprovePageApi(): ApprovePageApi {
 		return new ApprovePageApi(
-			new SucceedingPageApprovalAuthorizer()
+			new SucceedingApprovalAuthorizer()
 		);
 	}
 
@@ -64,7 +64,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 
 	private function newApprovePageApiWithFailingAuthorizer(): ApprovePageApi {
 		return new ApprovePageApi(
-			new FailingPageApprovalAuthorizer()
+			new FailingApprovalAuthorizer()
 		);
 	}
 

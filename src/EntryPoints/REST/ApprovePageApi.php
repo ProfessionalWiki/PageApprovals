@@ -8,14 +8,14 @@ use MediaWiki\Page\PageIdentity;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Rest\StringStream;
-use ProfessionalWiki\PageApprovals\Application\PageApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApprovePageApi extends SimpleHandler {
 
 	public function __construct(
-		private PageApprovalAuthorizer $authorizer
+		private ApprovalAuthorizer $authorizer
 	) {
 	}
 
