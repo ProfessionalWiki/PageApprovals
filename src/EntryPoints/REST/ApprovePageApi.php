@@ -22,19 +22,25 @@ class ApprovePageApi extends SimpleHandler {
 	public function run( int $pageId ): Response {
 		// TODO: logic
 		$response = $this->getResponseFactory()->create();
+		$response->setBody( new StringStream( "{ pageId: {$pageId} }" ) );
 
-		if ( $this->authorizer->canApprove( $this->getPageIdentity( $pageId ) ) ) {
-			$response->setStatus( 200 );
-		} else {
-			$response->setStatus( 403 );
+		$page = $this->getPageIdentity( $pageId );
+
+		if ( $page === null ) {
+			$response->setStatus( 404 );
+			return $response;
 		}
 
-		$response->setBody( new StringStream( "{ pageId: ${pageId} }" ) );
+		if ( !$this->authorizer->canApprove( $page ) ) {
+			$response->setStatus( 403 );
+			return $response;
+		}
 
+		$response->setStatus( 200 );
 		return $response;
 	}
 
-	private function getPageIdentity( int $pageId ): PageIdentity {
+	private function getPageIdentity( int $pageId ): ?PageIdentity {
 		return Title::newFromID( $pageId );
 	}
 
