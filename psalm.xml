@@ -39,5 +39,11 @@
 				<directory name="src" />
 			</errorLevel>
 		</UndefinedFunction>
+
+		<UnusedClass>
+			<errorLevel type="suppress">
+				<directory name="src" />
+			</errorLevel>
+		</UnusedClass>
 	</issueHandlers>
 </psalm>
