@@ -25,7 +25,7 @@ class PageApprovalsHooks {
 		$title = $out->getTitle();
 
 		if ( !$title instanceof Title || !$user->isRegistered() ) {
-			return;  // Ensure that the user is logged in and title is valid
+			return;
 		}
 
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
@@ -43,9 +43,9 @@ class PageApprovalsHooks {
 				'edit',
 				$user,
 				$title
-			) && $user->getId() !== $firstUserId;
+			) && $user->getId() !== $firstUserId; // TODO: Placeholder for actual Logic
 
-		$isApproved = false; // This should be determined by your logic
+		$isApproved = false; // TODO: build Logic
 
 		// @phpstan-ignore-next-line
 		$messageKey = $isApproved ? "pageapprovals-status-approved" : "pageapprovals-status-not-approved";
@@ -54,9 +54,8 @@ class PageApprovalsHooks {
 
 		// @phpstan-ignore-next-line
 		if ( $canApprove && !$isApproved ) {
-			$pageId = $title->getArticleID();
 			$approveButtonText = $out->msg( 'pageapprovals-approve-button' )->text();
-			$buttonHtml = "<button id='approveButton' data-page-id='{$pageId}'>{$approveButtonText}</button>";
+			$buttonHtml = "<button id='approveButton'>{$approveButtonText}</button>";
 			$out->addHTML( $buttonHtml );
 		}
 
