@@ -5,4 +5,15 @@
       <code><![CDATA[$authority]]></code>
     </UnusedProperty>
   </file>
+  <file src="src/Adapters/DatabaseHtmlRepository.php">
+    <MixedInferredReturnType>
+      <code><![CDATA[?string]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$row->ah_html]]></code>
+    </MixedReturnStatement>
+    <PossiblyInvalidPropertyFetch>
+      <code><![CDATA[$row->ah_html]]></code>
+    </PossiblyInvalidPropertyFetch>
+  </file>
 </files>

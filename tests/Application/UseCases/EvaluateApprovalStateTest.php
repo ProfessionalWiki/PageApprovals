@@ -2,12 +2,13 @@
 
 declare( strict_types = 1 );
 
-namespace ProfessionalWiki\PageApprovals\Application\UseCases;
+namespace ProfessionalWiki\PageApprovals\Tests\Application\UseCases;
 
 use PHPUnit\Framework\TestCase;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryHtmlRepository;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
+use ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState

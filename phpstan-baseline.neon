@@ -4,3 +4,13 @@ parameters:
 			message: "#^Property ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\AuthorityBasedApprovalAuthorizer\\:\\:\\$authority is never read, only written\\.$#"
 			count: 1
 			path: src/Adapters/AuthorityBasedApprovalAuthorizer.php
+
+		-
+			message: "#^Cannot access property \\$ah_html on stdClass\\|true\\.$#"
+			count: 1
+			path: src/Adapters/DatabaseHtmlRepository.php
+
+		-
+			message: "#^Parameter \\#2 \\$rows of method Wikimedia\\\\Rdbms\\\\IDatabase\\:\\:upsert\\(\\) expects array\\<array\\>, array\\<string, int\\|string\\> given\\.$#"
+			count: 1
+			path: src/Adapters/DatabaseHtmlRepository.php
