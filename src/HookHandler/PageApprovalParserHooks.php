@@ -2,14 +2,14 @@
 
 declare( strict_types = 1 );
 
-namespace ProfessionalWiki\PageApprovals\EntryPoints;
+namespace ProfessionalWiki\PageApprovals\HookHandler;
 
 use DatabaseUpdater;
 use OutputPage;
 use ParserOutput;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 
-class PageApprovalsHooks {
+class PageApprovalParserHooks {
 
 	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $parserOutput ): void {
 		if ( $out->isArticle() ) {
