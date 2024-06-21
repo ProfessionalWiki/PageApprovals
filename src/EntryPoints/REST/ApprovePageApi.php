@@ -22,33 +22,33 @@ class ApprovePageApi extends SimpleHandler {
 		$page = $this->getPageIdentity( $pageId );
 
 		if ( $page === null ) {
-			return $this->presentInvalidPage();
+			return $this->newInvalidPageResponse();
 		}
 
 		if ( !$this->authorizer->canApprove( $page ) ) {
-			return $this->presentAuthorizationFailed();
+			return $this->newAuthorizationFailedResponse();
 		}
 
 		// TODO: $persistence->markAsApproved( $pageId, $userId );
 		// TODO: $persistence->saveHtml( $pageId, $html );
-		// TODO: $this->presentApproveFailed();
+		// TODO: $this->newApproveFailedResponse();
 
-		return $this->presentSuccess();
+		return $this->newSuccessResponse();
 	}
 
 	private function getPageIdentity( int $pageId ): ?PageIdentity {
 		return Title::newFromID( $pageId );
 	}
 
-	public function presentSuccess(): Response {
+	public function newSuccessResponse(): Response {
 		return $this->getResponseFactory()->create();
 	}
 
-	public function presentAuthorizationFailed(): Response {
+	public function newAuthorizationFailedResponse(): Response {
 		return $this->getResponseFactory()->createHttpError( 403 );
 	}
 
-	public function presentInvalidPage(): Response {
+	public function newInvalidPageResponse(): Response {
 		return $this->getResponseFactory()->createHttpError( 404 );
 	}
 
