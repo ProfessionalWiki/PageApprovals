@@ -6,14 +6,14 @@ namespace ProfessionalWiki\PageApprovals\Tests\Integration\HookHandler;
 
 use MediaWikiIntegrationTestCase;
 use OutputPage;
-use ProfessionalWiki\PageApprovals\HookHandler\PageApprovalsHooks;
+use ProfessionalWiki\PageApprovals\EntryPoints\PageApprovalsHooks;
 use Title;
 use RequestContext;
 use User;
 
 /**
  * @group Database
- * @covers \ProfessionalWiki\PageApprovals\HookHandler\PageApprovalsHooks
+ * @covers \ProfessionalWiki\PageApprovals\EntryPoints\PageApprovalsHooks
  */
 class PageApprovalsHooksTest extends MediaWikiIntegrationTestCase {
 

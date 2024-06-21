@@ -2,15 +2,23 @@
 
 declare( strict_types = 1 );
 
-namespace ProfessionalWiki\PageApprovals\HookHandler;
+namespace ProfessionalWiki\PageApprovals\EntryPoints;
 
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Permissions\PermissionManager;
 use OutputPage;
+use ParserOutput;
+use ProfessionalWiki\PageApprovals\PageApprovals;
 use Title;
 use Wikimedia\Rdbms\DBError;
 
 class PageApprovalsHooks {
+
+	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $parserOutput ): void {
+		PageApprovals::getInstance()->newEvaluateApprovalStateAction()->evaluate(
+			pageId: $out->getWikiPage()->getId(),
+			currentPageHtml: $parserOutput->getRawText(),
+		);
+	}
 
 	public static function onOutputPageBeforeHTML( OutputPage $out ): void {
 		$user = $out->getUser();
@@ -52,7 +60,7 @@ class PageApprovalsHooks {
 			$out->addHTML( $buttonHtml );
 		}
 
-		$out->addModules( 'ext.pageApprovals.modules' );
+		$out->addModules( 'ext.pageApprovals.resources' );
 	}
 
 }
