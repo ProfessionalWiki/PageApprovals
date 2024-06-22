@@ -8,6 +8,7 @@ use IDatabase;
 use MediaWikiIntegrationTestCase;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseHtmlRepository;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\Adapters\DatabaseHtmlRepository
@@ -57,6 +58,29 @@ class DatabaseHtmlRepositoryTest extends MediaWikiIntegrationTestCase {
 		$repository->saveApprovedHtml( 1, 'second' );
 
 		$this->assertSame( 'second', $repository->getApprovedHtml( 1 ) );
+	}
+
+	public function testTimestampIsSetCorrectly(): void {
+		$fakeTime = '20230615120000'; // 2023-06-15 12:00:00
+		ConvertibleTimestamp::setFakeTime( $fakeTime );
+
+		$this->newRepository()->saveApprovedHtml( 1, '<p>Test content</p>' );
+
+		$this->assertSame(
+			$fakeTime,
+			$this->getTimestampFromDatabase( 1 )
+		);
+
+		ConvertibleTimestamp::setFakeTime( false ); // Reset fake time
+	}
+
+	private function getTimestampFromDatabase( int $pageId ): string {
+		return $this->db->selectField(
+			'approved_html',
+			'ah_timestamp',
+			[ 'ah_page_id' => $pageId ],
+			__METHOD__
+		);
 	}
 
 }
