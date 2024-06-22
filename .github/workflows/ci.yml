@@ -40,7 +40,7 @@ jobs:
 
       - name: Install MediaWiki
         working-directory: ~
-        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
+        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/fix-table-creation/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
 
       - uses: actions/checkout@v4
         with:
@@ -91,7 +91,7 @@ jobs:
 
       - name: Install MediaWiki
         working-directory: ~
-        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
+        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/fix-table-creation/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
 
       - uses: actions/checkout@v4
         with:
@@ -140,7 +140,7 @@ jobs:
 
       - name: Install MediaWiki
         working-directory: ~
-        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
+        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/fix-table-creation/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
 
       - uses: actions/checkout@v4
         with:
@@ -185,7 +185,7 @@ jobs:
 
       - name: Install MediaWiki
         working-directory: ~
-        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
+        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/fix-table-creation/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
 
       - uses: actions/checkout@v4
         with:
