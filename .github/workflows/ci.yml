@@ -34,22 +34,6 @@ jobs:
           extensions: mbstring, intl
           tools: composer
 
-      - name: Cache MediaWiki
-        id: cache-mediawiki
-        uses: actions/cache@v3
-        with:
-          path: |
-            mediawiki
-            !mediawiki/extensions/
-            !mediawiki/vendor/
-          key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v4
-
-      - name: Cache Composer cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.composer/cache
-          key: composer-php${{ matrix.php }}
-
       - uses: actions/checkout@v4
         with:
           path: EarlyCopy
@@ -105,26 +89,6 @@ jobs:
           extensions: mbstring
           tools: composer, cs2pr
 
-      - name: Cache MediaWiki
-        id: cache-mediawiki
-        uses: actions/cache@v3
-        with:
-          path: |
-            mediawiki
-            mediawiki/extensions/
-            mediawiki/vendor/
-          key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
-
-      - name: Cache Composer cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.composer/cache
-          key: composer_static_analysis
-
-      - uses: actions/checkout@v4
-        with:
-          path: EarlyCopy
-
       - name: Install MediaWiki
         working-directory: ~
         run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
@@ -169,22 +133,6 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring
           tools: composer, cs2pr
-
-      - name: Cache MediaWiki
-        id: cache-mediawiki
-        uses: actions/cache@v3
-        with:
-          path: |
-            mediawiki
-            mediawiki/extensions/
-            mediawiki/vendor/
-          key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
-
-      - name: Cache Composer cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.composer/cache
-          key: composer_static_analysis
 
       - uses: actions/checkout@v4
         with:
@@ -234,22 +182,6 @@ jobs:
           php-version: ${{ matrix.php }}
           extensions: mbstring, intl, php-ast
           tools: composer
-
-      - name: Cache MediaWiki
-        id: cache-mediawiki
-        uses: actions/cache@v3
-        with:
-          path: |
-            mediawiki
-            !mediawiki/extensions/
-            !mediawiki/vendor/
-          key: mw_static_analysis
-
-      - name: Cache Composer cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.composer/cache
-          key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
 
       - name: Install MediaWiki
         working-directory: ~
