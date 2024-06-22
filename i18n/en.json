@@ -6,6 +6,8 @@
 		]
 	},
 	"pageapprovals-description": "Allows approvers to mark pages as approved",
+	"approvercategories": "Approver Categories",
+	"pageapprovals-description": "Allows approvers to mark pages as approved",
 	"pageapprovals-status-approved": "This page is approved.",
 	"pageapprovals-status-not-approved": "This page is not approved.",
 	"pageapprovals-approve-button": "Approve Page",
