@@ -38,5 +38,5 @@ cat <<EOT >> composer.local.json
 }
 EOT
 
-#cd extensions
+#cd extensions trigger build
 #git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/Wikibase --branch=$MW_BRANCH --recurse-submodules -j8
