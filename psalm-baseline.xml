@@ -5,4 +5,40 @@
       <code><![CDATA[$authority]]></code>
     </UnusedProperty>
   </file>
+  <file src="src/Adapters/DatabaseApprovalLog.php">
+    <MixedArgument>
+      <code><![CDATA[$row->al_timestamp]]></code>
+    </MixedArgument>
+    <PossiblyInvalidPropertyFetch>
+      <code><![CDATA[$row->al_is_approved]]></code>
+      <code><![CDATA[$row->al_timestamp]]></code>
+      <code><![CDATA[$row->al_user_id]]></code>
+    </PossiblyInvalidPropertyFetch>
+  </file>
+  <file src="src/Adapters/DatabaseApproverRepository.php">
+    <MixedArgument>
+      <code><![CDATA[$row->ac_categories]]></code>
+    </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[$categories]]></code>
+    </MixedArgumentTypeCoercion>
+    <MixedReturnTypeCoercion>
+      <code><![CDATA[$this->deserializeCategories( $row->ac_categories )]]></code>
+      <code><![CDATA[string[]]]></code>
+    </MixedReturnTypeCoercion>
+    <PossiblyInvalidPropertyFetch>
+      <code><![CDATA[$row->ac_categories]]></code>
+    </PossiblyInvalidPropertyFetch>
+  </file>
+  <file src="src/Adapters/DatabaseHtmlRepository.php">
+    <MixedInferredReturnType>
+      <code><![CDATA[?string]]></code>
+    </MixedInferredReturnType>
+    <MixedReturnStatement>
+      <code><![CDATA[$row->ah_html]]></code>
+    </MixedReturnStatement>
+    <PossiblyInvalidPropertyFetch>
+      <code><![CDATA[$row->ah_html]]></code>
+    </PossiblyInvalidPropertyFetch>
+  </file>
 </files>

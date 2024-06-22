@@ -4,6 +4,7 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints;
 
+use DatabaseUpdater;
 use OutputPage;
 use ParserOutput;
 use ProfessionalWiki\PageApprovals\PageApprovals;
@@ -17,6 +18,13 @@ class PageApprovalsHooks {
 				currentPageHtml: $parserOutput->getRawText(),
 			);
 		}
+	}
+
+	public static function onLoadExtensionSchemaUpdates( DatabaseUpdater $updater ): void {
+		$updater->addExtensionTable(
+			'approval_log',
+			__DIR__ . '/../../sql/PageApprovals.sql'
+		);
 	}
 
 }
