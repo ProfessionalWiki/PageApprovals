@@ -1,5 +1,4 @@
 CREATE TABLE /*_*/approval_log (
-    al_id INTEGER PRIMARY KEY AUTOINCREMENT,
     al_page_id INTEGER UNSIGNED NOT NULL,
     al_timestamp BINARY(14) NOT NULL,
     al_is_approved TINYINT(1) NOT NULL,
