@@ -25,7 +25,14 @@
 
 	"AutoloadNamespaces": {
 		"ProfessionalWiki\\PageApprovals\\": "src/",
+		"ProfessionalWiki\\PageApprovals\\Templates\\": "templates/",
 		"ProfessionalWiki\\PageApprovals\\Tests\\": "tests/"
+	},
+
+	"SpecialPages": {
+		"ApproverCategories": {
+			"class": "ProfessionalWiki\\PageApprovals\\EntryPoints\\Specials\\SpecialApproverCategories"
+		}
 	},
 
 	"Hooks": {
