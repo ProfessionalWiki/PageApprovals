@@ -11,10 +11,12 @@ use ProfessionalWiki\PageApprovals\PageApprovals;
 class PageApprovalsHooks {
 
 	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $parserOutput ): void {
-		PageApprovals::getInstance()->newEvaluateApprovalStateAction()->evaluate(
-			pageId: $out->getWikiPage()->getId(),
-			currentPageHtml: $parserOutput->getRawText(),
-		);
+		if ( $out->isArticle() ) {
+			PageApprovals::getInstance()->newEvaluateApprovalStateAction()->evaluate(
+				pageId: $out->getWikiPage()->getId(),
+				currentPageHtml: $parserOutput->getRawText(),
+			);
+		}
 	}
 
 }
