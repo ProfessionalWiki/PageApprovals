@@ -15,6 +15,11 @@ use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
  */
 class DatabaseHtmlRepositoryTest extends MediaWikiIntegrationTestCase {
 
+	protected function setUp(): void {
+		parent::setUp();
+		$this->tablesUsed[] = 'approved_html';
+	}
+
 	public function testReturnsNullForNonexistentPage(): void {
 		$repository = $this->newRepository();
 

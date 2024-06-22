@@ -5,6 +5,16 @@
       <code><![CDATA[$authority]]></code>
     </UnusedProperty>
   </file>
+  <file src="src/Adapters/DatabaseApprovalLog.php">
+    <MixedArgument>
+      <code><![CDATA[$row->al_timestamp]]></code>
+    </MixedArgument>
+    <PossiblyInvalidPropertyFetch>
+      <code><![CDATA[$row->al_is_approved]]></code>
+      <code><![CDATA[$row->al_timestamp]]></code>
+      <code><![CDATA[$row->al_user_id]]></code>
+    </PossiblyInvalidPropertyFetch>
+  </file>
   <file src="src/Adapters/DatabaseHtmlRepository.php">
     <MixedInferredReturnType>
       <code><![CDATA[?string]]></code>
