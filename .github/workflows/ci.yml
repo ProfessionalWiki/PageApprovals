@@ -52,12 +52,11 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-            path: EarlyCopy
+          path: EarlyCopy
 
       - name: Install MediaWiki
-        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh ${{ matrix.mw }} PageApprovals
+        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
 
       - uses: actions/checkout@v4
         with:
@@ -124,12 +123,11 @@ jobs:
 
       - uses: actions/checkout@v4
         with:
-            path: EarlyCopy
+          path: EarlyCopy
 
       - name: Install MediaWiki
-        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: bash EarlyCopy/.github/workflows/installMediaWiki.sh ${{ matrix.mw }} PageApprovals
+        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
 
       - uses: actions/checkout@v4
         with:
@@ -150,67 +148,66 @@ jobs:
 
 
   Psalm:
-      name: "Psalm: MW ${{ matrix.mw }}, PHP ${{ matrix.php }}"
+    name: "Psalm: MW ${{ matrix.mw }}, PHP ${{ matrix.php }}"
 
-      strategy:
-        matrix:
-          include:
-            - mw: 'REL1_39'
-              php: '8.2'
+    strategy:
+      matrix:
+        include:
+          - mw: 'REL1_39'
+            php: '8.2'
 
-      runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-      defaults:
-          run:
-              working-directory: mediawiki
+    defaults:
+      run:
+        working-directory: mediawiki
 
-      steps:
-          - name: Setup PHP
-            uses: shivammathur/setup-php@v2
-            with:
-                php-version: ${{ matrix.php }}
-                extensions: mbstring
-                tools: composer, cs2pr
+    steps:
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring
+          tools: composer, cs2pr
 
-          - name: Cache MediaWiki
-            id: cache-mediawiki
-            uses: actions/cache@v3
-            with:
-                path: |
-                    mediawiki
-                    mediawiki/extensions/
-                    mediawiki/vendor/
-                key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
+      - name: Cache MediaWiki
+        id: cache-mediawiki
+        uses: actions/cache@v3
+        with:
+          path: |
+            mediawiki
+            mediawiki/extensions/
+            mediawiki/vendor/
+          key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
 
-          - name: Cache Composer cache
-            uses: actions/cache@v3
-            with:
-                path: ~/.composer/cache
-                key: composer_static_analysis
+      - name: Cache Composer cache
+        uses: actions/cache@v3
+        with:
+          path: ~/.composer/cache
+          key: composer_static_analysis
 
-          - uses: actions/checkout@v4
-            with:
-                path: EarlyCopy
+      - uses: actions/checkout@v4
+        with:
+          path: EarlyCopy
 
-          - name: Install MediaWiki
-            if: steps.cache-mediawiki.outputs.cache-hit != 'true'
-            working-directory: ~
-            run: bash EarlyCopy/.github/workflows/installMediaWiki.sh ${{ matrix.mw }} PageApprovals
+      - name: Install MediaWiki
+        working-directory: ~
+        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
 
-          - uses: actions/checkout@v4
-            with:
-                path: mediawiki/extensions/PageApprovals
+      - uses: actions/checkout@v4
+        with:
+          path: mediawiki/extensions/PageApprovals
 
-          - name: Composer allow-plugins
-            run: composer config --no-plugins allow-plugins.composer/installers true
+      - name: Composer allow-plugins
+        run: composer config --no-plugins allow-plugins.composer/installers true
 
-          - run: composer update
+      - run: composer update
 
-          - name: Composer install
-            run: cd extensions/PageApprovals && composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+      - name: Composer install
+        run: cd extensions/PageApprovals && composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
-          - name: Psalm
-            run: cd extensions/PageApprovals && pwd && php vendor/bin/psalm --config=psalm.xml --shepherd --stats
+      - name: Psalm
+        run: cd extensions/PageApprovals && pwd && php vendor/bin/psalm --config=psalm.xml --shepherd --stats
 
 
 
@@ -255,9 +252,8 @@ jobs:
           key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
 
       - name: Install MediaWiki
-        if: steps.cache-mediawiki.outputs.cache-hit != 'true'
         working-directory: ~
-        run: curl https://gist.githubusercontent.com/JeroenDeDauw/49a3858653ff4b5be7ec849019ede06c/raw/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
+        run: curl https://raw.githubusercontent.com/ProfessionalWiki/PageApprovals/schema/.github/workflows/installMediaWiki.sh | bash -s ${{ matrix.mw }} PageApprovals
 
       - uses: actions/checkout@v4
         with:
