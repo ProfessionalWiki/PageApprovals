@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
+<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
   <file src="src/Adapters/AuthorityBasedApprovalAuthorizer.php">
     <UnusedProperty>
       <code><![CDATA[$authority]]></code>
@@ -40,5 +40,15 @@
     <PossiblyInvalidPropertyFetch>
       <code><![CDATA[$row->ah_html]]></code>
     </PossiblyInvalidPropertyFetch>
+  </file>
+  <file src="src/EntryPoints/PageApprovalsHooks.php">
+    <PossiblyNullReference>
+      <code><![CDATA[isContentPage]]></code>
+      <code><![CDATA[isSpecialPage]]></code>
+    </PossiblyNullReference>
+    <RedundantCondition>
+      <code><![CDATA[$isAnApproverForPageCategory]]></code>
+      <code><![CDATA[$isUserAnApprover]]></code>
+    </RedundantCondition>
   </file>
 </files>
