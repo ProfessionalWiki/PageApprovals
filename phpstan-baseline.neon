@@ -54,3 +54,43 @@ parameters:
 			message: "#^Parameter \\#2 \\$rows of method Wikimedia\\\\Rdbms\\\\IDatabase\\:\\:upsert\\(\\) expects array\\<array\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: src/Adapters/DatabaseHtmlRepository.php
+
+		-
+			message: "#^Cannot access property \\$user_id on array\\|bool\\|stdClass\\.$#"
+			count: 1
+			path: src/Adapters/UsersLookup.php
+
+		-
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\Application\\\\UseCases\\\\GetAllApproversCategories\\:\\:getAllApproversCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Application/UseCases/GetAllApproversCategories.php
+
+		-
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialApproverCategories\\:\\:renderHtml\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Parameter \\#1 \\$database of class ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\DatabaseApproverRepository constructor expects Wikimedia\\\\Rdbms\\\\IDatabase, Wikimedia\\\\Rdbms\\\\IDatabase\\|false given\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Parameter \\#1 \\$database of class ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\UsersLookup constructor expects Wikimedia\\\\Rdbms\\\\IDatabase, Wikimedia\\\\Rdbms\\\\IDatabase\\|false given\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Parameter \\#1 \\$php of static method LightnCandy\\\\LightnCandy\\:\\:prepare\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Parameter \\#1 \\$template of static method LightnCandy\\\\LightnCandy\\:\\:compile\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Trying to invoke LightnCandy\\\\Closure\\|false but it might not be a callable\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
