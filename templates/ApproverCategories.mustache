@@ -10,18 +10,42 @@
 	<tbody>
 	{{#approvers}}
 		<tr>
-			<td>{{id}}, {{name}}</td>
+			<td>{{username}}</td>
 			<td>
 				{{#categories}}
-					<form action="/index.php/Special:ApproverCategories" method="POST" style="display:inline;">
-						<input type="hidden" name="userId" value="{{../id}}">
-						<input type="hidden" name="category" value="{{.}}">
-						{{.}} <button type="submit" name="action" value="delete">Delete</button>
-					</form>
+					<p class="category-row">
+						{{.}}
+						<button class="approval-delete-btn">  <!--TODO-->
+							Delete
+						</button>
+					</p>
 				{{/categories}}
-				<button type="submit" name="action" value="add">Add</button>
+				<button class="add-button" name="action" value="add">Add</button> <!--TODO-->
 			</td>
 		</tr>
 	{{/approvers}}
 	</tbody>
 </table>
+<style lang="css">
+	td, th {
+		padding: 10px;
+	}
+
+	.approval-delete-btn {
+		font-size: 10px;
+		padding: 3px;
+		color: red;
+		cursor: pointer;
+		float: right;
+		margin-left: 10px;
+	}
+
+	.category-row {
+		padding-top: 3px;
+	}
+
+	.add-button {
+		margin-top: 10px;
+	}
+
+</style>

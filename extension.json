@@ -44,6 +44,18 @@
 	"config": {
 	},
 
+	"Rights": {
+		"can-approve-pages": {
+			"description": "Allows users to approve pages",
+			"groups": []
+		}
+	},
+	"GroupPermissions": {
+		"sysop": {
+			"can-approve-pages": true
+		}
+	},
+
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
 		"remoteExtPath": "PageApprovals/resources"

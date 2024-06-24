@@ -3,8 +3,11 @@
 namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
 use MediaWiki\MediaWikiServices;
+use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproverRepository;
+use ProfessionalWiki\PageApprovals\Adapters\UsersLookup;
 use SpecialPage;
 use PermissionsError;
+use ProfessionalWiki\PageApprovals\Application\UseCases\GetAllApproversCategories;
 use LightnCandy\LightnCandy;
 
 class SpecialApproverCategories extends SpecialPage {
@@ -22,41 +25,28 @@ class SpecialApproverCategories extends SpecialPage {
 			throw new PermissionsError( 'sysop' );
 		}
 
-		$output = $this->getOutput();
-		$approvers = [
-			[
-				'id' => 1,
-				'name' => 'John Doe',
-				'categories' => [ 'Category A', 'Category B' ]
-			],
-			[
-				'id' => 2,
-				'name' => 'Jane Smith',
-				'categories' => [ 'Category B', 'Category C' ]
-			]
-		]; // Placeholder
+		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$usersLookup = new UsersLookup( $db );
+		$databaseApproverRepository = new DatabaseApproverRepository( $db );
 
-		$templatePath = __DIR__ . '/../../../templates/ApproverCategories.mustache';
-		$template = file_get_contents( $templatePath );
+		$approversCategories = ( new GetAllApproversCategories(
+			$usersLookup, $databaseApproverRepository
+		) )->getAllApproversCategories();
 
-		$phpStr = LightnCandy::compile( $template, [
-			'flags' => LightnCandy::FLAG_PARENT
-		] );
-
-		$renderer = LightnCandy::prepare( $phpStr );
-
-		if ( !is_callable( $renderer ) ) {
-			throw new \RuntimeException( "Renderer preparation failed." );
-		}
-
-		$html = $renderer( [ 'approvers' => $approvers ] );
-		$output->addHTML( $html );
+		$this->renderHtml( $approversCategories );
 	}
 
 	protected function isAdmin(): bool {
-		$userGroupManager = MediaWikiServices::getInstance()->getService( 'UserGroupManager' );
+		$userGroupManager = MediaWikiServices::getInstance()->getUserGroupManager();
 		$userGroups = $userGroupManager->getUserGroups( $this->getUser() );
 		return in_array( 'sysop', $userGroups );
+	}
+
+	private function renderHtml( array $approversCategories ): void {
+		$template = file_get_contents( __DIR__ . '/../../../templates/ApproverCategories.mustache' );
+		$compiledTemplate = LightnCandy::compile( $template, [ 'flags' => LightnCandy::FLAG_MUSTACHE ] );
+		$prepareTemplate = LightnCandy::prepare( $compiledTemplate );
+		$this->getOutput()->addHTML( $prepareTemplate( [ 'approvers' => $approversCategories ] ) );
 	}
 
 }
