@@ -43,7 +43,7 @@
 	},
 
 	"ResourceModules": {
-		"ext.pageApprovals.modules": {
+		"ext.pageApprovals.resources": {
 			"scripts": [
 				"ApprovePage.js"
 			],
