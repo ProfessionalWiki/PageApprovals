@@ -54,3 +54,8 @@ parameters:
 			message: "#^Parameter \\#2 \\$rows of method Wikimedia\\\\Rdbms\\\\IDatabase\\:\\:upsert\\(\\) expects array\\<array\\>, array\\<string, int\\|string\\> given\\.$#"
 			count: 1
 			path: src/Adapters/DatabaseHtmlRepository.php
+
+		-
+			message: "#^Parameter \\#1 \\$database of class ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\DatabaseApprovalLog constructor expects Wikimedia\\\\Rdbms\\\\IDatabase, Wikimedia\\\\Rdbms\\\\IDatabase\\|false given\\.$#"
+			count: 1
+			path: src/PageApprovals.php

@@ -4,9 +4,12 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals;
 
+use MediaWiki\MediaWikiServices;
+use ProfessionalWiki\PageApprovals\Adapters\DatabaseApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryHtmlRepository;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
@@ -24,13 +27,15 @@ class PageApprovals {
 
 	public static function newApprovePageApi(): ApprovePageApi {
 		return new ApprovePageApi(
-			self::getInstance()->newPageApprovalAuthorizer()
+			self::getInstance()->newPageApprovalAuthorizer(),
+			self::getInstance()->newApprovalLog()
 		);
 	}
 
 	public static function newUnapprovePageApi(): UnapprovePageApi {
 		return new UnapprovePageApi(
-			self::getInstance()->newPageApprovalAuthorizer()
+			self::getInstance()->newPageApprovalAuthorizer(),
+			self::getInstance()->newApprovalLog()
 		);
 	}
 
@@ -40,10 +45,16 @@ class PageApprovals {
 		);
 	}
 
+	public function newApprovalLog(): ApprovalLog {
+		return new DatabaseApprovalLog(
+			MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY )
+		);
+	}
+
 	public function newEvaluateApprovalStateAction(): EvaluateApprovalState {
 		return new EvaluateApprovalState(
 			htmlRepository: new InMemoryHtmlRepository(), // TODO
-			approvalLog: new InMemoryApprovalLog() // TODO
+			approvalLog: $this->newApprovalLog()
 		);
 	}
 
