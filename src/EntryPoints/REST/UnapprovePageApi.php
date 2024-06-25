@@ -11,7 +11,6 @@ use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\Rdbms\DBError;
 
 class UnapprovePageApi extends SimpleHandler {
 
@@ -32,11 +31,7 @@ class UnapprovePageApi extends SimpleHandler {
 			return $this->newAuthorizationFailedResponse();
 		}
 
-		try {
-			$this->approvalLog->unapprovePage( $pageId, $this->getAuthority()->getUser()->getId() );
-		} catch ( DBError $error ) {
-			return $this->newUnapproveFailedResponse();
-		}
+		$this->approvalLog->unapprovePage( $pageId, $this->getAuthority()->getUser()->getId() );
 
 		return $this->newSuccessResponse();
 	}
@@ -55,10 +50,6 @@ class UnapprovePageApi extends SimpleHandler {
 
 	public function newInvalidPageResponse(): Response {
 		return $this->getResponseFactory()->createHttpError( 404 );
-	}
-
-	public function newUnapproveFailedResponse(): Response {
-		return $this->getResponseFactory()->createHttpError( 500 );
 	}
 
 	/**
