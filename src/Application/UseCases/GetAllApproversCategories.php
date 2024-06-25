@@ -35,7 +35,6 @@ class GetAllApproversCategories {
 			) ) {
 				$categories = $this->databaseApproverRepository->getApproverCategories( $user->getId() );
 				$approversWithCategories[] = [
-					'userid' => $user->getId(),
 					'username' => $user->getName(),
 					'categories' => $categories
 				];
