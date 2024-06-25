@@ -35,12 +35,6 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 		);
 	}
 
-	private function getIdOfExistingPage( string $titleText ): int {
-		$title = Title::newFromText( $titleText );
-		$this->editPage( $title, 'Whatever wikitext' );
-		return MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title )->getId();
-	}
-
 	private function createValidRequestData( int $pageId ): RequestData {
 		return new RequestData( [
 			'method' => 'POST',
