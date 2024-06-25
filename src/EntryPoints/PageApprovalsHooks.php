@@ -13,6 +13,7 @@ class PageApprovalsHooks {
 
 	public static function onOutputPageParserOutput( OutputPage $out, ParserOutput $parserOutput ): void {
 		if ( $out->isArticle() ) {
+			// TODO: verify called only once
 			PageApprovals::getInstance()->newEvaluateApprovalStateAction()->evaluate(
 				pageId: $out->getWikiPage()->getId(),
 				currentPageHtml: $parserOutput->getRawText(),

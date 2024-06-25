@@ -41,6 +41,22 @@
       <code><![CDATA[$row->ah_html]]></code>
     </PossiblyInvalidPropertyFetch>
   </file>
+  <file src="src/Adapters/DatabasePendingApprovalRetriever.php">
+    <MixedArgument>
+      <code><![CDATA[$row->categories]]></code>
+      <code><![CDATA[$row->page_title]]></code>
+    </MixedArgument>
+    <MixedAssignment>
+      <code><![CDATA[$name]]></code>
+    </MixedAssignment>
+    <PossiblyInvalidPropertyFetch>
+      <code><![CDATA[$row->categories]]></code>
+      <code><![CDATA[$row->page_namespace]]></code>
+      <code><![CDATA[$row->page_title]]></code>
+      <code><![CDATA[$row->rev_actor]]></code>
+      <code><![CDATA[$row->rev_timestamp]]></code>
+    </PossiblyInvalidPropertyFetch>
+  </file>
   <file src="src/Adapters/PageContentRetriever.php">
     <PossiblyInvalidMethodCall>
       <code><![CDATA[getRawText]]></code>

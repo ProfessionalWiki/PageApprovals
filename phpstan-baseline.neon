@@ -56,6 +56,31 @@ parameters:
 			path: src/Adapters/DatabaseHtmlRepository.php
 
 		-
+			message: "#^Cannot access property \\$categories on array\\|bool\\|stdClass\\.$#"
+			count: 1
+			path: src/Adapters/DatabasePendingApprovalRetriever.php
+
+		-
+			message: "#^Cannot access property \\$page_namespace on array\\|bool\\|stdClass\\.$#"
+			count: 1
+			path: src/Adapters/DatabasePendingApprovalRetriever.php
+
+		-
+			message: "#^Cannot access property \\$page_title on array\\|bool\\|stdClass\\.$#"
+			count: 1
+			path: src/Adapters/DatabasePendingApprovalRetriever.php
+
+		-
+			message: "#^Cannot access property \\$rev_actor on array\\|bool\\|stdClass\\.$#"
+			count: 1
+			path: src/Adapters/DatabasePendingApprovalRetriever.php
+
+		-
+			message: "#^Cannot access property \\$rev_timestamp on array\\|bool\\|stdClass\\.$#"
+			count: 1
+			path: src/Adapters/DatabasePendingApprovalRetriever.php
+
+		-
 			message: "#^Cannot call method getRawText\\(\\) on ParserOutput\\|true\\.$#"
 			count: 1
 			path: src/Adapters/PageContentRetriever.php
@@ -64,4 +89,3 @@ parameters:
 			message: "#^Parameter \\#1 \\$database of class ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\DatabaseApprovalLog constructor expects Wikimedia\\\\Rdbms\\\\IDatabase, Wikimedia\\\\Rdbms\\\\IDatabase\\|false given\\.$#"
 			count: 1
 			path: src/PageApprovals.php
-
