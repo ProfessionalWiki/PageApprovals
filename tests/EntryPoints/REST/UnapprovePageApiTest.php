@@ -14,6 +14,7 @@ use ProfessionalWiki\PageApprovals\Tests\TestDoubles\FailingApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\ThrowingApprovalLog;
 use Title;
+use Wikimedia\Rdbms\DBError;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi
@@ -83,12 +84,12 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 	}
 
 	public function testUnapprovalFailsIfApprovalLogFails(): void {
+		$this->expectException( DBError::class );
+
 		$response = $this->executeHandler(
 			$this->newUnapprovePageApi( new ThrowingApprovalLog() ),
 			$this->createValidRequestData( $this->getIdOfExistingPage( 'Test 3' ) )
 		);
-
-		$this->assertSame( 500, $response->getStatusCode() );
 	}
 
 	public function testPageIsUnapproved(): void {

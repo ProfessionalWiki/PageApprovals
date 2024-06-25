@@ -11,7 +11,6 @@ use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\Rdbms\DBError;
 
 class ApprovePageApi extends SimpleHandler {
 
@@ -32,11 +31,7 @@ class ApprovePageApi extends SimpleHandler {
 			return $this->newAuthorizationFailedResponse();
 		}
 
-		try {
-			$this->approvalLog->approvePage( $pageId, $this->getAuthority()->getUser()->getId() );
-		} catch ( DBError $error ) {
-			return $this->newApproveFailedResponse();
-		}
+		$this->approvalLog->approvePage( $pageId, $this->getAuthority()->getUser()->getId() );
 
 		// TODO: HtmlRepository::saveApprovedHtml( $pageId, $html );
 
@@ -57,10 +52,6 @@ class ApprovePageApi extends SimpleHandler {
 
 	public function newInvalidPageResponse(): Response {
 		return $this->getResponseFactory()->createHttpError( 404 );
-	}
-
-	public function newApproveFailedResponse(): Response {
-		return $this->getResponseFactory()->createHttpError( 500 );
 	}
 
 	/**
