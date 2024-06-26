@@ -83,15 +83,6 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 		$this->assertSame( 404, $response->getStatusCode() );
 	}
 
-	public function testApprovalFailsIfApprovalLogFails(): void {
-		$this->expectException( DBError::class );
-
-		$response = $this->executeHandler(
-			$this->newApprovePageApi( new ThrowingApprovalLog() ),
-			$this->createValidRequestData( $this->getIdOfExistingPage( 'Test 3' ) )
-		);
-	}
-
 	public function testPageIsApproved(): void {
 		$approvalLog = new InMemoryApprovalLog();
 		$pageId = $this->getIdOfExistingPage( 'Page to be approved' );

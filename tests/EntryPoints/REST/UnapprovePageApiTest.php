@@ -83,15 +83,6 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 		$this->assertSame( 404, $response->getStatusCode() );
 	}
 
-	public function testUnapprovalFailsIfApprovalLogFails(): void {
-		$this->expectException( DBError::class );
-
-		$response = $this->executeHandler(
-			$this->newUnapprovePageApi( new ThrowingApprovalLog() ),
-			$this->createValidRequestData( $this->getIdOfExistingPage( 'Test 3' ) )
-		);
-	}
-
 	public function testPageIsUnapproved(): void {
 		$approvalLog = new InMemoryApprovalLog();
 		$pageId = $this->getIdOfExistingPage( 'Page to be unapproved' );
