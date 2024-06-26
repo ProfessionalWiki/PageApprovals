@@ -20,10 +20,8 @@ class UsersLookupTest extends MediaWikiIntegrationTestCase {
 
 		$userFactory = $this->getServiceContainer()->getUserFactory();
 
-		$user1 = $userFactory->newFromName( 'TestUser1' );
-		$user1->addToDatabase();
-		$user2 = $userFactory->newFromName( 'TestUser2' );
-		$user2->addToDatabase();
+		$userFactory->newFromName( 'TestUser1' )->addToDatabase();
+		$userFactory->newFromName( 'TestUser2' )->addToDatabase();
 	}
 
 	public function testGetAllUsers() {
@@ -32,7 +30,14 @@ class UsersLookupTest extends MediaWikiIntegrationTestCase {
 		$users = $usersLookup->getAllUsers();
 
 		$this->assertIsArray( $users );
-		$this->assertNotEmpty( $users, "Users array is empty" );
+		$this->assertGreaterThanOrEqual( 2, count( $users ), "Users array does not contain 2 or more users" );
+
+		$usernames = array_map( static function ( $user ) {
+			return $user->getName();
+		}, $users );
+
+		$this->assertContains( 'TestUser1', $usernames, "Username 'TestUser1' not found" );
+		$this->assertContains( 'TestUser2', $usernames, "Username 'TestUser2' not found" );
 	}
 
 }
