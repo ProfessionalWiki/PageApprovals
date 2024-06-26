@@ -18,8 +18,12 @@ class UsersLookupTest extends MediaWikiIntegrationTestCase {
 		parent::setUp();
 		$this->tablesUsed[] = 'user';
 
-		$user = $this->getTestUser()->getUser();
-		$user->addToDatabase();
+		$userFactory = $this->getServiceContainer()->getUserFactory();
+
+		$user1 = $userFactory->newFromName( 'TestUser1' );
+		$user1->addToDatabase();
+		$user2 = $userFactory->newFromName( 'TestUser2' );
+		$user2->addToDatabase();
 	}
 
 	public function testGetAllUsers() {
