@@ -56,4 +56,12 @@
       <code><![CDATA[$isUserAnApprover]]></code>
     </RedundantCondition>
   </file>
+  <file src="src/PageApprovals.php">
+    <MixedArgument>
+      <code><![CDATA[DB_PRIMARY]]></code>
+    </MixedArgument>
+    <PossiblyFalseArgument>
+      <code><![CDATA[MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY )]]></code>
+    </PossiblyFalseArgument>
+  </file>
 </files>

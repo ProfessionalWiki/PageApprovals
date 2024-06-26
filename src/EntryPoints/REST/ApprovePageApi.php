@@ -8,13 +8,15 @@ use MediaWiki\Page\PageIdentity;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApprovePageApi extends SimpleHandler {
 
 	public function __construct(
-		private ApprovalAuthorizer $authorizer
+		private ApprovalAuthorizer $authorizer,
+		private ApprovalLog	$approvalLog
 	) {
 	}
 
@@ -29,9 +31,9 @@ class ApprovePageApi extends SimpleHandler {
 			return $this->newAuthorizationFailedResponse();
 		}
 
-		// TODO: $persistence->markAsApproved( $pageId, $userId );
-		// TODO: $persistence->saveHtml( $pageId, $html );
-		// TODO: $this->newApproveFailedResponse();
+		$this->approvalLog->approvePage( $pageId, $this->getAuthority()->getUser()->getId() );
+
+		// TODO: HtmlRepository::saveApprovedHtml( $pageId, $html );
 
 		return $this->newSuccessResponse();
 	}
