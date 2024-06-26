@@ -21,7 +21,6 @@ class GetAllApproversCategoriesTest extends TestCase {
 	private $usersLookup;
 	private $dbApproverRepo;
 	private $permManager;
-	private $originalMediaWikiServices;
 
 	protected function setUp(): void {
 		$this->usersLookup = $this->createMock( UsersLookup::class );
@@ -31,12 +30,7 @@ class GetAllApproversCategoriesTest extends TestCase {
 
 		$mediaWikiServices->method( 'getPermissionManager' )->willReturn( $this->permManager );
 
-		$this->originalMediaWikiServices = MediaWikiServices::getInstance();
 		MediaWikiServices::forceGlobalInstance( $mediaWikiServices );
-	}
-
-	protected function tearDown(): void {
-		MediaWikiServices::forceGlobalInstance( $this->originalMediaWikiServices );
 	}
 
 	public function testWithRights(): void {
