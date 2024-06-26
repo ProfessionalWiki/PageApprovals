@@ -16,12 +16,14 @@ class UsersLookupTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testGetAllUsers() {
-		$db = $this->getServiceContainer()->getDBLoadBalancer()->getConnection( LoadBalancer::DB_REPLICA );
+		$db = $this->getServiceContainer()->getDBLoadBalancer()->getConnection( LoadBalancer::DB_PRIMARY );
+		var_dump($db->getType(), $db->getServerVersion());
 		$usersLookup = new UsersLookup( $db );
 		$users = $usersLookup->getAllUsers();
 
 		$this->assertIsArray( $users );
 		$this->assertGreaterThanOrEqual( 1, count( $users ), "Users array does not contain 1 or more users" );
 	}
+
 
 }
