@@ -8,18 +8,27 @@ use MediaWikiIntegrationTestCase;
 use ProfessionalWiki\PageApprovals\Adapters\UsersLookup;
 use Wikimedia\Rdbms\LoadBalancer;
 
+/**
+ * @covers \ProfessionalWiki\PageApprovals\Adapters\UsersLookup
+ * @group Database
+ */
 class UsersLookupTest extends MediaWikiIntegrationTestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
 		$this->tablesUsed[] = 'user';
+
+		$user = $this->getTestUser()->getUser();
+		$user->addToDatabase();
 	}
 
 	public function testGetAllUsers() {
-		$users = [ 45 ];
+		$db = $this->getServiceContainer()->getDBLoadBalancer()->getConnection( LoadBalancer::DB_REPLICA );
+		$usersLookup = new UsersLookup( $db );
+		$users = $usersLookup->getAllUsers();
 
 		$this->assertIsArray( $users );
-		$this->assertGreaterThanOrEqual( 1, count( $users ), "Users array does not contain 1 or more users" );
+		$this->assertNotEmpty( $users, "Users array is empty" );
 	}
 
 }
