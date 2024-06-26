@@ -7,7 +7,6 @@ namespace ProfessionalWiki\PageApprovals\Tests\Adapters;
 use MediaWikiIntegrationTestCase;
 use ProfessionalWiki\PageApprovals\Adapters\DatabasePendingApprovalRetriever;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApproverRepository;
-use ProfessionalWiki\PageApprovals\Application\PendingApproval;
 use Title;
 use WikiPage;
 
@@ -44,90 +43,46 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 		$approverCategories = [ 'Category1', 'Category2' ];
 		$this->approverRepository->setApproverCategories( $approverId, $approverCategories );
 
-		$title = $this->createUniqueTitle();
-		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
-		$this->editPage( $page, 'Test content' );
-		$this->addCategory( $page, 'Category1' );
-
-		$pageId = $page->getId();
-		$this->insertApprovalLogEntry( $pageId, false );
+		$page = $this->createPage( false, [ 'Category1' ] );
 
 		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
 
 		$this->assertCount( 1, $pendingApprovals );
-		$this->assertInstanceOf( PendingApproval::class, $pendingApprovals[0] );
-		$this->assertEquals( $title->getText(), $pendingApprovals[0]->title->getText() );
-		$this->assertContains( 'Category1', $pendingApprovals[0]->categories );
+		$this->assertSame( $page->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
+		$this->assertSame( [ 'Category1' ], $pendingApprovals[0]->categories );
 	}
 
 	public function testGetPendingApprovalsExcludesApprovedPages(): void {
 		$approverId = 1;
-		$approverCategories = [ 'Category1' ];
-		$this->approverRepository->setApproverCategories( $approverId, $approverCategories );
+		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
 
-		$title1 = $this->createUniqueTitle();
-		$page1 = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title1 );
-		$this->editPage( $page1, 'Test content 1' );
-		$this->addCategory( $page1, 'Category1' );
-
-		$title2 = $this->createUniqueTitle();
-		$page2 = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title2 );
-		$this->editPage( $page2, 'Test content 2' );
-		$this->addCategory( $page2, 'Category1' );
-
-		$this->insertApprovalLogEntry( $page1->getId(), false );
-		$this->insertApprovalLogEntry( $page2->getId(), true );
+		$unnaprovedPage = $this->createPage( false, [ 'Category1' ] );
+		$this->createPage( true, [ 'Category1' ] );
 
 		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
 
 		$this->assertCount( 1, $pendingApprovals );
-		$this->assertEquals( $title1->getText(), $pendingApprovals[0]->title->getText() );
+		$this->assertSame( $unnaprovedPage->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
 	}
 
-	public function testGetPendingApprovalsReturnsLatestApprovalStatus(): void {
-		$approverId = 1;
-		$approverCategories = [ 'Category1' ];
-		$this->approverRepository->setApproverCategories( $approverId, $approverCategories );
+	private function createPage( bool $isApproved, array $categories = [] ): WikiPage {
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $this->createUniqueTitle() );
 
-		$title = $this->createUniqueTitle();
-		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
-		$this->editPage( $page, 'Test content' );
-		$this->addCategory( $page, 'Category1' );
+		$this->editPage( $page, $page->getTitle()->getText() . $this->buildCategoryWikitext( $categories ) );
 
-		$pageId = $page->getId();
-		$this->insertApprovalLogEntry( $pageId, true, '20230101000000' );
-		$this->insertApprovalLogEntry( $pageId, false, '20230102000000' );
+		$this->insertApprovalLogEntry( $page->getId(), $isApproved );
 
-		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
-
-		$this->assertCount( 1, $pendingApprovals );
-		$this->assertEquals( $title->getText(), $pendingApprovals[0]->title->getText() );
+		return $page;
 	}
 
-	public function testGetPendingApprovalsRespectsLimit(): void {
-		$approverId = 1;
-		$approverCategories = [ 'Category1' ];
-		$this->approverRepository->setApproverCategories( $approverId, $approverCategories );
-
-		for ( $i = 1; $i <= 3; $i++ ) {
-			$title = $this->createUniqueTitle();
-			$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
-			$this->editPage( $page, "Test content $i" );
-			$this->addCategory( $page, 'Category1' );
-			$this->insertApprovalLogEntry( $page->getId(), false );
-		}
-
-		$retriever = new DatabasePendingApprovalRetriever( $this->db, $this->approverRepository, 2 );
-		$pendingApprovals = $retriever->getPendingApprovalsForApprover( $approverId );
-
-		$this->assertCount( 2, $pendingApprovals );
-	}
-
-	private function addCategory( WikiPage $page, string $category ): void {
-		$content = $page->getContent();
-		$text = $content->getText();
-		$newText = $text . "\n[[Category:$category]]";
-		$this->editPage( $page, $newText );
+	private function buildCategoryWikitext( array $categories ): string {
+		return implode(
+			"\n",
+			array_map(
+				fn( $category ) => "[[Category:$category]]",
+				$categories
+			)
+		);
 	}
 
 	private function insertApprovalLogEntry( int $pageId, bool $isApproved, string $timestamp = null ): void {
@@ -140,5 +95,32 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 				'al_user_id' => 1
 			]
 		);
+	}
+
+	public function testGetPendingApprovalsReturnsLatestApprovalStatus(): void {
+		$approverId = 1;
+		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
+
+		$page = $this->createPage( true, [ 'Category1' ] );
+		$this->insertApprovalLogEntry( $page->getId(), false, '20230102000000' );
+
+		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
+
+		$this->assertCount( 1, $pendingApprovals );
+		$this->assertSame( $page->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
+	}
+
+	public function testGetPendingApprovalsRespectsLimit(): void {
+		$approverId = 1;
+		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
+
+		for ( $i = 1; $i <= 3; $i++ ) {
+			$this->createPage( false, [ 'Category1' ] );
+		}
+
+		$retriever = new DatabasePendingApprovalRetriever( $this->db, $this->approverRepository, 2 );
+		$pendingApprovals = $retriever->getPendingApprovalsForApprover( $approverId );
+
+		$this->assertCount( 2, $pendingApprovals );
 	}
 }
