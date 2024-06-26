@@ -35,6 +35,10 @@
 		}
 	},
 
+	"ExtensionMessagesFiles": {
+		"PageApprovalsAlias": "i18n/Aliases/Aliases.php"
+	},
+
 	"Hooks": {
 		"OutputPageParserOutput": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onOutputPageParserOutput",
 		"LoadExtensionSchemaUpdates": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onLoadExtensionSchemaUpdates",

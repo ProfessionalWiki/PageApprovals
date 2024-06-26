@@ -22,7 +22,7 @@ class GetAllApproversCategories {
 	}
 
 	/**
-	 * @return array[]
+	 * @return array<array{username: string, userId: int, categories: string[]}>
 	 */
 	public function getAllApproversCategories(): array {
 		$allUsers = $this->usersLookup->getAllUsers();
@@ -35,6 +35,7 @@ class GetAllApproversCategories {
 			) ) {
 				$categories = $this->databaseApproverRepository->getApproverCategories( $user->getId() );
 				$approversWithCategories[] = [
+					'userId' => $user->getId(),
 					'username' => $user->getName(),
 					'categories' => $categories
 				];

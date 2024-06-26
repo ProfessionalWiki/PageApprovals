@@ -1,4 +1,4 @@
-<h1>Approvers List</h1>
+<h1>Approvers Categories</h1>
 <table border="1">
 	<thead>
 	<tr>
@@ -12,19 +12,26 @@
 			<td>{{username}}</td>
 			<td>
 				{{#categories}}
-					<p class="category-row">
+					<form method="POST" action="" class="category-row">
 						{{.}}
-						<button class="approval-delete-btn">  <!--TODO-->
-							Delete
+						<button class="approval-delete-btn" type="submit" name="action" value="delete">Delete
 						</button>
-					</p>
+						<input type="hidden" name="username" value="{{username}}">
+						<input type="hidden" name="category" value="{{.}}">
+
+					</form>
 				{{/categories}}
-				<button class="add-button" name="action" value="add">Add</button> <!--TODO-->
+				<form method="POST" action="">
+					<input type="text" name="category" placeholder="New Category">
+					<input type="hidden" name="username" value="{{username}}">
+					<button class="add-button" type="submit" name="action" value="add">Add</button>
+				</form>
 			</td>
 		</tr>
 	{{/approvers}}
 	</tbody>
 </table>
+
 <style lang="css">
 	td, th {
 		padding: 10px;
@@ -46,5 +53,4 @@
 	.add-button {
 		margin-top: 10px;
 	}
-
 </style>

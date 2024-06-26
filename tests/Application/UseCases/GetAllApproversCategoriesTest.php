@@ -43,6 +43,7 @@ class GetAllApproversCategoriesTest extends TestCase {
 		$result = $useCase->getAllApproversCategories();
 
 		$this->assertSame( [
+			'userId' => 1,
 			'username' => 'User1',
 			'categories' => [ 'Category1', 'Category2' ]
 		], $result[0] );
