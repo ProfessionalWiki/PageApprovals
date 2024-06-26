@@ -34,11 +34,11 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 		return Title::newFromText( 'TestPage' . $this->pageCounter );
 	}
 
-	public function testGetPendingApprovalsForApproverWithNoCategories(): void {
+	public function testReturnsNullWhenThereAreNoApprovers(): void {
 		$this->assertSame( [], $this->retriever->getPendingApprovalsForApprover( 1 ) );
 	}
 
-	public function testGetPendingApprovalsForApprover(): void {
+	public function testReturnsPendingApprovalsForApprover(): void {
 		$approverId = 1;
 		$approverCategories = [ 'Category1', 'Category2' ];
 		$this->approverRepository->setApproverCategories( $approverId, $approverCategories );
@@ -52,7 +52,7 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 		$this->assertSame( [ 'Category1' ], $pendingApprovals[0]->categories );
 	}
 
-	public function testGetPendingApprovalsExcludesApprovedPages(): void {
+	public function testExcludesApprovedPages(): void {
 		$approverId = 1;
 		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
 
@@ -97,7 +97,7 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 		);
 	}
 
-	public function testGetPendingApprovalsReturnsLatestApprovalStatus(): void {
+	public function testReturnsLatestApprovalStatus(): void {
 		$approverId = 1;
 		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
 
@@ -110,17 +110,44 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 		$this->assertSame( $page->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
 	}
 
-	public function testGetPendingApprovalsRespectsLimit(): void {
+	public function testRespectsLimit(): void {
 		$approverId = 1;
 		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
 
-		for ( $i = 1; $i <= 3; $i++ ) {
-			$this->createPage( false, [ 'Category1' ] );
-		}
+		$this->createPage( false, [ 'Category1' ] );
+		$this->createPage( false, [ 'Category1' ] );
+		$this->createPage( false, [ 'Category1' ] );
 
 		$retriever = new DatabasePendingApprovalRetriever( $this->db, $this->approverRepository, 2 );
 		$pendingApprovals = $retriever->getPendingApprovalsForApprover( $approverId );
 
 		$this->assertCount( 2, $pendingApprovals );
 	}
+
+	public function testExcludesPageWithoutTheApproverTheirCategories(): void {
+		$approverId = 1;
+		$approverCategories = [ 'Valid1', 'Valid2' ];
+		$this->approverRepository->setApproverCategories( $approverId, $approverCategories );
+
+		$expectedPage1 = $this->createPage( false, [ 'Valid1' ] );
+		$this->createPage( false, [ 'Invalid' ] );
+		$expectedPage2 = $this->createPage( false, [ 'Valid2' ] );
+		$expectedPage3 = $this->createPage( false, [ 'Invalid', 'Valid1', 'MoreInvalid' ] );
+		$this->createPage( false );
+
+		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
+
+		$this->assertSame(
+			[
+				$expectedPage1->getTitle()->getText(),
+				$expectedPage2->getTitle()->getText(),
+				$expectedPage3->getTitle()->getText()
+			],
+			array_map(
+				fn( $approval ) => $approval->title->getText(),
+				$pendingApprovals
+			)
+		);
+	}
+
 }
