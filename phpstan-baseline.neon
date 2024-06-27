@@ -86,6 +86,11 @@ parameters:
 			path: src/Adapters/PageContentRetriever.php
 
 		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: src/EntryPoints/PageApprovalsHooks.php
+
+		-
 			message: "#^Parameter \\#1 \\$database of class ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\DatabaseApprovalLog constructor expects Wikimedia\\\\Rdbms\\\\IDatabase, Wikimedia\\\\Rdbms\\\\IDatabase\\|false given\\.$#"
 			count: 1
 			path: src/PageApprovals.php

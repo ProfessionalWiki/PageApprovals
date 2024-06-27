@@ -4,33 +4,32 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Tests\Integration\HookHandler;
 
-use MediaWikiIntegrationTestCase;
 use OutputPage;
 use ProfessionalWiki\PageApprovals\EntryPoints\PageApprovalsHooks;
-use Title;
+use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use RequestContext;
-use User;
+use Title;
 
 /**
  * @group Database
  * @covers \ProfessionalWiki\PageApprovals\EntryPoints\PageApprovalsHooks
  */
-class PageApprovalsHooksTest extends MediaWikiIntegrationTestCase {
+class PageApprovalsHooksTest extends PageApprovalsIntegrationTest {
 
 	public function testOnOutputPageBeforeHTML() {
-		$user = $this->getTestUser()->getUser();
-		$title = Title::newFromText( 'TestPage' );
+		$title = Title::newFromText( 'PageApprovalsIntegrationTest' );
+		$this->insertPage( $title );
 
 		$context = new RequestContext();
 		$context->setTitle( $title );
-		$context->setUser( $user );
+		$context->setUser( $this->getTestUser()->getUser() );
 
 		$out = new OutputPage( $context );
 		$out->setTitle( $title );
+		$out->setArticleFlag( true );
+		$out->setRevisionId( $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title )->getLatest() );
 
-		$text = '';
-
-		PageApprovalsHooks::onOutputPageBeforeHTML( $out, $text );
+		PageApprovalsHooks::onOutputPageBeforeHTML( $out );
 
 		$this->assertStringContainsString(
 			'page-approval-status',
