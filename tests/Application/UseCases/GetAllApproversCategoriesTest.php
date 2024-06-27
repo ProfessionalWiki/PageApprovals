@@ -19,12 +19,12 @@ use User;
 class GetAllApproversCategoriesTest extends TestCase {
 
 	private $usersLookup;
-	private $dbApproverRepo;
+	private $approverRep;
 	private $permManager;
 
 	protected function setUp(): void {
 		$this->usersLookup = $this->createMock( UsersLookup::class );
-		$this->dbApproverRepo = $this->createMock( DatabaseApproverRepository::class );
+		$this->approverRep = $this->createMock( DatabaseApproverRepository::class );
 		$this->permManager = $this->createMock( PermissionManager::class );
 		$mediaWikiServices = $this->createMock( MediaWikiServices::class );
 
@@ -37,9 +37,9 @@ class GetAllApproversCategoriesTest extends TestCase {
 
 		$this->usersLookup->method( 'getAllUsers' )->willReturn( [ $user ] );
 		$this->permManager->method( 'userHasRight' )->willReturn( true );
-		$this->dbApproverRepo->method( 'getApproverCategories' )->willReturn( [ 'Category1', 'Category2' ] );
+		$this->approverRep->method( 'getApproverCategories' )->willReturn( [ 'Category1', 'Category2' ] );
 
-		$useCase = new GetAllApproversCategories( $this->usersLookup, $this->dbApproverRepo );
+		$useCase = new GetAllApproversCategories( $this->usersLookup, $this->approverRep );
 		$result = $useCase->getAllApproversCategories();
 
 		$this->assertSame( [
@@ -52,7 +52,7 @@ class GetAllApproversCategoriesTest extends TestCase {
 	public function testNoRights(): void {
 		$this->permManager->method( 'userHasRight' )->willReturn( false );
 
-		$useCase = new GetAllApproversCategories( $this->usersLookup, $this->dbApproverRepo );
+		$useCase = new GetAllApproversCategories( $this->usersLookup, $this->approverRep );
 		$result = $useCase->getAllApproversCategories();
 
 		$this->assertSame( [], $result );

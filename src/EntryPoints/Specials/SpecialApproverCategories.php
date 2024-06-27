@@ -8,7 +8,6 @@ use ProfessionalWiki\PageApprovals\Adapters\UsersLookup;
 use SpecialPage;
 use PermissionsError;
 use ProfessionalWiki\PageApprovals\Application\UseCases\GetAllApproversCategories;
-use ProfessionalWiki\PageApprovals\Application\UseCases\SetApproverCategories;
 use LightnCandy\LightnCandy;
 use WebRequest;
 
@@ -72,8 +71,7 @@ class SpecialApproverCategories extends SpecialPage {
 			$currentCategories = array_filter( $currentCategories, fn( string $cat ) => $cat !== $category );
 		}
 
-		$setApproverCategories = new SetApproverCategories( $databaseApproverRepository );
-		$setApproverCategories->setApproverCategories( $userId, $currentCategories );
+		$databaseApproverRepository->setApproverCategories( $userId, $currentCategories );
 	}
 
 	private function renderHtml( array $approversCategories ): void {
