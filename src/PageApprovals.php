@@ -6,15 +6,17 @@ namespace ProfessionalWiki\PageApprovals;
 
 use MediaWiki\MediaWikiServices;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApprovalLog;
-use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
-use ProfessionalWiki\PageApprovals\Adapters\InMemoryHtmlRepository;
+use ProfessionalWiki\PageApprovals\Adapters\DatabaseHtmlRepository;
+use ProfessionalWiki\PageApprovals\Adapters\PageContentRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
+use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
 use ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer;
 use RequestContext;
+use Wikimedia\Rdbms\IDatabase;
 
 class PageApprovals {
 
@@ -28,7 +30,9 @@ class PageApprovals {
 	public static function newApprovePageApi(): ApprovePageApi {
 		return new ApprovePageApi(
 			self::getInstance()->newPageApprovalAuthorizer(),
-			self::getInstance()->newApprovalLog()
+			self::getInstance()->newApprovalLog(),
+			self::getInstance()->newHtmlRepository(),
+			self::getInstance()->newPageContentRetriever()
 		);
 	}
 
@@ -47,14 +51,30 @@ class PageApprovals {
 
 	public function newApprovalLog(): ApprovalLog {
 		return new DatabaseApprovalLog(
-			MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY )
+			$this->getDatabase()
 		);
+	}
+
+	private function getDatabase(): IDatabase {
+		return MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
 	}
 
 	public function newEvaluateApprovalStateAction(): EvaluateApprovalState {
 		return new EvaluateApprovalState(
-			htmlRepository: new InMemoryHtmlRepository(), // TODO
+			htmlRepository: $this->newHtmlRepository(),
 			approvalLog: $this->newApprovalLog()
+		);
+	}
+
+	public function newHtmlRepository(): HtmlRepository {
+		return new DatabaseHtmlRepository(
+			$this->getDatabase()
+		);
+	}
+
+	public function newPageContentRetriever(): PageContentRetriever {
+		return new PageContentRetriever(
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
