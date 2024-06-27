@@ -34,7 +34,7 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 		return Title::newFromText( 'TestPage' . $this->pageCounter );
 	}
 
-	public function testReturnsNullWhenThereAreNoApprovers(): void {
+	public function testReturnsEmptyArrayWhenThereAreNoApprovers(): void {
 		$this->assertSame( [], $this->retriever->getPendingApprovalsForApprover( 1 ) );
 	}
 
@@ -56,13 +56,13 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 		$approverId = 1;
 		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
 
-		$unnaprovedPage = $this->createPage( false, [ 'Category1' ] );
+		$unapprovedPage = $this->createPage( false, [ 'Category1' ] );
 		$this->createPage( true, [ 'Category1' ] );
 
 		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
 
 		$this->assertCount( 1, $pendingApprovals );
-		$this->assertSame( $unnaprovedPage->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
+		$this->assertSame( $unapprovedPage->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
 	}
 
 	private function createPage( bool $isApproved, array $categories = [] ): WikiPage {
@@ -124,7 +124,7 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 		$this->assertCount( 2, $pendingApprovals );
 	}
 
-	public function testExcludesPageWithoutTheApproverTheirCategories(): void {
+	public function testExcludesPageWithoutTheCategoriesOfTheApprover(): void {
 		$approverId = 1;
 		$approverCategories = [ 'Valid1', 'Valid2' ];
 		$this->approverRepository->setApproverCategories( $approverId, $approverCategories );
