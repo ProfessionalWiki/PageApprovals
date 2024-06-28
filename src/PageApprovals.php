@@ -9,6 +9,7 @@ use ProfessionalWiki\PageApprovals\Adapters\DatabaseApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproverRepository;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseHtmlRepository;
 use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
+use ProfessionalWiki\PageApprovals\Adapters\PageCategoriesRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
@@ -50,7 +51,9 @@ class PageApprovals {
 
 	private function newPageApprovalAuthorizer(): ApprovalAuthorizer {
 		return new AuthorityBasedApprovalAuthorizer(
-			RequestContext::getMain()->getUser()
+			RequestContext::getMain()->getUser(),
+			$this->getApproverRepository(),
+			$this->getPageCategoriesRetriever()
 		);
 	}
 
@@ -97,6 +100,12 @@ class PageApprovals {
 		return new ApprovalUiQuery(
 			approvalLog: $this->getApprovalLog(),
 			approverRepository: $this->getApproverRepository()
+		);
+	}
+
+	private function getPageCategoriesRetriever(): PageCategoriesRetriever {
+		return new PageCategoriesRetriever(
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
