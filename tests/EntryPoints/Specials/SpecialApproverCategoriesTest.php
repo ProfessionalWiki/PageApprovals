@@ -7,6 +7,7 @@ use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialApproverCategorie
 use RequestContext;
 use FauxRequest;
 use PermissionsError;
+use Wikimedia\Rdbms\Database;
 
 /**
  * @group Database
@@ -22,11 +23,11 @@ class SpecialApproverCategoriesTest extends MediaWikiIntegrationTestCase {
 
 		$testUser1 = $userFactory->newFromName( 'TestUser1' );
 		$testUser1->addToDatabase();
-		$userGroupManager->addUserToGroup( $testUser1, 'sysop' );
+		$userGroupManager->addUserToGroup( $testUser1, 'approvers' );
 
 		$testUser2 = $userFactory->newFromName( 'TestUser2' );
 		$testUser2->addToDatabase();
-		$userGroupManager->addUserToGroup( $testUser2, 'sysop' );
+		$userGroupManager->addUserToGroup( $testUser2, 'approvers' );
 	}
 
 	private function createRequestContext( $user, $requestParams = [], $isPost = false ) {
@@ -46,7 +47,7 @@ class SpecialApproverCategoriesTest extends MediaWikiIntegrationTestCase {
 	public function testApproverPageForAdmin() {
 		$context = $this->createRequestContext( $this->getTestSysop()->getUser() );
 		$output = $this->executeSpecialPage( $context );
-		$this->assertStringContainsString( '<table', $output );
+		$this->assertStringContainsString( '<table', $output, 'Expected HTML output with table' );
 	}
 
 	public function testSpecialPageAccessForNonAdmin() {
@@ -56,29 +57,18 @@ class SpecialApproverCategoriesTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testAddDeleteCategoryPutRequest() {
-		$testUser = $this->getTestUser( [ 'sysop' ] )->getUser();
+		$testUser = $this->getTestSysop()->getUser();
+		$actionParams = [
+			[ 'action' => 'add', 'username' => 'TestUser1', 'category' => 'TestCategory' ],
+			[ 'action' => 'delete', 'username' => 'TestUser1', 'category' => 'TestCategory' ]
+		];
 
-		$this->executeSpecialPage( $this->createRequestContext( $testUser, [
-			'action' => 'add',
-			'username' => 'TestUser1',
-			'category' => 'TestCategory'
-		], true ) );
-
-		$output = $this->executeSpecialPage( $this->createRequestContext( $testUser ) );
-		$this->assertStringContainsString( 'TestCategory', $output );
-
-		$context = $this->createRequestContext( $testUser );
-		$output = $this->executeSpecialPage( $context );
-		$this->assertStringContainsString( 'TestCategory', $output );
-
-		$this->executeSpecialPage( $this->createRequestContext( $testUser, [
-			'action' => 'delete',
-			'username' => 'TestUser1',
-			'category' => 'TestCategory'
-		], true ) );
+		foreach ( $actionParams as $params ) {
+			$this->executeSpecialPage( $this->createRequestContext( $testUser, $params, true ) );
+		}
 
 		$output = $this->executeSpecialPage( $this->createRequestContext( $testUser ) );
-		$this->assertStringNotContainsString( 'TestCategory', $output );
+		$this->assertStringNotContainsString( 'TestCategory', $output, 'Category should be deleted' );
 	}
 
 }

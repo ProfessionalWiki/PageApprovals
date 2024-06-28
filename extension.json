@@ -48,14 +48,8 @@
 	"config": {
 	},
 
-	"Rights": {
-		"can-approve-pages": {
-			"description": "Allows users to approve pages",
-			"groups": []
-		}
-	},
 	"GroupPermissions": {
-		"sysop": {
+		"approvers": {
 			"can-approve-pages": true
 		}
 	},

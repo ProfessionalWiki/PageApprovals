@@ -4,10 +4,9 @@ namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
 use MediaWiki\MediaWikiServices;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproverRepository;
-use ProfessionalWiki\PageApprovals\Adapters\UsersLookup;
+use ProfessionalWiki\PageApprovals\Adapters\ApproversCategoriesLookup;
 use SpecialPage;
 use PermissionsError;
-use ProfessionalWiki\PageApprovals\Application\UseCases\GetAllApproversCategories;
 use LightnCandy\LightnCandy;
 use WebRequest;
 
@@ -18,7 +17,7 @@ class SpecialApproverCategories extends SpecialPage {
 	}
 
 	public function isListed(): bool {
-		return $this->isAdmin();
+		return $this->isAdmin(); // TODO: Add right permission checks
 	}
 
 	public function execute( $subPage ): void {
@@ -27,12 +26,10 @@ class SpecialApproverCategories extends SpecialPage {
 		}
 
 		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
-		$usersLookup = new UsersLookup( $db );
+		$approversCategoriesLookup = new ApproversCategoriesLookup( $db );
 		$databaseApproverRepository = new DatabaseApproverRepository( $db );
 
-		$approversCategories = ( new GetAllApproversCategories(
-			$usersLookup, $databaseApproverRepository
-		) )->getAllApproversCategories();
+		$approversCategories = $approversCategoriesLookup->getApproversWithCategories();
 
 		$request = $this->getRequest();
 		if ( $request->wasPosted() ) {
