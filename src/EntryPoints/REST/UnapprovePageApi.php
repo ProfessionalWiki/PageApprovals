@@ -4,13 +4,13 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\REST;
 
-use MediaWiki\Page\PageIdentity;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
-use Title;
 use Wikimedia\ParamValidator\ParamValidator;
+use WikiPage;
 
 class UnapprovePageApi extends SimpleHandler {
 
@@ -21,7 +21,7 @@ class UnapprovePageApi extends SimpleHandler {
 	}
 
 	public function run( int $pageId ): Response {
-		$page = $this->getPageIdentity( $pageId );
+		$page = $this->getPage( $pageId );
 
 		if ( $page === null ) {
 			return $this->newInvalidPageResponse();
@@ -36,8 +36,8 @@ class UnapprovePageApi extends SimpleHandler {
 		return $this->newSuccessResponse();
 	}
 
-	private function getPageIdentity( int $pageId ): ?PageIdentity {
-		return Title::newFromID( $pageId );
+	private function getPage( int $pageId ): ?WikiPage {
+		return MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId );
 	}
 
 	public function newSuccessResponse(): Response {

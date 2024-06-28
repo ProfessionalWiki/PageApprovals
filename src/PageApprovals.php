@@ -104,9 +104,7 @@ class PageApprovals {
 	}
 
 	private function getPageCategoriesRetriever(): PageCategoriesRetriever {
-		return new PageCategoriesRetriever(
-			MediaWikiServices::getInstance()->getWikiPageFactory()
-		);
+		return new PageCategoriesRetriever();
 	}
 
 }
