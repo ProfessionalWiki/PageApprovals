@@ -8,6 +8,7 @@ use DatabaseUpdater;
 use OutputPage;
 use ParserOutput;
 use ProfessionalWiki\PageApprovals\PageApprovals;
+use Title;
 
 class PageApprovalsHooks {
 
@@ -41,21 +42,25 @@ class PageApprovalsHooks {
 			return;
 		}
 
-		// TODO: Build logic for all hardcoded Booleans
-		$isUserAnApprover = true;
-		$isPageApproved = false;
-		$isAnApproverForPageCategory = true;
+		$pageIsApproved = PageApprovals::getInstance()->getApprovalLog()->getApprovalState( pageId: $out->getWikiPage()->getId() )?->isApproved ?? false;
+		$isApproverForPage = array_intersect(
+				PageApprovals::getInstance()->getApproverRepository()->getApproverCategories( $out->getUser()->getId() ),
+				array_map(
+					fn( Title $category ) => $category->getText(), // TODO: verify handling of different category names
+					iterator_to_array( $out->getWikiPage()->getCategories() ),
+				)
+			) !== [];
 
 		$out->addHTML(
-			PageApprovals::getInstance()->newTemplateParser()->processTemplate(
+			PageApprovals::getInstance()->getTemplateParser()->processTemplate(
 				'PageApprovalStatus',
 				[
-					'isPageApproved' => $isPageApproved,
-					'canApprove' => $isAnApproverForPageCategory && $isUserAnApprover,
+					'isPageApproved' => $pageIsApproved,
+					'canApprove' => $isApproverForPage,
 					'approveButtonText' => $out->msg( 'pageapprovals-approve-button' )->text(),
 					'unapproveButtonText' => $out->msg( 'pageapprovals-unapprove-button' )->text(),
 					'approvalStatusMessage' => $out->msg(
-						$isPageApproved ? 'pageapprovals-status-approved' : 'pageapprovals-status-not-approved'
+						$pageIsApproved ? 'pageapprovals-status-approved' : 'pageapprovals-status-not-approved'
 					)->text()
 				]
 			)

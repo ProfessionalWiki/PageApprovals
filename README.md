@@ -77,6 +77,13 @@ Sometimes Psalm and PHPStan generate errors or warnings we do not wish to fix.
 These can be ignored by adding them to the respective baseline file. You can update
 these files with `make stan-baseline` and `make psalm-baseline`.
 
+### Inserting Test Data
+
+```sql
+INSERT INTO approver_config (ac_user_id, ac_categories)
+VALUES (1, 'TestCat|TestCat2');
+```
+
 ## Release Notes
 
 ### Version 1.0.0 - 2024-0x-xx

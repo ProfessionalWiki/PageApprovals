@@ -6,10 +6,12 @@ namespace ProfessionalWiki\PageApprovals;
 
 use MediaWiki\MediaWikiServices;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApprovalLog;
+use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproverRepository;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseHtmlRepository;
 use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
+use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
@@ -31,16 +33,16 @@ class PageApprovals {
 	public static function newApprovePageApi(): ApprovePageApi {
 		return new ApprovePageApi(
 			self::getInstance()->newPageApprovalAuthorizer(),
-			self::getInstance()->newApprovalLog(),
-			self::getInstance()->newHtmlRepository(),
-			self::getInstance()->newPageHtmlRetriever()
+			self::getInstance()->getApprovalLog(),
+			self::getInstance()->getHtmlRepository(),
+			self::getInstance()->getPageHtmlRetriever()
 		);
 	}
 
 	public static function newUnapprovePageApi(): UnapprovePageApi {
 		return new UnapprovePageApi(
 			self::getInstance()->newPageApprovalAuthorizer(),
-			self::getInstance()->newApprovalLog()
+			self::getInstance()->getApprovalLog()
 		);
 	}
 
@@ -50,7 +52,7 @@ class PageApprovals {
 		);
 	}
 
-	public function newApprovalLog(): ApprovalLog {
+	public function getApprovalLog(): ApprovalLog {
 		return new DatabaseApprovalLog(
 			$this->getDatabase()
 		);
@@ -62,25 +64,31 @@ class PageApprovals {
 
 	public function newEvaluateApprovalStateAction(): EvaluateApprovalState {
 		return new EvaluateApprovalState(
-			htmlRepository: $this->newHtmlRepository(),
-			approvalLog: $this->newApprovalLog()
+			htmlRepository: $this->getHtmlRepository(),
+			approvalLog: $this->getApprovalLog()
 		);
 	}
 
-	public function newHtmlRepository(): HtmlRepository {
+	public function getHtmlRepository(): HtmlRepository {
 		return new DatabaseHtmlRepository(
 			$this->getDatabase()
 		);
 	}
 
-	public function newPageHtmlRetriever(): PageHtmlRetriever {
+	public function getPageHtmlRetriever(): PageHtmlRetriever {
 		return new PageHtmlRetriever(
 			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
-	public function newTemplateParser(): TemplateParser {
+	public function getTemplateParser(): TemplateParser {
 		return new TemplateParser( __DIR__ . '/../templates/' );
+	}
+
+	public function getApproverRepository(): ApproverRepository {
+		return new DatabaseApproverRepository(
+			database: $this->getDatabase()
+		);
 	}
 
 }
