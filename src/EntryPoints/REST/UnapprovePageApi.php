@@ -41,7 +41,7 @@ class UnapprovePageApi extends SimpleHandler {
 	}
 
 	public function newSuccessResponse(): Response {
-		return $this->getResponseFactory()->create();
+		return $this->getResponseFactory()->createNoContent();
 	}
 
 	public function newAuthorizationFailedResponse(): Response {
