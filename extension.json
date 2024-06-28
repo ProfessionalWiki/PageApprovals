@@ -25,6 +25,7 @@
 
 	"AutoloadNamespaces": {
 		"ProfessionalWiki\\PageApprovals\\": "src/",
+		"ProfessionalWiki\\PageApprovals\\Templates\\": "templates/",
 		"ProfessionalWiki\\PageApprovals\\Tests\\": "tests/"
 	},
 
