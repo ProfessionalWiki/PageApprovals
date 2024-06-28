@@ -26,7 +26,7 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->createValidRequestData( $this->getIdOfExistingPage( 'Test 1' ) )
 		);
 
-		$this->assertSame( 200, $response->getStatusCode() );
+		$this->assertSame( 204, $response->getStatusCode() );
 	}
 
 	private function newUnapprovePageApi( ?ApprovalLog $approvalLog = null ): UnapprovePageApi {
