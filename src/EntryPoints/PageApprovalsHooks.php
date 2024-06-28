@@ -8,7 +8,7 @@ use DatabaseUpdater;
 use OutputPage;
 use ParserOutput;
 use ProfessionalWiki\PageApprovals\PageApprovals;
-use Title;
+use ProfessionalWiki\PageApprovals\Presentation\OutputPageUiPresenter;
 
 class PageApprovalsHooks {
 
@@ -38,35 +38,13 @@ class PageApprovalsHooks {
 	}
 
 	public static function onOutputPageBeforeHTML( OutputPage $out ): void {
-		if ( !self::isApprovablePage( $out ) ) {
+		if ( !self::isApprovablePage( $out ) ) { // TODO: move to UseCase
 			return;
 		}
 
-		$pageIsApproved = PageApprovals::getInstance()->getApprovalLog()->getApprovalState( pageId: $out->getWikiPage()->getId() )?->isApproved ?? false;
-		$isApproverForPage = array_intersect(
-				PageApprovals::getInstance()->getApproverRepository()->getApproverCategories( $out->getUser()->getId() ),
-				array_map(
-					fn( Title $category ) => $category->getText(), // TODO: verify handling of different category names
-					iterator_to_array( $out->getWikiPage()->getCategories() ),
-				)
-			) !== [];
-
-		$out->addHTML(
-			PageApprovals::getInstance()->getTemplateParser()->processTemplate(
-				'PageApprovalStatus',
-				[
-					'isPageApproved' => $pageIsApproved,
-					'canApprove' => $isApproverForPage,
-					'approveButtonText' => $out->msg( 'pageapprovals-approve-button' )->text(),
-					'unapproveButtonText' => $out->msg( 'pageapprovals-unapprove-button' )->text(),
-					'approvalStatusMessage' => $out->msg(
-						$pageIsApproved ? 'pageapprovals-status-approved' : 'pageapprovals-status-not-approved'
-					)->text()
-				]
-			)
+		( new OutputPageUiPresenter( $out ) )->presentUi(
+			PageApprovals::getInstance()->newApprovalUiQuery()->getUiState( $out )
 		);
-
-		$out->addModules( 'ext.pageApprovals.resources' );
 	}
 
 }

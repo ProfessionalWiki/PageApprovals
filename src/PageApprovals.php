@@ -13,6 +13,8 @@ use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
+use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\ApprovalUiQuery;
+use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\UiPresenter;
 use ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
@@ -88,6 +90,13 @@ class PageApprovals {
 	public function getApproverRepository(): ApproverRepository {
 		return new DatabaseApproverRepository(
 			database: $this->getDatabase()
+		);
+	}
+
+	public function newApprovalUiQuery(): ApprovalUiQuery {
+		return new ApprovalUiQuery(
+			approvalLog: $this->getApprovalLog(),
+			approverRepository: $this->getApproverRepository()
 		);
 	}
 
