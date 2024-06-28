@@ -7,7 +7,7 @@ namespace ProfessionalWiki\PageApprovals\EntryPoints\REST;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
-use ProfessionalWiki\PageApprovals\Adapters\PageContentRetriever;
+use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
@@ -20,7 +20,7 @@ class ApprovePageApi extends SimpleHandler {
 		private ApprovalAuthorizer $authorizer,
 		private ApprovalLog	$approvalLog,
 		private HtmlRepository $htmlRepository,
-		private PageContentRetriever $pageContentRetriever
+		private PageHtmlRetriever $pageHtmlRetriever
 	) {
 	}
 
@@ -37,9 +37,9 @@ class ApprovePageApi extends SimpleHandler {
 
 		$this->approvalLog->approvePage( $pageId, $this->getAuthority()->getUser()->getId() );
 
-		$content = $this->pageContentRetriever->getPageContent( $pageId );
-		if ( $content !== null ) {
-			$this->htmlRepository->saveApprovedHtml( $pageId, $content );
+		$html = $this->pageHtmlRetriever->getPageHtml( $pageId );
+		if ( $html !== null ) {
+			$this->htmlRepository->saveApprovedHtml( $pageId, $html );
 		}
 
 		return $this->newSuccessResponse();

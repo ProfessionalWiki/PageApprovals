@@ -7,7 +7,7 @@ namespace ProfessionalWiki\PageApprovals;
 use MediaWiki\MediaWikiServices;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseHtmlRepository;
-use ProfessionalWiki\PageApprovals\Adapters\PageContentRetriever;
+use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
@@ -32,7 +32,7 @@ class PageApprovals {
 			self::getInstance()->newPageApprovalAuthorizer(),
 			self::getInstance()->newApprovalLog(),
 			self::getInstance()->newHtmlRepository(),
-			self::getInstance()->newPageContentRetriever()
+			self::getInstance()->newPageHtmlRetriever()
 		);
 	}
 
@@ -72,8 +72,8 @@ class PageApprovals {
 		);
 	}
 
-	public function newPageContentRetriever(): PageContentRetriever {
-		return new PageContentRetriever(
+	public function newPageHtmlRetriever(): PageHtmlRetriever {
+		return new PageHtmlRetriever(
 			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}

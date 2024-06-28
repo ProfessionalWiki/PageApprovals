@@ -83,7 +83,7 @@ parameters:
 		-
 			message: "#^Cannot call method getRawText\\(\\) on ParserOutput\\|true\\.$#"
 			count: 1
-			path: src/Adapters/PageContentRetriever.php
+			path: src/Adapters/PageHtmlRetriever.php
 
 		-
 			message: "#^If condition is always true\\.$#"
