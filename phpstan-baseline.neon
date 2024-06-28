@@ -86,6 +86,11 @@ parameters:
 			path: src/Adapters/PageContentRetriever.php
 
 		-
+			message: "#^If condition is always true\\.$#"
+			count: 1
+			path: src/EntryPoints/PageApprovalsHooks.php
+
+		-
 			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\PageApprovals\\:\\:getDatabase\\(\\) should return Wikimedia\\\\Rdbms\\\\IDatabase but returns Wikimedia\\\\Rdbms\\\\IDatabase\\|false\\.$#"
 			count: 1
 			path: src/PageApprovals.php
