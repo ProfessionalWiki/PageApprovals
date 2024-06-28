@@ -4,7 +4,7 @@ namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
 use MediaWiki\MediaWikiServices;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproverRepository;
-use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproversCategoriesLookup;
+use ProfessionalWiki\PageApprovals\Application\UseCases\GetApproversWithCategories;
 use SpecialPage;
 use PermissionsError;
 use LightnCandy\LightnCandy;
@@ -26,10 +26,11 @@ class SpecialApproverCategories extends SpecialPage {
 		}
 
 		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
-		$approversCategoriesLookup = new DatabaseApproversCategoriesLookup( $db );
 		$databaseApproverRepository = new DatabaseApproverRepository( $db );
 
-		$approversCategories = $approversCategoriesLookup->getApproversWithCategories();
+		$approversWithCategories = new GetApproversWithCategories( $databaseApproverRepository );
+
+		$approversCategories = $approversWithCategories->getApproversWithCategories();
 
 		$request = $this->getRequest();
 		if ( $request->wasPosted() ) {

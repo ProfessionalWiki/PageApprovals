@@ -31,6 +31,16 @@ parameters:
 			path: src/Adapters/DatabaseApproverRepository.php
 
 		-
+			message: "#^Cannot access property \\$categories on array\\|bool\\|stdClass\\.$#"
+			count: 1
+			path: src/Adapters/DatabaseApproverRepository.php
+
+		-
+			message: "#^Cannot access property \\$userId on array\\|bool\\|stdClass\\.$#"
+			count: 1
+			path: src/Adapters/DatabaseApproverRepository.php
+
+		-
 			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\DatabaseApproverRepository\\:\\:deserializeCategories\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Adapters/DatabaseApproverRepository.php
@@ -81,9 +91,44 @@ parameters:
 			path: src/Adapters/DatabasePendingApprovalRetriever.php
 
 		-
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\InMemoryApproverRepository\\:\\:getApproversWithCategories\\(\\) should return array\\<string\\> but returns array\\<int, array\\<string\\>\\>\\.$#"
+			count: 1
+			path: src/Adapters/InMemoryApproverRepository.php
+
+		-
+			message: "#^Return type \\(array\\<string\\>\\) of method ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\InMemoryApproverRepository\\:\\:getApproversWithCategories\\(\\) should be compatible with return type \\(array\\<array\\{userId\\: int, categories\\: array\\<string\\>\\}\\>\\) of method ProfessionalWiki\\\\PageApprovals\\\\Application\\\\ApproverRepository\\:\\:getApproversWithCategories\\(\\)$#"
+			count: 1
+			path: src/Adapters/InMemoryApproverRepository.php
+
+		-
 			message: "#^Cannot call method getRawText\\(\\) on ParserOutput\\|true\\.$#"
 			count: 1
 			path: src/Adapters/PageHtmlRetriever.php
+
+		-
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialApproverCategories\\:\\:renderHtml\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Parameter \\#1 \\$database of class ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\DatabaseApproverRepository constructor expects Wikimedia\\\\Rdbms\\\\IDatabase, Wikimedia\\\\Rdbms\\\\IDatabase\\|false given\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Parameter \\#1 \\$php of static method LightnCandy\\\\LightnCandy\\:\\:prepare\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Parameter \\#1 \\$template of static method LightnCandy\\\\LightnCandy\\:\\:compile\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Trying to invoke LightnCandy\\\\Closure\\|false but it might not be a callable\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
 
 		-
 			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\PageApprovals\\:\\:getDatabase\\(\\) should return Wikimedia\\\\Rdbms\\\\IDatabase but returns Wikimedia\\\\Rdbms\\\\IDatabase\\|false\\.$#"

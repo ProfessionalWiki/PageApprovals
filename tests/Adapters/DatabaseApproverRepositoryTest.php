@@ -94,6 +94,37 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
+	public function testGetApproversWithCategoriesReturnsCorrectData(): void {
+		$repository = $this->newRepository();
+
+		$userId1 = 1;
+		$userId2 = 2;
+		$categories1 = [ 'Category1' ];
+		$categories2 = [];
+
+		$repository->setApproverCategories( $userId1, $categories1 );
+		$repository->setApproverCategories( $userId2, $categories2 );
+
+		$approversWithCategories = $repository->getApproversWithCategories();
+
+		$expected = [
+			[
+				'userId' => $userId1,
+				'categories' => $categories1
+			],
+			[
+				'userId' => $userId2,
+				'categories' => $categories2
+			]
+		];
+
+		$this->assertEquals(
+			$expected,
+			$approversWithCategories,
+			"The fetched approvers did not match the expected approvers."
+		);
+	}
+
 	public static function provideCategoryTestCases(): \Generator {
 		yield 'Categories with spaces' => [
 			[
