@@ -52,7 +52,10 @@
 			],
 			"dependencies": [
 			],
-			"messages": []
+			"messages": [
+				"pageapprovals-status-approved",
+				"pageapprovals-status-not-approved"
+			]
 		}
 	},
 

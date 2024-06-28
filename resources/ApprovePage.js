@@ -3,17 +3,23 @@ const restClient = new mw.Rest();
 function sendApprovalRequest( approve ) {
 	const pageId = mw.config.get( 'wgArticleId' );
 	const endpoint = `/page-approvals/v0/page/${ pageId }/${ approve ? 'approve' : 'unapprove' }`;
-	const csrfToken = mw.user.tokens.values.csrfToken;
 
-	restClient.post( endpoint, { token: csrfToken } )
-		.then( response => {
-			console.log( 'Request successful:', response );
-			mw.notify( 'Request successful: ' + JSON.stringify( response ) );
-		} )
+	restClient.post( endpoint )
+		.then( response => handleApprovalResponse( approve ) )
 		.catch( error => {
 			console.error( 'API request failed:', error );
 			mw.notify( 'API request failed: ' + error, { type: 'error' } );
 		} );
+}
+
+function handleApprovalResponse( approve ) {
+	const message = approve ? 'Page approved' : 'Page unapproved';
+	const statusMessage = mw.message( approve ? 'pageapprovals-status-approved' : 'pageapprovals-status-not-approved' ).text();
+	$( '.page-approval-status' ).text( statusMessage );
+	mw.notify( message, { type: 'success' } );
+
+	$( '#approveButton' ).toggle( !approve );
+	$( '#unapproveButton' ).toggle( approve );
 }
 
 $( '#approveButton, #unapproveButton' ).click( function() {
