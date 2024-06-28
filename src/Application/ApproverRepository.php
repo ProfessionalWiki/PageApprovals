@@ -7,7 +7,6 @@ namespace ProfessionalWiki\PageApprovals\Application;
 interface ApproverRepository {
 
 	/**
-	 *
 	 * @return string[]
 	 */
 	public function getApproverCategories( int $userId ): array;

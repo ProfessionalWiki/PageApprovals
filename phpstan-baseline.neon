@@ -86,21 +86,6 @@ parameters:
 			path: src/Adapters/PageHtmlRetriever.php
 
 		-
-			message: "#^Left side of && is always true\\.$#"
-			count: 1
-			path: src/EntryPoints/PageApprovalsHooks.php
-
-		-
-			message: "#^Right side of && is always true\\.$#"
-			count: 1
-			path: src/EntryPoints/PageApprovalsHooks.php
-
-		-
-			message: "#^Ternary operator condition is always false\\.$#"
-			count: 1
-			path: src/EntryPoints/PageApprovalsHooks.php
-
-		-
 			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\PageApprovals\\:\\:getDatabase\\(\\) should return Wikimedia\\\\Rdbms\\\\IDatabase but returns Wikimedia\\\\Rdbms\\\\IDatabase\\|false\\.$#"
 			count: 1
 			path: src/PageApprovals.php
