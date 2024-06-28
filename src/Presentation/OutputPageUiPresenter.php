@@ -16,6 +16,10 @@ class OutputPageUiPresenter {
 	}
 
 	public function presentUi( UiArguments $arguments ): void {
+		if ( !$arguments->showUi ) {
+			return;
+		}
+
 		// TODO: use $arguments->approvalTimestamp and $arguments->approverId
 
 		$this->out->addHTML(

@@ -38,10 +38,6 @@ class PageApprovalsHooks {
 	}
 
 	public static function onOutputPageBeforeHTML( OutputPage $out ): void {
-		if ( !self::isApprovablePage( $out ) ) { // TODO: move to UseCase
-			return;
-		}
-
 		( new OutputPageUiPresenter( $out ) )->presentUi(
 			PageApprovals::getInstance()->newApprovalUiQuery()->getUiState( $out )
 		);
