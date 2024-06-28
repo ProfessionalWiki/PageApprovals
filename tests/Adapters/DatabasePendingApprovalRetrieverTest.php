@@ -4,21 +4,19 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Tests\Adapters;
 
-use MediaWikiIntegrationTestCase;
 use ProfessionalWiki\PageApprovals\Adapters\DatabasePendingApprovalRetriever;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApproverRepository;
-use Title;
+use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use WikiPage;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\Adapters\DatabasePendingApprovalRetriever
  * @group Database
  */
-class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase {
+class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest {
 
 	private DatabasePendingApprovalRetriever $retriever;
 	private InMemoryApproverRepository $approverRepository;
-	private int $pageCounter = 0;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -27,11 +25,6 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 
 		$this->approverRepository = new InMemoryApproverRepository();
 		$this->retriever = new DatabasePendingApprovalRetriever( $this->db, $this->approverRepository );
-	}
-
-	private function createUniqueTitle(): Title {
-		$this->pageCounter++;
-		return Title::newFromText( 'TestPage' . $this->pageCounter );
 	}
 
 	public function testReturnsEmptyArrayWhenThereAreNoApprovers(): void {
@@ -66,35 +59,11 @@ class DatabasePendingApprovalRetrieverTest extends MediaWikiIntegrationTestCase 
 	}
 
 	private function createPage( bool $isApproved, array $categories = [] ): WikiPage {
-		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $this->createUniqueTitle() );
-
-		$this->editPage( $page, $page->getTitle()->getText() . $this->buildCategoryWikitext( $categories ) );
+		$page = $this->createPageWithCategories( $categories );
 
 		$this->insertApprovalLogEntry( $page->getId(), $isApproved );
 
 		return $page;
-	}
-
-	private function buildCategoryWikitext( array $categories ): string {
-		return implode(
-			"\n",
-			array_map(
-				fn( $category ) => "[[Category:$category]]",
-				$categories
-			)
-		);
-	}
-
-	private function insertApprovalLogEntry( int $pageId, bool $isApproved, string $timestamp = null ): void {
-		$this->db->insert(
-			'approval_log',
-			[
-				'al_page_id' => $pageId,
-				'al_timestamp' => $timestamp ?? $this->db->timestamp(),
-				'al_is_approved' => $isApproved ? 1 : 0,
-				'al_user_id' => 1
-			]
-		);
 	}
 
 	public function testReturnsLatestApprovalStatus(): void {
