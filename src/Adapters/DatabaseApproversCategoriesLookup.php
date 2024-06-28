@@ -2,10 +2,10 @@
 
 namespace ProfessionalWiki\PageApprovals\Adapters;
 
-use ProfessionalWiki\PageApprovals\Application\ApproversCategoriesLookupInterface;
+use ProfessionalWiki\PageApprovals\Application\ApproversCategoriesLookup;
 use Wikimedia\Rdbms\IDatabase;
 
-class ApproversCategoriesLookup implements ApproversCategoriesLookupInterface {
+class DatabaseApproversCategoriesLookup implements ApproversCategoriesLookup {
 
 	private const APPROVERS_GROUP = 'approvers';
 

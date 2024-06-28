@@ -5,12 +5,12 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Tests\Adapters;
 
 use MediaWikiIntegrationTestCase;
-use ProfessionalWiki\PageApprovals\Adapters\ApproversCategoriesLookup;
+use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproversCategoriesLookup;
 use Wikimedia\Rdbms\LoadBalancer;
 
 /**
  * @group Database
- * @covers \ProfessionalWiki\PageApprovals\Adapters\ApproversCategoriesLookup
+ * @covers \ProfessionalWiki\PageApprovals\Adapters\DatabaseApproversCategoriesLookup
  */
 class ApproversCategoriesLookupTest extends MediaWikiIntegrationTestCase {
 
@@ -38,7 +38,7 @@ class ApproversCategoriesLookupTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetApproversWithCategories() {
 		$db = $this->getServiceContainer()->getDBLoadBalancer()->getConnection( LoadBalancer::DB_REPLICA );
-		$usersLookup = new ApproversCategoriesLookup( $db );
+		$usersLookup = new DatabaseApproversCategoriesLookup( $db );
 		$users = $usersLookup->getApproversWithCategories();
 
 		$this->assertIsArray( $users );

@@ -50,7 +50,6 @@
 
 	"GroupPermissions": {
 		"approvers": {
-			"can-approve-pages": true
 		}
 	},
 

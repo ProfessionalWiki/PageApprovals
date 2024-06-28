@@ -6,7 +6,7 @@ namespace ProfessionalWiki\PageApprovals\Application;
 
 use User;
 
-interface ApproversCategoriesLookupInterface {
+interface ApproversCategoriesLookup {
 
 	/**
 	 * @return array<array{username: string, userId: int, categories: string[]}>
