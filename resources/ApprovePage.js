@@ -1,22 +1,28 @@
-const restClient = new mw.Rest();
-
 function sendApprovalRequest( approve ) {
 	const pageId = mw.config.get( 'wgArticleId' );
-	const endpoint = `/page-approvals/v0/page/${ pageId }/${ approve ? 'approve' : 'unapprove' }`;
-	const csrfToken = mw.user.tokens.values.csrfToken;
+	const endpoint = '/rest.php/page-approvals/v0/page/' + pageId + '/' + (approve ? 'approve' : 'unapprove');
 
-	restClient.post( endpoint, { token: csrfToken } )
-		.then( response => {
-			console.log( 'Request successful:', response );
-			mw.notify( 'Request successful: ' + JSON.stringify( response ) );
-		} )
-		.catch( error => {
-			console.error( 'API request failed:', error );
+	$.ajax( {
+		url: endpoint,
+		type: 'POST',
+		contentType: 'application/json',
+		success: () => {
+			const message = approve ? 'Page approved' : 'Page unapproved';
+			const statusMessage = approve ? mw.message( 'pageapprovals-status-approved' ).text() : mw.message(
+				'pageapprovals-status-not-approved' ).text();
+			$( '.page-approval-status' ).text( statusMessage );
+			mw.notify( message, { type: 'success' } );
+
+			$( '#approveButton' ).toggle( !approve );
+			$( '#unapproveButton' ).toggle( approve );
+		},
+		error: function( xhr, status, error ) {
 			mw.notify( 'API request failed: ' + error, { type: 'error' } );
-		} );
+		}
+	} );
 }
 
-$( '#approveButton, #unapproveButton' ).click( function() {
+$( document ).on( 'click', '#approveButton, #unapproveButton', function() {
 	const approve = $( this ).is( '#approveButton' );
 	sendApprovalRequest( approve );
 } );

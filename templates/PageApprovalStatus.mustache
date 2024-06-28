@@ -3,8 +3,10 @@
 {{#canApprove}}
 	{{#isPageApproved}}
 		<button id='unapproveButton'>{{unapproveButtonText}}</button>
+		<button id='approveButton' style="display: none">{{approveButtonText}}</button>
 	{{/isPageApproved}}
 	{{^isPageApproved}}
 		<button id='approveButton'>{{approveButtonText}}</button>
+		<button id='unapproveButton' style="display: none">{{unapproveButtonText}}</button>
 	{{/isPageApproved}}
 {{/canApprove}}
