@@ -16,6 +16,7 @@ use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
 use ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer;
 use RequestContext;
+use TemplateParser;
 use Wikimedia\Rdbms\IDatabase;
 
 class PageApprovals {
@@ -76,6 +77,10 @@ class PageApprovals {
 		return new PageHtmlRetriever(
 			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
+	}
+
+	public function newTemplateParser(): TemplateParser {
+		return new TemplateParser( __DIR__ . '/../templates/' );
 	}
 
 }

@@ -7,7 +7,6 @@ namespace ProfessionalWiki\PageApprovals\EntryPoints;
 use DatabaseUpdater;
 use OutputPage;
 use ParserOutput;
-use TemplateParser;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 
 class PageApprovalsHooks {
@@ -42,25 +41,26 @@ class PageApprovalsHooks {
 			return;
 		}
 
-		$templateParser = new TemplateParser( __DIR__ . '/../../templates/' );
-
 		// TODO: Build logic for all hardcoded Booleans
 		$isUserAnApprover = true;
 		$isPageApproved = false;
 		$isAnApproverForPageCategory = true;
 
-		$context = [
-			'isPageApproved' => $isPageApproved,
-			'canApprove' => $isAnApproverForPageCategory && $isUserAnApprover,
-			'approveButtonText' => $out->msg( 'pageapprovals-approve-button' )->text(),
-			'unapproveButtonText' => $out->msg( 'pageapprovals-unapprove-button' )->text(),
-			'approvalStatusMessage' => $out->msg(
-				$isPageApproved ? "pageapprovals-status-approved" : "pageapprovals-status-not-approved"
-			)->text()
-		];
+		$out->addHTML(
+			PageApprovals::getInstance()->newTemplateParser()->processTemplate(
+				'PageApprovalStatus',
+				[
+					'isPageApproved' => $isPageApproved,
+					'canApprove' => $isAnApproverForPageCategory && $isUserAnApprover,
+					'approveButtonText' => $out->msg( 'pageapprovals-approve-button' )->text(),
+					'unapproveButtonText' => $out->msg( 'pageapprovals-unapprove-button' )->text(),
+					'approvalStatusMessage' => $out->msg(
+						$isPageApproved ? 'pageapprovals-status-approved' : 'pageapprovals-status-not-approved'
+					)->text()
+				]
+			)
+		);
 
-		$html = $templateParser->processTemplate( 'PageApprovalStatus', $context );
-		$out->addHTML( $html );
 		$out->addModules( 'ext.pageApprovals.resources' );
 	}
 
