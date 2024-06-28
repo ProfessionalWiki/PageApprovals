@@ -57,7 +57,7 @@
       <code><![CDATA[$row->rev_timestamp]]></code>
     </PossiblyInvalidPropertyFetch>
   </file>
-  <file src="src/Adapters/PageContentRetriever.php">
+  <file src="src/Adapters/PageHtmlRetriever.php">
     <PossiblyInvalidMethodCall>
       <code><![CDATA[getRawText]]></code>
     </PossiblyInvalidMethodCall>

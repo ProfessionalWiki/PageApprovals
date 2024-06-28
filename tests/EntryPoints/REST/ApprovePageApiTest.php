@@ -8,7 +8,7 @@ use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryHtmlRepository;
-use ProfessionalWiki\PageApprovals\Adapters\PageContentRetriever;
+use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
@@ -47,12 +47,12 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			new SucceedingApprovalAuthorizer(),
 			$this->approvalLog,
 			$this->htmlRepository,
-			$this->newPageContentRetriever()
+			$this->newPageHtmlRetriever()
 		);
 	}
 
-	private function newPageContentRetriever(): PageContentRetriever {
-		return new PageContentRetriever( MediaWikiServices::getInstance()->getWikiPageFactory() );
+	private function newPageHtmlRetriever(): PageHtmlRetriever {
+		return new PageHtmlRetriever( MediaWikiServices::getInstance()->getWikiPageFactory() );
 	}
 
 	private function createValidRequestData( int $pageId ): RequestData {
@@ -81,7 +81,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			new FailingApprovalAuthorizer(),
 			$this->approvalLog,
 			$this->htmlRepository,
-			$this->newPageContentRetriever()
+			$this->newPageHtmlRetriever()
 		);
 	}
 

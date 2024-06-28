@@ -7,14 +7,14 @@ namespace ProfessionalWiki\PageApprovals\Adapters;
 use MediaWiki\Page\WikiPageFactory;
 use ParserOptions;
 
-class PageContentRetriever {
+class PageHtmlRetriever {
 
 	public function __construct(
 		private WikiPageFactory $pageFactory
 	) {
 	}
 
-	public function getPageContent( int $pageId ): ?string {
+	public function getPageHtml( int $pageId ): ?string {
 		$page = $this->pageFactory->newFromID( $pageId );
 
 		if ( $page === null ) {
