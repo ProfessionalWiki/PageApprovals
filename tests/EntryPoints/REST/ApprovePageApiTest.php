@@ -7,14 +7,13 @@ use MediaWiki\Rest\RequestData;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
-use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
+use ProfessionalWiki\PageApprovals\Adapters\InMemoryHtmlRepository;
+use ProfessionalWiki\PageApprovals\Adapters\PageContentRetriever;
+use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\FailingApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingApprovalAuthorizer;
-use ProfessionalWiki\PageApprovals\Tests\TestDoubles\ThrowingApprovalLog;
-use Title;
-use Wikimedia\Rdbms\DBError;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi
@@ -23,6 +22,16 @@ use Wikimedia\Rdbms\DBError;
 class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 	use HandlerTestTrait;
 	use MockAuthorityTrait;
+
+	private InMemoryApprovalLog $approvalLog;
+	private HtmlRepository $htmlRepository;
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		$this->approvalLog = new InMemoryApprovalLog();
+		$this->htmlRepository = new InMemoryHtmlRepository();
+	}
 
 	public function testApprovePageHappyPath(): void {
 		$response = $this->executeHandler(
@@ -33,11 +42,17 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 		$this->assertSame( 200, $response->getStatusCode() );
 	}
 
-	private function newApprovePageApi( ?ApprovalLog $approvalLog = null ): ApprovePageApi {
+	private function newApprovePageApi(): ApprovePageApi {
 		return new ApprovePageApi(
 			new SucceedingApprovalAuthorizer(),
-			$approvalLog ?? new InMemoryApprovalLog()
+			$this->approvalLog,
+			$this->htmlRepository,
+			$this->newPageContentRetriever()
 		);
+	}
+
+	private function newPageContentRetriever(): PageContentRetriever {
+		return new PageContentRetriever( MediaWikiServices::getInstance()->getWikiPageFactory() );
 	}
 
 	private function createValidRequestData( int $pageId ): RequestData {
@@ -61,10 +76,12 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 		$this->assertSame( 403, $response->getStatusCode() );
 	}
 
-	private function newApprovePageApiWithFailingAuthorizer( ?ApprovalLog $approvalLog = null ): ApprovePageApi {
+	private function newApprovePageApiWithFailingAuthorizer(): ApprovePageApi {
 		return new ApprovePageApi(
 			new FailingApprovalAuthorizer(),
-			$approvalLog ?? new InMemoryApprovalLog()
+			$this->approvalLog,
+			$this->htmlRepository,
+			$this->newPageContentRetriever()
 		);
 	}
 
@@ -78,33 +95,47 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 	}
 
 	public function testPageIsApproved(): void {
-		$approvalLog = new InMemoryApprovalLog();
 		$pageId = $this->getIdOfExistingPage( 'Page to be approved' );
 
 		$this->executeHandler(
-			$this->newApprovePageApi( $approvalLog ),
+			$this->newApprovePageApi(),
 			$this->createValidRequestData( $pageId )
 		);
 
 		$this->assertTrue(
-			$approvalLog->getApprovalState( $pageId )->isApproved
+			$this->approvalLog->getApprovalState( $pageId )->isApproved
 		);
 	}
 
 	public function testAPIUserIsInApprovalState(): void {
-		$approvalLog = new InMemoryApprovalLog();
 		$pageId = $this->getIdOfExistingPage( 'API User' );
 		$user = $this->mockRegisteredUltimateAuthority();
 
 		$this->executeHandler(
-			$this->newApprovePageApi( $approvalLog ),
+			$this->newApprovePageApi(),
 			$this->createValidRequestData( $pageId ),
 			authority: $user
 		);
 
 		$this->assertSame(
 			$user->getUser()->getId(),
-			$approvalLog->getApprovalState( $pageId )->approverId
+			$this->approvalLog->getApprovalState( $pageId )->approverId
+		);
+	}
+
+	public function testApprovedPageHtmlIsSaved(): void {
+		$pageId = $this->getIdOfExistingPage( 'Page to be saved', 'Page text to be saved' );
+
+		$this->executeHandler(
+			$this->newApprovePageApi(),
+			$this->createValidRequestData( $pageId )
+		);
+
+		$this->assertSame( <<<EOT
+<p>Page text to be saved
+</p>
+EOT
+			, $this->htmlRepository->getApprovedHtml( $pageId )
 		);
 	}
 

@@ -2,7 +2,6 @@
 
 namespace ProfessionalWiki\PageApprovals\Tests\EntryPoints\REST;
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\RequestData;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
@@ -12,9 +11,6 @@ use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\FailingApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingApprovalAuthorizer;
-use ProfessionalWiki\PageApprovals\Tests\TestDoubles\ThrowingApprovalLog;
-use Title;
-use Wikimedia\Rdbms\DBError;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi

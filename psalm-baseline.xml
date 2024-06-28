@@ -69,11 +69,14 @@
     </RedundantCondition>
   </file>
   <file src="src/PageApprovals.php">
+    <FalsableReturnStatement>
+      <code><![CDATA[MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY )]]></code>
+    </FalsableReturnStatement>
+    <InvalidFalsableReturnType>
+      <code><![CDATA[IDatabase]]></code>
+    </InvalidFalsableReturnType>
     <MixedArgument>
       <code><![CDATA[DB_PRIMARY]]></code>
     </MixedArgument>
-    <PossiblyFalseArgument>
-      <code><![CDATA[MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY )]]></code>
-    </PossiblyFalseArgument>
   </file>
 </files>
