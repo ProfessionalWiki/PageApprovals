@@ -7,6 +7,7 @@ namespace ProfessionalWiki\PageApprovals\EntryPoints;
 use DatabaseUpdater;
 use OutputPage;
 use ParserOutput;
+use TemplateParser;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 
 class PageApprovalsHooks {
@@ -41,39 +42,26 @@ class PageApprovalsHooks {
 			return;
 		}
 
+		$templateParser = new TemplateParser( __DIR__ . '/../../templates/' );
+
 		// TODO: Build logic for all hardcoded Booleans
 		$isUserAnApprover = true;
 		$isPageApproved = false;
 		$isAnApproverForPageCategory = true;
 
-		self::showApprovalStatus( $out, $isPageApproved );
+		$context = [
+			'isPageApproved' => $isPageApproved,
+			'canApprove' => $isAnApproverForPageCategory && $isUserAnApprover,
+			'approveButtonText' => $out->msg( 'pageapprovals-approve-button' )->text(),
+			'unapproveButtonText' => $out->msg( 'pageapprovals-unapprove-button' )->text(),
+			'approvalStatusMessage' => $out->msg(
+				$isPageApproved ? "pageapprovals-status-approved" : "pageapprovals-status-not-approved"
+			)->text()
+		];
 
-		// @phpstan-ignore-next-line
-		$canApprove = $isUserAnApprover && $isAnApproverForPageCategory;
-
-		if ( $canApprove ) {
-			self::showApprovalButton( $out, $isPageApproved );
-		}
-
+		$html = $templateParser->processTemplate( 'PageApprovalStatus', $context );
+		$out->addHTML( $html );
 		$out->addModules( 'ext.pageApprovals.resources' );
-	}
-
-	private static function showApprovalStatus( OutputPage $out, bool $isPageApproved ): void {
-		$messageKey = $isPageApproved ? "pageapprovals-status-approved" : "pageapprovals-status-not-approved";
-		$message = $out->msg( $messageKey )->text();
-		$out->addHTML( "<div class='page-approval-status'>{$message}</div>" );
-	}
-
-	private static function showApprovalButton( OutputPage $out, bool $isPageApproved ): void {
-		if ( $isPageApproved ) {
-			$unapproveButtonText = $out->msg( 'pageapprovals-unapprove-button' )->text();
-			$unapproveButtonHtml = "<button id='unapproveButton'>{$unapproveButtonText}</button>";
-			$out->addHTML( $unapproveButtonHtml );
-		} else {
-			$approveButtonText = $out->msg( 'pageapprovals-approve-button' )->text();
-			$approveButtonHtml = "<button id='approveButton'>{$approveButtonText}</button>";
-			$out->addHTML( $approveButtonHtml );
-		}
 	}
 
 }

@@ -86,7 +86,17 @@ parameters:
 			path: src/Adapters/PageContentRetriever.php
 
 		-
-			message: "#^If condition is always true\\.$#"
+			message: "#^Left side of && is always true\\.$#"
+			count: 1
+			path: src/EntryPoints/PageApprovalsHooks.php
+
+		-
+			message: "#^Right side of && is always true\\.$#"
+			count: 1
+			path: src/EntryPoints/PageApprovalsHooks.php
+
+		-
+			message: "#^Ternary operator condition is always false\\.$#"
 			count: 1
 			path: src/EntryPoints/PageApprovalsHooks.php
 
