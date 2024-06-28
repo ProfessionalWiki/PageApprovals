@@ -27,6 +27,7 @@ class ApprovalUiQueryTest extends PageApprovalsIntegrationTest {
 
 		$outputPage = RequestContext::newExtraneousContext( $page->getTitle() )->getOutput();
 		$outputPage->addParserOutput( $page->getParserOutput() );
+		//$outputPage->setArticleFlag( true );
 
 		$uiArguments = $this->newApprovalUiQuery()->getUiState( $outputPage );
 
