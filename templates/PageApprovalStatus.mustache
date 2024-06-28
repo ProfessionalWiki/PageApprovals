@@ -1,0 +1,10 @@
+<div class='page-approval-status'>{{approvalStatusMessage}}</div>
+
+{{#canApprove}}
+	{{#isPageApproved}}
+		<button id='unapproveButton'>{{unapproveButtonText}}</button>
+	{{/isPageApproved}}
+	{{^isPageApproved}}
+		<button id='approveButton'>{{approveButtonText}}</button>
+	{{/isPageApproved}}
+{{/canApprove}}

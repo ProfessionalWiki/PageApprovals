@@ -51,8 +51,6 @@
 				"PageApprovalsStyles.css"
 			],
 			"dependencies": [
-				"mediawiki.util",
-				"mediawiki.api"
 			],
 			"messages": []
 		}
