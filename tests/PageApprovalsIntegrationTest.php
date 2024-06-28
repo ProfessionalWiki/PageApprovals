@@ -9,9 +9,9 @@ use Title;
 
 class PageApprovalsIntegrationTest extends \MediaWikiIntegrationTestCase {
 
-	protected function getIdOfExistingPage( string $titleText ): int {
+	protected function getIdOfExistingPage( string $titleText, string $content = 'Whatever wikitext' ): int {
 		$title = Title::newFromText( $titleText );
-		$this->editPage( $title, 'Whatever wikitext' );
+		$this->editPage( $title, $content );
 		return MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title )->getId();
 	}
 

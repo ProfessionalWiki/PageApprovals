@@ -124,7 +124,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 	}
 
 	public function testApprovedPageHtmlIsSaved(): void {
-		$pageId = $this->getIdOfExistingPage( 'Page to be saved' );
+		$pageId = $this->getIdOfExistingPage( 'Page to be saved', 'Page text to be saved' );
 
 		$this->executeHandler(
 			$this->newApprovePageApi(),
@@ -132,7 +132,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 		);
 
 		$this->assertSame( <<<EOT
-<p>Whatever wikitext
+<p>Page text to be saved
 </p>
 EOT
 			, $this->htmlRepository->getApprovedHtml( $pageId )

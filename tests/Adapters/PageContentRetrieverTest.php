@@ -17,10 +17,12 @@ class PageContentRetrieverTest extends PageApprovalsIntegrationTest {
 	public function testGetsContent(): void {
 		$retriever = $this->newWikiPageContentRetriever();
 
-		$content = $retriever->getPageContent( $this->getIdOfExistingPage( 'Foo Bar' ) );
+		$content = $retriever->getPageContent(
+			$this->getIdOfExistingPage( 'Foo Bar', 'Lorem Ipsum' )
+		);
 
 		$this->assertSame( <<<EOT
-<p>Whatever wikitext
+<p>Lorem Ipsum
 </p>
 EOT
 			, $content );
