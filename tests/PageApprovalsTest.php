@@ -7,19 +7,13 @@ namespace ProfessionalWiki\PageApprovals\Tests;
 use PHPUnit\Framework\TestCase;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 
+/**
+ * @covers \ProfessionalWiki\PageApprovals\PageApprovals
+ */
 class PageApprovalsTest extends TestCase {
 
-	public function testGetInstanceReturnsNewInstance(): void {
-		$instance = PageApprovals::getInstance();
-
-		$this->assertInstanceOf( PageApprovals::class, $instance );
-	}
-
-	public function testGetInstanceReturnsExistingInstance(): void {
-		$instance1 = PageApprovals::getInstance();
-		$instance2 = PageApprovals::getInstance();
-
-		$this->assertSame( $instance1, $instance2 );
+	public function testGetInstanceIsSingleton(): void {
+		$this->assertSame( PageApprovals::getInstance(), PageApprovals::getInstance() );
 	}
 
 }

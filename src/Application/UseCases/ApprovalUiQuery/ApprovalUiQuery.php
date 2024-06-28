@@ -22,6 +22,7 @@ class ApprovalUiQuery {
 		$approvalState = $this->approvalLog->getApprovalState( pageId: $out->getWikiPage()->getId() );
 
 		return new UiArguments(
+			showUi: true,
 			userIsApprover: $this->userIsApproverForPage( $out ),
 			pageIsApproved: $approvalState?->isApproved ?? false,
 			approvalTimestamp: $approvalState?->approvalTimestamp ?? 0,
