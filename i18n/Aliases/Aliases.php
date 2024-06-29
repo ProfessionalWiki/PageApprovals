@@ -2,9 +2,9 @@
 $specialPageAliases = [];
 
 $specialPageAliases['en'] = [
-	'ApproverCategories' => [ 'Approver Categories' ],
+	'ApproverCategories' => [ 'ApproverCategories' ],
 ];
 
 $specialPageAliases['qqq'] = [
-	'ApproverCategories' => [ 'Approver Categories' ],
+	'ApproverCategories' => [ 'ApproverCategories' ],
 ];

@@ -106,7 +106,27 @@ parameters:
 			path: src/Adapters/PageHtmlRetriever.php
 
 		-
+			message: "#^Cannot call method getId\\(\\) on User\\|null\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialApproverCategories\\:\\:handlePostRequest\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialApproverCategories\\:\\:processCategoryAction\\(\\) has parameter \\$currentCategories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
 			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialApproverCategories\\:\\:renderHtml\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+
+		-
+			message: "#^PHPDoc tag @param references unknown parameter\\: \\$approversCategories$#"
 			count: 1
 			path: src/EntryPoints/Specials/SpecialApproverCategories.php
 

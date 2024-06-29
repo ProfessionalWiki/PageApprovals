@@ -56,7 +56,30 @@ class SpecialApproverCategoriesTest extends MediaWikiIntegrationTestCase {
 		$this->executeSpecialPage( $context );
 	}
 
-	public function testAddDeleteCategoryPutRequest() {
+	public function testAddApproverAction() {
+		$testUser = $this->getTestSysop()->getUser();
+		$usernameToAdd = "TestUser1";
+		$actionParams = [
+			'action' => 'add-approver',
+			'username' => $usernameToAdd
+		];
+
+		$this->executeSpecialPage( $this->createRequestContext( $testUser, $actionParams, true ) );
+		$output = $this->executeSpecialPage( $this->createRequestContext( $testUser ) );
+
+		$this->assertStringContainsString(
+			$usernameToAdd,
+			$output,
+			'Expected HTML output to contain the new approver username'
+		);
+		$this->assertStringNotContainsString(
+			'<div class="category-entry">',
+			$output,
+			'New approver should have no categories'
+		);
+	}
+
+	public function testAddDeleteCategoryAction() {
 		$testUser = $this->getTestSysop()->getUser();
 		$actionParams = [
 			[ 'action' => 'add', 'username' => 'TestUser1', 'category' => 'TestCategory' ],
