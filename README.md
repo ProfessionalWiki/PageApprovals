@@ -88,7 +88,11 @@ VALUES (1, 'TestCat|TestCat2');
 
 ### Version 1.0.0 - 2024-0x-xx
 
-* TODO
+* Approval UI on regular wiki pages that shows the approval status and allows approvers to change said status
+* API endpoints to approve and unapprove pages
+* Automatic unapproval of pages when their displayed content changes
+* Detection of changes to displayed content via embedded constructs such as templates or SMW queries
+* Approver management page and associated MediaWiki right
 * Compatibility with MediaWiki 1.39 up to 1.43-dev
 * Compatibility with PHP 8.1 up to 8.3
 
