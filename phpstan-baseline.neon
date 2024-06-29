@@ -131,11 +131,6 @@ parameters:
 			path: src/EntryPoints/Specials/SpecialApproverCategories.php
 
 		-
-			message: "#^Parameter \\#1 \\$database of class ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\DatabaseApproverRepository constructor expects Wikimedia\\\\Rdbms\\\\IDatabase, Wikimedia\\\\Rdbms\\\\IDatabase\\|false given\\.$#"
-			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
-
-		-
 			message: "#^Parameter \\#1 \\$php of static method LightnCandy\\\\LightnCandy\\:\\:prepare\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: src/EntryPoints/Specials/SpecialApproverCategories.php
