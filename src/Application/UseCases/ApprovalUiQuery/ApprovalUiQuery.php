@@ -25,7 +25,7 @@ class ApprovalUiQuery {
 
 		return new UiArguments(
 			showUi: $showUi, // TODO: test
-			userIsApprover: $this->userIsApproverForPage( $out ),
+			userIsApprover: $showUi && $this->userIsApproverForPage( $out ),
 			pageIsApproved: $approvalState?->isApproved ?? false, // TODO: test
 			approvalTimestamp: $approvalState?->approvalTimestamp ?? 0, // TODO: test
 			approverId: $approvalState?->approverId ?? null, // TODO: test
