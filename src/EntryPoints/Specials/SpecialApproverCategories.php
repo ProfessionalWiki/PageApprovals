@@ -12,10 +12,7 @@ use WebRequest;
 
 class SpecialApproverCategories extends SpecialPage {
 
-	/**
-	 * @var DatabaseApproverRepository
-	 */
-	private $databaseApproverRepository;
+	private DatabaseApproverRepository $databaseApproverRepository;
 
 	public function __construct() {
 		parent::__construct( 'ApproverCategories' );
