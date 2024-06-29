@@ -7,7 +7,6 @@ use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\GetApproversWithCategories;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 use SpecialPage;
-use PermissionsError;
 use LightnCandy\LightnCandy;
 use WebRequest;
 
@@ -16,7 +15,7 @@ class SpecialApproverCategories extends SpecialPage {
 	private ApproverRepository $approverRepository;
 
 	public function __construct() {
-		parent::__construct( 'ApproverCategories' );
+		parent::__construct( 'ApproverCategories', restriction: 'manage-approvers' );
 		$this->approverRepository = PageApprovals::getInstance()->getApproverRepository();
 	}
 
@@ -25,9 +24,8 @@ class SpecialApproverCategories extends SpecialPage {
 	}
 
 	public function execute( $subPage ): void {
-		if ( !$this->isAdmin() ) {
-			throw new PermissionsError( 'sysop' );
-		}
+		$this->checkPermissions();
+		$this->checkReadOnly();
 
 		$approversWithCategories = new GetApproversWithCategories( $this->approverRepository );
 		$approversCategories = $approversWithCategories->getApproversWithCategories();

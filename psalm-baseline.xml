@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
   <file src="src/Adapters/AuthorityBasedApprovalAuthorizer.php">
     <UnusedProperty>
       <code><![CDATA[$authority]]></code>
@@ -94,7 +94,6 @@
     </InvalidDocblockParamName>
     <MixedArgument>
       <code><![CDATA[$currentCategories]]></code>
-      <code><![CDATA[DB_PRIMARY]]></code>
     </MixedArgument>
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$currentCategories]]></code>
@@ -105,9 +104,6 @@
     <MixedAssignment>
       <code><![CDATA[$currentCategories]]></code>
     </MixedAssignment>
-    <PossiblyFalseArgument>
-      <code><![CDATA[$db]]></code>
-    </PossiblyFalseArgument>
     <PossiblyNullReference>
       <code><![CDATA[getId]]></code>
     </PossiblyNullReference>
