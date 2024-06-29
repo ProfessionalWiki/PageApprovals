@@ -33,6 +33,30 @@ class DatabaseApproverRepository implements ApproverRepository {
 	}
 
 	/**
+	 * @return array<array{userId: int, categories: string[]}>
+	 */
+	public function getApproversWithCategories(): array {
+		$res = $this->database->select(
+			'approver_config',
+			[
+				'ac_user_id AS userId',
+				'ac_categories AS categories'
+			],
+			[],
+			__METHOD__
+		);
+
+		$approvers = [];
+		foreach ( $res as $row ) {
+			$approvers[] = [
+				'userId' => (int)$row->userId,
+				'categories' => $this->deserializeCategories( $row->categories )
+			];
+		}
+		return $approvers;
+	}
+
+	/**
 	 * @param string[] $categoryNames
 	 */
 	public function setApproverCategories( int $userId, array $categoryNames ): void {
