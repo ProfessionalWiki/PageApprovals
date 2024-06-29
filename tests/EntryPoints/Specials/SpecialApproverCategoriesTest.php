@@ -14,14 +14,6 @@ use User;
  */
 class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 
-	protected function setUp(): void {
-		parent::setUp();
-
-		$userFactory = $this->getServiceContainer()->getUserFactory();
-		$userFactory->newFromName( 'TestUser1' )->addToDatabase();
-		$userFactory->newFromName( 'TestUser2' )->addToDatabase();
-	}
-
 	protected function newSpecialPage(): SpecialApproverCategories {
 		return new SpecialApproverCategories();
 	}
@@ -51,19 +43,19 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 	}
 
 	public function testAddApproverAction(): void {
-		$usernameToAdd = 'TestUser1';
+		$username = self::getTestUser()->getUser()->getName();
 
 		$this->getPageOutput(
 			request: [
 				'action' => 'add-approver',
-				'username' => $usernameToAdd
+				'username' => $username
 			]
 		);
 
 		$output = $this->getPageOutput();
 
 		$this->assertStringContainsString(
-			$usernameToAdd,
+			$username,
 			$output,
 			'Expected HTML output to contain the new approver username'
 		);
@@ -75,10 +67,12 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 	}
 
 	public function testAddDeleteCategoryAction(): void {
+		$username = self::getTestUser()->getUser()->getName();
+
 		$this->getPageOutput(
 			request: [
 				'action' => 'add',
-				'username' => 'TestUser2',
+				'username' => $username,
 				'category' => 'TestCategory'
 			]
 		);
@@ -86,7 +80,7 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 		$this->getPageOutput(
 			request: [
 				'action' => 'delete',
-				'username' => 'TestUser2',
+				'username' => $username,
 				'category' => 'TestCategory'
 			]
 		);
