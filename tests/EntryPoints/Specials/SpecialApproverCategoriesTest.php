@@ -20,39 +20,38 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 
 	public function testNonAdminCannotAccessPage() {
 		$this->expectException( PermissionsError::class );
-		$this->getPageOutput( user: $this->getTestUser()->getUser() );
+		$this->viewPage( user: $this->getTestUser()->getUser() );
 	}
 
-	private function getPageOutput( User $user = null, array $request = [] ): string {
+	private function viewPage( User $user = null ): string {
 		[ $output ] = $this->executeSpecialPage(
 			'',
-			$request === [] ? null : $this->newPostRequest( $request ),
+			null,
 			'qqx',
 			$user ?? $this->getTestSysop()->getUser()
 		);
 		return $output;
 	}
 
-	private function newPostRequest( array $parameters ): FauxRequest {
-		return new FauxRequest( $parameters, true );
-	}
-
 	public function testAdminCanAccessPage(): void {
-		$output = $this->getPageOutput( user: $this->getTestSysop()->getUser() );
-		$this->assertStringContainsString( '<table', $output, 'Expected HTML output with table' );
+		$this->assertStringContainsString(
+			'<table',
+			$this->viewPage( user: $this->getTestSysop()->getUser() ),
+			'Expected HTML output with table'
+		);
 	}
 
 	public function testAddApproverAction(): void {
 		$username = self::getTestUser()->getUser()->getName();
 
-		$this->getPageOutput(
+		$this->post(
 			request: [
 				'action' => 'add-approver',
 				'username' => $username
 			]
 		);
 
-		$output = $this->getPageOutput();
+		$output = $this->viewPage();
 
 		$this->assertStringContainsString(
 			$username,
@@ -66,10 +65,19 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 		);
 	}
 
+	private function post( array $request ): void {
+		$this->executeSpecialPage(
+			'',
+			new FauxRequest( $request, true ),
+			'qqx',
+			$this->getTestSysop()->getUser()
+		);
+	}
+
 	public function testAddDeleteCategoryAction(): void {
 		$username = self::getTestUser()->getUser()->getName();
 
-		$this->getPageOutput(
+		$this->post(
 			request: [
 				'action' => 'add',
 				'username' => $username,
@@ -77,7 +85,7 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 			]
 		);
 
-		$this->getPageOutput(
+		$this->post(
 			request: [
 				'action' => 'delete',
 				'username' => $username,
@@ -85,7 +93,7 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 			]
 		);
 
-		$this->assertStringNotContainsString( 'TestCategory', $this->getPageOutput(), 'Category should be deleted' );
+		$this->assertStringNotContainsString( 'TestCategory', $this->viewPage(), 'Category should be deleted' );
 	}
 
 }
