@@ -24,6 +24,7 @@ class SpecialManageApprovers extends SpecialPage {
 	}
 
 	public function execute( $subPage ): void {
+		$this->setHeaders();
 		$this->checkPermissions();
 		$this->checkReadOnly();
 
