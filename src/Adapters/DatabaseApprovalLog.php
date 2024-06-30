@@ -17,9 +17,9 @@ class DatabaseApprovalLog implements ApprovalLog {
 
 	public function getApprovalState( int $pageId ): ?ApprovalState {
 		$row = $this->database->selectRow(
-			'approval_log',
-			[ 'al_is_approved', 'al_timestamp', 'al_user_id' ],
-			[ 'al_page_id' => $pageId ],
+			[ 'approval_log', 'user' ],
+			[ 'al_is_approved', 'al_timestamp', 'al_user_id', 'user_real_name' ],
+			[ 'al_page_id' => $pageId, 'al_user_id = user_id' ],
 			__METHOD__,
 			[ 'ORDER BY' => 'al_timestamp DESC' ]
 		);
@@ -32,7 +32,8 @@ class DatabaseApprovalLog implements ApprovalLog {
 			pageId: $pageId,
 			isApproved: (bool)$row->al_is_approved,
 			approvalTimestamp: $this->binaryToUnixTimestamp( $row->al_timestamp ),
-			approverId: $row->al_user_id !== null ? (int)$row->al_user_id : null
+			approverId: $row->al_user_id !== null ? (int)$row->al_user_id : null,
+			approverRealName: $row->user_real_name ?? ''
 		);
 	}
 
