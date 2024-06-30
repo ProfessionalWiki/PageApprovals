@@ -69,10 +69,8 @@
 			"scripts": [
 				"ApprovePage.js"
 			],
-			"styles": [
-				"PageApprovalsStyles.css"
-			],
 			"dependencies": [
+				"moment"
 			],
 			"messages": [
 				"pageapprovals-status-approved",
