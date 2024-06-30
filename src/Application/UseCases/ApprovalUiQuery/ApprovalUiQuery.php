@@ -23,7 +23,7 @@ class ApprovalUiQuery {
 
 		return new UiArguments(
 			showUi: $showUi, // TODO: test
-			userIsApprover: $this->approvalAuthorizer->canApprove( $out->getWikiPage() ),
+			userIsApprover: $showUi && $this->approvalAuthorizer->canApprove( $out->getWikiPage() ),
 			pageIsApproved: $approvalState?->isApproved ?? false, // TODO: test
 			approvalTimestamp: $approvalState?->approvalTimestamp ?? 0, // TODO: test
 			approverId: $approvalState?->approverId ?? null, // TODO: test
