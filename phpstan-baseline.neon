@@ -103,42 +103,42 @@ parameters:
 		-
 			message: "#^Cannot call method getId\\(\\) on User\\|null\\.$#"
 			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
-			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialApproverCategories\\:\\:handlePostRequest\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialManageApprovers\\:\\:handlePostRequest\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
-			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialApproverCategories\\:\\:processCategoryAction\\(\\) has parameter \\$currentCategories with no value type specified in iterable type array\\.$#"
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialManageApprovers\\:\\:processCategoryAction\\(\\) has parameter \\$currentCategories with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
-			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialApproverCategories\\:\\:renderHtml\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
+			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialManageApprovers\\:\\:renderHtml\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
 			message: "#^PHPDoc tag @param references unknown parameter\\: \\$approversCategories$#"
 			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
 			message: "#^Parameter \\#1 \\$php of static method LightnCandy\\\\LightnCandy\\:\\:prepare\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
 			message: "#^Parameter \\#1 \\$template of static method LightnCandy\\\\LightnCandy\\:\\:compile\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
 			message: "#^Trying to invoke LightnCandy\\\\Closure\\|false but it might not be a callable\\.$#"
 			count: 1
-			path: src/EntryPoints/Specials/SpecialApproverCategories.php
+			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
 			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\PageApprovals\\:\\:getDatabase\\(\\) should return Wikimedia\\\\Rdbms\\\\IDatabase but returns Wikimedia\\\\Rdbms\\\\IDatabase\\|false\\.$#"

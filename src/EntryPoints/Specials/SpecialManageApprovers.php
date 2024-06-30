@@ -10,12 +10,12 @@ use SpecialPage;
 use LightnCandy\LightnCandy;
 use WebRequest;
 
-class SpecialApproverCategories extends SpecialPage {
+class SpecialManageApprovers extends SpecialPage {
 
 	private ApproverRepository $approverRepository;
 
 	public function __construct() {
-		parent::__construct( 'ApproverCategories', restriction: 'manage-approvers' );
+		parent::__construct( 'ManageApprovers', restriction: 'manage-approvers' );
 		$this->approverRepository = PageApprovals::getInstance()->getApproverRepository();
 	}
 
@@ -89,7 +89,7 @@ class SpecialApproverCategories extends SpecialPage {
 	}
 
 	private function renderHtml( array $approversCategories ): void {
-		$template = file_get_contents( __DIR__ . '/../../../templates/ApproverCategories.mustache' );
+		$template = file_get_contents( __DIR__ . '/../../../templates/ManageApprovers.mustache' );
 		$compiledTemplate = LightnCandy::compile( $template, [ 'flags' => LightnCandy::FLAG_MUSTACHE ] );
 		$this->getOutput()->addHTML(
 			LightnCandy::prepare( $compiledTemplate )( [ 'approvers' => $approversCategories ] )

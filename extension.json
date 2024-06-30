@@ -29,8 +29,8 @@
 	},
 
 	"SpecialPages": {
-		"ApproverCategories": {
-			"class": "ProfessionalWiki\\PageApprovals\\EntryPoints\\Specials\\SpecialApproverCategories"
+		"ManageApprovers": {
+			"class": "ProfessionalWiki\\PageApprovals\\EntryPoints\\Specials\\SpecialManageApprovers"
 		}
 	},
 

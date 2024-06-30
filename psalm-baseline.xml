@@ -83,7 +83,7 @@
       <code><![CDATA[(int)$approver['userId']]]></code>
     </RedundantCastGivenDocblockType>
   </file>
-  <file src="src/EntryPoints/Specials/SpecialApproverCategories.php">
+  <file src="src/EntryPoints/Specials/SpecialManageApprovers.php">
     <InvalidDocblockParamName>
       <code><![CDATA[$approversCategories]]></code>
     </InvalidDocblockParamName>
