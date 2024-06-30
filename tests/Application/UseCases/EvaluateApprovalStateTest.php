@@ -36,7 +36,7 @@ class EvaluateApprovalStateTest extends TestCase {
 		return $approvalLog;
 	}
 
-	public function testPageIsUnapprovedUponMismatchingHtml(): void {
+	public function testApprovedPageGetsUnapprovedUponMismatchingHtml(): void {
 		$approvalLog = $this->newApprovalLogWithApprovedPage();
 
 		$htmlRepo = new InMemoryHtmlRepository();
@@ -66,6 +66,20 @@ class EvaluateApprovalStateTest extends TestCase {
 		$action->evaluate( self::PAGE_ID, 'same' );
 
 		$this->assertTrue( $approvalLog->getApprovalState( self::PAGE_ID )->isApproved );
+	}
+
+	public function testUnapprovedPageRemainsUnapproved(): void {
+		$approvalLog = new InMemoryApprovalLog();
+
+		$action = new EvaluateApprovalState(
+			htmlRepository: new InMemoryHtmlRepository(),
+			approvalLog: $approvalLog
+		);
+
+		$action->evaluate( self::PAGE_ID, 'different' );
+
+		// By asserting null, we verify that no additional "unapproved" record ended up in the log.
+		$this->assertNull( $approvalLog->getApprovalState( self::PAGE_ID ) );
 	}
 
 }
