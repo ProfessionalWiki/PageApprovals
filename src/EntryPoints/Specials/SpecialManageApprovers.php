@@ -3,6 +3,7 @@
 namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
 use MediaWiki\MediaWikiServices;
+use ProfessionalWiki\PageApprovals\Application\Approver;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\GetApproversWithCategories;
 use ProfessionalWiki\PageApprovals\PageApprovals;
@@ -46,7 +47,7 @@ class SpecialManageApprovers extends SpecialPage {
 	}
 
 	/**
-	 * @param array $approversCategories
+	 * @param array<Approver> $approversCategories
 	 */
 	private function handlePostRequest( WebRequest $request, array $approversCategories ): void {
 		$action = $request->getText( 'action' );
@@ -61,15 +62,15 @@ class SpecialManageApprovers extends SpecialPage {
 			return;
 		}
 
-		$userWithCategories = array_filter( $approversCategories, fn( $approver ) => $approver['username'] === $username
+		$userWithCategories = array_filter( $approversCategories, fn( $approver ) => $approver->username === $username
 		);
-		$currentCategories = $userWithCategories[0]['categories'] ?? [];
+		$currentCategories = $userWithCategories[0]->categories ?? [];
 
 		$this->processCategoryAction( $action, $category, $userId, $currentCategories );
 	}
 
 	/**
-	 * @param array $approversCategories
+	 * @param string[] $currentCategories
 	 */
 	private function processCategoryAction( string $action, string $category, int $userId, array $currentCategories ): void {
 		switch ( $action ) {
@@ -88,12 +89,36 @@ class SpecialManageApprovers extends SpecialPage {
 		$this->approverRepository->setApproverCategories( $userId, $currentCategories );
 	}
 
+	/**
+	 * @param array<Approver> $approversCategories
+	 */
 	private function renderHtml( array $approversCategories ): void {
 		$template = file_get_contents( __DIR__ . '/../../../templates/ManageApprovers.mustache' );
 		$compiledTemplate = LightnCandy::compile( $template, [ 'flags' => LightnCandy::FLAG_MUSTACHE ] );
 		$this->getOutput()->addHTML(
-			LightnCandy::prepare( $compiledTemplate )( [ 'approvers' => $approversCategories ] )
+			LightnCandy::prepare( $compiledTemplate )(
+				[ 'approvers' => $this->approversToViewModel( $approversCategories ) ]
+			)
 		);
+	}
+
+	/**
+	 * @param array<Approver> $approvers
+	 * @return array<array<string, mixed>>
+	 */
+	private function approversToViewModel( array $approvers ): array {
+		return array_map( fn( Approver $approver ) => $this->approverToViewModel( $approver ), $approvers );
+	}
+
+	/**
+	 * @return array<string, mixed>
+	 */
+	private function approverToViewModel( Approver $approver ): array {
+		return [
+			'username' => $approver->username,
+			'userId' => $approver->userId,
+			'categories' => $approver->categories
+		];
 	}
 
 }
