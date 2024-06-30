@@ -6,7 +6,6 @@ namespace ProfessionalWiki\PageApprovals\Tests\Adapters;
 
 use ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApproverRepository;
-use ProfessionalWiki\PageApprovals\Adapters\PageCategoriesRetriever;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use User;
 
@@ -28,8 +27,7 @@ class AuthorityBasedApprovalAuthorizerTest extends PageApprovalsIntegrationTest 
 
 		$this->approvalAuthorizer = new AuthorityBasedApprovalAuthorizer(
 			$this->user,
-			$this->approverRepository,
-			new PageCategoriesRetriever()
+			$this->approverRepository
 		);
 	}
 
