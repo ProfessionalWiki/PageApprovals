@@ -80,7 +80,11 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider provideCategoryTestCases
 	 */
-	public function testCategorySerializationAndDeserialization( array $categories, string $caseName ): void {
+	public function testCategorySerializationAndDeserialization(
+		array $categories,
+		array $expectedRetrievedCategories,
+		string $caseName
+	): void {
 		$repository = $this->newRepository();
 		$userId = 42;
 
@@ -88,7 +92,7 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 		$retrievedCategories = $repository->getApproverCategories( $userId );
 
 		$this->assertSame(
-			$categories,
+			$expectedRetrievedCategories,
 			$retrievedCategories,
 			"Failed to correctly serialize and deserialize categories for case: $caseName"
 		);
@@ -131,6 +135,10 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 				'Category with spaces',
 				'Another category with spaces'
 			],
+			[
+				'Category with spaces',
+				'Another category with spaces'
+			],
 			'Categories with spaces'
 		];
 
@@ -138,6 +146,11 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 			[
 				'Category:Subcategory',
 				'Category_with_underscores',
+				'Category&with&ampersands'
+			],
+			[
+				'Subcategory',
+				'Category with underscores',
 				'Category&with&ampersands'
 			],
 			'Categories with special characters'
@@ -149,15 +162,22 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 				'Категория',
 				'فئة'
 			],
+			[
+				'カテゴリ',
+				'Категория',
+				'فئة'
+			],
 			'Unicode categories'
 		];
 
 		yield 'Empty category list' => [
 			[],
+			[],
 			'Empty category list'
 		];
 
 		yield 'Single category' => [
+			[ 'SingleCategory' ],
 			[ 'SingleCategory' ],
 			'Single category'
 		];
@@ -168,7 +188,26 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 				'Trailing space ',
 				' Both sides '
 			],
+			[
+				'Leading space',
+				'Trailing space',
+				'Both sides'
+			],
 			'Category with leading/trailing spaces'
+		];
+
+		yield 'Category with case insensitive letters' => [
+			[
+				'Foo Bar',
+				'foo Bar',
+				'Foo bar',
+				'foo bar'
+			],
+			[
+				'Foo Bar',
+				'Foo bar'
+			],
+			'Category with case insensitive letters'
 		];
 	}
 
