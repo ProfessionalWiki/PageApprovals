@@ -37,14 +37,16 @@ class PageApprovals {
 			self::getInstance()->newPageApprovalAuthorizer(),
 			self::getInstance()->getApprovalLog(),
 			self::getInstance()->getHtmlRepository(),
-			self::getInstance()->getPageHtmlRetriever()
+			self::getInstance()->getPageHtmlRetriever(),
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
 	public static function newUnapprovePageApi(): UnapprovePageApi {
 		return new UnapprovePageApi(
 			self::getInstance()->newPageApprovalAuthorizer(),
-			self::getInstance()->getApprovalLog()
+			self::getInstance()->getApprovalLog(),
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 

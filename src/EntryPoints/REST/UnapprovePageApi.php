@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\REST;
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
@@ -16,7 +16,8 @@ class UnapprovePageApi extends SimpleHandler {
 
 	public function __construct(
 		private ApprovalAuthorizer $authorizer,
-		private ApprovalLog	$approvalLog
+		private ApprovalLog	$approvalLog,
+		private WikiPageFactory $wikiPageFactory
 	) {
 	}
 
@@ -37,7 +38,7 @@ class UnapprovePageApi extends SimpleHandler {
 	}
 
 	private function getPage( int $pageId ): ?WikiPage {
-		return MediaWikiServices::getInstance()->getWikiPageFactory()->newFromID( $pageId );
+		return $this->wikiPageFactory->newFromID( $pageId );
 	}
 
 	public function newSuccessResponse(): Response {
