@@ -74,7 +74,7 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 		);
 	}
 
-	public function testAddDeleteCategoryAction(): void {
+	public function testAddAndDeleteCategoryAction(): void {
 		$username = self::getTestUser()->getUser()->getName();
 
 		$this->post(
@@ -84,6 +84,8 @@ class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 				'category' => 'TestCategory'
 			]
 		);
+
+		$this->assertStringContainsString( 'TestCategory', $this->viewPage(), 'Category should be added' );
 
 		$this->post(
 			request: [
