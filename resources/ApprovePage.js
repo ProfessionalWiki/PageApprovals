@@ -1,8 +1,8 @@
 const restClient = new mw.Rest();
 
 function sendApprovalRequest( approve ) {
-	const pageId = mw.config.get( 'wgArticleId' );
-	const endpoint = `/page-approvals/v0/page/${ pageId }/${ approve ? 'approve' : 'unapprove' }`;
+	const revisionId = mw.config.get( 'wgRevisionId' );
+	const endpoint = `/page-approvals/v0/revision/${ revisionId }/${ approve ? 'approve' : 'unapprove' }`;
 
 	restClient.post( endpoint )
 		.then( response => handleApprovalResponse( approve ) )

@@ -2,7 +2,6 @@
 
 namespace ProfessionalWiki\PageApprovals\Tests\EntryPoints\REST;
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\RequestData;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
@@ -24,7 +23,7 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 	public function testUnapprovePageHappyPath(): void {
 		$response = $this->executeHandler(
 			$this->newUnapprovePageApi(),
-			$this->createValidRequestData( $this->getIdOfExistingPage( 'Test 1' ) )
+			$this->createValidRequestData( $this->createPageWithCategories()->getRevisionRecord()->getId() ),
 		);
 
 		$this->assertSame( 204, $response->getStatusCode() );
@@ -34,15 +33,16 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 		return new UnapprovePageApi(
 			new SucceedingApprovalAuthorizer(),
 			$approvalLog ?? new InMemoryApprovalLog(),
-			MediaWikiServices::getInstance()->getWikiPageFactory()
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getRevisionLookup()
 		);
 	}
 
-	private function createValidRequestData( int $pageId ): RequestData {
+	private function createValidRequestData( int $revisionId ): RequestData {
 		return new RequestData( [
 			'method' => 'POST',
 			'pathParams' => [
-				'pageId' => $pageId
+				'revisionId' => $revisionId
 			],
 			'headers' => [
 				'Content-Type' => 'application/json'
@@ -53,7 +53,7 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 	public function testApprovalFailsWithoutPermission(): void {
 		$response = $this->executeHandler(
 			$this->newUnapprovePageApiWithFailingAuthorizer(),
-			$this->createValidRequestData( $this->getIdOfExistingPage( 'Test 2' ) )
+			$this->createValidRequestData( $this->createPageWithCategories()->getRevisionRecord()->getId() ),
 		);
 
 		$this->assertSame( 403, $response->getStatusCode() );
@@ -63,7 +63,8 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 		return new UnapprovePageApi(
 			new FailingApprovalAuthorizer(),
 			$approvalLog ?? new InMemoryApprovalLog(),
-			MediaWikiServices::getInstance()->getWikiPageFactory()
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getRevisionLookup()
 		);
 	}
 
@@ -78,37 +79,51 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 
 	public function testPageIsUnapproved(): void {
 		$approvalLog = new InMemoryApprovalLog();
-		$pageId = $this->getIdOfExistingPage( 'Page to be unapproved' );
+		$page = $this->createPageWithCategories();
 
-		$approvalLog->approvePage( $pageId, 1 );
+		$approvalLog->approvePage( $page->getId(), 1 );
 
 		$this->executeHandler(
 			$this->newUnapprovePageApi( $approvalLog ),
-			$this->createValidRequestData( $pageId )
+			$this->createValidRequestData( $page->getRevisionRecord()->getId() ),
 		);
 
 		$this->assertFalse(
-			$approvalLog->getApprovalState( $pageId )->isApproved
+			$approvalLog->getApprovalState( $page->getId() )->isApproved
 		);
 	}
 
 	public function testAPIUserIsInApprovalState(): void {
 		$approvalLog = new InMemoryApprovalLog();
-		$pageId = $this->getIdOfExistingPage( 'API User' );
+		$page = $this->createPageWithCategories();
 		$user = $this->mockRegisteredUltimateAuthority();
 
-		$approvalLog->approvePage( $pageId, 1 );
+		$approvalLog->approvePage( $page->getId(), 1 );
 
 		$this->executeHandler(
 			$this->newUnapprovePageApi( $approvalLog ),
-			$this->createValidRequestData( $pageId ),
+			$this->createValidRequestData( $page->getRevisionRecord()->getId() ),
 			authority: $user
 		);
 
 		$this->assertSame(
 			$user->getUser()->getId(),
-			$approvalLog->getApprovalState( $pageId )->approverId
+			$approvalLog->getApprovalState( $page->getId() )->approverId
 		);
+	}
+
+	public function testUnapprovalFailsWithOutdatedRevisionId(): void {
+		$page = $this->createPageWithCategories();
+		$oldRevisionId = $page->getRevisionRecord()->getId();
+
+		$this->editPage( $page, 'New revision' );
+
+		$response = $this->executeHandler(
+			$this->newUnapprovePageApi(),
+			$this->createValidRequestData( $oldRevisionId ),
+		);
+
+		$this->assertSame( 409, $response->getStatusCode() );
 	}
 
 }
