@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
+use Title;
 use Wikimedia\Rdbms\IDatabase;
 
 class DatabaseApproverRepository implements ApproverRepository {
@@ -75,7 +76,15 @@ class DatabaseApproverRepository implements ApproverRepository {
 	}
 
 	private function serializeCategories( array $categories ): string {
-		return implode( '|', $categories );
+		return implode( '|', array_unique( array_map(
+			fn ( string $category ) => $this->normalizeCategoryTitle( $category ),
+			$categories
+		) ) );
+	}
+
+	private function normalizeCategoryTitle( string $title ): string {
+		// TODO: Confirm database is not accessed, otherwise use TitleValue::tryNew()
+		return Title::newFromText( $title )?->getText() ?? '';
 	}
 
 	private function deserializeCategories( string $serializedCategories ): array {

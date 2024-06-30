@@ -20,9 +20,6 @@
       <code><![CDATA[$row->ac_categories]]></code>
       <code><![CDATA[$row->categories]]></code>
     </MixedArgument>
-    <MixedArgumentTypeCoercion>
-      <code><![CDATA[$categories]]></code>
-    </MixedArgumentTypeCoercion>
     <MixedReturnTypeCoercion>
       <code><![CDATA[$approvers]]></code>
       <code><![CDATA[$this->deserializeCategories( $row->ac_categories )]]></code>
