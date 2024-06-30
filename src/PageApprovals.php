@@ -37,20 +37,23 @@ class PageApprovals {
 			self::getInstance()->newPageApprovalAuthorizer(),
 			self::getInstance()->getApprovalLog(),
 			self::getInstance()->getHtmlRepository(),
-			self::getInstance()->getPageHtmlRetriever()
+			self::getInstance()->getPageHtmlRetriever(),
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
 	public static function newUnapprovePageApi(): UnapprovePageApi {
 		return new UnapprovePageApi(
 			self::getInstance()->newPageApprovalAuthorizer(),
-			self::getInstance()->getApprovalLog()
+			self::getInstance()->getApprovalLog(),
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
 	private function newPageApprovalAuthorizer(): ApprovalAuthorizer {
 		return new AuthorityBasedApprovalAuthorizer(
-			RequestContext::getMain()->getUser()
+			RequestContext::getMain()->getUser()->getId(),
+			$this->getApproverRepository()
 		);
 	}
 
@@ -96,7 +99,7 @@ class PageApprovals {
 	public function newApprovalUiQuery(): ApprovalUiQuery {
 		return new ApprovalUiQuery(
 			approvalLog: $this->getApprovalLog(),
-			approverRepository: $this->getApproverRepository()
+			approvalAuthorizer: $this->newPageApprovalAuthorizer()
 		);
 	}
 

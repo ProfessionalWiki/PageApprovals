@@ -4,10 +4,10 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Application;
 
-use MediaWiki\Page\PageIdentity;
+use WikiPage;
 
 interface ApprovalAuthorizer {
 
-	public function canApprove( PageIdentity $page ): bool;
+	public function canApprove( WikiPage $page ): bool;
 
 }

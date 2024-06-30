@@ -2,6 +2,7 @@
 
 namespace ProfessionalWiki\PageApprovals\Tests\EntryPoints\REST;
 
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\RequestData;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
@@ -32,7 +33,8 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 	private function newUnapprovePageApi( ?ApprovalLog $approvalLog = null ): UnapprovePageApi {
 		return new UnapprovePageApi(
 			new SucceedingApprovalAuthorizer(),
-			$approvalLog ?? new InMemoryApprovalLog()
+			$approvalLog ?? new InMemoryApprovalLog(),
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
@@ -60,7 +62,8 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 	private function newUnapprovePageApiWithFailingAuthorizer( ?ApprovalLog $approvalLog = null ): UnapprovePageApi {
 		return new UnapprovePageApi(
 			new FailingApprovalAuthorizer(),
-			$approvalLog ?? new InMemoryApprovalLog()
+			$approvalLog ?? new InMemoryApprovalLog(),
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 

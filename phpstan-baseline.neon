@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Property ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\AuthorityBasedApprovalAuthorizer\\:\\:\\$authority is never read, only written\\.$#"
-			count: 1
-			path: src/Adapters/AuthorityBasedApprovalAuthorizer.php
-
-		-
 			message: "#^Cannot access property \\$al_is_approved on stdClass\\|true\\.$#"
 			count: 1
 			path: src/Adapters/DatabaseApprovalLog.php

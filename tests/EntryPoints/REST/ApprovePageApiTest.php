@@ -47,7 +47,8 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			new SucceedingApprovalAuthorizer(),
 			$this->approvalLog,
 			$this->htmlRepository,
-			$this->newPageHtmlRetriever()
+			$this->newPageHtmlRetriever(),
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
@@ -81,7 +82,8 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			new FailingApprovalAuthorizer(),
 			$this->approvalLog,
 			$this->htmlRepository,
-			$this->newPageHtmlRetriever()
+			$this->newPageHtmlRetriever(),
+			MediaWikiServices::getInstance()->getWikiPageFactory()
 		);
 	}
 
