@@ -16,8 +16,9 @@ class EvaluateApprovalState {
 	}
 
 	public function evaluate( int $pageId, string $currentPageHtml ): void {
-		if ( $currentPageHtml !== $this->getApprovedHtmlForPage( $pageId ) ) {
-			// TODO: verify only add record if page is approved
+		if ( $currentPageHtml !== $this->getApprovedHtmlForPage( $pageId )
+			&& $this->approvalLog->getApprovalState( $pageId )?->isApproved === true
+		) {
 			$this->unapprovePage( $pageId );
 		}
 	}
