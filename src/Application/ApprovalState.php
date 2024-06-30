@@ -14,6 +14,7 @@ class ApprovalState {
 		public readonly bool $isApproved,
 		public readonly int $approvalTimestamp,
 		public readonly ?int $approverId,
+		public readonly ?string $approverRealName,
 	) {
 	}
 
