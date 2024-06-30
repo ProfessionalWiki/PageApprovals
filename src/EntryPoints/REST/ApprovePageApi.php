@@ -7,6 +7,7 @@ namespace ProfessionalWiki\PageApprovals\EntryPoints\REST;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
+use MediaWiki\Revision\RevisionLookup;
 use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
@@ -21,12 +22,13 @@ class ApprovePageApi extends SimpleHandler {
 		private ApprovalLog	$approvalLog,
 		private HtmlRepository $htmlRepository,
 		private PageHtmlRetriever $pageHtmlRetriever,
-		private WikiPageFactory $wikiPageFactory
+		private WikiPageFactory $wikiPageFactory,
+		private RevisionLookup $revisionLookup
 	) {
 	}
 
-	public function run( int $pageId ): Response {
-		$page = $this->getPage( $pageId );
+	public function run( int $revisionId ): Response {
+		$page = $this->getPageFromRevisionId( $revisionId );
 
 		if ( $page === null ) {
 			return $this->newInvalidPageResponse();
@@ -36,18 +38,32 @@ class ApprovePageApi extends SimpleHandler {
 			return $this->newAuthorizationFailedResponse();
 		}
 
-		$this->approvalLog->approvePage( $pageId, $this->getAuthority()->getUser()->getId() );
+		if ( !$this->revisionIsLatest( $revisionId, $page ) ) {
+			return $this->newOutdatedRevisionResponse();
+		}
 
-		$html = $this->pageHtmlRetriever->getPageHtml( $pageId );
+		$this->approvalLog->approvePage( $page->getId(), $this->getAuthority()->getUser()->getId() );
+
+		$html = $this->pageHtmlRetriever->getPageHtml( $page->getId() );
 		if ( $html !== null ) {
-			$this->htmlRepository->saveApprovedHtml( $pageId, $html );
+			$this->htmlRepository->saveApprovedHtml( $page->getId(), $html );
 		}
 
 		return $this->newSuccessResponse();
 	}
 
-	private function getPage( int $pageId ): ?WikiPage {
-		return $this->wikiPageFactory->newFromID( $pageId );
+	private function getPageFromRevisionId( int $revisionId ): ?WikiPage {
+		$revision = $this->revisionLookup->getRevisionById( $revisionId );
+
+		if ( $revision === null ) {
+			return null;
+		}
+
+		return $this->wikiPageFactory->newFromTitle( $revision->getPage() );
+	}
+
+	private function revisionIsLatest( int $revisionId, WikiPage $page ): bool {
+		return $revisionId === $page->getRevisionRecord()?->getId();
 	}
 
 	public function newSuccessResponse(): Response {
@@ -62,12 +78,16 @@ class ApprovePageApi extends SimpleHandler {
 		return $this->getResponseFactory()->createHttpError( 404 );
 	}
 
+	public function newOutdatedRevisionResponse(): Response {
+		return $this->getResponseFactory()->createHttpError( 409 );
+	}
+
 	/**
 	 * @return array<string, array<string, mixed>>
 	 */
 	public function getParamSettings(): array {
 		return [
-			'pageId' => [
+			'revisionId' => [
 				self::PARAM_SOURCE => 'path',
 				ParamValidator::PARAM_TYPE => 'integer',
 				ParamValidator::PARAM_REQUIRED => true,

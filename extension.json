@@ -71,12 +71,12 @@
 
 	"RestRoutes": [
 		{
-			"path": "/page-approvals/v0/page/{pageId}/approve",
+			"path": "/page-approvals/v0/revision/{revisionId}/approve",
 			"method": [ "POST" ],
 			"factory": "ProfessionalWiki\\PageApprovals\\PageApprovals::newApprovePageApi"
 		},
 		{
-			"path": "/page-approvals/v0/page/{pageId}/unapprove",
+			"path": "/page-approvals/v0/revision/{revisionId}/unapprove",
 			"method": [ "POST" ],
 			"factory": "ProfessionalWiki\\PageApprovals\\PageApprovals::newUnapprovePageApi"
 		}

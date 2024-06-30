@@ -18,7 +18,7 @@ class PageHtmlRetrieverTest extends PageApprovalsIntegrationTest {
 		$retriever = $this->newPageHtmlRetriever();
 
 		$html = $retriever->getPageHtml(
-			$this->getIdOfExistingPage( 'Foo Bar', 'Lorem Ipsum' )
+			$this->createPageWithText( 'Lorem Ipsum' )->getId()
 		);
 
 		$this->assertSame( <<<EOT
@@ -36,11 +36,11 @@ EOT
 
 	public function testGetsLatestHtml(): void {
 		$retriever = $this->newPageHtmlRetriever();
-		$pageId = $this->getIdOfExistingPage( 'Foo Bar Baz' );
+		$page = $this->createPageWithText( 'Lorem Ipsum' );
 
-		$this->editPage( 'Foo Bar Baz', 'Dolor sit amet' );
+		$this->editPage( $page, 'Dolor sit amet' );
 
-		$html = $retriever->getPageHtml( $pageId );
+		$html = $retriever->getPageHtml( $page->getId() );
 
 		$this->assertSame( <<<EOT
 <p>Dolor sit amet
