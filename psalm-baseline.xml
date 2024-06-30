@@ -89,7 +89,6 @@
     </InvalidDocblockParamName>
     <MixedArgument>
       <code><![CDATA[$currentCategories]]></code>
-      <code><![CDATA[DB_PRIMARY]]></code>
     </MixedArgument>
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$currentCategories]]></code>
@@ -100,9 +99,6 @@
     <MixedAssignment>
       <code><![CDATA[$currentCategories]]></code>
     </MixedAssignment>
-    <PossiblyFalseArgument>
-      <code><![CDATA[$db]]></code>
-    </PossiblyFalseArgument>
     <PossiblyNullReference>
       <code><![CDATA[getId]]></code>
     </PossiblyNullReference>

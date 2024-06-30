@@ -3,24 +3,20 @@
 namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
 use MediaWiki\MediaWikiServices;
-use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproverRepository;
+use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\GetApproversWithCategories;
+use ProfessionalWiki\PageApprovals\PageApprovals;
 use SpecialPage;
-use PermissionsError;
 use LightnCandy\LightnCandy;
 use WebRequest;
 
 class SpecialApproverCategories extends SpecialPage {
 
-	/**
-	 * @var DatabaseApproverRepository
-	 */
-	private $databaseApproverRepository;
+	private ApproverRepository $approverRepository;
 
 	public function __construct() {
-		parent::__construct( 'ApproverCategories' );
-		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
-		$this->databaseApproverRepository = new DatabaseApproverRepository( $db );
+		parent::__construct( 'ApproverCategories', restriction: 'manage-approvers' );
+		$this->approverRepository = PageApprovals::getInstance()->getApproverRepository();
 	}
 
 	public function isListed(): bool {
@@ -28,11 +24,10 @@ class SpecialApproverCategories extends SpecialPage {
 	}
 
 	public function execute( $subPage ): void {
-		if ( !$this->isAdmin() ) {
-			throw new PermissionsError( 'sysop' );
-		}
+		$this->checkPermissions();
+		$this->checkReadOnly();
 
-		$approversWithCategories = new GetApproversWithCategories( $this->databaseApproverRepository );
+		$approversWithCategories = new GetApproversWithCategories( $this->approverRepository );
 		$approversCategories = $approversWithCategories->getApproversWithCategories();
 
 		$request = $this->getRequest();
@@ -90,7 +85,7 @@ class SpecialApproverCategories extends SpecialPage {
 			default:
 				return;
 		}
-		$this->databaseApproverRepository->setApproverCategories( $userId, $currentCategories );
+		$this->approverRepository->setApproverCategories( $userId, $currentCategories );
 	}
 
 	private function renderHtml( array $approversCategories ): void {

@@ -38,6 +38,18 @@
 		"PageApprovalsAlias": "i18n/Aliases/Aliases.php"
 	},
 
+	"AvailableRights": [
+		"manage-approvers"
+	],
+	"GroupPermissions": {
+		"*": {
+			"manage-approvers": false
+		},
+		"sysop": {
+			"manage-approvers": true
+		}
+	},
+
 	"Hooks": {
 		"OutputPageParserOutput": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onOutputPageParserOutput",
 		"LoadExtensionSchemaUpdates": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onLoadExtensionSchemaUpdates",
