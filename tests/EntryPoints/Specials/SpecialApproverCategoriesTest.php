@@ -4,18 +4,18 @@ namespace ProfessionalWiki\PageApprovals\Tests\Integration;
 
 use FauxRequest;
 use PermissionsError;
-use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialApproverCategories;
+use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialManageApprovers;
 use SpecialPageTestBase;
 use User;
 
 /**
  * @group Database
- * @covers \ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialApproverCategories
+ * @covers \ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialManageApprovers
  */
 class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 
-	protected function newSpecialPage(): SpecialApproverCategories {
-		return new SpecialApproverCategories();
+	protected function newSpecialPage(): SpecialManageApprovers {
+		return new SpecialManageApprovers();
 	}
 
 	public function testNonAdminCannotAccessPage() {
