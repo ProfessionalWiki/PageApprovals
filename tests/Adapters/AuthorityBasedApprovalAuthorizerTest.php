@@ -26,7 +26,7 @@ class AuthorityBasedApprovalAuthorizerTest extends PageApprovalsIntegrationTest 
 		$this->user = $this->getTestUser()->getUser();
 
 		$this->approvalAuthorizer = new AuthorityBasedApprovalAuthorizer(
-			$this->user,
+			$this->user->getId(),
 			$this->approverRepository
 		);
 	}

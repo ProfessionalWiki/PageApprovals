@@ -52,7 +52,7 @@ class PageApprovals {
 
 	private function newPageApprovalAuthorizer(): ApprovalAuthorizer {
 		return new AuthorityBasedApprovalAuthorizer(
-			RequestContext::getMain()->getUser(),
+			RequestContext::getMain()->getUser()->getId(),
 			$this->getApproverRepository()
 		);
 	}

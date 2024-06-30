@@ -14,14 +14,14 @@ use WikiPage;
 class AuthorityBasedApprovalAuthorizer implements ApprovalAuthorizer {
 
 	public function __construct(
-		private Authority $authority,
+		private int $userId,
 		private ApproverRepository $approverRepository
 	) {
 	}
 
 	public function canApprove( WikiPage $page ): bool {
 		$sharedCategories = array_intersect(
-			$this->approverRepository->getApproverCategories( $this->authority->getUser()->getId() ),
+			$this->approverRepository->getApproverCategories( $this->userId ),
 			$this->titleArrayObjectToStringArray( $page->getCategories() )
 		);
 
