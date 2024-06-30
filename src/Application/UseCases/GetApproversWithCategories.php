@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Application\UseCases;
 
 use MediaWiki\MediaWikiServices;
+use ProfessionalWiki\PageApprovals\Application\Approver;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 
 class GetApproversWithCategories {
@@ -15,7 +16,7 @@ class GetApproversWithCategories {
 	}
 
 	/**
-	 * @return array<array{username: string, userId: int, categories: string[]}>
+	 * @return array<Approver>
 	 */
 	public function getApproversWithCategories(): array {
 		$approversWithCategories = $this->approverRepository->getApproversWithCategories();
@@ -24,11 +25,11 @@ class GetApproversWithCategories {
 		$approvers = [];
 		foreach ( $approversWithCategories as $approver ) {
 			$user = $userFactory->newFromId( (int)$approver['userId'] );
-			$approvers[] = [
-				'username' => $user->getName(),
-				'userId' => $approver['userId'],
-				'categories' => $approver['categories']
-			];
+			$approvers[] = new Approver(
+				username: $user->getName(),
+				userId: $approver['userId'],
+				categories: $approver['categories']
+			);
 		}
 
 		return $approvers;

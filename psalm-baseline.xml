@@ -81,21 +81,6 @@
     </RedundantCastGivenDocblockType>
   </file>
   <file src="src/EntryPoints/Specials/SpecialManageApprovers.php">
-    <InvalidDocblockParamName>
-      <code><![CDATA[$approversCategories]]></code>
-    </InvalidDocblockParamName>
-    <MixedArgument>
-      <code><![CDATA[$currentCategories]]></code>
-    </MixedArgument>
-    <MixedArgumentTypeCoercion>
-      <code><![CDATA[$currentCategories]]></code>
-    </MixedArgumentTypeCoercion>
-    <MixedArrayAccess>
-      <code><![CDATA[$approver['username']]]></code>
-    </MixedArrayAccess>
-    <MixedAssignment>
-      <code><![CDATA[$currentCategories]]></code>
-    </MixedAssignment>
     <PossiblyNullReference>
       <code><![CDATA[getId]]></code>
     </PossiblyNullReference>

@@ -106,26 +106,6 @@ parameters:
 			path: src/EntryPoints/Specials/SpecialManageApprovers.php
 
 		-
-			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialManageApprovers\\:\\:handlePostRequest\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/EntryPoints/Specials/SpecialManageApprovers.php
-
-		-
-			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialManageApprovers\\:\\:processCategoryAction\\(\\) has parameter \\$currentCategories with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/EntryPoints/Specials/SpecialManageApprovers.php
-
-		-
-			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\Specials\\\\SpecialManageApprovers\\:\\:renderHtml\\(\\) has parameter \\$approversCategories with no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/EntryPoints/Specials/SpecialManageApprovers.php
-
-		-
-			message: "#^PHPDoc tag @param references unknown parameter\\: \\$approversCategories$#"
-			count: 1
-			path: src/EntryPoints/Specials/SpecialManageApprovers.php
-
-		-
 			message: "#^Parameter \\#1 \\$php of static method LightnCandy\\\\LightnCandy\\:\\:prepare\\(\\) expects string, string\\|false given\\.$#"
 			count: 1
 			path: src/EntryPoints/Specials/SpecialManageApprovers.php
