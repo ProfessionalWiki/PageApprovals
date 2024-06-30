@@ -11,5 +11,7 @@
 	"pageapprovals-status-approved": "This page is approved.",
 	"pageapprovals-status-not-approved": "This page is not approved.",
 	"pageapprovals-approve-button": "Approve Page",
-	"pageapprovals-unapprove-button": "Unapprove Page"
+	"pageapprovals-unapprove-button": "Unapprove Page",
+	"right-manage-approvers": "Manage approvers",
+	"action-manage-approvers": "manage approvers"
 }
