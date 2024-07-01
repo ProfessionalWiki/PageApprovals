@@ -77,6 +77,9 @@
     </PossiblyInvalidMethodCall>
   </file>
   <file src="src/Application/UseCases/GetApproversWithCategories.php">
+    <MixedArgument>
+      <code><![CDATA[NS_CATEGORY]]></code>
+    </MixedArgument>
     <RedundantCastGivenDocblockType>
       <code><![CDATA[(int)$approver['userId']]]></code>
     </RedundantCastGivenDocblockType>
