@@ -8,7 +8,7 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Revision\RevisionLookup;
-use MediaWiki\User\UserIdentityLookup;
+use MediaWiki\User\UserFactory;
 use Message;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
@@ -23,7 +23,7 @@ class UnapprovePageApi extends SimpleHandler {
 		private ApprovalLog	$approvalLog,
 		private WikiPageFactory $wikiPageFactory,
 		private RevisionLookup $revisionLookup,
-		private UserIdentityLookup $userIdentityLookup
+		private UserFactory $userFactory
 	) {
 	}
 
@@ -78,7 +78,8 @@ class UnapprovePageApi extends SimpleHandler {
 			return null;
 		}
 
-		return $this->userIdentityLookup->getUserIdentityByUserId( $userId )?->getName();
+		$user = $this->userFactory->newFromId( $userId );
+		return $user->getRealName() !== '' ? $user->getRealName() : $user->getName();
 	}
 
 	public function newAuthorizationFailedResponse(): Response {
