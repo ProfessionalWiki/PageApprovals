@@ -131,7 +131,10 @@ class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest 
 
 		$this->assertCount( 1, $pendingApprovals );
 		$this->assertSame( $page->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
-		$this->assertEqualsCanonicalizing( $pageCategories, $pendingApprovals[0]->categories );
+		$this->assertEqualsCanonicalizing(
+			[ 'Foo_Bar', 'Bar_baz' ],
+			$pendingApprovals[0]->categories
+		);
 	}
 
 }
