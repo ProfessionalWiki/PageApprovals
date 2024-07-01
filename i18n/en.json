@@ -13,6 +13,8 @@
 	"pageapprovals-unapprove-button": "Unapprove Page",
 	"right-manage-approvers": "Manage approvers",
 	"action-manage-approvers": "manage approvers",
+	"pageapprovals-approved": "Page approved",
+	"pageapprovals-unapproved": "Page unapproved",
 	"pageapprovals-authorization-failed": "You are not authorized to perform this action.",
 	"pageapprovals-invalid-page": "Invalid page.",
 	"pageapprovals-outdated-revision": "The revision of this page is outdated."

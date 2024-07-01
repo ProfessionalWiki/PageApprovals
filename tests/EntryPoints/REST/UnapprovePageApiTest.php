@@ -43,13 +43,10 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 		$state = $this->approvalLog->getApprovalState( $page->getId() );
 
 		$this->assertSame( 200, $response->getStatusCode() );
-		$this->assertSame(
-			[
-				'approvalTimestamp' => $state->approvalTimestamp,
-				'approver' => $user->getUser()->getName(),
-			],
-			json_decode( $response->getBody()->getContents(), true )
-		);
+
+		$json = json_decode( $response->getBody()->getContents(), true );
+		$this->assertSame( $state->approvalTimestamp, $json['approvalTimestamp'] );
+		$this->assertSame( $user->getUser()->getName(), $json['approver'] );
 	}
 
 	private function newUnapprovePageApi(): UnapprovePageApi {
