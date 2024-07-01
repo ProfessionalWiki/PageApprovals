@@ -94,7 +94,7 @@ class ApprovePageApi extends SimpleHandler {
 		return $this->getResponseFactory()->createHttpError(
 			403,
 			[
-				'message' => ( new Message( 'pageapprovals-authorization-failed' ) )->plain()
+				'message' => ( new Message( 'pageapprovals-approve-authorization-failed' ) )->plain()
 			]
 		);
 	}
@@ -103,7 +103,7 @@ class ApprovePageApi extends SimpleHandler {
 		return $this->getResponseFactory()->createHttpError(
 			404,
 			[
-				'message' => ( new Message( 'pageapprovals-invalid-page' ) )->plain()
+				'message' => ( new Message( 'pageapprovals-approve-invalid-page' ) )->plain()
 			]
 		);
 	}
@@ -112,7 +112,7 @@ class ApprovePageApi extends SimpleHandler {
 		return $this->getResponseFactory()->createHttpError(
 			409,
 			[
-				'message' => ( new Message( 'pageapprovals-outdated-revision' ) )->plain()
+				'message' => ( new Message( 'pageapprovals-approve-outdated-revision' ) )->plain()
 			]
 		);
 	}
