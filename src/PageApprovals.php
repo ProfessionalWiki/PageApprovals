@@ -8,17 +8,20 @@ use MediaWiki\MediaWikiServices;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproverRepository;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseHtmlRepository;
+use ProfessionalWiki\PageApprovals\Adapters\DatabasePendingApprovalRetriever;
 use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
+use ProfessionalWiki\PageApprovals\Application\PendingApprovalRetriever;
 use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\ApprovalUiQuery;
 use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\UiPresenter;
 use ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
 use ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialPendingApprovals;
 use RequestContext;
 use TemplateParser;
 use Wikimedia\Rdbms\IDatabase;
@@ -104,6 +107,20 @@ class PageApprovals {
 		return new ApprovalUiQuery(
 			approvalLog: $this->getApprovalLog(),
 			approvalAuthorizer: $this->newPageApprovalAuthorizer()
+		);
+	}
+
+	public static function newSpecialPendingApprovals(): SpecialPendingApprovals {
+		return new SpecialPendingApprovals(
+			self::getInstance()->newPendingApprovalRetriever(),
+			MediaWikiServices::getInstance()->getLinkRenderer()
+		);
+	}
+
+	private function newPendingApprovalRetriever(): PendingApprovalRetriever {
+		return new DatabasePendingApprovalRetriever(
+			$this->getDatabase(),
+			$this->getApproverRepository()
 		);
 	}
 
