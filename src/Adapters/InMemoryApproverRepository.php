@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
+use Title;
 
 class InMemoryApproverRepository implements ApproverRepository {
 
@@ -31,7 +32,14 @@ class InMemoryApproverRepository implements ApproverRepository {
 	 * @param string[] $categoryNames
 	 */
 	public function setApproverCategories( int $userId, array $categoryNames ): void {
-		$this->approversCategories[$userId] = $categoryNames;
+		$this->approversCategories[$userId] = array_map(
+			fn( string $category ) => $this->normalizeCategoryTitle( $category ),
+			$categoryNames
+		);
+	}
+
+	private function normalizeCategoryTitle( string $title ): string {
+		return Title::newFromText( $title, NS_CATEGORY )?->getDBkey() ?? '';
 	}
 
 }

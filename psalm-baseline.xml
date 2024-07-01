@@ -71,6 +71,9 @@
     <InvalidReturnType>
       <code><![CDATA[string[]]]></code>
     </InvalidReturnType>
+    <MixedArgument>
+      <code><![CDATA[NS_CATEGORY]]></code>
+    </MixedArgument>
   </file>
   <file src="src/Adapters/PageHtmlRetriever.php">
     <PossiblyInvalidMethodCall>
