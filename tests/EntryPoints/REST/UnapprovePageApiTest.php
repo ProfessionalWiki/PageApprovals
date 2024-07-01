@@ -20,21 +20,45 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 	use HandlerTestTrait;
 	use MockAuthorityTrait;
 
-	public function testUnapprovePageHappyPath(): void {
-		$response = $this->executeHandler(
-			$this->newUnapprovePageApi(),
-			$this->createValidRequestData( $this->createPageWithCategories()->getRevisionRecord()->getId() ),
-		);
+	private InMemoryApprovalLog $approvalLog;
 
-		$this->assertSame( 204, $response->getStatusCode() );
+	protected function setUp(): void {
+		parent::setUp();
+
+		$this->approvalLog = new InMemoryApprovalLog();
 	}
 
-	private function newUnapprovePageApi( ?ApprovalLog $approvalLog = null ): UnapprovePageApi {
+	public function testUnapprovePageHappyPath(): void {
+		$user = $this->getTestUser();
+		$page = $this->createPageWithCategories();
+
+		$this->approvalLog->approvePage( $page->getId(), 1 );
+
+		$response = $this->executeHandler(
+			$this->newUnapprovePageApi(),
+			$this->createValidRequestData( $page->getRevisionRecord()->getId() ),
+			authority: $user->getAuthority()
+		);
+
+		$state = $this->approvalLog->getApprovalState( $page->getId() );
+
+		$this->assertSame( 200, $response->getStatusCode() );
+		$this->assertSame(
+			[
+				'approvalTimestamp' => $state->approvalTimestamp,
+				'approver' => $user->getUser()->getName(),
+			],
+			json_decode( $response->getBody()->getContents(), true )
+		);
+	}
+
+	private function newUnapprovePageApi(): UnapprovePageApi {
 		return new UnapprovePageApi(
 			new SucceedingApprovalAuthorizer(),
-			$approvalLog ?? new InMemoryApprovalLog(),
+			$this->approvalLog,
 			$this->getServiceContainer()->getWikiPageFactory(),
-			$this->getServiceContainer()->getRevisionLookup()
+			$this->getServiceContainer()->getRevisionLookup(),
+			$this->getServiceContainer()->getUserIdentityLookup()
 		);
 	}
 
@@ -64,7 +88,8 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 			new FailingApprovalAuthorizer(),
 			$approvalLog ?? new InMemoryApprovalLog(),
 			$this->getServiceContainer()->getWikiPageFactory(),
-			$this->getServiceContainer()->getRevisionLookup()
+			$this->getServiceContainer()->getRevisionLookup(),
+			$this->getServiceContainer()->getUserIdentityLookup()
 		);
 	}
 
@@ -78,37 +103,35 @@ class UnapprovePageApiTest extends PageApprovalsIntegrationTest {
 	}
 
 	public function testPageIsUnapproved(): void {
-		$approvalLog = new InMemoryApprovalLog();
 		$page = $this->createPageWithCategories();
 
-		$approvalLog->approvePage( $page->getId(), 1 );
+		$this->approvalLog->approvePage( $page->getId(), 1 );
 
 		$this->executeHandler(
-			$this->newUnapprovePageApi( $approvalLog ),
+			$this->newUnapprovePageApi(),
 			$this->createValidRequestData( $page->getRevisionRecord()->getId() ),
 		);
 
 		$this->assertFalse(
-			$approvalLog->getApprovalState( $page->getId() )->isApproved
+			$this->approvalLog->getApprovalState( $page->getId() )->isApproved
 		);
 	}
 
 	public function testAPIUserIsInApprovalState(): void {
-		$approvalLog = new InMemoryApprovalLog();
 		$page = $this->createPageWithCategories();
 		$user = $this->mockRegisteredUltimateAuthority();
 
-		$approvalLog->approvePage( $page->getId(), 1 );
+		$this->approvalLog->approvePage( $page->getId(), 1 );
 
 		$this->executeHandler(
-			$this->newUnapprovePageApi( $approvalLog ),
+			$this->newUnapprovePageApi(),
 			$this->createValidRequestData( $page->getRevisionRecord()->getId() ),
 			authority: $user
 		);
 
 		$this->assertSame(
 			$user->getUser()->getId(),
-			$approvalLog->getApprovalState( $page->getId() )->approverId
+			$this->approvalLog->getApprovalState( $page->getId() )->approverId
 		);
 	}
 

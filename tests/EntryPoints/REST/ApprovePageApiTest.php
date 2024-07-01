@@ -33,12 +33,24 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 	}
 
 	public function testApprovePageHappyPath(): void {
+		$user = $this->getTestUser();
+		$page = $this->createPageWithCategories()->getRevisionRecord();
+
 		$response = $this->executeHandler(
 			$this->newApprovePageApi(),
-			$this->createValidRequestData( $this->createPageWithCategories()->getRevisionRecord()->getId() ),
+			$this->createValidRequestData( $page->getId() ),
+			authority: $user->getAuthority()
 		);
+		$state = $this->approvalLog->getApprovalState( $page->getId() );
 
-		$this->assertSame( 204, $response->getStatusCode() );
+		$this->assertSame( 200, $response->getStatusCode() );
+		$this->assertSame(
+			[
+				'approvalTimestamp' => $state->approvalTimestamp,
+				'approver' => $user->getUser()->getName(),
+			],
+			json_decode( $response->getBody()->getContents(), true )
+		);
 	}
 
 	private function newApprovePageApi(): ApprovePageApi {
@@ -48,7 +60,8 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->htmlRepository,
 			$this->newPageHtmlRetriever(),
 			$this->getServiceContainer()->getWikiPageFactory(),
-			$this->getServiceContainer()->getRevisionLookup()
+			$this->getServiceContainer()->getRevisionLookup(),
+			$this->getServiceContainer()->getUserIdentityLookup()
 		);
 	}
 
@@ -84,7 +97,8 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->htmlRepository,
 			$this->newPageHtmlRetriever(),
 			$this->getServiceContainer()->getWikiPageFactory(),
-			$this->getServiceContainer()->getRevisionLookup()
+			$this->getServiceContainer()->getRevisionLookup(),
+			$this->getServiceContainer()->getUserIdentityLookup()
 		);
 	}
 

@@ -39,7 +39,8 @@ class PageApprovals {
 			self::getInstance()->getHtmlRepository(),
 			self::getInstance()->getPageHtmlRetriever(),
 			MediaWikiServices::getInstance()->getWikiPageFactory(),
-			MediaWikiServices::getInstance()->getRevisionLookup()
+			MediaWikiServices::getInstance()->getRevisionLookup(),
+			MediaWikiServices::getInstance()->getUserIdentityLookup()
 		);
 	}
 
@@ -48,7 +49,8 @@ class PageApprovals {
 			self::getInstance()->newPageApprovalAuthorizer(),
 			self::getInstance()->getApprovalLog(),
 			MediaWikiServices::getInstance()->getWikiPageFactory(),
-			MediaWikiServices::getInstance()->getRevisionLookup()
+			MediaWikiServices::getInstance()->getRevisionLookup(),
+			MediaWikiServices::getInstance()->getUserIdentityLookup()
 		);
 	}
 
