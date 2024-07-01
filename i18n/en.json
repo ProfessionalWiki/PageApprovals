@@ -20,5 +20,10 @@
 	"pageapprovals-approve-invalid-page": "Approval failed. This page does not exist.",
 	"pageapprovals-unapprove-invalid-page": "Unapproval failed. This page does not exist.",
 	"pageapprovals-approve-outdated-revision": "Approval failed. You can only approve the latest version of a page.",
-	"pageapprovals-unapprove-outdated-revision": "Unapproval failed. You can only unapprove the latest version of a page."
+	"pageapprovals-unapprove-outdated-revision": "Unapproval failed. You can only unapprove the latest version of a page.",
+	"pendingapprovals": "Pending Approvals",
+	"pageapprovals-pending-approvals-page": "Page",
+	"pageapprovals-pending-approvals-categories": "Categories",
+	"pageapprovals-pending-approvals-last-edit-time": "Last Edited On",
+	"pageapprovals-pending-approvals-last-edit-by": "Last Edited By"
 }

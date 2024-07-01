@@ -31,6 +31,10 @@
 	"SpecialPages": {
 		"ManageApprovers": {
 			"class": "ProfessionalWiki\\PageApprovals\\EntryPoints\\Specials\\SpecialManageApprovers"
+		},
+		"PendingApprovals": {
+			"class": "ProfessionalWiki\\PageApprovals\\EntryPoints\\Specials\\SpecialPendingApprovals",
+			"factory": "ProfessionalWiki\\PageApprovals\\PageApprovals::newSpecialPendingApprovals"
 		}
 	},
 
