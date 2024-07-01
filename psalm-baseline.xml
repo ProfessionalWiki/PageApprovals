@@ -19,6 +19,7 @@
     <MixedArgument>
       <code><![CDATA[$row->ac_categories]]></code>
       <code><![CDATA[$row->categories]]></code>
+      <code><![CDATA[NS_CATEGORY]]></code>
     </MixedArgument>
     <MixedReturnTypeCoercion>
       <code><![CDATA[$approvers]]></code>
@@ -69,6 +70,9 @@
     <InvalidReturnType>
       <code><![CDATA[string[]]]></code>
     </InvalidReturnType>
+    <MixedArgument>
+      <code><![CDATA[NS_CATEGORY]]></code>
+    </MixedArgument>
   </file>
   <file src="src/Adapters/PageHtmlRetriever.php">
     <PossiblyInvalidMethodCall>
@@ -76,6 +80,9 @@
     </PossiblyInvalidMethodCall>
   </file>
   <file src="src/Application/UseCases/GetApproversWithCategories.php">
+    <MixedArgument>
+      <code><![CDATA[NS_CATEGORY]]></code>
+    </MixedArgument>
     <RedundantCastGivenDocblockType>
       <code><![CDATA[(int)$approver['userId']]]></code>
     </RedundantCastGivenDocblockType>

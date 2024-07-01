@@ -119,4 +119,22 @@ class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest 
 		);
 	}
 
+	public function testReturnsCategoriesWithSpaces(): void {
+		$approverId = 1;
+		$approverCategories = [ 'Foo Bar', 'Bar baz' ];
+		$this->approverRepository->setApproverCategories( $approverId, $approverCategories );
+
+		$pageCategories = [ 'Foo Bar', 'Bar baz' ];
+		$page = $this->createPage( false, $pageCategories );
+
+		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
+
+		$this->assertCount( 1, $pendingApprovals );
+		$this->assertSame( $page->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
+		$this->assertEqualsCanonicalizing(
+			[ 'Foo_Bar', 'Bar_baz' ],
+			$pendingApprovals[0]->categories
+		);
+	}
+
 }
