@@ -69,6 +69,7 @@ class UnapprovePageApi extends SimpleHandler {
 		return $this->getResponseFactory()->createJson( [
 			'approvalTimestamp' => $state->approvalTimestamp,
 			'approver' => $this->getUserNameFromUserId( $state->approverId ),
+			'message' => ( new Message( 'pageapprovals-unapproved' ) )->plain()
 		] );
 	}
 
