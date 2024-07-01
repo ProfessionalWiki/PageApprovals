@@ -20,6 +20,7 @@
     <MixedArgument>
       <code><![CDATA[$row->ac_categories]]></code>
       <code><![CDATA[$row->categories]]></code>
+      <code><![CDATA[NS_CATEGORY]]></code>
     </MixedArgument>
     <MixedReturnTypeCoercion>
       <code><![CDATA[$approvers]]></code>
