@@ -40,7 +40,7 @@ class PageApprovals {
 			self::getInstance()->getPageHtmlRetriever(),
 			MediaWikiServices::getInstance()->getWikiPageFactory(),
 			MediaWikiServices::getInstance()->getRevisionLookup(),
-			MediaWikiServices::getInstance()->getUserIdentityLookup()
+			MediaWikiServices::getInstance()->getUserFactory()
 		);
 	}
 
@@ -50,7 +50,7 @@ class PageApprovals {
 			self::getInstance()->getApprovalLog(),
 			MediaWikiServices::getInstance()->getWikiPageFactory(),
 			MediaWikiServices::getInstance()->getRevisionLookup(),
-			MediaWikiServices::getInstance()->getUserIdentityLookup()
+			MediaWikiServices::getInstance()->getUserFactory()
 		);
 	}
 

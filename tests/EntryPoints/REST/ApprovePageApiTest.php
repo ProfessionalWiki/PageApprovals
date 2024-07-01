@@ -47,7 +47,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 
 		$json = json_decode( $response->getBody()->getContents(), true );
 		$this->assertSame( $state->approvalTimestamp, $json['approvalTimestamp'] );
-		$this->assertSame( $user->getUser()->getName(), $json['approver'] );
+		$this->assertSame( $user->getUser()->getRealName(), $json['approver'] );
 	}
 
 	private function newApprovePageApi(): ApprovePageApi {
@@ -58,7 +58,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->newPageHtmlRetriever(),
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getRevisionLookup(),
-			$this->getServiceContainer()->getUserIdentityLookup()
+			$this->getServiceContainer()->getUserFactory()
 		);
 	}
 
@@ -95,7 +95,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->newPageHtmlRetriever(),
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getRevisionLookup(),
-			$this->getServiceContainer()->getUserIdentityLookup()
+			$this->getServiceContainer()->getUserFactory()
 		);
 	}
 
