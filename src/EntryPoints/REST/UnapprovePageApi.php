@@ -8,8 +8,10 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\User\UserIdentityLookup;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
+use ProfessionalWiki\PageApprovals\Application\ApprovalState;
 use Wikimedia\ParamValidator\ParamValidator;
 use WikiPage;
 
@@ -19,7 +21,8 @@ class UnapprovePageApi extends SimpleHandler {
 		private ApprovalAuthorizer $authorizer,
 		private ApprovalLog	$approvalLog,
 		private WikiPageFactory $wikiPageFactory,
-		private RevisionLookup $revisionLookup
+		private RevisionLookup $revisionLookup,
+		private UserIdentityLookup $userIdentityLookup
 	) {
 	}
 
@@ -40,7 +43,7 @@ class UnapprovePageApi extends SimpleHandler {
 
 		$this->approvalLog->unapprovePage( $page->getId(), $this->getAuthority()->getUser()->getId() );
 
-		return $this->newSuccessResponse();
+		return $this->newSuccessResponse( $this->approvalLog->getApprovalState( $page->getId() ) );
 	}
 
 	private function getPageFromRevisionId( int $revisionId ): ?WikiPage {
@@ -57,8 +60,23 @@ class UnapprovePageApi extends SimpleHandler {
 		return $revisionId === $page->getRevisionRecord()?->getId();
 	}
 
-	public function newSuccessResponse(): Response {
-		return $this->getResponseFactory()->createNoContent();
+	public function newSuccessResponse( ?ApprovalState $state ): Response {
+		if ( $state === null ) {
+			return $this->getResponseFactory()->createNoContent();
+		}
+
+		return $this->getResponseFactory()->createJson( [
+			'approvalTimestamp' => $state->approvalTimestamp,
+			'approver' => $this->getUserNameFromUserId( $state->approverId ),
+		] );
+	}
+
+	private function getUserNameFromUserId( ?int $userId ): ?string {
+		if ( $userId === null ) {
+			return null;
+		}
+
+		return $this->userIdentityLookup->getUserIdentityByUserId( $userId )?->getName();
 	}
 
 	public function newAuthorizationFailedResponse(): Response {
