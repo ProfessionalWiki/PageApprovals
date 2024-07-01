@@ -9,6 +9,7 @@ use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\UserIdentityLookup;
+use Message;
 use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
@@ -89,15 +90,30 @@ class ApprovePageApi extends SimpleHandler {
 	}
 
 	public function newAuthorizationFailedResponse(): Response {
-		return $this->getResponseFactory()->createHttpError( 403 );
+		return $this->getResponseFactory()->createHttpError(
+			403,
+			[
+				'message' => ( new Message( 'pageapprovals-authorization-failed' ) )->plain()
+			]
+		);
 	}
 
 	public function newInvalidPageResponse(): Response {
-		return $this->getResponseFactory()->createHttpError( 404 );
+		return $this->getResponseFactory()->createHttpError(
+			404,
+			[
+				'message' => ( new Message( 'pageapprovals-invalid-page' ) )->plain()
+			]
+		);
 	}
 
 	public function newOutdatedRevisionResponse(): Response {
-		return $this->getResponseFactory()->createHttpError( 409 );
+		return $this->getResponseFactory()->createHttpError(
+			409,
+			[
+				'message' => ( new Message( 'pageapprovals-outdated-revision' ) )->plain()
+			]
+		);
 	}
 
 	/**
