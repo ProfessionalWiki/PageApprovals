@@ -1,0 +1,20 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client-es6",
+		"wikimedia/mediawiki",
+		"wikimedia/jquery"
+	],
+	"env": {
+		"browser": true
+	},
+	"rules": {
+		"no-jquery/no-parse-html-literal": "warn",
+		"no-jquery/no-global-selector": "warn",
+		"mediawiki/msg-doc": "warn",
+		"es-x/no-async-functions": "warn",
+		"es-x/no-destructuring": "warn",
+		"no-console": "warn",
+		"no-jquery/no-class-state": "warn"
+	}
+}

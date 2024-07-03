@@ -28,3 +28,6 @@ psalm:
 
 psalm-baseline:
 	vendor/bin/psalm --config=psalm.xml --set-baseline=psalm-baseline.xml
+
+lint-docker:
+	docker run -it --rm -v "$(CURDIR)":/home/node/app -w /home/node/app -u node node:20 npm install && npm run test

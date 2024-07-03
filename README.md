@@ -70,6 +70,7 @@ You can use the `Makefile` by running make commands in the `PageApprovals` direc
 * `make phpunit --filter FooBar`: run only PHPUnit tests with FooBar in their name
 * `make phpcs`: Run all style checks
 * `make cs`: Run all style checks and static analysis
+* `make lint-docker`: Run all JavaScript and CSS linting
 
 ### Updating Baseline Files
 

@@ -267,3 +267,19 @@ jobs:
         run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
 
       - run: vendor/bin/phpcs -p -s
+
+  linting:
+    name: "Linting"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          echo "::remove-matcher owner=eslint-compact::"
+          echo "::remove-matcher owner=eslint-stylish::"
+      - run: npm install
+      - run: npm run test
