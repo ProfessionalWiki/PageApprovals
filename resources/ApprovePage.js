@@ -7,9 +7,9 @@ const sendApprovalRequest = ( approve ) => {
 		.then( ( data ) => {
 			handleApprovalResponse( approve, data );
 		} )
-		.catch( error => {
+		.catch( ( error, data ) => {
 			console.error( 'API request failed:', error );
-			mw.notify( `API request failed: ${ error }`, { type: 'error' } );
+			mw.notify( data.xhr.responseJSON.message || 'API request failed: ${ error }', { type: 'error' } );
 		} );
 };
 
