@@ -40,6 +40,8 @@ class SpecialManageApprovers extends SpecialPage {
 		}
 
 		$this->renderHtml( $approversCategories );
+
+		$this->getOutput()->addModuleStyles( 'ext.pageApprovals.manageApprovers.styles' );
 	}
 
 	private function isAdmin(): bool {

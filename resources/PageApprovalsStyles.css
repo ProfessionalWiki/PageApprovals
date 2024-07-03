@@ -1,3 +1,102 @@
+.page-approval-container {
+	position: absolute;
+	top: -55px;
+	right: 0;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+}
+
+.tooltip {
+	visibility: hidden;
+	position: absolute;
+}
+
+.approval-status-badge {
+	display: flex;
+	align-items: center;
+	padding: 4px 15px;
+	border-radius: 20px;
+	font-weight: bold;
+	font-size: 12px;
+	cursor: pointer;
+	position: relative;
+}
+
+.approved-badge {
+	color: #0f7958;
+}
+
+.approved-badge {
+	background-color: rgba(209, 249, 216, 0.75);
+	padding: 5px 30px;
+}
+
+.unapproved-badge {
+	background-color: lightgray;
+	color: black;
+	padding: 5px 23px;
+}
+
+.approved-badge:hover {
+	background-color: #bce0c2;
+}
+
+.status-icon, .checkmark-icon, .unapprove-icon {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.status-icon {
+	width: 22px;
+	height: 22px;
+	margin-right: 5px;
+}
+
+.approved-badge .status-icon {
+	background-image: url('Icons/approved-icon.svg');
+	margin-right: 10px;
+}
+
+.unapproved-badge .status-icon {
+	background-image: url('Icons/not-approved-icon.svg');
+}
+
+.checkmark-icon {
+	width: 24px;
+	height: 24px;
+	background-image: url('Icons/checkmark.svg');
+}
+
+#unapproveButton .unapprove-icon {
+	width: 20px;
+	height: 20px;
+	background-image: url('Icons/unapprove-icon.svg');
+}
+
+.approver-details {
+	font-size: 12px;
+}
+
+.page-approval-text-muted {
+	color: gray;
+	display: inline-block;
+	width: 110px;
+	text-align: center;
+}
+
+.page-approval-text-muted::first-letter {
+	text-transform: uppercase;
+}
+
+.approved-status-text {
+	user-select: none;
+}
+
+.display-none {
+	display: none !important;
+}
 
 .tooltip {
 	position: absolute;
@@ -73,3 +172,190 @@
 	color: #dc3545;
 }
 
+.form-container {
+	text-align: left;
+	max-width: 650px;
+	background-color: #f2f2f2;
+}
+
+input[type="text"] {
+	padding: 6px;
+	margin-right: 10px;
+	width: 150px;
+	height: 20px;
+	border: none;
+	border-radius: 5px;
+}
+
+button {
+	padding: 6px 10px;
+	cursor: pointer;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+}
+
+button:hover {
+	background-color: #45a049;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th, td {
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+.approval-delete-btn {
+	margin-left: 10px;
+	background-color: transparent;
+	color: red;
+}
+
+.approval-delete-btn:hover {
+	background-color: rgba(255, 0, 0, 0.78);
+	color: white
+}
+
+.category-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 3px;
+}
+
+.category-entry {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #f9f9f9;
+	padding: 5px;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+.category-name {
+	font-weight: bold;
+	padding-left: 15px;
+}
+
+.add-button, .add-approver-button {
+	margin-top: 10px;
+}
+
+.add-approver-form {
+	padding: 15px;
+	background-color: #f8f8f8;
+	border: 1px solid #e7e7e7;
+	border-radius: 8px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.page-approval-container {
+	position: absolute;
+	top: -55px;
+	right: 0;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+}
+
+.tooltip {
+	visibility: hidden;
+	position: absolute;
+}
+
+.approval-status-badge {
+	display: flex;
+	align-items: center;
+	padding: 4px 15px;
+	border-radius: 20px;
+	font-weight: bold;
+	font-size: 12px;
+	cursor: pointer;
+	position: relative;
+}
+
+.approved-badge {
+	color: #0f7958;
+}
+
+.approved-badge {
+	background-color: rgba(209, 249, 216, 0.75);
+	padding: 5px 30px;
+}
+
+.unapproved-badge {
+	background-color: lightgray;
+	color: black;
+	padding: 5px 23px;
+}
+
+.approved-badge:hover {
+	background-color: #bce0c2;
+}
+
+.status-icon, .checkmark-icon, .unapprove-icon {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.status-icon {
+	width: 22px;
+	height: 22px;
+	margin-right: 5px;
+}
+
+.approved-badge .status-icon {
+	background-image: url('Icons/approved-icon.svg');
+	margin-right: 10px;
+}
+
+.unapproved-badge .status-icon {
+	background-image: url('Icons/not-approved-icon.svg');
+}
+
+.checkmark-icon {
+	width: 24px;
+	height: 24px;
+	background-image: url('Icons/checkmark.svg');
+}
+
+#unapproveButton .unapprove-icon {
+	width: 20px;
+	height: 20px;
+	background-image: url('Icons/unapprove-icon.svg');
+}
+
+.approver-details {
+	font-size: 12px;
+}
+
+.page-approval-text-muted {
+	color: gray;
+	display: inline-block;
+	width: 110px;
+	text-align: center;
+}
+
+.page-approval-text-muted::first-letter {
+	text-transform: uppercase;
+}
+
+.approved-status-text {
+	user-select: none;
+}
+
+.display-none {
+	display: none !important;
+}

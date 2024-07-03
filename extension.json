@@ -69,15 +69,14 @@
 	},
 
 	"ResourceModules": {
-		"ext.pageApprovals.resources": {
-			"scripts": [
-				"ApprovePage.js"
-			],
+		"ext.pageApprovals.styles": {
 			"styles": [
 				"PageApprovalsStyles.css"
-			],
-			"images": [
-				"templates/Icons/*.svg"
+			]
+		},
+		"ext.pageApprovals.scripts": {
+			"scripts": [
+				"ApprovePage.js"
 			],
 			"dependencies": [
 				"moment"
@@ -85,6 +84,11 @@
 			"messages": [
 				"pageapprovals-status-approved",
 				"pageapprovals-status-not-approved"
+			]
+		},
+		"ext.pageApprovals.manageApprovers.styles": {
+			"styles": [
+				"ManageApprovers.css"
 			]
 		}
 	},
