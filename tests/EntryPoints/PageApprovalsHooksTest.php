@@ -32,7 +32,7 @@ class PageApprovalsHooksTest extends PageApprovalsIntegrationTest {
 		PageApprovalsHooks::onOutputPageBeforeHTML( $out );
 
 		$this->assertStringContainsString(
-			'page-approval-status',
+			'page-approval-container',
 			$out->getHTML(),
 			'The page approval status should be displayed.'
 		);

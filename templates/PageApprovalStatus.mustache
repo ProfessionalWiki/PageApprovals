@@ -1,31 +1,33 @@
 <div class="page-approval-container">
-	<div class="approval-status-badge {{#isPageApproved}}approved-badge{{/isPageApproved}}{{^isPageApproved}}not-approved-badge{{/isPageApproved}}">
+	<div class="approval-status-badge {{#isPageApproved}}approved-badge{{/isPageApproved}}{{^isPageApproved}}unapproved-badge{{/isPageApproved}}">
 		<div class="status-icon"></div>
-		<div class="approved-status-text {{^isPageApproved}}d-none{{/isPageApproved}}">APPROVED</div>
-		<div class="approved-status-text {{#isPageApproved}}d-none{{/isPageApproved}}">Not Approved</div>
+		<div class="approved-status-text {{^isPageApproved}}display-none{{/isPageApproved}}">APPROVED</div>
+		<div class="approved-status-text {{#isPageApproved}}display-none{{/isPageApproved}}">Not Approved</div>
 		{{#canApprove}}
-			<div class="approval-dropdown">
-				<button id="unapproveButton" class="dropdown-item {{^isPageApproved}}d-none{{/isPageApproved}}">
-					<span class="icon"></span>
+			<div class="approval-dropdown display-none">
+				<button id="unapproveButton" class="dropdown-item {{^isPageApproved}}display-none{{/isPageApproved}}">
+					<span class="unapprove-icon"></span>
 					{{unapproveButtonText}}
 				</button>
-				<button id="approveButton" class="dropdown-item {{#isPageApproved}}d-none{{/isPageApproved}}">
-					<span>&#10003;</span>
+				<button id="approveButton" class="dropdown-item {{#isPageApproved}}display-none{{/isPageApproved}}">
+					<span class="checkmark-icon"></span>
 					{{approveButtonText}}
 				</button>
 			</div>
 		{{/canApprove}}
-		<div class="tooltip {{^isPageApproved}}d-none{{/isPageApproved}}">
-			<small class="approver-details {{^isPageApproved}}d-none{{/isPageApproved}}">
+		<div class="tooltip {{^isPageApproved}}display-none{{/isPageApproved}}">
+			<small class="approver-details {{^isPageApproved}}display-none{{/isPageApproved}}">
 				<span class="approver-name">
-					{{approverRealName}}
-				</span> approved page <span class="convert-timestamp" data-timestamp="{{approvalTimestamp}}">Loading...</span>
+					{{approverUserName}}
+				</span> approved page
+				<span class="convert-timestamp" data-timestamp="{{approvalTimestamp}}">Loading...</span>
 			</small>
 		</div>
 	</div>
-	<div class="approver-details {{^isPageApproved}}d-none{{/isPageApproved}}">
+	<div class="approver-details {{^isPageApproved}}display-none{{/isPageApproved}}">
 		<small class="convert-timestamp page-approval-text-muted" data-timestamp="{{approvalTimestamp}}">
-			Loading... </small>
+			Loading...
+		</small>
 	</div>
 </div>
 
@@ -34,9 +36,14 @@
 		position: absolute;
 		top: -55px;
 		right: 0;
-		z-index: 1000;
+		z-index: 1;
 		display: flex;
 		align-items: center;
+	}
+
+	.tooltip {
+		visibility: hidden;
+		position: absolute;
 	}
 
 	.approval-status-badge {
@@ -50,24 +57,26 @@
 		position: relative;
 	}
 
-	.approved-badge, .not-approved-badge {
+	.approved-badge {
 		color: #0f7958;
 	}
 
 	.approved-badge {
 		background-color: rgba(209, 249, 216, 0.75);
+		padding: 5px 30px;
 	}
 
-	.not-approved-badge {
+	.unapproved-badge {
 		background-color: lightgray;
 		color: black;
+		padding: 5px 23px;
 	}
 
 	.approved-badge:hover {
 		background-color: #bce0c2;
 	}
 
-	.status-icon, .menu-icon {
+	.status-icon, .checkmark-icon, .unapprove-icon {
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center;
@@ -79,116 +88,25 @@
 		margin-right: 5px;
 	}
 
-	.menu-icon {
-		width: 14px;
-		height: 14px;
-		margin-top: 3px;
-		margin-left: 4px;
-	}
-
 	.approved-badge .status-icon {
-		background-image: url('data:image/svg+xml;utf8,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><g id="layer1" stroke="%23158f68" stroke-width="1" fill="%23158f68"><path d="M 6 1 L 6 4 L 7 4 L 7 2 L 18 2 L 18 13 L 16 13 L 16 14 L 19 14 L 19 1 L 6 1 z M 1 6 L 1 19 L 14 19 L 14 6 L 1 6 z M 2 7 L 13 7 L 13 18 L 2 18 L 2 7 z M 11.035156 9.3183594 L 6.0859375 14.267578 L 3.9648438 12.146484 L 3.2578125 12.853516 L 6.0859375 15.681641 L 11.742188 10.025391 L 11.035156 9.3183594 z"></path></g></svg>');
-	}
-
-	.not-approved-badge .status-icon {
-		background-image: url("data:image/svg+xml,%3Csvg width='800px' height='800px' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.5' d='M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z' fill='%23000000'/%3E%3Cpath d='M12 17.75C12.4142 17.75 12.75 17.4142 12.75 17V11C12.75 10.5858 12.4142 10.25 12 10.25C11.5858 10.25 11.25 10.5858 11.25 11V17C11.25 17.4142 11.5858 17.75 12 17.75Z' fill='%23000000'/%3E%3Cpath d='M12 7C12.5523 7 13 7.44771 13 8C13 8.55229 12.5523 9 12 9C11.4477 9 11 8.55229 11 8C11 7.44771 11.4477 7 12 7Z' fill='%23000000'/%3E%3C/svg%3E");
-	}
-
-	.approved-badge .menu-icon {
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' width='512' height='298' shape-rendering='geometricPrecision' text-rendering='geometricPrecision' image-rendering='optimizeQuality' fill='%23158f68' clip-rule='evenodd' viewBox='0 0 512 298.04'%3E%3Cpath fill-rule='nonzero' d='M12.08 70.78c-16.17-16.24-16.09-42.54.15-58.7 16.25-16.17 42.54-16.09 58.71.15L256 197.76 441.06 12.23c16.17-16.24 42.46-16.32 58.71-.15 16.24 16.16 16.32 42.46.15 58.7L285.27 285.96c-16.24 16.17-42.54 16.09-58.7-.15L12.08 70.78z'/%3E%3C/svg%3E");
-	}
-
-	.not-approved-badge .menu-icon {
-		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' width='512' height='298' shape-rendering='geometricPrecision' text-rendering='geometricPrecision' image-rendering='optimizeQuality' fill='%23000000' clip-rule='evenodd' viewBox='0 0 512 298.04'%3E%3Cpath fill-rule='nonzero' d='M12.08 70.78c-16.17-16.24-16.09-42.54.15-58.7 16.25-16.17 42.54-16.09 58.71.15L256 197.76 441.06 12.23c16.17-16.24 42.46-16.32 58.71-.15 16.24 16.16 16.32 42.46.15 58.7L285.27 285.96c-16.24 16.17-42.54 16.09-58.7-.15L12.08 70.78z'/%3E%3C/svg%3E");
-	}
-
-	.approval-dropdown {
-		display: none;
-		position: absolute;
-		top: 100%;
-		right: 0;
-		background-color: white;
-		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-		border-radius: 4px;
-		overflow: hidden;
-	}
-
-	.approval-dropdown.show {
-		display: block;
-	}
-
-	.dropdown-item {
-		display: flex;
-		align-items: center;
-		padding: 10px 15px;
-		width: 100%;
-		border: none;
-		background: none;
-		cursor: pointer;
-		text-align: left;
-		white-space: nowrap;
-	}
-
-	.dropdown-item:hover {
-		background-color: #f8f9fa;
-	}
-
-	.dropdown-item span {
+		background-image: url('{{extensionAssetsPath}}/templates/Icons/approved-icon.svg');
 		margin-right: 10px;
 	}
 
-	#approveButton {
-		color: #158f68;
+	.unapproved-badge .status-icon {
+		background-image: url('{{extensionAssetsPath}}/templates/Icons/not-approved-icon.svg');
 	}
 
-	#unapproveButton {
-		color: #dc3545;
+	.checkmark-icon {
+		width: 24px;
+		height: 24px;
+		background-image: url('{{extensionAssetsPath}}/templates/Icons/checkmark.svg');
 	}
 
-	#unapproveButton .icon {
+	#unapproveButton .unapprove-icon {
 		width: 20px;
 		height: 20px;
-		background-image: url('data:image/svg+xml;utf8,<svg fill="%23dc3545" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 455 455" xml:space="preserve"><g><g><path d="M227.5,0C101.761,0,0,101.75,0,227.5C0,353.239,101.75,455,227.5,455C353.239,455,455,353.25,455,227.5 C455.001,101.761,353.251,0,227.5,0z M310.759,268.333c11.715,11.716,11.715,30.711,0,42.427 c-5.858,5.858-13.536,8.787-21.213,8.787s-15.355-2.929-21.213-8.787L227.5,269.927l-40.832,40.832 c-5.858,5.858-13.536,8.787-21.213,8.787s-15.355-2.929-21.213-8.787c-11.715-11.716-11.715-30.711,0-42.427l40.832-40.832 l-40.832-40.832c-11.715-11.716-11.715-30.711,0-42.427c11.716-11.716,30.711-11.716,42.427,0l40.832,40.832l40.832-40.832 c11.716-11.716,30.711-11.716,42.427,0c11.715,11.716,11.715,30.711,0,42.427L269.927,227.5L310.759,268.333z"/></g></g></svg>');
-		background-size: contain;
-		background-repeat: no-repeat;
-		background-position: center;
-	}
-
-	.tooltip {
-		visibility: hidden;
-		position: absolute;
-		top: 50%;
-		right: 100%;
-		transform: translateY(-50%);
-		background-color: rgba(0, 0, 0, 0.9);
-		color: #ffffff;
-		padding: 12px 15px;
-		border-radius: 6px;
-		white-space: normal;
-		opacity: 0;
-		transition: opacity 0.3s, visibility 0.3s;
-		box-shadow: 0 3px 10px rgba(15, 121, 88, 0.2);
-		z-index: 1;
-		border: 1px solid #a8e6c1;
-		max-width: 350px;
-		width: max-content;
-		margin-right: 10px;
-	}
-
-	.tooltip::after {
-		content: "";
-		position: absolute;
-		top: 50%;
-		left: 100%;
-		margin-top: -6px;
-		border-width: 6px;
-		border-style: solid;
-		border-color: transparent transparent transparent rgba(0, 0, 0, 0.9);
-	}
-
-	.approval-status-badge:hover .tooltip {
-		visibility: visible;
-		opacity: 1;
+		background-image: url('{{extensionAssetsPath}}/templates/Icons/unapprove-icon.svg');
 	}
 
 	.approver-details {
@@ -210,11 +128,7 @@
 		user-select: none;
 	}
 
-	.d-none {
+	.display-none {
 		display: none !important;
-	}
-
-	.convert-timestamp.show {
-		display: block;
 	}
 </style>

@@ -18,10 +18,11 @@ class DatabaseApprovalLog implements ApprovalLog {
 	public function getApprovalState( int $pageId ): ?ApprovalState {
 		$row = $this->database->selectRow(
 			[ 'approval_log', 'user' ],
-			[ 'al_is_approved', 'al_timestamp', 'al_user_id', 'user_real_name' ],
-			[ 'al_page_id' => $pageId, 'al_user_id = user_id' ],
+			[ 'al_is_approved', 'al_timestamp', 'al_user_id', 'user_name' ],
+			[ 'al_page_id' => $pageId ],
 			__METHOD__,
-			[ 'ORDER BY' => 'al_timestamp DESC' ]
+			[ 'ORDER BY' => 'al_timestamp DESC' ],
+			[ 'user' => [ 'LEFT JOIN', 'al_user_id = user_id' ] ]
 		);
 
 		if ( $row === false ) {
@@ -33,7 +34,7 @@ class DatabaseApprovalLog implements ApprovalLog {
 			isApproved: (bool)$row->al_is_approved,
 			approvalTimestamp: $this->binaryToUnixTimestamp( $row->al_timestamp ),
 			approverId: $row->al_user_id !== null ? (int)$row->al_user_id : null,
-			approverRealName: $row->user_real_name ?? ''
+			approverUserName: $row->user_name !== null ? (string)$row->user_name : null
 		);
 	}
 

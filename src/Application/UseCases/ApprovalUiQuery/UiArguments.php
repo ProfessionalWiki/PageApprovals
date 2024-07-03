@@ -12,7 +12,7 @@ class UiArguments {
 		public readonly bool $pageIsApproved,
 		public readonly int $approvalTimestamp,
 		public readonly ?int $approverId,
-		public readonly ?string $approverRealName
+		public readonly ?string $approverUserName
 	) {
 	}
 

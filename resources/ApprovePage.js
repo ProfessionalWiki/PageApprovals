@@ -14,20 +14,25 @@ const sendApprovalRequest = ( approve ) => {
 };
 
 const handleApprovalResponse = ( approve, data ) => {
-	const elements = [ '#unapproveButton', '#approveButton', '.approved-status-text', '.tooltip', '.approver-details' ];
-	const $badge = $( '.approval-status-badge' );
+	const elements = [
+		'#unapproveButton',
+		'#approveButton',
+		'.approved-status-text',
+		'.tooltip',
+		'.approver-details',
+		'approval-dropdown'
+	];
+	const badgeElement = $( '.approval-status-badge' );
 
-	$badge.toggleClass( 'approved-badge', approve );
-	$badge.toggleClass( 'not-approved-badge', !approve );
+	badgeElement.toggleClass( 'approved-badge' );
+	badgeElement.toggleClass( 'unapproved-badge' );
 
-	elements.forEach( selector => $( selector ).toggleClass( 'd-none' ) );
-	$( '.approval-dropdown' ).removeClass( 'show' );
+	elements.forEach( selector => $( selector ).toggleClass( 'display-none' ) );
 
 	if( approve ) {
 		const { approver, approvalTimestamp } = data;
 		$( '.approver-name' ).text( approver );
 		convertTimestamps( approvalTimestamp );
-		console.log( approver, approvalTimestamp );
 	}
 };
 
@@ -37,12 +42,12 @@ $( '#approveButton, #unapproveButton' ).click( function() {
 
 $( '.approval-status-badge:not(.approval-dropdown)' ).click( e => {
 	e.stopPropagation();
-	$( '.approval-dropdown' ).toggleClass( 'show' );
+	$( '.approval-dropdown' ).toggleClass( 'display-none' );
 } );
 
 $( document ).click( e => {
 	if( !$( e.target ).closest( '.approval-dropdown, .approval-status-badge' ).length ) {
-		$( '.approval-dropdown' ).removeClass( 'show' );
+		$( '.approval-dropdown' ).addClass( 'display-none' );
 	}
 } );
 
@@ -60,4 +65,4 @@ const convertTimestamps = ( timestamp = null ) => {
 	}
 };
 
-convertTimestamps();
+$( document ).ready( convertTimestamps() );

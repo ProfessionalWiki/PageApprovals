@@ -16,6 +16,11 @@ parameters:
 			path: src/Adapters/DatabaseApprovalLog.php
 
 		-
+			message: "#^Cannot access property \\$user_name on stdClass\\|true\\.$#"
+			count: 2
+			path: src/Adapters/DatabaseApprovalLog.php
+
+		-
 			message: "#^Parameter \\#2 \\$rows of method Wikimedia\\\\Rdbms\\\\IDatabase\\:\\:insert\\(\\) expects array\\<array\\>, array\\<string, int\\|string\\|null\\> given\\.$#"
 			count: 1
 			path: src/Adapters/DatabaseApprovalLog.php

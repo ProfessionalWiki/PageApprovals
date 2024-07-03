@@ -1,32 +1,75 @@
-#approveButton, #unapproveButton {
-	padding: 8px 15px;
-	color: white;
-	border: none;
-	cursor: pointer;
+
+.tooltip {
+	position: absolute;
+	top: 50%;
+	right: 100%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.9);
+	color: #ffffff;
+	padding: 12px 15px;
+	border-radius: 6px;
+	white-space: normal;
+	opacity: 0;
+	transition: opacity 0.3s, visibility 0.3s;
+	box-shadow: 0 3px 10px rgb(0, 0, 0);
+	z-index: 1;
+	border: 1px solid #000000;
+	max-width: 350px;
+	width: max-content;
+	margin-right: 10px;
+}
+
+.tooltip::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 100%;
+	margin-top: -6px;
+	border-width: 6px;
+	border-style: solid;
+	border-color: transparent transparent transparent rgba(0, 0, 0, 0.9);
+}
+
+.page-approval-container:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+}
+
+.approval-dropdown {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background-color: white;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
-	font-weight: bold;
+	overflow: hidden;
+}
+
+.dropdown-item {
+	display: flex;
+	align-items: center;
+	padding: 10px 15px;
+	width: 100%;
+	border: none;
+	background: none;
+	cursor: pointer;
+	text-align: left;
+	white-space: nowrap;
+}
+
+.dropdown-item:hover {
+	background-color: rgba(211, 211, 211, 0.23);
+}
+
+.dropdown-item span {
+	margin-right: 10px;
 }
 
 #approveButton {
-	background-color: #28a745; /* Green */
-}
-
-#approveButton:hover {
-	background-color: #218838;
+	color: #158f68;
 }
 
 #unapproveButton {
-	background-color: #dc3545; /* Red */
+	color: #dc3545;
 }
 
-#unapproveButton:hover {
-	background-color: #c82333;
-}
-
-.page-approval-status {
-	padding: 10px;
-	margin-bottom: 10px;
-	background-color: #f8f9fa;
-	border-left: 5px solid #cccccc;
-	color: #333333;
-}
