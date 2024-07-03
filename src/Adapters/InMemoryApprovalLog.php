@@ -26,7 +26,8 @@ class InMemoryApprovalLog implements ApprovalLog {
 			pageId: $pageId,
 			isApproved: false,
 			approvalTimestamp: $this->getTime(),
-			approverId: $userId
+			approverId: $userId,
+			approverUserName: ''
 		);
 	}
 
@@ -35,7 +36,8 @@ class InMemoryApprovalLog implements ApprovalLog {
 			pageId: $pageId,
 			isApproved: true,
 			approvalTimestamp: $this->getTime(),
-			approverId: $userId
+			approverId: $userId,
+			approverUserName:''
 		);
 	}
 

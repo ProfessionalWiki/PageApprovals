@@ -69,6 +69,12 @@
 			"scripts": [
 				"ApprovePage.js"
 			],
+			"styles": [
+				"PageApprovalsStyles.css"
+			],
+			"images": [
+				"templates/Icons/*.svg"
+			],
 			"dependencies": [
 				"moment"
 			],

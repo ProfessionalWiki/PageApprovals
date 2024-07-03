@@ -33,8 +33,9 @@ class OutputPageUiPresenter {
 					'approvalStatusMessage' => $this->out->msg(
 						$arguments->pageIsApproved ? 'pageapprovals-status-approved' : 'pageapprovals-status-not-approved'
 					)->text(),
-					'approverRealName' => $arguments->approverRealName,
-					'approvalTimestamp' => $arguments->approvalTimestamp
+					'approverUserName' => $arguments->approverUserName,
+					'approvalTimestamp' => $arguments->approvalTimestamp,
+					'extensionAssetsPath' => $this->out->getConfig()->get( 'ExtensionAssetsPath' ) . '/PageApprovals',
 				]
 			)
 		);

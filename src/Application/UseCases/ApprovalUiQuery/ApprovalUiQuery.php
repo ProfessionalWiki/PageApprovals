@@ -27,7 +27,7 @@ class ApprovalUiQuery {
 			pageIsApproved: $approvalState?->isApproved ?? false, // TODO: test
 			approvalTimestamp: $approvalState?->approvalTimestamp ?? 0, // TODO: test
 			approverId: $approvalState?->approverId ?? null, // TODO: test
-			approverRealName: $approvalState?->approverRealName ?? '' // TODO: test
+			approverUserName: $approvalState?->approverUserName ?? '' // TODO: test
 		);
 	}
 
