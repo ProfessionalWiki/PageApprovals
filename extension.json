@@ -71,7 +71,7 @@
 	"ResourceModules": {
 		"ext.pageApprovals.styles": {
 			"styles": [
-				"PageApprovalsStyles.css"
+				"PageApprovals.css"
 			]
 		},
 		"ext.pageApprovals.scripts": {
