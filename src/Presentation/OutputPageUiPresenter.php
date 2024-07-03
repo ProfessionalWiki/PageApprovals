@@ -34,13 +34,13 @@ class OutputPageUiPresenter {
 						$arguments->pageIsApproved ? 'pageapprovals-status-approved' : 'pageapprovals-status-not-approved'
 					)->text(),
 					'approverUserName' => $arguments->approverUserName,
-					'approvalTimestamp' => $arguments->approvalTimestamp,
-					'extensionAssetsPath' => $this->out->getConfig()->get( 'ExtensionAssetsPath' ) . '/PageApprovals',
+					'approvalTimestamp' => $arguments->approvalTimestamp
 				]
 			)
 		);
 
-		$this->out->addModules( 'ext.pageApprovals.resources' );
+		$this->out->addModuleStyles( 'ext.pageApprovals.styles' );
+		$this->out->addModules( 'ext.pageApprovals.scripts' );
 	}
 
 }
