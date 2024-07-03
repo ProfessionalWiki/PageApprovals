@@ -25,9 +25,6 @@
 
 .approved-badge {
 	color: #0f7958;
-}
-
-.approved-badge {
 	background-color: rgba(209, 249, 216, 0.75);
 	padding: 5px 30px;
 }
@@ -258,104 +255,4 @@ th {
 	border: 1px solid #e7e7e7;
 	border-radius: 8px;
 	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-.page-approval-container {
-	position: absolute;
-	top: -55px;
-	right: 0;
-	z-index: 1;
-	display: flex;
-	align-items: center;
-}
-
-.tooltip {
-	visibility: hidden;
-	position: absolute;
-}
-
-.approval-status-badge {
-	display: flex;
-	align-items: center;
-	padding: 4px 15px;
-	border-radius: 20px;
-	font-weight: bold;
-	font-size: 12px;
-	cursor: pointer;
-	position: relative;
-}
-
-.approved-badge {
-	color: #0f7958;
-}
-
-.approved-badge {
-	background-color: rgba(209, 249, 216, 0.75);
-	padding: 5px 30px;
-}
-
-.unapproved-badge {
-	background-color: lightgray;
-	color: black;
-	padding: 5px 23px;
-}
-
-.approved-badge:hover {
-	background-color: #bce0c2;
-}
-
-.status-icon, .checkmark-icon, .unapprove-icon {
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center;
-}
-
-.status-icon {
-	width: 22px;
-	height: 22px;
-	margin-right: 5px;
-}
-
-.approved-badge .status-icon {
-	background-image: url('Icons/approved-icon.svg');
-	margin-right: 10px;
-}
-
-.unapproved-badge .status-icon {
-	background-image: url('Icons/not-approved-icon.svg');
-}
-
-.checkmark-icon {
-	width: 24px;
-	height: 24px;
-	background-image: url('Icons/checkmark.svg');
-}
-
-#unapproveButton .unapprove-icon {
-	width: 20px;
-	height: 20px;
-	background-image: url('Icons/unapprove-icon.svg');
-}
-
-.approver-details {
-	font-size: 12px;
-}
-
-.page-approval-text-muted {
-	color: gray;
-	display: inline-block;
-	width: 110px;
-	text-align: center;
-}
-
-.page-approval-text-muted::first-letter {
-	text-transform: uppercase;
-}
-
-.approved-status-text {
-	user-select: none;
-}
-
-.display-none {
-	display: none !important;
 }
