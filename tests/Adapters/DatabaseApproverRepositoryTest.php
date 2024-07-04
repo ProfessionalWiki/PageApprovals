@@ -136,8 +136,8 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 				'Another category with spaces'
 			],
 			[
-				'Category with spaces',
-				'Another category with spaces'
+				'Category_with_spaces',
+				'Another_category_with_spaces'
 			],
 			'Categories with spaces'
 		];
@@ -150,7 +150,7 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 			],
 			[
 				'Subcategory',
-				'Category with underscores',
+				'Category_with_underscores',
 				'Category&with&ampersands'
 			],
 			'Categories with special characters'
@@ -189,9 +189,9 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 				' Both sides '
 			],
 			[
-				'Leading space',
-				'Trailing space',
-				'Both sides'
+				'Leading_space',
+				'Trailing_space',
+				'Both_sides'
 			],
 			'Category with leading/trailing spaces'
 		];
@@ -204,8 +204,8 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 				'foo bar'
 			],
 			[
-				'Foo Bar',
-				'Foo bar'
+				'Foo_Bar',
+				'Foo_bar'
 			],
 			'Category with case insensitive letters'
 		];

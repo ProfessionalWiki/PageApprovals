@@ -7,6 +7,7 @@ use MediaWiki\Linker\LinkRenderer;
 use ProfessionalWiki\PageApprovals\Application\PendingApproval;
 use ProfessionalWiki\PageApprovals\Application\PendingApprovalRetriever;
 use SpecialPage;
+use TitleValue;
 
 class SpecialPendingApprovals extends SpecialPage {
 
@@ -78,10 +79,21 @@ class SpecialPendingApprovals extends SpecialPage {
 	private function createPendingApprovalRow( PendingApproval $pendingApproval ): string {
 		return $this->createTableRow( [
 			$this->linkRenderer->makeLink( $pendingApproval->title ),
-			implode( ', ', $pendingApproval->categories ),
+			implode( ', ', $this->getCategoryTitlesFromDbKeys( $pendingApproval->categories ) ),
 			$this->getLanguage()->userTimeAndDate( $pendingApproval->lastEditTimestamp, $this->getUser() ),
 			$pendingApproval->lastEditUserName
 		] );
+	}
+
+	/**
+	 * @param string[] $categoryDbKeys
+	 * @return string[]
+	 */
+	private function getCategoryTitlesFromDbKeys( array $categoryDbKeys ): array {
+		return array_filter( array_map(
+			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText(),
+			$categoryDbKeys
+		) );
 	}
 
 }

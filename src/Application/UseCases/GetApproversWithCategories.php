@@ -7,6 +7,7 @@ namespace ProfessionalWiki\PageApprovals\Application\UseCases;
 use MediaWiki\MediaWikiServices;
 use ProfessionalWiki\PageApprovals\Application\Approver;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
+use TitleValue;
 
 class GetApproversWithCategories {
 
@@ -28,11 +29,22 @@ class GetApproversWithCategories {
 			$approvers[] = new Approver(
 				username: $user->getName(),
 				userId: $approver['userId'],
-				categories: $approver['categories']
+				categories: $this->getCategoryTitlesFromDbKeys( $approver['categories'] )
 			);
 		}
 
 		return $approvers;
+	}
+
+	/**
+	 * @param string[] $categoryDbKeys
+	 * @return string[]
+	 */
+	private function getCategoryTitlesFromDbKeys( array $categoryDbKeys ): array {
+		return array_filter( array_map(
+			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText(),
+			$categoryDbKeys
+		) );
 	}
 
 }
