@@ -5,5 +5,25 @@
 			"Kghbln"
 		]
 	},
-	"pageapprovals-description": "{{Desc|name=PageApprovals|url=https://github.com/ProfessionalWiki/PageApprovals}}"
+	"pageapprovals-description": "{{Desc|name=PageApprovals|url=https://github.com/ProfessionalWiki/PageApprovals}}",
+	"manageapprovers": "The label on \"Special:ManageApprovers\"",
+	"pageapprovals-status-approved": "Approval status shown on the page",
+	"pageapprovals-status-not-approved": "Approval status shown on the page",
+	"pageapprovals-approve-button": "Button label shown on the page",
+	"pageapprovals-unapprove-button": "Button label shown on the page",
+	"right-manage-approvers": "{{doc-right|manage-approvers}}",
+	"action-manage-approvers": "{{doc-action|manage-approvers}}",
+	"pageapprovals-approved": "API response message",
+	"pageapprovals-unapproved": "API response message",
+	"pageapprovals-approve-authorization-failed": "API response message",
+	"pageapprovals-unapprove-authorization-failed": "API response message",
+	"pageapprovals-approve-invalid-page": "API response message",
+	"pageapprovals-unapprove-invalid-page": "API response message",
+	"pageapprovals-approve-outdated-revision": "API response message",
+	"pageapprovals-unapprove-outdated-revision": "API response message",
+	"pendingapprovals": "The label on \"Special:PendingApprovals\"",
+	"pageapprovals-pending-approvals-page": "Column on \"Special:PendingApprovals\" table",
+	"pageapprovals-pending-approvals-categories": "Column on \"Special:PendingApprovals\" table",
+	"pageapprovals-pending-approvals-last-edit-time": "Column on \"Special:PendingApprovals\" table",
+	"pageapprovals-pending-approvals-last-edit-by": "Column on \"Special:PendingApprovals\" table"
 }
