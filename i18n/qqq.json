@@ -25,5 +25,6 @@
 	"pageapprovals-pending-approvals-page": "Column on \"Special:PendingApprovals\" table",
 	"pageapprovals-pending-approvals-categories": "Column on \"Special:PendingApprovals\" table",
 	"pageapprovals-pending-approvals-last-edit-time": "Column on \"Special:PendingApprovals\" table",
-	"pageapprovals-pending-approvals-last-edit-by": "Column on \"Special:PendingApprovals\" table"
+	"pageapprovals-pending-approvals-last-edit-by": "Column on \"Special:PendingApprovals\" table",
+	"pageapprovals-no-pending-approvals": "Message on \"Special:PendingApprovals\""
 }

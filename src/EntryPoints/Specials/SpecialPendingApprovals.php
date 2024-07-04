@@ -22,11 +22,14 @@ class SpecialPendingApprovals extends SpecialPage {
 		$this->checkPermissions();
 		$this->checkReadOnly();
 
-		$this->getOutput()->addHTML(
-			$this->createPendingApprovalsTable(
-				$this->pendingApprovalRetriever->getPendingApprovalsForApprover( $this->getUser()->getId() )
-			)
-		);
+		$pendingApprovals = $this->pendingApprovalRetriever->getPendingApprovalsForApprover( $this->getUser()->getId() );
+
+		if ( $pendingApprovals === [] ) {
+			$this->getOutput()->addWikiMsg( 'pageapprovals-no-pending-approvals' );
+			return;
+		}
+
+		$this->getOutput()->addHTML( $this->createPendingApprovalsTable( $pendingApprovals ) );
 	}
 
 	/**
