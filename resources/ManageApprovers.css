@@ -4,21 +4,21 @@
 	background-color: #f2f2f2;
 }
 
-input[type="text"] {
+input[ type='text' ] {
 	padding: 6px;
 	margin-right: 10px;
 	width: 150px;
 	height: 20px;
-	border: none;
+	border: 0;
 	border-radius: 5px;
 }
 
 button {
 	padding: 6px 10px;
 	cursor: pointer;
-	background-color: #4CAF50;
-	color: white;
-	border: none;
+	background-color: #4caf50;
+	color: #fff;
+	border: 0;
 	border-radius: 5px;
 }
 
@@ -32,7 +32,8 @@ table {
 	margin-top: 20px;
 }
 
-th, td {
+th,
+td {
 	padding: 10px;
 	border: 1px solid #ddd;
 }
@@ -44,12 +45,12 @@ th {
 .approval-delete-btn {
 	margin-left: 10px;
 	background-color: transparent;
-	color: red;
+	color: #f00;
 }
 
 .approval-delete-btn:hover {
-	background-color: rgba(255, 0, 0, 0.78);
-	color: white
+	background-color: rgba( 255, 0, 0, 0.78 );
+	color: #fff;
 }
 
 .category-row {
@@ -74,7 +75,8 @@ th {
 	padding-left: 15px;
 }
 
-.add-button, .add-approver-button {
+.add-button,
+.add-approver-button {
 	margin-top: 10px;
 }
 
@@ -83,5 +85,5 @@ th {
 	background-color: #f8f8f8;
 	border: 1px solid #e7e7e7;
 	border-radius: 8px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+	box-shadow: 0 2px 5px rgba( 0, 0, 0, 0.15 );
 }
