@@ -137,4 +137,24 @@ class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest 
 		);
 	}
 
+	public function testReturnsNoPendingApprovalsAfterApprovingAnUnapprovedPage(): void {
+		$approverId = 1;
+		$this->approverRepository->setApproverCategories( $approverId, [ 'Foo' ] );
+
+		$page = $this->createPage( true, [ 'Foo' ] );
+
+		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
+		$this->assertCount( 0, $pendingApprovals );
+
+		$this->insertApprovalLogEntry( $page->getId(), false );
+
+		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
+		$this->assertCount( 1, $pendingApprovals );
+
+		$this->insertApprovalLogEntry( $page->getId(), true );
+
+		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
+		$this->assertCount( 0, $pendingApprovals );
+	}
+
 }
