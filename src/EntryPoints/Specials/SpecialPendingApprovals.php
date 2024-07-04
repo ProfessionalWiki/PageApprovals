@@ -4,6 +4,7 @@ namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
 use Html;
 use MediaWiki\Linker\LinkRenderer;
+use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\PendingApproval;
 use ProfessionalWiki\PageApprovals\Application\PendingApprovalRetriever;
 use SpecialPage;
@@ -11,6 +12,7 @@ use SpecialPage;
 class SpecialPendingApprovals extends SpecialPage {
 
 	public function __construct(
+		private readonly ApproverRepository $approverRepository,
 		private readonly PendingApprovalRetriever $pendingApprovalRetriever,
 		private readonly LinkRenderer $linkRenderer
 	) {
@@ -21,6 +23,13 @@ class SpecialPendingApprovals extends SpecialPage {
 		$this->setHeaders();
 		$this->checkPermissions();
 		$this->checkReadOnly();
+
+		$categories = $this->approverRepository->getApproverCategories( $this->getUser()->getId() );
+
+		if ( $categories === [] ) {
+			$this->getOutput()->addWikiMsg( 'pageapprovals-no-categories' );
+			return;
+		}
 
 		$pendingApprovals = $this->pendingApprovalRetriever->getPendingApprovalsForApprover( $this->getUser()->getId() );
 
