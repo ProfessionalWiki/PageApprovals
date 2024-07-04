@@ -34,7 +34,7 @@ class AuthorityBasedApprovalAuthorizer implements ApprovalAuthorizer {
 	 */
 	private function titleArrayObjectToStringArray( Iterator $titles ): array {
 		return array_map(
-			fn( Title $category ) => $category->getDBkey(), // TODO: verify handling of different category names
+			fn( Title $category ) => $category->getDBkey(),
 			iterator_to_array( $titles ),
 		);
 	}
