@@ -71,12 +71,24 @@ class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest 
 		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
 
 		$page = $this->createPage( true, [ 'Category1' ] );
-		$this->insertApprovalLogEntry( $page->getId(), false, '20230102000000' );
+		$this->insertApprovalLogEntry( $page->getId(), false, '30230102000000' );
 
 		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
 
 		$this->assertCount( 1, $pendingApprovals );
 		$this->assertSame( $page->getTitle()->getText(), $pendingApprovals[0]->title->getText() );
+	}
+
+	public function testReturnsNoApprovalStatusWhenLatestIsApproved(): void {
+		$approverId = 1;
+		$this->approverRepository->setApproverCategories( $approverId, [ 'Category1' ] );
+
+		$page = $this->createPage( true, [ 'Category1' ] );
+		$this->insertApprovalLogEntry( $page->getId(), false, '20230102000000' );
+
+		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
+
+		$this->assertCount( 0, $pendingApprovals );
 	}
 
 	public function testRespectsLimit(): void {
@@ -141,17 +153,19 @@ class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest 
 		$approverId = 1;
 		$this->approverRepository->setApproverCategories( $approverId, [ 'Foo' ] );
 
-		$page = $this->createPage( true, [ 'Foo' ] );
+		$page = $this->createPageWithCategories( [ 'Foo' ] );
+
+		$this->insertApprovalLogEntry( $page->getId(), true, '20240705000000' );
 
 		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
 		$this->assertCount( 0, $pendingApprovals );
 
-		$this->insertApprovalLogEntry( $page->getId(), false );
+		$this->insertApprovalLogEntry( $page->getId(), false, '20240706000001' );
 
 		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
 		$this->assertCount( 1, $pendingApprovals );
 
-		$this->insertApprovalLogEntry( $page->getId(), true );
+		$this->insertApprovalLogEntry( $page->getId(), true, '20240706000002' );
 
 		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
 		$this->assertCount( 0, $pendingApprovals );
