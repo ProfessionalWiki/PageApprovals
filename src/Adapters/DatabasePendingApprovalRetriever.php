@@ -82,19 +82,31 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 
 	private function getLatestApprovalSubquery(): Subquery {
 		return $this->db->buildSelectSubquery(
-			'approval_log',
-			[ 'al_page_id', 'al_is_approved', 'al_timestamp' ],
-			[],
-			__METHOD__,
-			[ 'ORDER BY' => 'al_timestamp DESC' ],
 			[
-				$this->db->buildSelectSubquery(
+				'a' => 'approval_log',
+				'latest' => $this->db->buildSelectSubquery(
 					'approval_log',
-					'MAX(al_timestamp)',
-					'al_page_id = outer_approval_log.al_page_id',
-					__METHOD__
-				) . ' = al_timestamp'
-			]
+					[
+						'al_page_id',
+						'MAX(al_timestamp) AS max_timestamp'
+					],
+					[],
+					__METHOD__,
+					[
+						'GROUP BY' => 'al_page_id'
+					]
+				)
+			],
+			[
+				'a.al_page_id',
+				'a.al_timestamp',
+				'a.al_is_approved'
+			],
+			[
+				'a.al_page_id = latest.al_page_id',
+				'a.al_timestamp = latest.max_timestamp'
+			],
+			__METHOD__
 		);
 	}
 
