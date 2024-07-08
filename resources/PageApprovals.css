@@ -92,7 +92,7 @@
 	display: none !important;
 }
 
-.tooltip {
+.approval-status-tooltip {
 	visibility: hidden;
 	position: absolute;
 	top: 50%;
@@ -113,7 +113,7 @@
 	margin-right: 10px;
 }
 
-.tooltip::after {
+.approval-status-tooltip::after {
 	content: '';
 	position: absolute;
 	top: 50%;
@@ -124,7 +124,7 @@
 	border-color: transparent transparent transparent rgba( 0, 0, 0, 0.9 );
 }
 
-.page-approval-container:hover .tooltip {
+.page-approval-container:hover .approval-status-tooltip {
 	visibility: visible;
 	opacity: 1;
 }
@@ -137,26 +137,26 @@
 	box-shadow: 0 2px 5px rgba( 0, 0, 0, 0.2 );
 	border-radius: 4px;
 	overflow: hidden;
-}
 
-.dropdown-item {
-	display: flex;
-	align-items: center;
-	padding: 10px 15px;
-	width: 100%;
-	border: 0;
-	background: none;
-	cursor: pointer;
-	text-align: left;
-	white-space: nowrap;
-}
+	.dropdown-item {
+		display: flex;
+		align-items: center;
+		padding: 10px 15px;
+		width: 100%;
+		border: 0;
+		background: none;
+		cursor: pointer;
+		text-align: left;
+		white-space: nowrap;
+	}
 
-.dropdown-item:hover {
-	background-color: rgba( 211, 211, 211, 0.23 );
-}
+	.dropdown-item:hover {
+		background-color: rgba( 211, 211, 211, 0.23 );
+	}
 
-.dropdown-item span {
-	margin-right: 10px;
+	.dropdown-item span {
+		margin-right: 10px;
+	}
 }
 
 #approveButton {
