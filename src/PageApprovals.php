@@ -112,6 +112,7 @@ class PageApprovals {
 
 	public static function newSpecialPendingApprovals(): SpecialPendingApprovals {
 		return new SpecialPendingApprovals(
+			self::getInstance()->getApproverRepository(),
 			self::getInstance()->newPendingApprovalRetriever(),
 			MediaWikiServices::getInstance()->getLinkRenderer()
 		);
