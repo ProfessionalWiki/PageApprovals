@@ -17,7 +17,7 @@ const handleApprovalResponse = ( approve, data ) => {
 		'#unapproveButton',
 		'#approveButton',
 		'.approved-status-text',
-		'.tooltip',
+		'.approval-status-tooltip',
 		'.approver-details',
 		'approval-dropdown'
 	];
