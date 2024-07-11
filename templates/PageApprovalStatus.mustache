@@ -1,8 +1,8 @@
 <div class="page-approval-container">
 	<div class="approval-status-badge {{#isPageApproved}}approved-badge{{/isPageApproved}}{{^isPageApproved}}unapproved-badge{{/isPageApproved}}">
 		<div class="status-icon"></div>
-		<div class="approved-status-text {{^isPageApproved}}display-none{{/isPageApproved}}">APPROVED</div>
-		<div class="approved-status-text {{#isPageApproved}}display-none{{/isPageApproved}}">Not Approved</div>
+		<div class="approved-status-text {{^isPageApproved}}display-none{{/isPageApproved}}">{{statusApproved}}</div>
+		<div class="approved-status-text {{#isPageApproved}}display-none{{/isPageApproved}}">{{statusNotApproved}}</div>
 		{{#canApprove}}
 			<div class="approval-dropdown display-none">
 				<button id="unapproveButton" class="dropdown-item {{^isPageApproved}}display-none{{/isPageApproved}}">
@@ -19,14 +19,13 @@
 			<small class="approver-details {{^isPageApproved}}display-none{{/isPageApproved}}">
 				<span class="approver-name">
 					{{approverUserName}}
-				</span> approved page
-				<span class="convert-timestamp" data-timestamp="{{approvalTimestamp}}">Loading...</span>
+				</span> {{approvedPageText}}
+				<span class="convert-timestamp" data-timestamp="{{approvalTimestamp}}"></span>
 			</small>
 		</div>
 	</div>
 	<div class="approver-details {{^isPageApproved}}display-none{{/isPageApproved}}">
 		<small class="convert-timestamp page-approval-text-muted" data-timestamp="{{approvalTimestamp}}">
-			Loading...
 		</small>
 	</div>
 </div>

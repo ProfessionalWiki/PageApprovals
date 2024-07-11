@@ -30,9 +30,9 @@ class OutputPageUiPresenter {
 					'canApprove' => $arguments->userIsApprover,
 					'approveButtonText' => $this->out->msg( 'pageapprovals-approve-button' )->text(),
 					'unapproveButtonText' => $this->out->msg( 'pageapprovals-unapprove-button' )->text(),
-					'approvalStatusMessage' => $this->out->msg(
-						$arguments->pageIsApproved ? 'pageapprovals-status-approved' : 'pageapprovals-status-not-approved'
-					)->text(),
+					'statusApproved' => $this->out->msg( 'pageapprovals-status-approved' )->text(),
+					'statusNotApproved' => $this->out->msg( 'pageapprovals-status-not-approved' )->text(),
+					'approvedPageText' => $this->out->msg( 'pageapprovals-approve-page-text' )->text(),
 					'approverUserName' => $arguments->approverUserName,
 					'approvalTimestamp' => $arguments->approvalTimestamp
 				]

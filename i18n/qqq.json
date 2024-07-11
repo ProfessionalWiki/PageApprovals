@@ -9,6 +9,7 @@
 	"manageapprovers": "The label on \"Special:ManageApprovers\"",
 	"pageapprovals-status-approved": "Approval status shown on the page",
 	"pageapprovals-status-not-approved": "Approval status shown on the page",
+	"pageapprovals-approve-page-text": "Page Approved Text shown on the page",
 	"pageapprovals-approve-button": "Button label shown on the page",
 	"pageapprovals-unapprove-button": "Button label shown on the page",
 	"right-manage-approvers": "{{doc-right|manage-approvers}}",
