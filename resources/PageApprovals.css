@@ -66,8 +66,9 @@
 
 .loading-icon {
 	padding-left: 50%;
-	width: 24px;
-	height: 24px;
+	width: 22px;
+	height: 22px;
+	margin-top: 5px;
 	background-image: url( Icons/loading.svg );
 }
 
@@ -78,7 +79,7 @@
 }
 
 .approver-details {
-	font-size: 12px;
+	font-size: smaller;
 }
 
 .page-approval-text-muted {
