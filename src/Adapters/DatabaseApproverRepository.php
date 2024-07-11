@@ -75,6 +75,22 @@ class DatabaseApproverRepository implements ApproverRepository {
 		);
 	}
 
+	public function getAllAssignedCategories(): array {
+		$result = $this->database->select(
+			'approver_config',
+			[ 'ac_categories' ],
+			[],
+			__METHOD__
+		);
+
+		$allCategories = [];
+		foreach ( $result as $row ) {
+			$allCategories = array_merge( $allCategories, $this->deserializeCategories( $row->ac_categories ) );
+		}
+
+		return array_unique( $allCategories );
+	}
+
 	private function serializeCategories( array $categories ): string {
 		return implode( '|', array_unique( array_map(
 			fn ( string $category ) => $this->normalizeCategoryTitle( $category ),

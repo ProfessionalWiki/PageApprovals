@@ -106,7 +106,8 @@ class PageApprovals {
 	public function newApprovalUiQuery(): ApprovalUiQuery {
 		return new ApprovalUiQuery(
 			approvalLog: $this->getApprovalLog(),
-			approvalAuthorizer: $this->newPageApprovalAuthorizer()
+			approvalAuthorizer: $this->newPageApprovalAuthorizer(),
+			approverRepository: $this->getApproverRepository()
 		);
 	}
 

@@ -8,12 +8,14 @@ use OutputPage;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\ApprovalState;
+use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 
 class ApprovalUiQuery {
 
 	public function __construct(
 		private readonly ApprovalLog $approvalLog,
-		private readonly ApprovalAuthorizer $approvalAuthorizer
+		private readonly ApprovalAuthorizer $approvalAuthorizer,
+		private readonly ApproverRepository $approverRepository
 	) {
 	}
 
@@ -35,12 +37,18 @@ class ApprovalUiQuery {
 		if ( $showUi ) {
 			return $this->approvalLog->getApprovalState( pageId: $out->getWikiPage()->getId() ); // TODO: test
 		}
-
 		return null;
 	}
 
 	private function isApprovablePage( OutputPage $out ): bool {
-		return $out->isArticle() // TODO: test
+		$hasAssignedCategories = !empty(
+		array_intersect(
+			$out->getCategories(),
+			$this->approverRepository->getAllAssignedCategories()
+		)
+		); // TODO: test for case sensitive categories
+		return $hasAssignedCategories
+			&& $out->isArticle() // TODO: test
 			&& $out->getRevisionId() !== null // Exclude non-existing pages // TODO: test
 			&& $out->isRevisionCurrent(); // TODO: test
 	}
