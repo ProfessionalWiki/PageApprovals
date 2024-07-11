@@ -17,6 +17,11 @@ interface ApproverRepository {
 	public function getApproversWithCategories(): array;
 
 	/**
+	 * @return string[]
+	 */
+	public function getAllAssignedCategories(): array;
+
+	/**
 	 * @param string[] $categoryNames
 	 */
 	public function setApproverCategories( int $userId, array $categoryNames ): void;
