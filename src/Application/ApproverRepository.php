@@ -19,7 +19,7 @@ interface ApproverRepository {
 	/**
 	 * @return string[]
 	 */
-	public function getAllAssignedCategories(): array;
+	public function getAllCategories(): array;
 
 	/**
 	 * @param string[] $categoryNames

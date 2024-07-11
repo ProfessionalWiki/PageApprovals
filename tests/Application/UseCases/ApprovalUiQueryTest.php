@@ -5,6 +5,7 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Tests\Application\UseCases;
 
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
+use ProfessionalWiki\PageApprovals\Adapters\InMemoryApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\ApprovalUiQuery;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingApprovalAuthorizer;
@@ -39,7 +40,8 @@ class ApprovalUiQueryTest extends PageApprovalsIntegrationTest {
 	private function newApprovalUiQuery(): ApprovalUiQuery {
 		return new ApprovalUiQuery(
 			new InMemoryApprovalLog(),
-			new SucceedingApprovalAuthorizer()
+			new SucceedingApprovalAuthorizer(),
+			new InMemoryApproverRepository()
 		);
 	}
 

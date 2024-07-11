@@ -8,7 +8,9 @@ use OutputPage;
 use ProfessionalWiki\PageApprovals\EntryPoints\PageApprovalsHooks;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use RequestContext;
-use Title;
+use ProfessionalWiki\PageApprovals\PageApprovals;
+use ParserOutput;
+use WikiPage;
 
 /**
  * @group Database
@@ -16,25 +18,44 @@ use Title;
  */
 class PageApprovalsHooksTest extends PageApprovalsIntegrationTest {
 
-	public function testOnOutputPageBeforeHTML() {
-		$title = Title::newFromText( 'PageApprovalsIntegrationTest' );
-		$this->insertPage( $title );
+	private OutputPage $out;
 
-		$context = new RequestContext();
-		$context->setTitle( $title );
-		$context->setUser( $this->getTestUser()->getUser() );
+	protected function setUp(): void {
+		parent::setUp();
+		$this->tablesUsed[] = 'approver_config';
 
-		$out = new OutputPage( $context );
-		$out->setTitle( $title );
-		$out->setArticleFlag( true );
-		$out->setRevisionId( $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title )->getLatest() );
+		$page = $this->createPageWithText( 'Test page content' );
 
-		PageApprovalsHooks::onOutputPageBeforeHTML( $out );
+		$this->out = new OutputPage( new RequestContext() );
+		$this->out->setTitle( $page->getTitle() );
+		$this->out->setArticleFlag( true );
+		$this->out->setRevisionId( $page->getLatest() );
+	}
+
+	public function testOnOutputPageBeforeHTMLUiIsNotShown() {
+		PageApprovalsHooks::onOutputPageBeforeHTML( $this->out );
+
+		$this->assertStringNotContainsString(
+			'page-approval-container',
+			$this->out->getHTML(),
+			'The page approval status should not be displayed without a matching category.'
+		);
+	}
+
+	public function testOnOutputPageBeforeHTMLUiIsShown() {
+		$parserOutput = new ParserOutput( 'Test page content' );
+		$parserOutput->addCategory( 'ApprovalCategory', 'ApprovalCategory' );
+		$this->out->addParserOutput( $parserOutput );
+
+		$approverRepository = PageApprovals::getInstance()->getApproverRepository();
+		$approverRepository->setApproverCategories( 1, [ 'ApprovalCategory' ] );
+
+		PageApprovalsHooks::onOutputPageBeforeHTML( $this->out );
 
 		$this->assertStringContainsString(
 			'page-approval-container',
-			$out->getHTML(),
-			'The page approval status should be displayed.'
+			$this->out->getHTML(),
+			'The page approval status should be displayed with a matching category.'
 		);
 	}
 

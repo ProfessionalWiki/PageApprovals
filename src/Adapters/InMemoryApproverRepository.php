@@ -29,6 +29,17 @@ class InMemoryApproverRepository implements ApproverRepository {
 	}
 
 	/**
+	 * @return string[]
+	 */
+	public function getAllCategories(): array {
+		$allCategories = [];
+		foreach ( $this->approversCategories as $categories ) {
+			$allCategories = array_merge( $allCategories, $categories );
+		}
+		return array_values( array_unique( $allCategories ) );
+	}
+
+	/**
 	 * @param string[] $categoryNames
 	 */
 	public function setApproverCategories( int $userId, array $categoryNames ): void {

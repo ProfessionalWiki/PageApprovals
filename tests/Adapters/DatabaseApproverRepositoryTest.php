@@ -29,6 +29,18 @@ class DatabaseApproverRepositoryTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( [], $repository->getApproverCategories( 404 ) );
 	}
 
+	public function testGetAllCategories(): void {
+		$repository = $this->newRepository();
+
+		$repository->setApproverCategories( 1, [ 'Category1', 'Category2' ] );
+
+		$this->assertSame(
+			[ 'Category1', 'Category2' ],
+			$repository->getAllCategories(),
+			'getAllCategories should return all unique categories across all approvers'
+		);
+	}
+
 	public function testSetAndGetApproverCategories(): void {
 		$repository = $this->newRepository();
 		$userId = 1;

@@ -41,16 +41,19 @@ class ApprovalUiQuery {
 	}
 
 	private function isApprovablePage( OutputPage $out ): bool {
-		$hasAssignedCategories = !empty(
-		array_intersect(
-			$out->getCategories(),
-			$this->approverRepository->getAllAssignedCategories()
-		)
-		); // TODO: test for case sensitive categories
-		return $hasAssignedCategories
+		return $this->pageHasApprovers( $out )
 			&& $out->isArticle() // TODO: test
 			&& $out->getRevisionId() !== null // Exclude non-existing pages // TODO: test
 			&& $out->isRevisionCurrent(); // TODO: test
+	}
+
+	private function pageHasApprovers( OutputPage $out ): bool {
+		return !empty(
+		array_intersect(
+			$out->getCategories(),
+			$this->approverRepository->getAllCategories()
+		)
+		);
 	}
 
 }
