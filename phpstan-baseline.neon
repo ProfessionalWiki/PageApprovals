@@ -32,7 +32,7 @@ parameters:
 
 		-
 			message: "#^Cannot access property \\$categories on array\\|bool\\|stdClass\\.$#"
-			count: 1
+			count: 2
 			path: src/Adapters/DatabaseApproverRepository.php
 
 		-

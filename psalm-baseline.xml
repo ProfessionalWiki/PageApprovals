@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.24.0@462c80e31c34e58cc4f750c656be3927e80e550e">
+<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
   <file src="src/Adapters/AuthorityBasedApprovalAuthorizer.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$page->getCategories()]]></code>
@@ -26,10 +26,13 @@
       <code><![CDATA[$approvers]]></code>
       <code><![CDATA[$this->deserializeCategories( $row->ac_categories )]]></code>
       <code><![CDATA[array<array{userId: int, categories: string[]}>]]></code>
+      <code><![CDATA[array_unique( $allCategories )]]></code>
+      <code><![CDATA[string[]]]></code>
       <code><![CDATA[string[]]]></code>
     </MixedReturnTypeCoercion>
     <PossiblyInvalidPropertyFetch>
       <code><![CDATA[$row->ac_categories]]></code>
+      <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->userId]]></code>
     </PossiblyInvalidPropertyFetch>

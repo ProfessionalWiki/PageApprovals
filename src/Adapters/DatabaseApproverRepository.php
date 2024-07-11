@@ -75,17 +75,20 @@ class DatabaseApproverRepository implements ApproverRepository {
 		);
 	}
 
-	public function getAllAssignedCategories(): array {
+	/**
+	 * @return string[]
+	 */
+	public function getAllCategories(): array {
 		$result = $this->database->select(
 			'approver_config',
-			[ 'ac_categories' ],
+			[ 'ac_categories AS categories' ],
 			[],
 			__METHOD__
 		);
 
 		$allCategories = [];
 		foreach ( $result as $row ) {
-			$allCategories = array_merge( $allCategories, $this->deserializeCategories( $row->ac_categories ) );
+			$allCategories = array_merge( $allCategories, $this->deserializeCategories( (string)$row->categories ) );
 		}
 
 		return array_unique( $allCategories );
