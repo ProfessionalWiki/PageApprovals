@@ -86,12 +86,14 @@ class DatabaseApproverRepository implements ApproverRepository {
 			__METHOD__
 		);
 
-		$allCategories = [];
-		foreach ( $result as $row ) {
-			$allCategories = array_merge( $allCategories, $this->deserializeCategories( (string)$row->categories ) );
-		}
-
-		return array_unique( $allCategories );
+		return array_unique(
+			array_merge(
+				...array_map(
+					fn ( $row ) => $this->deserializeCategories( $row->categories ),
+					iterator_to_array( $result )
+				)
+			)
+		);
 	}
 
 	private function serializeCategories( array $categories ): string {
