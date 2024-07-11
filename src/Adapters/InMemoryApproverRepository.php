@@ -6,6 +6,7 @@ namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use Title;
+use function Wikimedia\Parsoid\Wt2Html\TT\array_flatten;
 
 class InMemoryApproverRepository implements ApproverRepository {
 
@@ -32,11 +33,7 @@ class InMemoryApproverRepository implements ApproverRepository {
 	 * @return string[]
 	 */
 	public function getAllCategories(): array {
-		$allCategories = [];
-		foreach ( $this->approversCategories as $categories ) {
-			$allCategories = array_merge( $allCategories, $categories );
-		}
-		return array_values( array_unique( $allCategories ) );
+		return array_unique( array_merge( ...$this->approversCategories ) );
 	}
 
 	/**
