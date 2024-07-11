@@ -36,8 +36,7 @@
 
 .status-icon,
 .checkmark-icon,
-.unapprove-icon,
-.loading-icon {
+.unapprove-icon {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -64,14 +63,6 @@
 	background-image: url( Icons/checkmark.svg );
 }
 
-.loading-icon {
-	padding-left: 50%;
-	width: 22px;
-	height: 22px;
-	margin-top: 5px;
-	background-image: url( Icons/loading.svg );
-}
-
 #unapproveButton .unapprove-icon {
 	width: 20px;
 	height: 20px;
@@ -79,7 +70,7 @@
 }
 
 .approver-details {
-	font-size: smaller;
+	font-size: 12px;
 }
 
 .page-approval-text-muted {
