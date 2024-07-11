@@ -49,10 +49,10 @@ class ApprovalUiQuery {
 
 	private function pageHasApprovers( OutputPage $out ): bool {
 		return !empty(
-		array_intersect(
-			$out->getCategories(),
-			$this->approverRepository->getAllCategories()
-		)
+			array_intersect(
+				$out->getCategories(),
+				$this->approverRepository->getAllCategories()
+			)
 		);
 	}
 
