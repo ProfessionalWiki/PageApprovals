@@ -13,34 +13,34 @@ class InMemoryApproverRepository implements ApproverRepository {
 	/**
 	 * @var array<int, string[]>
 	 */
-	private array $approversCategories = [];
+	private array $categoriesPerUser = [];
 
 	/**
 	 * @return string[]
 	 */
 	public function getApproverCategories( int $userId ): array {
-		return $this->approversCategories[$userId] ?? [];
+		return $this->categoriesPerUser[$userId] ?? [];
 	}
 
 	/**
-	 * @return string[]
+	 * @return array<array{userId: int, categories: string[]}>
 	 */
 	public function getApproversWithCategories(): array {
-		return $this->approversCategories;
+		return []; // Note: not implemented
 	}
 
 	/**
 	 * @return string[]
 	 */
 	public function getAllCategories(): array {
-		return array_unique( array_merge( ...$this->approversCategories ) );
+		return array_unique( array_merge( ...$this->categoriesPerUser ) );
 	}
 
 	/**
 	 * @param string[] $categoryNames
 	 */
 	public function setApproverCategories( int $userId, array $categoryNames ): void {
-		$this->approversCategories[$userId] = array_map(
+		$this->categoriesPerUser[$userId] = array_map(
 			fn( string $category ) => $this->normalizeCategoryTitle( $category ),
 			$categoryNames
 		);
