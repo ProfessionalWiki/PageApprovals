@@ -20,8 +20,6 @@ class OutputPageUiPresenter {
 			return;
 		}
 
-		// TODO: use $arguments->approvalTimestamp and $arguments->approverId
-
 		$this->out->addHTML(
 			PageApprovals::getInstance()->getTemplateParser()->processTemplate(
 				'PageApprovalStatus',
