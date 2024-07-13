@@ -44,7 +44,7 @@ class ApprovalUiQuery {
 		return $this->pageHasApprovers( $out )
 			&& $out->isArticle()
 			&& $out->getRevisionId() !== null // Exclude non-existing pages
-			&& $out->isRevisionCurrent();
+			&& $out->getRevisionId() === $out->getWikiPage()->getLatest();
 	}
 
 	private function pageHasApprovers( OutputPage $out ): bool {
