@@ -73,15 +73,6 @@
     </PossiblyInvalidPropertyFetch>
   </file>
   <file src="src/Adapters/InMemoryApproverRepository.php">
-    <ImplementedReturnTypeMismatch>
-      <code><![CDATA[string[]]]></code>
-    </ImplementedReturnTypeMismatch>
-    <InvalidReturnStatement>
-      <code><![CDATA[$this->approversCategories]]></code>
-    </InvalidReturnStatement>
-    <InvalidReturnType>
-      <code><![CDATA[string[]]]></code>
-    </InvalidReturnType>
     <MixedArgument>
       <code><![CDATA[NS_CATEGORY]]></code>
     </MixedArgument>

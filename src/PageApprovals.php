@@ -16,7 +16,6 @@ use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
 use ProfessionalWiki\PageApprovals\Application\PendingApprovalRetriever;
 use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\ApprovalUiQuery;
-use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\UiPresenter;
 use ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;

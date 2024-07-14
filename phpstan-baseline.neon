@@ -91,16 +91,6 @@ parameters:
 			path: src/Adapters/DatabasePendingApprovalRetriever.php
 
 		-
-			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\InMemoryApproverRepository\\:\\:getApproversWithCategories\\(\\) should return array\\<string\\> but returns array\\<int, array\\<string\\>\\>\\.$#"
-			count: 1
-			path: src/Adapters/InMemoryApproverRepository.php
-
-		-
-			message: "#^Return type \\(array\\<string\\>\\) of method ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\InMemoryApproverRepository\\:\\:getApproversWithCategories\\(\\) should be compatible with return type \\(array\\<array\\{userId\\: int, categories\\: array\\<string\\>\\}\\>\\) of method ProfessionalWiki\\\\PageApprovals\\\\Application\\\\ApproverRepository\\:\\:getApproversWithCategories\\(\\)$#"
-			count: 1
-			path: src/Adapters/InMemoryApproverRepository.php
-
-		-
 			message: "#^Cannot call method getRawText\\(\\) on ParserOutput\\|true\\.$#"
 			count: 1
 			path: src/Adapters/PageHtmlRetriever.php
