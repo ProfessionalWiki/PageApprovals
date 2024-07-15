@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"pageapprovals-description": "Hiermee kunnen goedkeurders pagina’s als goedgekeurd markeren",
+	"manageapprovers": "Goedkeurders beheren",
+	"pageapprovals-status-approved": "GOEDGEKEURD",
+	"pageapprovals-status-not-approved": "Niet goedgekeurd",
+	"pageapprovals-approve-page-text": "goedgekeurde pagina",
+	"pageapprovals-approve-button": "Pagina goedkeuren",
+	"pageapprovals-unapprove-button": "Goedkeuren pagina intrekken",
+	"right-manage-approvers": "Goedkeurders beheren",
+	"action-manage-approvers": "goedkeurders te beheren",
+	"pageapprovals-approved": "Pagina goedgekeurd",
+	"pageapprovals-unapproved": "Goedkeuring pagina ingetrokken",
+	"pageapprovals-approve-authorization-failed": "Goedkeuring mislukt. {{#FORMAL:U|Je}} bent niet bevoegd om deze pagina goed te keuren.",
+	"pageapprovals-unapprove-authorization-failed": "Het intrekken van de goedkeuring is mislukt. {{#FORMAL:U|Je}} bent niet bevoegd om de goedkeuring van deze pagina in te trekken.",
+	"pageapprovals-approve-invalid-page": "Goedkeuring mislukt. Deze pagina bestaat niet.",
+	"pageapprovals-unapprove-invalid-page": "Het intrekken van de goedkeuring is mislukt. Deze pagina bestaat niet.",
+	"pageapprovals-approve-outdated-revision": "Goedkeuring mislukt. {{#FORMAL:U|Je}} kunt alleen de nieuwste versie van een pagina goedkeuren.",
+	"pageapprovals-unapprove-outdated-revision": "Het intrekken van de goedkeuring is mislukt. {{#FORMAL:U|Je}} kunt alleen de goedkeuring van de nieuwste versie van een pagina intrekken.",
+	"pendingapprovals": "In afwachting van goedkeuring",
+	"pageapprovals-pending-approvals-page": "Pagina",
+	"pageapprovals-pending-approvals-categories": "Categorieën",
+	"pageapprovals-pending-approvals-last-edit-time": "Laatst bewerkt op",
+	"pageapprovals-pending-approvals-last-edit-by": "Laatst bewerkt door",
+	"pageapprovals-no-categories": "{{#FORMAL:U|Je}} bent niet bevoegd om pagina’s goed te keuren.",
+	"pageapprovals-no-pending-approvals": "Er zijn geen goedkeuringen in behandeling."
+}

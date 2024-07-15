@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Leapofod"
+		]
+	},
+	"pageapprovals-status-approved": "DISETUJUI",
+	"pageapprovals-status-not-approved": "Tidak Disetujui",
+	"pageapprovals-approve-button": "Setujui Halaman",
+	"pageapprovals-unapprove-button": "Tarik Persetujuan Halaman",
+	"pageapprovals-approved": "Halaman disetujui",
+	"pageapprovals-approve-authorization-failed": "Persetujuan gagal. Anda tidak berwenang untuk menyetujui halaman ini.",
+	"pageapprovals-pending-approvals-page": "Halaman",
+	"pageapprovals-pending-approvals-last-edit-time": "Terakhir Disunting Pada",
+	"pageapprovals-pending-approvals-last-edit-by": "Terakhir Disunting Oleh"
+}

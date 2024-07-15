@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"pageapprovals-description": "מאפשר למאשרים לסמן דפים בתור מאושרים",
+	"manageapprovers": "ניהול מאשרים",
+	"pageapprovals-status-approved": "אושר",
+	"pageapprovals-status-not-approved": "לא אושר",
+	"pageapprovals-approve-page-text": "דף מאושר",
+	"pageapprovals-approve-button": "לאשר דף",
+	"pageapprovals-unapprove-button": "לבטל אישור דף",
+	"right-manage-approvers": "לנהל מאשרים",
+	"action-manage-approvers": "לנהל מאשרים",
+	"pageapprovals-approved": "הדף אושר",
+	"pageapprovals-unapproved": "אישור בדף בוטל",
+	"pageapprovals-approve-authorization-failed": "האישור נכשל. אין לך הרשאה לאשר את הדף הזה.",
+	"pageapprovals-unapprove-authorization-failed": "ביטול האישור נכשל. אין לך הרשאה לבטל את האישור של הדף הזה.",
+	"pageapprovals-approve-invalid-page": "האישור נכשל. הדף הזה לא קיים.",
+	"pageapprovals-unapprove-invalid-page": "ביטול האישור נכשל. הדף הזה אינו קיים.",
+	"pageapprovals-approve-outdated-revision": "האישור נכשל. מותר לך לאשר רק את הגרסה האחרונה של דף.",
+	"pageapprovals-unapprove-outdated-revision": "ביטול האישור נכשל. מותר לך לבטל את האישור רק של הגרסה האחרונה של דף.",
+	"pendingapprovals": "אישורים ממתינים",
+	"pageapprovals-pending-approvals-page": "דף",
+	"pageapprovals-pending-approvals-categories": "קטגוריות",
+	"pageapprovals-pending-approvals-last-edit-time": "מתי נערך בפעם האחרונה",
+	"pageapprovals-pending-approvals-last-edit-by": "על־ידי מי נערך בפעם האחרונה",
+	"pageapprovals-no-categories": "אין לך הרשאה לאשר דפים.",
+	"pageapprovals-no-pending-approvals": "אין לך אישורים ממתינים."
+}

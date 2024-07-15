@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kghbln"
+		]
+	},
+	"pageapprovals-description": "Ermöglicht es Genehmigern, Seiten als genehmigt zu markieren",
+	"manageapprovers": "Genehmiger verwalten",
+	"pageapprovals-status-approved": "GENEHMIGT",
+	"pageapprovals-status-not-approved": "Nicht genehmigt",
+	"pageapprovals-approve-page-text": "Genehmigte Seite",
+	"pageapprovals-approve-button": "Seite genehmigen",
+	"pageapprovals-unapprove-button": "Genehmigung der Seite zurücknehmen",
+	"right-manage-approvers": "Genehmiger verwalten",
+	"action-manage-approvers": "Genehmiger zu verwalten",
+	"pageapprovals-approved": "Die Seite ist genehmigt",
+	"pageapprovals-unapproved": "Die Seite ist nicht mehr genehmigt",
+	"pageapprovals-approve-authorization-failed": "Die Genehmigung ist fehlgeschlagen. Du bist nicht berechtigt, diese Seite zu genehmigen.",
+	"pageapprovals-unapprove-authorization-failed": "Das Zurücknehmen der Genehmigung der Seite ist fehlgeschlagen. Du bist nicht berechtigt, die Genehmigung dieser Seite zurückzunehmen.",
+	"pageapprovals-approve-invalid-page": "Das Genehmigen der Seite ist fehlgeschlagen. Die Seite ist nicht vorhanden.",
+	"pageapprovals-unapprove-invalid-page": "Das Zurücknehmen der Genehmigung der Seite ist fehlgeschlagen. Die Seite ist nicht vorhanden.",
+	"pageapprovals-approve-outdated-revision": "Das Genehmigen der Seite ist fehlgeschlagen. Die Genehmigung kann nur für die aktuellste Version einer Seite vorgenommen werden.",
+	"pageapprovals-unapprove-outdated-revision": "Das Zurücknehmen der Genehmigung der Seite ist fehlgeschlagen. Die Genehmigung kann nur für die aktuellste Version einer Seite zurückgenommen werden.",
+	"pendingapprovals": "Ausstehende Genehmigungen",
+	"pageapprovals-pending-approvals-page": "Seite",
+	"pageapprovals-pending-approvals-categories": "Kategorien",
+	"pageapprovals-pending-approvals-last-edit-time": "Zuletzt bearbeitet am",
+	"pageapprovals-pending-approvals-last-edit-by": "Zuletzt bearbeitet von",
+	"pageapprovals-no-categories": "Du bist nicht berechtigt, Seiten zu genehmigen.",
+	"pageapprovals-no-pending-approvals": "Es stehen keine Genehmigungen von Seiten aus."
+}

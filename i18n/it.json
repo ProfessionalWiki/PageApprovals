@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"pageapprovals-status-approved": "APPROVATO",
+	"pageapprovals-status-not-approved": "Non approvato",
+	"pageapprovals-approve-page-text": "pagina approvata",
+	"pageapprovals-approve-button": "Approva pagina",
+	"pageapprovals-approved": "Pagina approvata",
+	"pageapprovals-unapproved": "Pagina non approvata",
+	"pageapprovals-pending-approvals-page": "Pagina",
+	"pageapprovals-pending-approvals-categories": "Categorie",
+	"pageapprovals-pending-approvals-last-edit-time": "Ultima modifica il",
+	"pageapprovals-pending-approvals-last-edit-by": "Ultima modifica di"
+}

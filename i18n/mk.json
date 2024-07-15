@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"pageapprovals-description": "Им овозможува на одобрувачите да означуваат страници како одобрени",
+	"manageapprovers": "Управување со одобрувачи",
+	"pageapprovals-status-approved": "ОДОБРЕНО",
+	"pageapprovals-status-not-approved": "Неодобрено",
+	"pageapprovals-approve-page-text": "одобрена страница",
+	"pageapprovals-approve-button": "Одобри страница",
+	"pageapprovals-unapprove-button": "Неодобри страница",
+	"right-manage-approvers": "Управување со одобрувачи",
+	"action-manage-approvers": "управување со одобрувачи",
+	"pageapprovals-approved": "Страницата е одобрена",
+	"pageapprovals-unapproved": "Страницата е неодобрена",
+	"pageapprovals-approve-authorization-failed": "Одобрувањето не успеа. Не сте овластени да ја одобрите оваа страница.",
+	"pageapprovals-unapprove-authorization-failed": "Неодобрувањето не успеа. Не сте овластени да ја неодобрите оваа страница.",
+	"pageapprovals-approve-invalid-page": "Одобрувањето не успеа. Оваа страница не постои.",
+	"pageapprovals-unapprove-invalid-page": "Одобрувањето не успеа. Оваа страница не постои.",
+	"pageapprovals-approve-outdated-revision": "Одобрувањето не успеа. Можете да одобрите само најнова верзија на страница.",
+	"pageapprovals-unapprove-outdated-revision": "Неодобрувањето не успеа. Можете да неодобрите само најнова верзија на страница.",
+	"pendingapprovals": "Одобренија на чекање",
+	"pageapprovals-pending-approvals-page": "Страница",
+	"pageapprovals-pending-approvals-categories": "Категории",
+	"pageapprovals-pending-approvals-last-edit-time": "Последно уредување:",
+	"pageapprovals-pending-approvals-last-edit-by": "Последен уредувач:",
+	"pageapprovals-no-categories": "Не сте овластени да одобрувате страници.",
+	"pageapprovals-no-pending-approvals": "Немате одобенија на чекање."
+}

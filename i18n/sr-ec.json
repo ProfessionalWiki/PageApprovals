@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Milicevic01"
+		]
+	},
+	"pageapprovals-status-approved": "ОДОБРЕНО",
+	"pageapprovals-approve-page-text": "одобрена страница",
+	"pageapprovals-approve-button": "Одобри страницу",
+	"pageapprovals-pending-approvals-page": "Страница",
+	"pageapprovals-pending-approvals-categories": "Категорије",
+	"pageapprovals-pending-approvals-last-edit-time": "Последње уређивање",
+	"pageapprovals-pending-approvals-last-edit-by": "Последњи уредник"
+}
