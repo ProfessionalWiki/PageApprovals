@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"MacOS Weed"
+		]
+	},
+	"pageapprovals-status-approved": "APPROUVER",
+	"pageapprovals-status-not-approved": "Non approuvé",
+	"pageapprovals-approve-page-text": "page approuvée",
+	"pageapprovals-pending-approvals-page": "Page",
+	"pageapprovals-pending-approvals-categories": "Catégories",
+	"pageapprovals-pending-approvals-last-edit-by": "Dernière modification par",
+	"pageapprovals-no-categories": "Vous n'êtes pas autorisé à approuver les pages.",
+	"pageapprovals-no-pending-approvals": "Il n’y a aucune approbation en attente."
+}
