@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"MacOS Weed"
+			"MacOS Weed",
+			"SleaY"
 		]
 	},
 	"pageapprovals-status-approved": "APPROUVER",
 	"pageapprovals-status-not-approved": "Non approuvé",
 	"pageapprovals-approve-page-text": "page approuvée",
+	"pageapprovals-approved": "Page approuvée",
 	"pageapprovals-pending-approvals-page": "Page",
 	"pageapprovals-pending-approvals-categories": "Catégories",
 	"pageapprovals-pending-approvals-last-edit-by": "Dernière modification par",
