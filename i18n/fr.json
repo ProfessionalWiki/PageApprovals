@@ -8,6 +8,8 @@
 	"pageapprovals-status-approved": "APPROUVER",
 	"pageapprovals-status-not-approved": "Non approuvé",
 	"pageapprovals-approve-page-text": "page approuvée",
+	"pageapprovals-approve-button": "Approuver la page",
+	"pageapprovals-unapprove-button": "Désapprouver la page",
 	"pageapprovals-approved": "Page approuvée",
 	"pageapprovals-pending-approvals-page": "Page",
 	"pageapprovals-pending-approvals-categories": "Catégories",
