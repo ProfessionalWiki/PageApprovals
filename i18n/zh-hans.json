@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Huajing",
 			"Key0121"
 		]
 	},
@@ -17,8 +18,8 @@
 	"pageapprovals-unapproved": "页面已取消核准",
 	"pageapprovals-approve-authorization-failed": "核准失败。您尚未取得核准此页面的授权。",
 	"pageapprovals-unapprove-authorization-failed": "取消核准失败。您尚未取得取消核准此页面的授权。",
-	"pageapprovals-approve-invalid-page": "核准失敗。该页面不存在。",
-	"pageapprovals-unapprove-invalid-page": "取消核准失敗。该页面不存在。",
+	"pageapprovals-approve-invalid-page": "核准失败。该页面不存在。",
+	"pageapprovals-unapprove-invalid-page": "取消核准失败。该页面不存在。",
 	"pageapprovals-approve-outdated-revision": "核准失败。您仅能核准页面的最后一次版本。",
 	"pageapprovals-unapprove-outdated-revision": "取消核准失败。您仅能取消核准页面的最后一次版本。",
 	"pendingapprovals": "待办核准",

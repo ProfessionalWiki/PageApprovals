@@ -5,12 +5,18 @@
 			"SleaY"
 		]
 	},
+	"pageapprovals-description": "Permet aux approbateurs de marquer les pages comme approuvées",
+	"manageapprovers": "Gérer les approbateurs",
 	"pageapprovals-status-approved": "APPROUVER",
 	"pageapprovals-status-not-approved": "Non approuvé",
 	"pageapprovals-approve-page-text": "page approuvée",
 	"pageapprovals-approve-button": "Approuver la page",
 	"pageapprovals-unapprove-button": "Désapprouver la page",
+	"right-manage-approvers": "Gérer les approbateurs",
+	"action-manage-approvers": "gérer les approbateurs",
 	"pageapprovals-approved": "Page approuvée",
+	"pageapprovals-unapproved": "Page non approuvée",
+	"pageapprovals-approve-authorization-failed": "L'approbation a échoué. Vous n'êtes pas autorisé à approuver cette page.",
 	"pageapprovals-pending-approvals-page": "Page",
 	"pageapprovals-pending-approvals-categories": "Catégories",
 	"pageapprovals-pending-approvals-last-edit-by": "Dernière modification par",
