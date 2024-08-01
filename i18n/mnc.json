@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chulsu463"
+		]
+	},
+	"pageapprovals-status-approved": "aljaha",
+	"pageapprovals-status-not-approved": "aljaharakū",
+	"pageapprovals-approve-page-text": "aljaha justan",
+	"pageapprovals-approve-button": "justan be aljambi",
+	"pageapprovals-unapprove-button": "aljaharakū justan",
+	"pageapprovals-approved": "justan aljaha",
+	"pageapprovals-unapproved": "justan aljaharakū",
+	"pageapprovals-pending-approvals-page": "justan",
+	"pageapprovals-pending-approvals-last-edit-time": "kūbulihangga oci",
+	"pageapprovals-pending-approvals-last-edit-by": "kubuliha ningge oci"
+}
