@@ -1,7 +1,4 @@
 .page-approval-container {
-	position: absolute;
-	top: -55px;
-	right: 0;
 	z-index: 1;
 	display: flex;
 	align-items: center;

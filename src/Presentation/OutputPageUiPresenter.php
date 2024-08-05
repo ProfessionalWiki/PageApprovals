@@ -20,8 +20,8 @@ class OutputPageUiPresenter {
 			return;
 		}
 
-		$this->out->addHTML(
-			PageApprovals::getInstance()->getTemplateParser()->processTemplate(
+		$this->out->setIndicators( [
+			'page-approvals' => PageApprovals::getInstance()->getTemplateParser()->processTemplate(
 				'PageApprovalStatus',
 				[
 					'isPageApproved' => $arguments->pageIsApproved,
@@ -35,7 +35,7 @@ class OutputPageUiPresenter {
 					'approvalTimestamp' => $arguments->approvalTimestamp
 				]
 			)
-		);
+		] );
 
 		$this->out->addModuleStyles( 'ext.pageApprovals.styles' );
 		$this->out->addModules( 'ext.pageApprovals.scripts' );
