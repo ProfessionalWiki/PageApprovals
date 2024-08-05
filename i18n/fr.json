@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kubuya kanane leopold",
 			"MacOS Weed",
 			"SleaY"
 		]
@@ -17,8 +18,15 @@
 	"pageapprovals-approved": "Page approuvée",
 	"pageapprovals-unapproved": "Page non approuvée",
 	"pageapprovals-approve-authorization-failed": "L'approbation a échoué. Vous n'êtes pas autorisé à approuver cette page.",
+	"pageapprovals-unapprove-authorization-failed": "l'annulation de l'approbation a échoué. Vous n'êtes pas autorisé à annuler l'approbation de cette page",
+	"pageapprovals-approve-invalid-page": "l'approbation échouée cette page n'existe pas",
+	"pageapprovals-unapprove-invalid-page": "échec de désapprobation. cette page n'existe pas",
+	"pageapprovals-approve-outdated-revision": "L'approbation a échouée. Vous pouvez approuver que la dernière version d'une page",
+	"pageapprovals-unapprove-outdated-revision": "L'échec de désapprobation. Vous pouvez seulement désapprouver la dernière version.",
+	"pendingapprovals": "En attente d'approbations",
 	"pageapprovals-pending-approvals-page": "Page",
 	"pageapprovals-pending-approvals-categories": "Catégories",
+	"pageapprovals-pending-approvals-last-edit-time": "La dernière modification le",
 	"pageapprovals-pending-approvals-last-edit-by": "Dernière modification par",
 	"pageapprovals-no-categories": "Vous n'êtes pas autorisé à approuver les pages.",
 	"pageapprovals-no-pending-approvals": "Il n’y a aucune approbation en attente."
