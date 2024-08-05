@@ -52,9 +52,9 @@ class PageApprovalsHooksTest extends PageApprovalsIntegrationTest {
 
 		PageApprovalsHooks::onOutputPageBeforeHTML( $this->out );
 
-		$this->assertStringContainsString(
-			'page-approval-container',
-			$this->out->getHTML(),
+		$this->assertArrayHasKey(
+			'page-approvals',
+			$this->out->getIndicators(),
 			'The page approval status should be displayed with a matching category.'
 		);
 	}
