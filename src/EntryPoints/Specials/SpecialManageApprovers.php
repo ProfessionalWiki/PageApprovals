@@ -30,15 +30,15 @@ class SpecialManageApprovers extends SpecialPage {
 		$this->checkPermissions();
 		$this->checkReadOnly();
 
-		$approversWithCategories = new GetApproversWithCategories( $this->approverRepository );
-		$approversCategories = $approversWithCategories->getApproversWithCategories();
-
 		$request = $this->getRequest();
 		if ( $request->wasPosted() ) {
-			$this->handlePostRequest( $request, $approversCategories );
+			$this->handlePostRequest( $request );
 			$this->getOutput()->redirect( $this->getPageTitle()->getLocalURL() );
 			return;
 		}
+
+		$approversWithCategories = new GetApproversWithCategories( $this->approverRepository );
+		$approversCategories = $approversWithCategories->getApproversWithCategories();
 
 		$this->renderHtml( $approversCategories );
 
@@ -50,10 +50,7 @@ class SpecialManageApprovers extends SpecialPage {
 		return in_array( 'sysop', $userGroups );
 	}
 
-	/**
-	 * @param array<Approver> $approversCategories
-	 */
-	private function handlePostRequest( WebRequest $request, array $approversCategories ): void {
+	private function handlePostRequest( WebRequest $request ): void {
 		$action = $request->getText( 'action' );
 		$username = $request->getText( 'username' );
 		$category = $request->getText( 'category' );
@@ -65,17 +62,17 @@ class SpecialManageApprovers extends SpecialPage {
 			return;
 		}
 
-		$userWithCategories = array_filter( $approversCategories, fn( $approver ) => $approver->username === $username
-		);
-		$currentCategories = $userWithCategories[0]->categories ?? [];
-
-		$this->processCategoryAction( $action, $category, $userId, $currentCategories );
+		$this->processCategoryAction( $action, $category, $userId );
 	}
 
 	/**
-	 * @param string[] $currentCategories
+	 * @param string $action
+	 * @param string $category
+	 * @param int $userId
 	 */
-	private function processCategoryAction( string $action, string $category, int $userId, array $currentCategories ): void {
+	private function processCategoryAction( string $action, string $category, int $userId ): void {
+		$currentCategories = $this->approverRepository->getApproverCategories( $userId );
+
 		switch ( $action ) {
 			case 'add':
 				$currentCategories[] = $category;
@@ -107,6 +104,7 @@ class SpecialManageApprovers extends SpecialPage {
 
 	/**
 	 * @param array<Approver> $approvers
+	 *
 	 * @return array<array<string, mixed>>
 	 */
 	private function approversToViewModel( array $approvers ): array {
