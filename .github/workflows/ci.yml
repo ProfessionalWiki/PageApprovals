@@ -36,7 +36,7 @@ jobs:
 
       - name: Cache MediaWiki
         id: cache-mediawiki
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             mediawiki
@@ -45,7 +45,7 @@ jobs:
           key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v4
 
       - name: Cache Composer cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache
           key: composer-php${{ matrix.php }}
@@ -108,7 +108,7 @@ jobs:
 
       - name: Cache MediaWiki
         id: cache-mediawiki
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             mediawiki
@@ -117,7 +117,7 @@ jobs:
           key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
 
       - name: Cache Composer cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache
           key: composer_static_analysis
@@ -174,7 +174,7 @@ jobs:
 
           - name: Cache MediaWiki
             id: cache-mediawiki
-            uses: actions/cache@v3
+            uses: actions/cache@v4
             with:
                 path: |
                     mediawiki
@@ -183,7 +183,7 @@ jobs:
                 key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
 
           - name: Cache Composer cache
-            uses: actions/cache@v3
+            uses: actions/cache@v4
             with:
                 path: ~/.composer/cache
                 key: composer_static_analysis
@@ -240,7 +240,7 @@ jobs:
 
       - name: Cache MediaWiki
         id: cache-mediawiki
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             mediawiki
@@ -249,7 +249,7 @@ jobs:
           key: mw_static_analysis
 
       - name: Cache Composer cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.composer/cache
           key: mw_${{ matrix.mw }}-php${{ matrix.php }}_v3
