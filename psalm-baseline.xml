@@ -97,6 +97,9 @@
     <UndefinedClass>
       <code><![CDATA[LightnCandy]]></code>
     </UndefinedClass>
+    <UnusedMethod>
+      <code><![CDATA[approversToViewModel]]></code>
+    </UnusedMethod>
     <UnusedParam>
       <code><![CDATA[$approversCategories]]></code>
     </UnusedParam>

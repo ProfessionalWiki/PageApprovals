@@ -2,22 +2,23 @@
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserGroupManager;
 use ProfessionalWiki\PageApprovals\Application\Approver;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\GetApproversWithCategories;
-use ProfessionalWiki\PageApprovals\PageApprovals;
 use SpecialPage;
 use LightnCandy\LightnCandy;
 use WebRequest;
 
 class SpecialManageApprovers extends SpecialPage {
 
-	private ApproverRepository $approverRepository;
-
-	public function __construct() {
+	public function __construct(
+		private readonly ApproverRepository $approverRepository,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly UserFactory $userFactory
+	) {
 		parent::__construct( 'ManageApprovers', restriction: 'manage-approvers' );
-		$this->approverRepository = PageApprovals::getInstance()->getApproverRepository();
 	}
 
 	public function isListed(): bool {
@@ -45,7 +46,7 @@ class SpecialManageApprovers extends SpecialPage {
 	}
 
 	private function isAdmin(): bool {
-		$userGroups = MediaWikiServices::getInstance()->getUserGroupManager()->getUserGroups( $this->getUser() );
+		$userGroups = $this->userGroupManager->getUserGroups( $this->getUser() );
 		return in_array( 'sysop', $userGroups );
 	}
 
@@ -57,8 +58,7 @@ class SpecialManageApprovers extends SpecialPage {
 		$username = $request->getText( 'username' );
 		$category = $request->getText( 'category' );
 
-		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
-		$user = $userFactory->newFromName( $username );
+		$user = $this->userFactory->newFromName( $username );
 		$userId = $user->getId();
 
 		if ( !$userId ) {

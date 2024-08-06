@@ -20,6 +20,7 @@ use ProfessionalWiki\PageApprovals\Application\UseCases\EvaluateApprovalState;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\ApprovePageApi;
 use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
 use ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer;
+use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialManageApprovers;
 use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialPendingApprovals;
 use RequestContext;
 use TemplateParser;
@@ -122,6 +123,14 @@ class PageApprovals {
 		return new DatabasePendingApprovalRetriever(
 			$this->getDatabase(),
 			$this->getApproverRepository()
+		);
+	}
+
+	public static function newSpecialManageApprovers(): SpecialManageApprovers {
+		return new SpecialManageApprovers(
+			self::getInstance()->getApproverRepository(),
+			MediaWikiServices::getInstance()->getUserGroupManager(),
+			MediaWikiServices::getInstance()->getUserFactory()
 		);
 	}
 

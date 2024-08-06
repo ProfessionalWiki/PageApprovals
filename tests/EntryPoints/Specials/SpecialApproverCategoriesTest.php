@@ -5,6 +5,7 @@ namespace ProfessionalWiki\PageApprovals\Tests\Integration;
 use FauxRequest;
 use PermissionsError;
 use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialManageApprovers;
+use ProfessionalWiki\PageApprovals\PageApprovals;
 use SpecialPageTestBase;
 use User;
 
@@ -15,7 +16,11 @@ use User;
 class SpecialApproverCategoriesTest extends SpecialPageTestBase {
 
 	protected function newSpecialPage(): SpecialManageApprovers {
-		return new SpecialManageApprovers();
+		return new SpecialManageApprovers(
+			PageApprovals::getInstance()->getApproverRepository(),
+			$this->getServiceContainer()->getUserGroupManager(),
+			$this->getServiceContainer()->getUserFactory()
+		);
 	}
 
 	public function testNonAdminCannotAccessPage() {
