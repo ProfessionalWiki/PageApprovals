@@ -13,7 +13,7 @@ use User;
  * @group Database
  * @covers \ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialManageApprovers
  */
-class SpecialApproverCategoriesTest extends SpecialPageTestBase {
+class SpecialManageApproversTest extends SpecialPageTestBase {
 
 	protected function newSpecialPage(): SpecialManageApprovers {
 		return new SpecialManageApprovers(
