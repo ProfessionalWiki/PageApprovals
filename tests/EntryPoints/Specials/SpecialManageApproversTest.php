@@ -4,6 +4,7 @@ namespace ProfessionalWiki\PageApprovals\Tests\Integration;
 
 use FauxRequest;
 use PermissionsError;
+use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialManageApprovers;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 use SpecialPageTestBase;
@@ -15,9 +16,16 @@ use User;
  */
 class SpecialManageApproversTest extends SpecialPageTestBase {
 
+	private ApproverRepository $approverRepository;
+
+	protected function setUp(): void {
+		parent::setUp();
+		$this->approverRepository = PageApprovals::getInstance()->getApproverRepository();
+	}
+
 	protected function newSpecialPage(): SpecialManageApprovers {
 		return new SpecialManageApprovers(
-			PageApprovals::getInstance()->getApproverRepository(),
+			$this->approverRepository,
 			$this->getServiceContainer()->getUserGroupManager(),
 			$this->getServiceContainer()->getUserFactory()
 		);
@@ -101,6 +109,48 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 		);
 
 		$this->assertStringNotContainsString( 'TestCategory', $this->viewPage(), 'Category should be deleted' );
+	}
+
+	public function testCanAddAnotherCategoryWhenMultipleUsersHaveMultipleCategories(): void {
+		$user1 = self::getTestUser( [ 'Group1' ] )->getUser();
+		$user2 = self::getTestUser( [ 'Group2' ] )->getUser();
+		$user3 = self::getTestUser( [ 'Group3' ] )->getUser();
+
+		$this->approverRepository->setApproverCategories(
+			$user1->getId(),
+			[ 'TestCategory1', 'TestCategory2' ]
+		);
+		$this->approverRepository->setApproverCategories(
+			$user2->getId(),
+			[ 'TestCategory2', 'TestCategory3' ]
+		);
+		$this->approverRepository->setApproverCategories(
+			$user3->getId(),
+			[ 'TestCategory3' ]
+		);
+
+		$this->post(
+			request: [
+				'action' => 'add',
+				'username' => $user3->getName(),
+				'category' => 'TestCategory4'
+			]
+		);
+
+		$this->assertSame(
+			[ 'TestCategory1', 'TestCategory2' ],
+			$this->approverRepository->getApproverCategories( $user1->getId() )
+		);
+
+		$this->assertSame(
+			[ 'TestCategory2', 'TestCategory3' ],
+			$this->approverRepository->getApproverCategories( $user2->getId() )
+		);
+
+		$this->assertSame(
+			[ 'TestCategory3', 'TestCategory4' ],
+			$this->approverRepository->getApproverCategories( $user3->getId() )
+		);
 	}
 
 }
