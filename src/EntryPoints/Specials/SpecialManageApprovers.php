@@ -65,11 +65,6 @@ class SpecialManageApprovers extends SpecialPage {
 		$this->processCategoryAction( $action, $category, $userId );
 	}
 
-	/**
-	 * @param string $action
-	 * @param string $category
-	 * @param int $userId
-	 */
 	private function processCategoryAction( string $action, string $category, int $userId ): void {
 		$currentCategories = $this->approverRepository->getApproverCategories( $userId );
 
@@ -104,7 +99,6 @@ class SpecialManageApprovers extends SpecialPage {
 
 	/**
 	 * @param array<Approver> $approvers
-	 *
 	 * @return array<array<string, mixed>>
 	 */
 	private function approversToViewModel( array $approvers ): array {
