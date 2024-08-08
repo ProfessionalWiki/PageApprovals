@@ -3,6 +3,7 @@
 		"authors": [
 			"Kubuya kanane leopold",
 			"MacOS Weed",
+			"Méthodes Bulebe Hangi",
 			"SleaY"
 		]
 	},
@@ -10,7 +11,7 @@
 	"manageapprovers": "Gérer les approbateurs",
 	"pageapprovals-status-approved": "APPROUVER",
 	"pageapprovals-status-not-approved": "Non approuvé",
-	"pageapprovals-approve-page-text": "page approuvée",
+	"pageapprovals-approve-page-text": "a approuvé cette page",
 	"pageapprovals-approve-button": "Approuver la page",
 	"pageapprovals-unapprove-button": "Désapprouver la page",
 	"right-manage-approvers": "Gérer les approbateurs",
