@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
+			"SupaplexTW",
 			"Winston Sung"
 		]
 	},
@@ -9,7 +10,7 @@
 	"manageapprovers": "管理核准員",
 	"pageapprovals-status-approved": "已核准",
 	"pageapprovals-status-not-approved": "未核准",
-	"pageapprovals-approve-page-text": "已核准頁面",
+	"pageapprovals-approve-page-text": "已核准這頁面",
 	"pageapprovals-approve-button": "核准頁面",
 	"pageapprovals-unapprove-button": "取消核准頁面",
 	"right-manage-approvers": "管理核准員",
