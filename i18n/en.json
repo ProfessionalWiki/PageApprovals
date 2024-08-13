@@ -24,9 +24,9 @@
 	"pageapprovals-unapprove-outdated-revision": "Unapproval failed. You can only unapprove the latest version of a page.",
 	"pendingapprovals": "Pending Approvals",
 	"pageapprovals-pending-approvals-page": "Page",
-	"pageapprovals-pending-approvals-categories": "Categories",
+	"pageapprovals-pending-approvals-categories": "Matching Categories",
 	"pageapprovals-pending-approvals-last-edit-time": "Last Edited On",
-	"pageapprovals-pending-approvals-last-edit-by": "Last Edited By",
+	"pageapprovals-pending-approvals-last-edit-by": "Latest Editor",
 	"pageapprovals-no-categories": "You are not authorized to approve pages.",
 	"pageapprovals-no-pending-approvals": "You have no pending approvals."
 }
