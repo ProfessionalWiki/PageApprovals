@@ -70,6 +70,7 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 			__METHOD__,
 			[
 				'GROUP BY' => 'page_id',
+				'ORDER BY' => 'rev_timestamp DESC',
 				'LIMIT' => $this->limit
 			],
 			[
