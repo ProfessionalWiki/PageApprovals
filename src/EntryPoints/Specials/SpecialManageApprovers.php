@@ -33,8 +33,6 @@ class SpecialManageApprovers extends SpecialPage {
 		$request = $this->getRequest();
 		if ( $request->wasPosted() ) {
 			$this->handlePostRequest( $request );
-			$this->getOutput()->redirect( $this->getPageTitle()->getLocalURL() );
-			return;
 		}
 
 		$approversWithCategories = new GetApproversWithCategories( $this->approverRepository );
@@ -109,10 +107,14 @@ class SpecialManageApprovers extends SpecialPage {
 	 * @return array<string, mixed>
 	 */
 	private function approverToViewModel( Approver $approver ): array {
+		$request = $this->getRequest();
+		$showCategories = $request->wasPosted() && $request->getText( 'username' ) === $approver->username;
+
 		return [
 			'username' => $approver->username,
 			'userId' => $approver->userId,
-			'categories' => $approver->categories
+			'categories' => $approver->categories,
+			'showCategories' => !empty( $approver->categories ) || $showCategories
 		];
 	}
 
