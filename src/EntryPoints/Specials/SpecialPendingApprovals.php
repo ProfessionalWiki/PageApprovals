@@ -48,7 +48,7 @@ class SpecialPendingApprovals extends SpecialPage {
 	private function createPendingApprovalsTable( array $pendingApprovals ): string {
 		return Html::rawElement(
 			'table',
-			[ 'class' => 'wikitable' ],
+			[ 'class' => 'wikitable sortable' ],
 			$this->createHeaderRow() . implode( "\n", $this->createPendingApprovalRows( $pendingApprovals ) )
 		);
 	}
