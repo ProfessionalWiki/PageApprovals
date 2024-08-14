@@ -41,13 +41,9 @@ class InMemoryApproverRepository implements ApproverRepository {
 	 */
 	public function setApproverCategories( int $userId, array $categoryNames ): void {
 		$this->categoriesPerUser[$userId] = array_map(
-			fn( string $category ) => $this->normalizeCategoryTitle( $category ),
+			fn( string $category ) => $category,
 			$categoryNames
 		);
-	}
-
-	private function normalizeCategoryTitle( string $title ): string {
-		return Title::newFromText( $title, NS_CATEGORY )?->getDBkey() ?? '';
 	}
 
 }
