@@ -6,6 +6,7 @@ namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use Title;
+use TitleValue;
 use Wikimedia\Rdbms\IDatabase;
 
 class DatabaseApproverRepository implements ApproverRepository {
@@ -109,7 +110,20 @@ class DatabaseApproverRepository implements ApproverRepository {
 	}
 
 	private function deserializeCategories( string $serializedCategories ): array {
-		return $serializedCategories === '' ? [] : explode( '|', $serializedCategories );
+		return $serializedCategories === ''
+			? []
+			: $this->getCategoryTitlesFromDbKeys( explode( '|', $serializedCategories ) );
+	}
+
+	/**
+	 * @param string[] $categoryDbKeys
+	 * @return string[]
+	 */
+	private function getCategoryTitlesFromDbKeys( array $categoryDbKeys ): array {
+		return array_filter( array_map(
+			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText() ?? '',
+			$categoryDbKeys
+		) );
 	}
 
 }

@@ -153,7 +153,7 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 		);
 	}
 
-		public function testAddCategoryWithSpaces(): void {
+	public function testAddCategoryWithSpaces(): void {
 		$user = self::getTestUser()->getUser();
 
 		$this->post(
@@ -165,7 +165,7 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 		);
 
 		$this->assertSame(
-			[ 'Test_-_Category' ],
+			[ 'Test - Category' ],
 			$this->approverRepository->getApproverCategories( $user->getId() )
 		);
 	}

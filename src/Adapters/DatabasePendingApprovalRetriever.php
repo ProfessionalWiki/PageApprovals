@@ -58,7 +58,7 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 				'latest_approval.al_timestamp'
 			],
 			[
-				'cl_to' => $categories,
+				'cl_to' => $this->normalizeCategoryTitles( $categories ),
 				$this->db->makeList(
 					[
 						'latest_approval.al_is_approved' => 0,
@@ -108,6 +108,17 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 				'a.al_timestamp = latest.max_timestamp'
 			],
 			__METHOD__
+		);
+	}
+
+	/**
+	 * @param string[] $categories
+	 * @return string[]
+	 */
+	private function normalizeCategoryTitles( array $categories ): array {
+		return array_map(
+			fn( string $category ) => TitleValue::tryNew( NS_CATEGORY, $category )?->getDBkey() ?? '',
+			$categories
 		);
 	}
 
