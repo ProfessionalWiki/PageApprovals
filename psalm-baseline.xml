@@ -22,6 +22,7 @@
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[NS_CATEGORY]]></code>
+      <code><![CDATA[NS_CATEGORY]]></code>
     </MixedArgument>
     <MixedReturnTypeCoercion>
       <code><![CDATA[$approvers]]></code>
@@ -60,6 +61,7 @@
     <MixedArgument>
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->page_title]]></code>
+      <code><![CDATA[NS_CATEGORY]]></code>
     </MixedArgument>
     <MixedAssignment>
       <code><![CDATA[$name]]></code>
@@ -71,11 +73,6 @@
       <code><![CDATA[$row->rev_actor]]></code>
       <code><![CDATA[$row->rev_timestamp]]></code>
     </PossiblyInvalidPropertyFetch>
-  </file>
-  <file src="src/Adapters/InMemoryApproverRepository.php">
-    <MixedArgument>
-      <code><![CDATA[NS_CATEGORY]]></code>
-    </MixedArgument>
   </file>
   <file src="src/Adapters/PageHtmlRetriever.php">
     <PossiblyInvalidMethodCall>
