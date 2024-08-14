@@ -28,5 +28,6 @@
 	"pageapprovals-pending-approvals-last-edit-time": "Column on \"Special:PendingApprovals\" table",
 	"pageapprovals-pending-approvals-last-edit-by": "Column on \"Special:PendingApprovals\" table",
 	"pageapprovals-no-categories": "Message on \"Special:PendingApprovals\"",
-	"pageapprovals-no-pending-approvals": "Message on \"Special:PendingApprovals\""
+	"pageapprovals-no-pending-approvals": "Message on \"Special:PendingApprovals\"",
+	"pageapprovals-not-logged-in": "Message on \"Special:PendingApprovals\""
 }
