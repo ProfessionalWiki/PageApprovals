@@ -6,6 +6,7 @@ namespace ProfessionalWiki\PageApprovals\Tests\Adapters;
 
 use ProfessionalWiki\PageApprovals\Adapters\DatabasePendingApprovalRetriever;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApproverRepository;
+use ProfessionalWiki\PageApprovals\Application\PendingApproval;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use WikiPage;
 
@@ -118,12 +119,22 @@ class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest 
 
 		$pendingApprovals = $this->retriever->getPendingApprovalsForApprover( $approverId );
 
-		$this->assertSame(
-			[
-				$expectedPage1->getTitle()->getText(),
-				$expectedPage2->getTitle()->getText(),
-				$expectedPage3->getTitle()->getText()
-			],
+		$this->assertHasPendingApprovalsForPages(
+			[ $expectedPage1, $expectedPage2, $expectedPage3 ],
+			$pendingApprovals
+		);
+	}
+
+	/**
+	 * @param WikiPage[] $pages
+	 * @param PendingApproval[] $pendingApprovals
+	 */
+	private function assertHasPendingApprovalsForPages( array $pages, array $pendingApprovals ): void {
+		$this->assertEqualsCanonicalizing(
+			array_map(
+				fn( $page ) => $page->getTitle()->getText(),
+				$pages
+			),
 			array_map(
 				fn( $approval ) => $approval->title->getText(),
 				$pendingApprovals

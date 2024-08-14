@@ -58,7 +58,9 @@ class SpecialPendingApprovals extends SpecialPage {
 <tr>
 	<th>{$this->msg( 'pageapprovals-pending-approvals-page' )->escaped()}</th>
 	<th>{$this->msg( 'pageapprovals-pending-approvals-categories' )->escaped()}</th>
-	<th>{$this->msg( 'pageapprovals-pending-approvals-last-edit-time' )->escaped()}</th>
+	<th class="headerSort headerSortDown">
+		{$this->msg('pageapprovals-pending-approvals-last-edit-time')->escaped()}
+	</th>
 	<th>{$this->msg( 'pageapprovals-pending-approvals-last-edit-by' )->escaped()}</th>
 </tr>
 HTML;
@@ -78,7 +80,7 @@ HTML;
 	}
 
 	private function createPendingApprovalRow( PendingApproval $pendingApproval ): string {
-		$rows = implode(
+		$cells = implode(
 			"\n",
 			[
 				Html::rawElement( 'td', [], $this->linkRenderer->makeLink( $pendingApproval->title ) ),
@@ -92,7 +94,7 @@ HTML;
 			]
 		);
 
-		return "<tr>$rows</tr>";
+		return "<tr>$cells</tr>";
 	}
 
 	/**
