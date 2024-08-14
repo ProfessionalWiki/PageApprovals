@@ -59,4 +59,11 @@ class AuthorityBasedApprovalAuthorizerTest extends PageApprovalsIntegrationTest 
 		$this->assertFalse( $this->approvalAuthorizer->canApprove( $page ) );
 	}
 
+	public function testCanApproveWhenCategoryContainsSpaces(): void {
+		$page = $this->createPageWithCategories( [ 'Test - Category' ] );
+		$this->approverRepository->setApproverCategories( $this->user->getId(), [ 'Test - Category' ] );
+
+		$this->assertTrue( $this->approvalAuthorizer->canApprove( $page ) );
+	}
+
 }
