@@ -49,52 +49,46 @@ class SpecialPendingApprovals extends SpecialPage {
 		return Html::rawElement(
 			'table',
 			[ 'class' => 'wikitable sortable' ],
-			$this->createHeaderRow() . implode( "\n", $this->createPendingApprovalRows( $pendingApprovals ) )
+			$this->createHeaderRow() . $this->createPendingApprovalRows( $pendingApprovals )
 		);
 	}
 
 	private function createHeaderRow(): string {
-		return $this->createTableRow(
-			[
-				$this->msg( 'pageapprovals-pending-approvals-page' )->plain(),
-				$this->msg( 'pageapprovals-pending-approvals-categories' )->plain(),
-				$this->msg( 'pageapprovals-pending-approvals-last-edit-time' )->plain(),
-				$this->msg( 'pageapprovals-pending-approvals-last-edit-by' )->plain(),
-			],
-			'th'
-		);
-	}
-
-	/**
-	 * @param string[] $cells
-	 */
-	private function createTableRow( array $cells, string $cellType = 'td' ): string {
-		$rowContent = '';
-		foreach ( $cells as $cell ) {
-			$rowContent .= Html::rawElement( $cellType, [], $cell );
-		}
-		return Html::rawElement( 'tr', [], $rowContent );
+		return <<<HTML
+<tr>
+	<th>{$this->msg( 'pageapprovals-pending-approvals-page' )->escaped()}</th>
+	<th>{$this->msg( 'pageapprovals-pending-approvals-categories' )->escaped()}</th>
+	<th>{$this->msg( 'pageapprovals-pending-approvals-last-edit-time' )->escaped()}</th>
+	<th>{$this->msg( 'pageapprovals-pending-approvals-last-edit-by' )->escaped()}</th>
+</tr>
+HTML;
 	}
 
 	/**
 	 * @param array<PendingApproval> $pendingApprovals
-	 * @return string[]
 	 */
-	private function createPendingApprovalRows( array $pendingApprovals ): array {
-		$rows = [];
-		foreach ( $pendingApprovals as $pendingApproval ) {
-			$rows[] = $this->createPendingApprovalRow( $pendingApproval );
-		}
-		return $rows;
+	private function createPendingApprovalRows( array $pendingApprovals ): string {
+		return implode(
+			"\n",
+			array_map(
+				fn( PendingApproval $pendingApproval ) => $this->createPendingApprovalRow( $pendingApproval ),
+				$pendingApprovals
+			)
+		);
 	}
 
 	private function createPendingApprovalRow( PendingApproval $pendingApproval ): string {
-		return $this->createTableRow( [
-			$this->linkRenderer->makeLink( $pendingApproval->title ),
-			implode( ', ', $this->getCategoryTitlesFromDbKeys( $pendingApproval->categories ) ),
-			$this->getLanguage()->userTimeAndDate( $pendingApproval->lastEditTimestamp, $this->getUser() ),
-			$pendingApproval->lastEditUserName
-		] );
+		$rows = implode(
+			"\n",
+			[
+				Html::rawElement( 'td', [], $this->linkRenderer->makeLink( $pendingApproval->title ) ),
+				Html::element( 'td', [], implode( ', ', $this->getCategoryTitlesFromDbKeys( $pendingApproval->categories ) ) ),
+				Html::element( 'td', [], $this->getLanguage()->userTimeAndDate( $pendingApproval->lastEditTimestamp, $this->getUser() ) ),
+				Html::element( 'td', [], $pendingApproval->lastEditUserName )
+			]
+		);
+
+		return "<tr>$rows</tr>";
 	}
 
 	/**
