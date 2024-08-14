@@ -105,7 +105,6 @@ class DatabaseApproverRepository implements ApproverRepository {
 	}
 
 	private function normalizeCategoryTitle( string $title ): string {
-		// TODO: Confirm database is not accessed, otherwise use TitleValue::tryNew()
 		return Title::newFromText( $title, NS_CATEGORY )?->getDBkey() ?? '';
 	}
 
