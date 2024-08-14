@@ -153,4 +153,43 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 		);
 	}
 
+		public function testAddCategoryWithSpaces(): void {
+		$user = self::getTestUser()->getUser();
+
+		$this->post(
+			request: [
+				'action' => 'add',
+				'username' => $user->getName(),
+				'category' => 'Test - Category'
+			]
+		);
+
+		$this->assertSame(
+			[ 'Test_-_Category' ],
+			$this->approverRepository->getApproverCategories( $user->getId() )
+		);
+	}
+
+	public function testRemoveCategoryWithSpaces(): void {
+		$user = self::getTestUser()->getUser();
+
+		$this->approverRepository->setApproverCategories(
+			$user->getId(),
+			[ 'Test - Category' ]
+		);
+
+		$this->post(
+			request: [
+				'action' => 'delete',
+				'username' => $user->getName(),
+				'category' => 'Test - Category'
+			]
+		);
+
+		$this->assertSame(
+			[],
+			$this->approverRepository->getApproverCategories( $user->getId() )
+		);
+	}
+
 }

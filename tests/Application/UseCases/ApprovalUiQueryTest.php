@@ -7,6 +7,7 @@ namespace ProfessionalWiki\PageApprovals\Tests\Application\UseCases;
 use OutputPage;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApproverRepository;
+use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\ApprovalUiQuery;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingApprovalAuthorizer;
@@ -19,6 +20,7 @@ use RequestContext;
 class ApprovalUiQueryTest extends PageApprovalsIntegrationTest {
 
 	private const APPROVER_CATEGORY = 'TestCat';
+	private const CATEGORY_WITH_SPACES = 'Test - Category';
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -35,8 +37,8 @@ class ApprovalUiQueryTest extends PageApprovalsIntegrationTest {
 		$this->assertNull( $uiArguments->approverUserName );
 	}
 
-	private function createArticle(): OutputPage {
-		$page = $this->createPageWithCategories( [ self::APPROVER_CATEGORY ] );
+	private function createArticle( $categories = [ self::APPROVER_CATEGORY ] ): OutputPage {
+		$page = $this->createPageWithCategories( $categories );
 
 		$outputPage = RequestContext::newExtraneousContext( $page->getTitle() )->getOutput();
 		$outputPage->addParserOutput( $page->getParserOutput() );
@@ -46,11 +48,14 @@ class ApprovalUiQueryTest extends PageApprovalsIntegrationTest {
 		return $outputPage;
 	}
 
-	private function newApprovalUiQuery( InMemoryApprovalLog $approvalLog = null ): ApprovalUiQuery {
+	private function newApprovalUiQuery(
+		InMemoryApprovalLog $approvalLog = null,
+		ApproverRepository $repository = null
+	): ApprovalUiQuery {
 		return new ApprovalUiQuery(
 			$approvalLog ?? new InMemoryApprovalLog(),
 			new SucceedingApprovalAuthorizer(),
-			$this->newApproverRepo()
+			$repository ?? $this->newApproverRepo()
 		);
 	}
 
@@ -111,6 +116,18 @@ class ApprovalUiQueryTest extends PageApprovalsIntegrationTest {
 		$this->assertSame( 0, $uiArguments->approverId );
 		$this->assertSame( 1, $uiArguments->approvalTimestamp );
 		$this->assertSame( '', $uiArguments->approverUserName );
+	}
+
+	public function testPageIsApprovableWhenCategoryContainsSpaces(): void {
+		$repository = new InMemoryApproverRepository();
+		$repository->setApproverCategories( 0, [ self::CATEGORY_WITH_SPACES ] );
+
+		$page = $this->createArticle( [ self::CATEGORY_WITH_SPACES ] );
+
+		$uiArguments = $this->newApprovalUiQuery( repository: $repository )->getUiState( $page );
+
+		$this->assertTrue( $uiArguments->showUi );
+		$this->assertTrue( $uiArguments->userIsApprover );
 	}
 
 }
