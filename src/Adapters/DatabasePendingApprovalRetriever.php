@@ -130,7 +130,7 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 
 		foreach ( $res as $row ) {
 			$title = new TitleValue( (int)$row->page_namespace, $row->page_title );
-			$categories = explode( ',', $row->categories );
+			$categories = $this->getCategoryTitlesFromDbKeys( explode( ',', $row->categories ) );
 			$lastEditUserName = $this->getUserNameFromActor( (int)$row->rev_actor );
 
 			$pendingApprovals[] = new PendingApproval(
@@ -142,6 +142,17 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 		}
 
 		return $pendingApprovals;
+	}
+
+	/**
+	 * @param string[] $categoryDbKeys
+	 * @return string[]
+	 */
+	private function getCategoryTitlesFromDbKeys( array $categoryDbKeys ): array {
+		return array_filter( array_map(
+			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText() ?? '',
+			$categoryDbKeys
+		) );
 	}
 
 	private function getUserNameFromActor( int $actorId ): string {

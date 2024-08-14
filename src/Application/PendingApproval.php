@@ -9,7 +9,7 @@ use TitleValue;
 class PendingApproval {
 
 	/**
-	 * @param string[] $categories The category DB keys.
+	 * @param string[] $categories
 	 */
 	public function __construct(
 		public readonly TitleValue $title,
