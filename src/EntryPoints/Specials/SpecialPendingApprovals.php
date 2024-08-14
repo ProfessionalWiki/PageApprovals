@@ -83,7 +83,11 @@ HTML;
 			[
 				Html::rawElement( 'td', [], $this->linkRenderer->makeLink( $pendingApproval->title ) ),
 				Html::element( 'td', [], implode( ', ', $this->getCategoryTitlesFromDbKeys( $pendingApproval->categories ) ) ),
-				Html::element( 'td', [], $this->getLanguage()->userTimeAndDate( $pendingApproval->lastEditTimestamp, $this->getUser() ) ),
+				Html::element(
+					'td',
+					[ 'data-sort-value' => $pendingApproval->lastEditTimestamp ],
+					$this->getLanguage()->userTimeAndDate( $pendingApproval->lastEditTimestamp, $this->getUser() )
+				),
 				Html::element( 'td', [], $pendingApproval->lastEditUserName )
 			]
 		);
