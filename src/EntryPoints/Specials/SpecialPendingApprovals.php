@@ -25,6 +25,11 @@ class SpecialPendingApprovals extends SpecialPage {
 		$this->checkPermissions();
 		$this->checkReadOnly();
 
+		if ( $this->getUser()->isAnon() ) {
+			$this->getOutput()->addWikiMsg( 'pageapprovals-not-logged-in' );
+			return;
+		}
+
 		$categories = $this->approverRepository->getApproverCategories( $this->getUser()->getId() );
 
 		if ( $categories === [] ) {
