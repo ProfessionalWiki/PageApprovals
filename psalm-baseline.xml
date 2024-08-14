@@ -62,6 +62,7 @@
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->page_title]]></code>
       <code><![CDATA[NS_CATEGORY]]></code>
+      <code><![CDATA[NS_CATEGORY]]></code>
     </MixedArgument>
     <MixedAssignment>
       <code><![CDATA[$name]]></code>
@@ -100,11 +101,6 @@
     <UnusedParam>
       <code><![CDATA[$approversCategories]]></code>
     </UnusedParam>
-  </file>
-  <file src="src/EntryPoints/Specials/SpecialPendingApprovals.php">
-    <MixedArgument>
-      <code><![CDATA[NS_CATEGORY]]></code>
-    </MixedArgument>
   </file>
   <file src="src/PageApprovals.php">
     <FalsableReturnStatement>

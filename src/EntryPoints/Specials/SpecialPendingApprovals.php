@@ -84,7 +84,7 @@ HTML;
 			"\n",
 			[
 				Html::rawElement( 'td', [], $this->linkRenderer->makeLink( $pendingApproval->title ) ),
-				Html::element( 'td', [], implode( ', ', $this->getCategoryTitlesFromDbKeys( $pendingApproval->categories ) ) ),
+				Html::element( 'td', [], implode( ', ', $pendingApproval->categories ) ),
 				Html::element(
 					'td',
 					[ 'data-sort-value' => $pendingApproval->lastEditTimestamp ],
@@ -95,17 +95,6 @@ HTML;
 		);
 
 		return "<tr>$cells</tr>";
-	}
-
-	/**
-	 * @param string[] $categoryDbKeys
-	 * @return string[]
-	 */
-	private function getCategoryTitlesFromDbKeys( array $categoryDbKeys ): array {
-		return array_filter( array_map(
-			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText(),
-			$categoryDbKeys
-		) );
 	}
 
 }
