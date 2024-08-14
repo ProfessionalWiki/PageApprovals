@@ -29,7 +29,7 @@ class GetApproversWithCategories {
 			$approvers[] = new Approver(
 				username: $user->getName(),
 				userId: $approver['userId'],
-				categories: $this->getCategoryTitlesFromDbKeys( $approver['categories'] )
+				categories: $this->getCategoryNamesFromDbKeys( $approver['categories'] )
 			);
 		}
 
@@ -40,7 +40,7 @@ class GetApproversWithCategories {
 	 * @param string[] $categoryDbKeys
 	 * @return string[]
 	 */
-	private function getCategoryTitlesFromDbKeys( array $categoryDbKeys ): array {
+	private function getCategoryNamesFromDbKeys( array $categoryDbKeys ): array {
 		return array_filter( array_map(
 			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText(),
 			$categoryDbKeys

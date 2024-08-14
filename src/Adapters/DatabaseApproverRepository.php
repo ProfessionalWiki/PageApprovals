@@ -111,14 +111,14 @@ class DatabaseApproverRepository implements ApproverRepository {
 	private function deserializeCategories( string $serializedCategories ): array {
 		return $serializedCategories === ''
 			? []
-			: $this->getCategoryTitlesFromDbKeys( explode( '|', $serializedCategories ) );
+			: $this->getCategoryNamesFromDbKeys( explode( '|', $serializedCategories ) );
 	}
 
 	/**
 	 * @param string[] $categoryDbKeys
 	 * @return string[]
 	 */
-	private function getCategoryTitlesFromDbKeys( array $categoryDbKeys ): array {
+	private function getCategoryNamesFromDbKeys( array $categoryDbKeys ): array {
 		return array_filter( array_map(
 			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText() ?? '',
 			$categoryDbKeys
