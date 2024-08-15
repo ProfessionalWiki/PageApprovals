@@ -15,28 +15,27 @@
 		</thead>
 		<tbody>
 		{{#approvers}}
-			{{#showCategories}}
-				<tr>
-					<td>{{username}}</td>
-					<td>
-						{{#categories}}
-							<div class="category-entry">
-								<span class="category-name">{{.}}</span>
-								<form method="POST" action="" class="category-row">
-									<input type="hidden" name="username" value="{{username}}">
-									<input type="hidden" name="category" value="{{.}}">
-									<button class="approval-delete-btn" type="submit" name="action" value="delete">Delete</button>
-								</form>
-							</div>
-						{{/categories}}
-						<form method="POST" action="" class="add-category-form">
-							<input type="text" name="category" placeholder="New Category" required>
-							<input type="hidden" name="username" value="{{username}}">
-							<button class="add-button" type="submit" name="action" value="add">Add</button>
-						</form>
-					</td>
-				</tr>
-			{{/showCategories}}
+			<tr>
+				<td>{{username}}</td>
+				<td>
+					{{#categories}}
+						<div class="category-entry">
+							<span class="category-name">{{.}}</span>
+							<form method="POST" action="" class="category-row">
+								<input type="hidden" name="username" value="{{username}}">
+								<input type="hidden" name="category" value="{{.}}">
+								<button class="approval-delete-btn" type="submit" name="action" value="delete">Delete
+								</button>
+							</form>
+						</div>
+					{{/categories}}
+					<form method="POST" action="" class="add-category-form">
+						<input type="text" name="category" placeholder="New Category" required>
+						<input type="hidden" name="username" value="{{username}}">
+						<button class="add-button" type="submit" name="action" value="add">Add</button>
+					</form>
+				</td>
+			</tr>
 		{{/approvers}}
 		</tbody>
 	</table>

@@ -38,7 +38,7 @@ class SpecialManageApprovers extends SpecialPage {
 		$approversWithCategories = new GetApproversWithCategories( $this->approverRepository );
 		$approversCategories = $approversWithCategories->getApproversWithCategories();
 
-		$this->renderHtml( $approversCategories );
+		$this->renderHtml( $this->filterOutApproversWithNoCategories( $approversCategories ) );
 
 		$this->getOutput()->addModuleStyles( 'ext.pageApprovals.manageApprovers.styles' );
 	}
@@ -97,6 +97,24 @@ class SpecialManageApprovers extends SpecialPage {
 
 	/**
 	 * @param array<Approver> $approvers
+	 *
+	 * @return array<Approver>
+	 */
+	private function filterOutApproversWithNoCategories( array $approvers ): array {
+		$request = $this->getRequest();
+		$user = $this->userFactory->newFromName( $request->getText( 'username' ) );
+
+		return array_filter( $approvers, static function ( Approver $approver ) use ( $request, $user ) {
+			if ( !empty( $approver->categories ) ) {
+				return true;
+			}
+			return $request->wasPosted() && $approver->username === $user->getName();
+		} );
+	}
+
+	/**
+	 * @param array<Approver> $approvers
+	 *
 	 * @return array<array<string, mixed>>
 	 */
 	private function approversToViewModel( array $approvers ): array {
@@ -107,19 +125,10 @@ class SpecialManageApprovers extends SpecialPage {
 	 * @return array<string, mixed>
 	 */
 	private function approverToViewModel( Approver $approver ): array {
-		$showCategories = true;
-
-		if ( empty( $approver->categories ) ) {
-			$request = $this->getRequest();
-			$user = $this->userFactory->newFromName( $request->getText( 'username' ) );
-			$showCategories = $request->wasPosted() && $user->getName() === $approver->username;
-		}
-
 		return [
 			'username' => $approver->username,
 			'userId' => $approver->userId,
 			'categories' => $approver->categories,
-			'showCategories' => $showCategories
 		];
 	}
 
