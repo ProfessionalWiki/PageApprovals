@@ -107,14 +107,19 @@ class SpecialManageApprovers extends SpecialPage {
 	 * @return array<string, mixed>
 	 */
 	private function approverToViewModel( Approver $approver ): array {
-		$request = $this->getRequest();
-		$showCategories = $request->wasPosted() && $request->getText( 'username' ) === $approver->username;
+		$showCategories = true;
+
+		if ( empty( $approver->categories ) ) {
+			$request = $this->getRequest();
+			$user = $this->userFactory->newFromName( $request->getText( 'username' ) );
+			$showCategories = $request->wasPosted() && $user->getName() === $approver->username;
+		}
 
 		return [
 			'username' => $approver->username,
 			'userId' => $approver->userId,
 			'categories' => $approver->categories,
-			'showCategories' => !empty( $approver->categories ) || $showCategories
+			'showCategories' => $showCategories
 		];
 	}
 

@@ -55,7 +55,9 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 	}
 
 	public function testAddApproverAction(): void {
-		$username = self::getTestUser()->getUser()->getName();
+		$testUser = self::getTestUser()->getUser();
+		$username = $testUser->getName();
+		$userId = $testUser->getId();
 
 		$this->post(
 			request: [
@@ -64,18 +66,13 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 			]
 		);
 
-		$output = $this->viewPage();
+		$approvers = $this->approverRepository->getApproversWithCategories();
 
-		$this->assertStringContainsString(
-			$username,
-			$output,
-			'Expected HTML output to contain the new approver username'
-		);
-		$this->assertStringNotContainsString(
-			'<div class="category-entry">',
-			$output,
-			'New approver should have no categories'
-		);
+		$approver = array_filter( $approvers, fn( $approver ) => $approver['userId'] === $userId );
+		$newApprover = reset( $approver );
+
+		$this->assertNotNull( $newApprover, 'New approver should be added' );
+		$this->assertSame( [], $newApprover['categories'], 'New approver should have no categories' );
 	}
 
 	private function post( array $request ): void {
