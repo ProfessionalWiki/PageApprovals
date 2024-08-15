@@ -20,6 +20,7 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 
 	protected function setUp(): void {
 		parent::setUp();
+		$this->tablesUsed[] = 'approver_config';
 		$this->approverRepository = PageApprovals::getInstance()->getApproverRepository();
 	}
 

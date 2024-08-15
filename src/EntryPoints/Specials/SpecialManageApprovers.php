@@ -128,7 +128,7 @@ class SpecialManageApprovers extends SpecialPage {
 		return [
 			'username' => $approver->username,
 			'userId' => $approver->userId,
-			'categories' => $approver->categories,
+			'categories' => $approver->categories
 		];
 	}
 
