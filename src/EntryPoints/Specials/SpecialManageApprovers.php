@@ -67,14 +67,12 @@ class SpecialManageApprovers extends SpecialPage {
 		$currentCategories = $this->approverRepository->getApproverCategories( $userId );
 
 		switch ( $action ) {
+			case 'add-approver':
 			case 'add':
 				$currentCategories[] = $category;
 				break;
 			case 'delete':
 				$currentCategories = array_filter( $currentCategories, fn( string $cat ) => $cat !== $category );
-				break;
-			case 'add-approver':
-				$currentCategories = [];
 				break;
 			default:
 				return;
@@ -118,7 +116,12 @@ class SpecialManageApprovers extends SpecialPage {
 	 * @return array<array<string, mixed>>
 	 */
 	private function approversToViewModel( array $approvers ): array {
-		return array_map( fn( Approver $approver ) => $this->approverToViewModel( $approver ), $approvers );
+		return array_values(
+			array_map(
+				fn( Approver $approver ) => $this->approverToViewModel( $approver ),
+				$approvers
+			)
+		);
 	}
 
 	/**
