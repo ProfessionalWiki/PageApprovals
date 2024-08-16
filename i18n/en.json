@@ -8,7 +8,7 @@
 	"pageapprovals-description": "Allows approvers to mark pages as approved",
 	"manageapprovers": "Manage Approvers",
 	"pageapprovals-status-approved": "APPROVED",
-	"pageapprovals-status-not-approved": "Not Approved",
+	"pageapprovals-status-not-approved": "Waiting for Approval",
 	"pageapprovals-approve-page-text": "approved this page",
 	"pageapprovals-approve-button": "Approve Page",
 	"pageapprovals-unapprove-button": "Unapprove Page",
