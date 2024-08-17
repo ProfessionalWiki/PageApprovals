@@ -11,7 +11,6 @@
 	border-radius: 20px;
 	font-weight: bold;
 	font-size: 12px;
-	cursor: pointer;
 	position: relative;
 }
 
@@ -33,7 +32,8 @@
 
 .status-icon,
 .checkmark-icon,
-.unapprove-icon {
+.unapprove-icon,
+.dropdown-icon {
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -58,6 +58,17 @@
 	width: 24px;
 	height: 24px;
 	background-image: url( Icons/checkmark.svg );
+}
+
+.dropdown-icon {
+	width: 13px;
+	height: 13px;
+	background-image: url( Icons/arrow-down.svg );
+	margin-left: 5px;
+}
+
+.dropdown-icon.approved {
+	background-image: url( Icons/approved-arrow-down.svg );
 }
 
 #unapproveButton .unapprove-icon {
@@ -138,7 +149,7 @@
 	.dropdown-item {
 		display: flex;
 		align-items: center;
-		padding: 10px 15px;
+		padding: 10px 23px;
 		width: 100%;
 		border: 0;
 		background: none;
@@ -162,4 +173,8 @@
 
 #unapproveButton {
 	color: #dc3545;
+}
+
+.cursor-pointer {
+	cursor: pointer;
 }
