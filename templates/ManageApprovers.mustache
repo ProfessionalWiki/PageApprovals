@@ -33,9 +33,7 @@
 						<input type="text" name="category" placeholder="New Category" id="{{username}}category" required>
 						<input type="hidden" name="username" value="{{username}}">
 						<input type="hidden" name="action" value="add">
-						<button class="add-button" value="add" onclick="addCategory( event => event)">
-							Add
-						</button>
+						<button class="add-button" type="submit" value="add">Add</button>
 					</form>
 				</td>
 			</tr>
@@ -43,30 +41,59 @@
 		</tbody>
 	</table>
 </div>
-<script>
-	window.history.replaceState?.( null, null, window.location.href );
 
-	function addCategory( event ) {
+<script>
+	const CATEGORIES_FORM_CONTAINER_ID = 'categories-form-container';
+
+	const handleCategorySubmit = ( event ) => {
 		event.preventDefault();
 		const form = event.target;
 
 		if( !form.checkValidity() ) {
-			return form.reportValidity();
+			form.reportValidity();
+			return;
 		}
 
-		fetch( window.location.href, { method: 'POST', body: new FormData( form ) } )
-			.then( response => response.text() )
-			.then( html => {
+		const { username } = form.elements;
+
+		fetch( window.location.href, {
+			method: 'POST',
+			body: new FormData( form )
+		} ).then( ( response ) => response.text() )
+			.then( ( html ) => {
 				const newDoc = new DOMParser().parseFromString( html, 'text/html' );
-				const container = document.querySelector( "#categories-form-container" );
-				const newContainer = newDoc.querySelector( "#categories-form-container" );
+				const container = document.getElementById( CATEGORIES_FORM_CONTAINER_ID );
+				const newContainer = newDoc.getElementById( CATEGORIES_FORM_CONTAINER_ID );
 
-				container.replaceWith( newContainer );
+				if( container && newContainer ) {
+					container.replaceWith( newContainer );
 
-				const username = form.elements.username.value;
-				const inputField = document.getElementById( `${ username }category` );
-				inputField?.focus();
+					const inputField = document.getElementById( `${ username.value }category` );
+					if( inputField ) {
+						inputField.focus();
+					}
+					addEventListeners();
+				}
 			} )
-			.catch( error => console.error( 'Error:', error ) );
+			.catch( ( error ) => {
+				console.error( 'Error:', error );
+			} );
+	};
+
+	const addEventListeners = () => {
+		const container = document.getElementById( CATEGORIES_FORM_CONTAINER_ID );
+		if( container ) {
+			container.addEventListener( 'submit', ( event ) => {
+				if( event.target.classList.contains( 'add-category-form' ) ) {
+					handleCategorySubmit( event );
+				}
+			} );
+		}
+	};
+
+	if( window.history.replaceState ) {
+		window.history.replaceState( null, null, window.location.href );
 	}
+
+	addEventListeners();
 </script>
