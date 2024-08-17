@@ -25,6 +25,7 @@ const handleApprovalResponse = ( approve, data ) => {
 
 	$badgeElement.toggleClass( 'approved-badge' );
 	$badgeElement.toggleClass( 'unapproved-badge' );
+	$( '.dropdown-icon' ).toggleClass( 'approved' );
 
 	elements.forEach( ( selector ) => $( selector ).toggleClass( 'display-none' ) );
 

@@ -1,5 +1,8 @@
 <div class="page-approval-container">
-	<div class="approval-status-badge {{#isPageApproved}}approved-badge{{/isPageApproved}}{{^isPageApproved}}unapproved-badge{{/isPageApproved}}">
+	<div class="approval-status-badge
+		{{#isPageApproved}}approved-badge{{/isPageApproved}}
+		{{^isPageApproved}}unapproved-badge{{/isPageApproved}}
+		{{#canApprove}}cursor-pointer{{/canApprove}}">
 		<div class="status-icon"></div>
 		<div class="approved-status-text {{^isPageApproved}}display-none{{/isPageApproved}}">{{statusApproved}}</div>
 		<div class="approved-status-text {{#isPageApproved}}display-none{{/isPageApproved}}">{{statusNotApproved}}</div>
@@ -14,6 +17,8 @@
 					{{approveButtonText}}
 				</button>
 			</div>
+			<span class="dropdown-icon {{#isPageApproved}}approved{{/isPageApproved}}">
+			</span>
 		{{/canApprove}}
 		<div class="approval-status-tooltip {{^isPageApproved}}display-none{{/isPageApproved}}">
 			<small class="approver-details {{^isPageApproved}}display-none{{/isPageApproved}}">
