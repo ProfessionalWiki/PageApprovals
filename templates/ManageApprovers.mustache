@@ -6,7 +6,7 @@
 		</form>
 	</div>
 
-	<table class="form-container">
+	<table class="form-container" id="categories-form-container">
 		<thead>
 		<tr>
 			<th>User</th>
@@ -29,10 +29,13 @@
 							</form>
 						</div>
 					{{/categories}}
-					<form method="POST" action="" class="add-category-form">
-						<input type="text" name="category" placeholder="New Category" required>
+					<form method="POST" class="add-category-form">
+						<input type="text" name="category" placeholder="New Category" id="{{username}}category" required>
 						<input type="hidden" name="username" value="{{username}}">
-						<button class="add-button" type="submit" name="action" value="add">Add</button>
+						<input type="hidden" name="action" value="add">
+						<button class="add-button" value="add" onclick="addCategory( event => event)">
+							Add
+						</button>
 					</form>
 				</td>
 			</tr>
@@ -41,7 +44,29 @@
 	</table>
 </div>
 <script>
-	if( window.history.replaceState ) {
-		window.history.replaceState( null, null, window.location.href );
+	window.history.replaceState?.( null, null, window.location.href );
+
+	function addCategory( event ) {
+		event.preventDefault();
+		const form = event.target;
+
+		if( !form.checkValidity() ) {
+			return form.reportValidity();
+		}
+
+		fetch( window.location.href, { method: 'POST', body: new FormData( form ) } )
+			.then( response => response.text() )
+			.then( html => {
+				const newDoc = new DOMParser().parseFromString( html, 'text/html' );
+				const container = document.querySelector( "#categories-form-container" );
+				const newContainer = newDoc.querySelector( "#categories-form-container" );
+
+				container.replaceWith( newContainer );
+
+				const username = form.elements.username.value;
+				const inputField = document.getElementById( `${ username }category` );
+				inputField?.focus();
+			} )
+			.catch( error => console.error( 'Error:', error ) );
 	}
 </script>
