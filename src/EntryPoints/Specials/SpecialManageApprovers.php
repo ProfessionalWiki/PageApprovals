@@ -15,14 +15,13 @@ class SpecialManageApprovers extends SpecialPage {
 
 	public function __construct(
 		private readonly ApproverRepository $approverRepository,
-		private readonly UserGroupManager $userGroupManager,
 		private readonly UserFactory $userFactory
 	) {
 		parent::__construct( 'ManageApprovers', restriction: 'manage-approvers' );
 	}
 
 	public function isListed(): bool {
-		return $this->isAdmin(); // TODO: Add right permission checks
+		return $this->getUser()->isAllowed( 'manage-approvers' );
 	}
 
 	public function execute( $subPage ): void {
@@ -41,11 +40,6 @@ class SpecialManageApprovers extends SpecialPage {
 		$this->renderHtml( $this->filterOutApproversWithNoCategories( $approversCategories ) );
 
 		$this->getOutput()->addModuleStyles( 'ext.pageApprovals.manageApprovers.styles' );
-	}
-
-	private function isAdmin(): bool {
-		$userGroups = $this->userGroupManager->getUserGroups( $this->getUser() );
-		return in_array( 'sysop', $userGroups );
 	}
 
 	private function handlePostRequest( WebRequest $request ): void {

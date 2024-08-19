@@ -129,7 +129,6 @@ class PageApprovals {
 	public static function newSpecialManageApprovers(): SpecialManageApprovers {
 		return new SpecialManageApprovers(
 			self::getInstance()->getApproverRepository(),
-			MediaWikiServices::getInstance()->getUserGroupManager(),
 			MediaWikiServices::getInstance()->getUserFactory()
 		);
 	}
