@@ -27,7 +27,6 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 	protected function newSpecialPage(): SpecialManageApprovers {
 		return new SpecialManageApprovers(
 			$this->approverRepository,
-			$this->getServiceContainer()->getUserGroupManager(),
 			$this->getServiceContainer()->getUserFactory()
 		);
 	}
