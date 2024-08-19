@@ -29,5 +29,6 @@
 	"pageapprovals-pending-approvals-last-edit-by": "Latest Editor",
 	"pageapprovals-no-categories": "You are not assigned as approver for any categories.",
 	"pageapprovals-no-pending-approvals": "You have no pending approvals.",
+	"pageapprovals-pending-approval-count": "You have $1 pending {{PLURAL:$1|approval|approvals}}.",
 	"pageapprovals-not-logged-in": "Log in to view your pending approvals."
 }
