@@ -44,7 +44,16 @@ class SpecialPendingApprovals extends SpecialPage {
 			return;
 		}
 
+		$this->showSummary( $pendingApprovals );
+
 		$this->getOutput()->addHTML( $this->createPendingApprovalsTable( $pendingApprovals ) );
+	}
+
+	/**
+	 * @param PendingApproval[] $pendingApprovals
+	 */
+	private function showSummary( array $pendingApprovals ): void {
+		$this->getOutput()->addWikiMsg( 'pageapprovals-pending-approval-count', count( $pendingApprovals ) );
 	}
 
 	/**
