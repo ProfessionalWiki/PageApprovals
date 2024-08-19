@@ -21,6 +21,10 @@ class SpecialManageApprovers extends SpecialPage {
 		parent::__construct( 'ManageApprovers', restriction: 'manage-approvers' );
 	}
 
+	public function getGroupName(): string {
+		return 'users';
+	}
+
 	public function isListed(): bool {
 		return $this->isAdmin(); // TODO: Add right permission checks
 	}

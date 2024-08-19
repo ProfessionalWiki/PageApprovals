@@ -20,6 +20,10 @@ class SpecialPendingApprovals extends SpecialPage {
 		parent::__construct( 'PendingApprovals' );
 	}
 
+	public function getGroupName(): string {
+		return 'changes';
+	}
+
 	public function execute( $subPage ): void {
 		$this->setHeaders();
 		$this->checkPermissions();
