@@ -10,7 +10,7 @@
 		"Compliance"
 	],
 	"homepage": "https://github.com/ProfessionalWiki/PageApprovals",
-	"license": "GPL-2.0-or-later",
+	"license": "BSD-3-Clause",
 	"authors": [
 		{
 			"name": "Professional.Wiki",
