@@ -21,7 +21,7 @@ MediaWiki extension for approving pages.
 
 ## Usage Documentation
 
-TODO
+See the [Page Approvals usage documentation](https://professional.wiki/en/extension/page-approvals#Usage).
 
 ## Installation
 
@@ -55,7 +55,7 @@ You can verify the extension was enabled successfully by opening your wikis Spec
 
 Configuration can be changed via [LocalSettings.php].
 
-TODO
+See the [Page Approvals configuration reference](https://professional.wiki/en/extension/page-approvals#Configuration).
 
 ## Development
 
@@ -93,7 +93,8 @@ VALUES (1, 'TestCat|TestCat2');
 * API endpoints to approve and unapprove pages
 * Automatic unapproval of pages when their displayed content changes
 * Detection of changes to displayed content via embedded constructs such as templates or SMW queries
-* Approver management page and associated MediaWiki right
+* Approver management page and associated MediaWiki right (Special:ManageApprovers)
+* Personalized list of pending approvals (Special:PendingApprovals)
 * Compatibility with MediaWiki 1.39 up to 1.43-dev
 * Compatibility with PHP 8.1 up to 8.3
 
