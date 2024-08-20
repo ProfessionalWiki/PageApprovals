@@ -16,11 +16,19 @@ class EvaluateApprovalState {
 	}
 
 	public function evaluate( int $pageId, string $currentPageHtml ): void {
-		if ( $currentPageHtml !== $this->getApprovedHtmlForPage( $pageId )
+		if ( !$this->htmlIsTheSame( $currentPageHtml, $this->getApprovedHtmlForPage( $pageId ) ?? '' )
 			&& $this->approvalLog->getApprovalState( $pageId )?->isApproved === true
 		) {
 			$this->unapprovePage( $pageId );
 		}
+	}
+
+	private function htmlIsTheSame( string $html1, string $html2 ): bool {
+		return $this->normalizeHtml( $html1 ) === $this->normalizeHtml( $html2 );
+	}
+
+	private function normalizeHtml( string $html ): string {
+		return preg_replace( '/id="smw-[^"]+"/', '', $html ) ?? '';
 	}
 
 	private function getApprovedHtmlForPage( int $pageId ): ?string {
