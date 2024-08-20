@@ -3,8 +3,8 @@
 [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ProfessionalWiki/PageApprovals/ci.yml?branch=master)](https://github.com/ProfessionalWiki/PageApprovals/actions?query=workflow%3ACI)
 [![Type Coverage](https://shepherd.dev/github/ProfessionalWiki/PageApprovals/coverage.svg)](https://shepherd.dev/github/ProfessionalWiki/PageApprovals)
 [![Psalm level](https://shepherd.dev/github/ProfessionalWiki/PageApprovals/level.svg)](psalm.xml)
-[![Latest Stable Version](https://poser.pugx.org/professional-wiki/PageApprovals/version.png)](https://packagist.org/packages/professional-wiki/page-approvals)
-[![Download count](https://poser.pugx.org/professional-wiki/PageApprovals/d/total.png)](https://packagist.org/packages/professional-wiki/page-approvals)
+[![Latest Stable Version](https://poser.pugx.org/professional-wiki/page-approvals/v/stable)](https://packagist.org/packages/professional-wiki/page-approvals)
+[![Download count](https://poser.pugx.org/professional-wiki/page-approvals/downloads)](https://packagist.org/packages/professional-wiki/page-approvals)
 
 MediaWiki extension for approving pages.
 
