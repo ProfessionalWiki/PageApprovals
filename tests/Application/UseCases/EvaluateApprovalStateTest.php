@@ -82,4 +82,20 @@ class EvaluateApprovalStateTest extends TestCase {
 		$this->assertNull( $approvalLog->getApprovalState( self::PAGE_ID ) );
 	}
 
+	public function testSmwIdsAreIgnored(): void {
+		$approvalLog = $this->newApprovalLogWithApprovedPage();
+
+		$htmlRepo = new InMemoryHtmlRepository();
+		$htmlRepo->saveApprovedHtml( self::PAGE_ID, '<div id="smw-123">content</div><div id="not-smw">content</div>' );
+
+		$action = new EvaluateApprovalState(
+			htmlRepository: $htmlRepo,
+			approvalLog: $approvalLog
+		);
+
+		$action->evaluate( self::PAGE_ID, '<div id="smw-456">content</div><div id="not-smw">content</div>' );
+
+		$this->assertTrue( $approvalLog->getApprovalState( self::PAGE_ID )->isApproved );
+	}
+
 }
