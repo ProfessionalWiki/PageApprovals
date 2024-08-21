@@ -17,15 +17,13 @@
 		{{/canApprove}}
 		<div class="approval-status-tooltip {{^isPageApproved}}display-none{{/isPageApproved}}">
 			<small class="approver-details {{^isPageApproved}}display-none{{/isPageApproved}}">
-				<span class="approver-name">
-					{{approverUserName}}
-				</span> {{approvedPageText}}
-				<span class="convert-timestamp" data-timestamp="{{approvalTimestamp}}"></span>
+				{{approvedPageText}}
 			</small>
 		</div>
 	</div>
 	<div class="approver-details {{^isPageApproved}}display-none{{/isPageApproved}}">
-		<small class="convert-timestamp page-approval-text-muted" data-timestamp="{{approvalTimestamp}}">
+		<small class="convert-timestamp page-approval-text-muted">
+			{{approvalTimestamp}}
 		</small>
 	</div>
 </div>

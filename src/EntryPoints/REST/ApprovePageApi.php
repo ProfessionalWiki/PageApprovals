@@ -4,6 +4,8 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\REST;
 
+use Language;
+use MWTimestamp;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
@@ -15,6 +17,7 @@ use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\ApprovalState;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
+use RequestContext;
 use Wikimedia\ParamValidator\ParamValidator;
 use WikiPage;
 
@@ -27,7 +30,8 @@ class ApprovePageApi extends SimpleHandler {
 		private PageHtmlRetriever $pageHtmlRetriever,
 		private WikiPageFactory $wikiPageFactory,
 		private RevisionLookup $revisionLookup,
-		private UserIdentityLookup $userIdentityLookup
+		private UserIdentityLookup $userIdentityLookup,
+		private Language $language
 	) {
 	}
 
@@ -76,10 +80,17 @@ class ApprovePageApi extends SimpleHandler {
 		}
 
 		return $this->getResponseFactory()->createJson( [
-			'approvalTimestamp' => $state->approvalTimestamp,
+			'approvalTimestamp' => $this->getFormattedTimestamp( $state->approvalTimestamp ),
 			'approver' => $this->getUserNameFromUserId( $state->approverId ),
-			'message' => ( new Message( 'pageapprovals-approved' ) )->plain()
+			'message' => ( new Message( 'pageapprovals-approve-page-text' ) )->params(
+				$this->getUserNameFromUserId( $state->approverId ),
+				$this->getFormattedTimestamp( $state->approvalTimestamp )
+			)->plain()
 		] );
+	}
+
+	private function getFormattedTimestamp( int $timestamp ): string {
+		return $this->language->getHumanTimestamp( new MWTimestamp( $timestamp ) );
 	}
 
 	private function getUserNameFromUserId( ?int $userId ): ?string {
