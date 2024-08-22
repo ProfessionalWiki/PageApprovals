@@ -8,7 +8,7 @@
 	"manageapprovers": "Управување со одобрувачи",
 	"pageapprovals-status-approved": "ОДОБРЕНО",
 	"pageapprovals-status-not-approved": "Неодобрено",
-	"pageapprovals-approve-page-text": "одобрена страница",
+	"pageapprovals-approve-page-text": "ја одобри оваа страница",
 	"pageapprovals-approve-button": "Одобри страница",
 	"pageapprovals-unapprove-button": "Неодобри страница",
 	"right-manage-approvers": "Управување со одобрувачи",
@@ -23,9 +23,11 @@
 	"pageapprovals-unapprove-outdated-revision": "Неодобрувањето не успеа. Можете да неодобрите само најнова верзија на страница.",
 	"pendingapprovals": "Одобренија на чекање",
 	"pageapprovals-pending-approvals-page": "Страница",
-	"pageapprovals-pending-approvals-categories": "Категории",
+	"pageapprovals-pending-approvals-categories": "Совпаднати категории",
 	"pageapprovals-pending-approvals-last-edit-time": "Последно уредување:",
-	"pageapprovals-pending-approvals-last-edit-by": "Последен уредувач:",
-	"pageapprovals-no-categories": "Не сте овластени да одобрувате страници.",
-	"pageapprovals-no-pending-approvals": "Немате одобенија на чекање."
+	"pageapprovals-pending-approvals-last-edit-by": "Последен уредувач",
+	"pageapprovals-no-categories": "Не сте овластени како одобрувач на категории.",
+	"pageapprovals-no-pending-approvals": "Немате одобенија на чекање.",
+	"pageapprovals-pending-approval-count": "Имате $1 {{PLURAL:$1|одобрување|одобрувања}} на чекање.",
+	"pageapprovals-not-logged-in": "Најавете се за да ги видите одобрувањата во исчекување."
 }

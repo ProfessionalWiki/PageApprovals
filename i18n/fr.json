@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Goombiis",
 			"Kubuya kanane leopold",
 			"MacOS Weed",
 			"Méthodes Bulebe Hangi",
@@ -26,9 +27,10 @@
 	"pageapprovals-unapprove-outdated-revision": "L'échec de désapprobation. Vous pouvez seulement désapprouver la dernière version.",
 	"pendingapprovals": "En attente d'approbations",
 	"pageapprovals-pending-approvals-page": "Page",
-	"pageapprovals-pending-approvals-categories": "Catégories",
+	"pageapprovals-pending-approvals-categories": "Catégories correspondantes",
 	"pageapprovals-pending-approvals-last-edit-time": "La dernière modification le",
-	"pageapprovals-pending-approvals-last-edit-by": "Dernière modification par",
-	"pageapprovals-no-categories": "Vous n'êtes pas autorisé à approuver les pages.",
-	"pageapprovals-no-pending-approvals": "Il n’y a aucune approbation en attente."
+	"pageapprovals-pending-approvals-last-edit-by": "Dernier modificateur",
+	"pageapprovals-no-categories": "Vous n'êtes désigné comme approbateur pour aucune catégorie.",
+	"pageapprovals-no-pending-approvals": "Il n’y a aucune approbation en attente.",
+	"pageapprovals-not-logged-in": "Connectez-vous pour voir vos approbations en attente."
 }

@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"pageapprovals-description": "Odobriteljem omogoča, da označijo strani kot odobrene",
+	"manageapprovers": "Upravljanje odobriteljev",
+	"pageapprovals-status-approved": "ODOBRENO",
+	"pageapprovals-status-not-approved": "Neodobreno",
+	"pageapprovals-approve-page-text": "je odobril_a to stran",
+	"pageapprovals-approve-button": "Odobri stran",
+	"pageapprovals-unapprove-button": "Neodobri stran",
+	"right-manage-approvers": "Upravljanje odobriteljev",
+	"action-manage-approvers": "upravljanje odobriteljev",
+	"pageapprovals-approved": "Stran je odobrena",
+	"pageapprovals-unapproved": "Stran je neodobrena",
+	"pageapprovals-approve-authorization-failed": "Odobritev ni uspela. Niste pooblaščeni za odobritev te strani.",
+	"pageapprovals-unapprove-authorization-failed": "Preklic odobritve ni uspel. Niste pooblaščeni za preklic odobritve te strani.",
+	"pageapprovals-approve-invalid-page": "Odobritev ni uspela. Ta stran ne obstaja.",
+	"pageapprovals-unapprove-invalid-page": "Preklic odobritve ni uspel. Ta stran ne obstaja.",
+	"pageapprovals-approve-outdated-revision": "Odobritev ni uspela. Odobrite lahko samo najnovejšo redakcijo strani.",
+	"pageapprovals-unapprove-outdated-revision": "Preklic odobritve ni uspel. Prekličete lahko samo odobritev najnovejše redakcije strani.",
+	"pendingapprovals": "Čakajoče odobritve",
+	"pageapprovals-pending-approvals-page": "Stran",
+	"pageapprovals-pending-approvals-categories": "Ujemajoče se kategorije",
+	"pageapprovals-pending-approvals-last-edit-time": "Zadnje urejanje",
+	"pageapprovals-pending-approvals-last-edit-by": "Zadnji urejevalec",
+	"pageapprovals-no-categories": "Niste dodeljeni kot odobritelj za nobeno kategorijo.",
+	"pageapprovals-no-pending-approvals": "Nimate čakajočih odobritev.",
+	"pageapprovals-pending-approval-count": "Imate $1 {{PLURAL:$1|čakajočo odobritev|čakajoči odobritvi|čakajoče odobritve|čakajočih odobritev}}.",
+	"pageapprovals-not-logged-in": "Za ogled svojih čakajočih odobritev se prijavite."
+}

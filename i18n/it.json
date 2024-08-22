@@ -11,7 +11,7 @@
 	"pageapprovals-approved": "Pagina approvata",
 	"pageapprovals-unapproved": "Pagina non approvata",
 	"pageapprovals-pending-approvals-page": "Pagina",
-	"pageapprovals-pending-approvals-categories": "Categorie",
+	"pageapprovals-pending-approvals-categories": "Categorie corrispondenti",
 	"pageapprovals-pending-approvals-last-edit-time": "Ultima modifica il",
-	"pageapprovals-pending-approvals-last-edit-by": "Ultima modifica di"
+	"pageapprovals-pending-approvals-last-edit-by": "Ultimo contributore"
 }

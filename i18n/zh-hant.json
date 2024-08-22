@@ -25,9 +25,11 @@
 	"pageapprovals-unapprove-outdated-revision": "取消核准失敗。您僅能取消核准頁面的最後一次版本。",
 	"pendingapprovals": "待辦核准",
 	"pageapprovals-pending-approvals-page": "頁面",
-	"pageapprovals-pending-approvals-categories": "分類",
+	"pageapprovals-pending-approvals-categories": "符合的分類",
 	"pageapprovals-pending-approvals-last-edit-time": "上一次編輯於",
-	"pageapprovals-pending-approvals-last-edit-by": "上一次編輯由",
-	"pageapprovals-no-categories": "您尚未取得核准頁面的授權。",
-	"pageapprovals-no-pending-approvals": "您沒有需待辦的核准。"
+	"pageapprovals-pending-approvals-last-edit-by": "最後的編輯者",
+	"pageapprovals-no-categories": "您未被分配成任何分類的核准者。",
+	"pageapprovals-no-pending-approvals": "您沒有需待辦的核准。",
+	"pageapprovals-pending-approval-count": "您有 $1 個待處理{{PLURAL:$1|核准}}。",
+	"pageapprovals-not-logged-in": "登入來查看您的待核准事項。"
 }

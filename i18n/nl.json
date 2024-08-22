@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"McDutchie"
+			"McDutchie",
+			"Siebrand"
 		]
 	},
 	"pageapprovals-description": "Hiermee kunnen goedkeurders pagina’s als goedgekeurd markeren",
@@ -23,9 +24,11 @@
 	"pageapprovals-unapprove-outdated-revision": "Het intrekken van de goedkeuring is mislukt. {{#FORMAL:U|Je}} kunt alleen de goedkeuring van de nieuwste versie van een pagina intrekken.",
 	"pendingapprovals": "In afwachting van goedkeuring",
 	"pageapprovals-pending-approvals-page": "Pagina",
-	"pageapprovals-pending-approvals-categories": "Categorieën",
+	"pageapprovals-pending-approvals-categories": "Overeenkomende categorieën",
 	"pageapprovals-pending-approvals-last-edit-time": "Laatst bewerkt op",
-	"pageapprovals-pending-approvals-last-edit-by": "Laatst bewerkt door",
-	"pageapprovals-no-categories": "{{#FORMAL:U|Je}} bent niet bevoegd om pagina’s goed te keuren.",
-	"pageapprovals-no-pending-approvals": "Er zijn geen goedkeuringen in behandeling."
+	"pageapprovals-pending-approvals-last-edit-by": "Laatste bewerker",
+	"pageapprovals-no-categories": "U bent niet bevoegd om categorieën goed te keuren.",
+	"pageapprovals-no-pending-approvals": "Er zijn geen goedkeuringen in behandeling.",
+	"pageapprovals-pending-approval-count": "U hebt $1 openstaande goedkeuring{{PLURAL:$1||en}}.",
+	"pageapprovals-not-logged-in": "Meld u aan om uw goedkeuringen in behandeling te bekijken."
 }

@@ -23,9 +23,10 @@
 	"pageapprovals-unapprove-outdated-revision": "ביטול האישור נכשל. מותר לך לבטל את האישור רק של הגרסה האחרונה של דף.",
 	"pendingapprovals": "אישורים ממתינים",
 	"pageapprovals-pending-approvals-page": "דף",
-	"pageapprovals-pending-approvals-categories": "קטגוריות",
+	"pageapprovals-pending-approvals-categories": "קטגוריות תואמות",
 	"pageapprovals-pending-approvals-last-edit-time": "מתי נערך בפעם האחרונה",
-	"pageapprovals-pending-approvals-last-edit-by": "על־ידי מי נערך בפעם האחרונה",
-	"pageapprovals-no-categories": "אין לך הרשאה לאשר דפים.",
-	"pageapprovals-no-pending-approvals": "אין לך אישורים ממתינים."
+	"pageapprovals-pending-approvals-last-edit-by": "העורך האחרון",
+	"pageapprovals-no-categories": "לא הוקצית לאשר בשום קטגוריה.",
+	"pageapprovals-no-pending-approvals": "אין לך אישורים ממתינים.",
+	"pageapprovals-not-logged-in": "נא להיכנס לחשבון כדי לראות את האישורים שממתינים לך."
 }
