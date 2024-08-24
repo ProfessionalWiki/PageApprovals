@@ -2,6 +2,9 @@
 
 namespace ProfessionalWiki\PageApprovals\Tests\EntryPoints\REST;
 
+use Language;
+use MWTimestamp;
+use RequestContext;
 use MediaWiki\Rest\RequestData;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
@@ -24,12 +27,14 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 
 	private InMemoryApprovalLog $approvalLog;
 	private HtmlRepository $htmlRepository;
+	private Language $language;
 
 	protected function setUp(): void {
 		parent::setUp();
 
 		$this->approvalLog = new InMemoryApprovalLog();
 		$this->htmlRepository = new InMemoryHtmlRepository();
+		$this->language = RequestContext::getMain()->getLanguage();
 	}
 
 	public function testApprovePageHappyPath(): void {
@@ -46,8 +51,12 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 		$this->assertSame( 200, $response->getStatusCode() );
 
 		$json = json_decode( $response->getBody()->getContents(), true );
-		$this->assertSame( $state->approvalTimestamp, $json['approvalTimestamp'] );
+		$this->assertSame( $this->getFormattedTimestamp( $state->approvalTimestamp ), $json['approvalTimestamp'] );
 		$this->assertSame( $user->getUser()->getName(), $json['approver'] );
+	}
+
+	private function getFormattedTimestamp( int $timestamp ): string {
+		return $this->language->getHumanTimestamp( new MWTimestamp( $timestamp ) );
 	}
 
 	private function newApprovePageApi(): ApprovePageApi {
@@ -58,7 +67,8 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->newPageHtmlRetriever(),
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getRevisionLookup(),
-			$this->getServiceContainer()->getUserIdentityLookup()
+			$this->getServiceContainer()->getUserIdentityLookup(),
+			$this->language
 		);
 	}
 
@@ -95,7 +105,8 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->newPageHtmlRetriever(),
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getRevisionLookup(),
-			$this->getServiceContainer()->getUserIdentityLookup()
+			$this->getServiceContainer()->getUserIdentityLookup(),
+			$this->language
 		);
 	}
 
