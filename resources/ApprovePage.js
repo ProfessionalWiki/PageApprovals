@@ -1,17 +1,3 @@
-const convertTimestamps = ( timestamp = null ) => {
-	try {
-		const moment = require( 'moment' );
-		$( '.convert-timestamp' ).each( function () {
-			const $element = $( this );
-			const unixTimestamp = parseInt( timestamp || $element.attr( 'data-timestamp' ) );
-			const momentDate = moment.unix( unixTimestamp ).utc();
-			$element.text( momentDate.fromNow() );
-		} );
-	} catch ( error ) {
-		console.error( 'Error converting timestamps:', error );
-	}
-};
-
 const handleApprovalResponse = ( approve, data ) => {
 	const elements = [
 		'#unapproveButton',
@@ -32,7 +18,7 @@ const handleApprovalResponse = ( approve, data ) => {
 	if ( approve ) {
 		const { approver, approvalTimestamp } = data;
 		$( '.approver-name' ).text( approver );
-		convertTimestamps( approvalTimestamp );
+		$( '.convert-timestamp' ).text( approvalTimestamp );
 	}
 };
 
@@ -65,5 +51,3 @@ $( document ).on( 'click', ( e ) => {
 		$( '.approval-dropdown' ).addClass( 'display-none' );
 	}
 } );
-
-$( convertTimestamps() );

@@ -43,7 +43,8 @@ class PageApprovals {
 			self::getInstance()->getPageHtmlRetriever(),
 			MediaWikiServices::getInstance()->getWikiPageFactory(),
 			MediaWikiServices::getInstance()->getRevisionLookup(),
-			MediaWikiServices::getInstance()->getUserIdentityLookup()
+			MediaWikiServices::getInstance()->getUserIdentityLookup(),
+			RequestContext::getMain()->getLanguage()
 		);
 	}
 
