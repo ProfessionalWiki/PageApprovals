@@ -6,7 +6,7 @@
 	},
 	"pageapprovals-status-approved": "APPROVATO",
 	"pageapprovals-status-not-approved": "Non approvato",
-	"pageapprovals-approve-page-text": "approvata questa pagina",
+	"pageapprovals-approve-page-text": "$1 ha approvato questa pagina $2",
 	"pageapprovals-approve-button": "Approva pagina",
 	"pageapprovals-approved": "Pagina approvata",
 	"pageapprovals-unapproved": "Pagina non approvata",

@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Huajing",
-			"Key0121"
+			"Key0121",
+			"XtexChooser"
 		]
 	},
 	"pageapprovals-description": "允许核准员标记页面为已核准",
 	"manageapprovers": "管理核准员",
 	"pageapprovals-status-approved": "已核准",
 	"pageapprovals-status-not-approved": "未核准",
-	"pageapprovals-approve-page-text": "已核准页面",
+	"pageapprovals-approve-page-text": "已核准此页面",
 	"pageapprovals-approve-button": "核准页面",
 	"pageapprovals-unapprove-button": "取消核准页面",
 	"right-manage-approvers": "管理核准员",
@@ -24,9 +25,9 @@
 	"pageapprovals-unapprove-outdated-revision": "取消核准失败。您仅能取消核准页面的最后一次版本。",
 	"pendingapprovals": "待办核准",
 	"pageapprovals-pending-approvals-page": "页面",
-	"pageapprovals-pending-approvals-categories": "分类",
+	"pageapprovals-pending-approvals-categories": "符合的分类",
 	"pageapprovals-pending-approvals-last-edit-time": "上次编辑于",
-	"pageapprovals-pending-approvals-last-edit-by": "上次编辑由",
+	"pageapprovals-pending-approvals-last-edit-by": "最后编辑者",
 	"pageapprovals-no-categories": "您尚未取得核准页面的授权。",
 	"pageapprovals-no-pending-approvals": "您没有需待办的核准。"
 }

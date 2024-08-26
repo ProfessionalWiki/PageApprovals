@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jeeputer"
+		]
+	},
+	"manageapprovers": "مدیریت تأییدکنندگان",
+	"pageapprovals-approve-page-text": "این صفحه را تأیید کرد",
+	"pendingapprovals": "تأییدیه‌های در انتظار",
+	"pageapprovals-pending-approvals-categories": "رده‌های منطبق",
+	"pageapprovals-pending-approvals-last-edit-by": "آخرین ویرایشگر",
+	"pageapprovals-pending-approval-count": "شما $1 {{PLURAL:$1|تأییدیهٔ}} در انتظار دارید.",
+	"pageapprovals-not-logged-in": "برای مشاهدهٔ تأییدیه‌های در انتظار خود، به حساب خود وارد شوید."
+}

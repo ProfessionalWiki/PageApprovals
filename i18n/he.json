@@ -28,5 +28,6 @@
 	"pageapprovals-pending-approvals-last-edit-by": "העורך האחרון",
 	"pageapprovals-no-categories": "לא הוקצית לאשר בשום קטגוריה.",
 	"pageapprovals-no-pending-approvals": "אין לך אישורים ממתינים.",
+	"pageapprovals-pending-approval-count": "יש לך {{PLURAL:$1|אישור ממתין אחד|מתוך $1 אישורים ממתינים}}",
 	"pageapprovals-not-logged-in": "נא להיכנס לחשבון כדי לראות את האישורים שממתינים לך."
 }
