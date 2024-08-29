@@ -5,7 +5,7 @@
 		]
 	},
 	"manageapprovers": "مدیریت تأییدکنندگان",
-	"pageapprovals-approve-page-text": "این صفحه را تأیید کرد",
+	"pageapprovals-approve-page-text": "$1 این صفحه را تأیید کرد $2",
 	"pendingapprovals": "تأییدیه‌های در انتظار",
 	"pageapprovals-pending-approvals-categories": "رده‌های منطبق",
 	"pageapprovals-pending-approvals-last-edit-by": "آخرین ویرایشگر",

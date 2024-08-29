@@ -9,7 +9,7 @@
 	"manageapprovers": "Goedkeurders beheren",
 	"pageapprovals-status-approved": "GOEDGEKEURD",
 	"pageapprovals-status-not-approved": "Niet goedgekeurd",
-	"pageapprovals-approve-page-text": "heeft deze pagina goedgekeurd",
+	"pageapprovals-approve-page-text": "$1 heeft deze pagina goedgekeurd $2",
 	"pageapprovals-approve-button": "Pagina goedkeuren",
 	"pageapprovals-unapprove-button": "Goedkeuren pagina intrekken",
 	"right-manage-approvers": "Goedkeurders beheren",

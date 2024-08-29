@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Justman10000",
 			"Kghbln"
 		]
 	},
@@ -8,7 +9,7 @@
 	"manageapprovers": "Genehmiger verwalten",
 	"pageapprovals-status-approved": "GENEHMIGT",
 	"pageapprovals-status-not-approved": "Nicht genehmigt",
-	"pageapprovals-approve-page-text": "genehmigte diese Seite",
+	"pageapprovals-approve-page-text": "$1 genehmigte diese Seite $2",
 	"pageapprovals-approve-button": "Seite genehmigen",
 	"pageapprovals-unapprove-button": "Genehmigung der Seite zurücknehmen",
 	"right-manage-approvers": "Genehmiger verwalten",
@@ -23,9 +24,11 @@
 	"pageapprovals-unapprove-outdated-revision": "Das Zurücknehmen der Genehmigung der Seite ist fehlgeschlagen. Die Genehmigung kann nur für die aktuellste Version einer Seite zurückgenommen werden.",
 	"pendingapprovals": "Ausstehende Genehmigungen",
 	"pageapprovals-pending-approvals-page": "Seite",
-	"pageapprovals-pending-approvals-categories": "Kategorien",
+	"pageapprovals-pending-approvals-categories": "Passende Kategorien",
 	"pageapprovals-pending-approvals-last-edit-time": "Zuletzt bearbeitet am",
-	"pageapprovals-pending-approvals-last-edit-by": "Zuletzt bearbeitet von",
-	"pageapprovals-no-categories": "Du bist nicht berechtigt, Seiten zu genehmigen.",
-	"pageapprovals-no-pending-approvals": "Es stehen keine Genehmigungen von Seiten aus."
+	"pageapprovals-pending-approvals-last-edit-by": "Letzter Bearbeiter",
+	"pageapprovals-no-categories": "Du bist nicht als Genehmigender für irgendwelche Kategorien zugewiesen.",
+	"pageapprovals-no-pending-approvals": "Es stehen keine Genehmigungen von Seiten aus.",
+	"pageapprovals-pending-approval-count": "Du hast $1 ausstehende {{PLURAL:$1|Genehmigung|Genehmigungen}}.",
+	"pageapprovals-not-logged-in": "Logge dich ein, um deine ausstehenden Genehmigungen einzusehen."
 }
