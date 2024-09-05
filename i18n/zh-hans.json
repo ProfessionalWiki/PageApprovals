@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GuoPC",
 			"Huajing",
 			"Key0121",
 			"XtexChooser"
@@ -10,7 +11,7 @@
 	"manageapprovers": "管理核准员",
 	"pageapprovals-status-approved": "已核准",
 	"pageapprovals-status-not-approved": "未核准",
-	"pageapprovals-approve-page-text": "已核准此页面",
+	"pageapprovals-approve-page-text": "$1已核准此页面$2",
 	"pageapprovals-approve-button": "核准页面",
 	"pageapprovals-unapprove-button": "取消核准页面",
 	"right-manage-approvers": "管理核准员",
@@ -28,6 +29,8 @@
 	"pageapprovals-pending-approvals-categories": "符合的分类",
 	"pageapprovals-pending-approvals-last-edit-time": "上次编辑于",
 	"pageapprovals-pending-approvals-last-edit-by": "最后编辑者",
-	"pageapprovals-no-categories": "您尚未取得核准页面的授权。",
-	"pageapprovals-no-pending-approvals": "您没有需待办的核准。"
+	"pageapprovals-no-categories": "您尚未被指定为任何分类的核准员。",
+	"pageapprovals-no-pending-approvals": "您没有需待办的核准。",
+	"pageapprovals-pending-approval-count": "您有$1个待处理的{{PLURAL:$1|核准}}。",
+	"pageapprovals-not-logged-in": "登录以查看您待处理的核准。"
 }
