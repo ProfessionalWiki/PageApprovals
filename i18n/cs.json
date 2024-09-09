@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"MasterStudioCZ"
+		]
+	},
+	"pageapprovals-approved": "Stránka schválena",
+	"pageapprovals-unapproved": "Stránka neschválena",
+	"pageapprovals-approve-authorization-failed": "Schválení se nezdařilo. Nemáte oprávnění tuto stránku schválit.",
+	"pageapprovals-approve-invalid-page": "Schválení se nezdařilo. Tato stránka neexistuje.",
+	"pageapprovals-pending-approvals-categories": "Odpovídající kategorie",
+	"pageapprovals-pending-approvals-last-edit-time": "Naposledy upraveno dne",
+	"pageapprovals-no-pending-approvals": "Nemáte žádná nevyřízená schválení."
+}
