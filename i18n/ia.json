@@ -5,11 +5,30 @@
 			"McDutchie"
 		]
 	},
+	"pageapprovals-description": "Permitte al approbatores marcar paginas como approbate",
+	"manageapprovers": "Gerer approbatores",
 	"pageapprovals-status-approved": "APPROBATE",
 	"pageapprovals-status-not-approved": "Non approbate",
+	"pageapprovals-approve-page-text": "$1 ha approbate iste pagina $2",
+	"pageapprovals-approve-button": "Approbar pagina",
 	"pageapprovals-unapprove-button": "Disapprobar pagina",
+	"right-manage-approvers": "Gerer approbatores",
+	"action-manage-approvers": "gerer approbatores",
+	"pageapprovals-approved": "Pagina approbate",
 	"pageapprovals-unapproved": "Pagina disapprobate",
+	"pageapprovals-approve-authorization-failed": "Le approbation ha fallite. Tu non es autorisate a approbar iste pagina.",
+	"pageapprovals-unapprove-authorization-failed": "Le disapprobation ha fallite. Tu non es autorisate a disapprobar iste pagina.",
+	"pageapprovals-approve-invalid-page": "Le approbation ha fallite. Iste pagina non existe.",
+	"pageapprovals-unapprove-invalid-page": "Le disapprobation ha fallite. Iste pagina non existe.",
+	"pageapprovals-approve-outdated-revision": "Le approbation ha fallite. Solmente le ultime version de un pagina pote esser approbate.",
+	"pageapprovals-unapprove-outdated-revision": "Le disapprobation ha fallite. Solmente le ultime version de un pagina pote esser disapprobate.",
+	"pendingapprovals": "Approbationes pendente",
 	"pageapprovals-pending-approvals-page": "Pagina",
 	"pageapprovals-pending-approvals-categories": "Categorias correspondente",
-	"pageapprovals-pending-approvals-last-edit-by": "Ultime contributor"
+	"pageapprovals-pending-approvals-last-edit-time": "Ultime modification le",
+	"pageapprovals-pending-approvals-last-edit-by": "Ultime contributor",
+	"pageapprovals-no-categories": "Tu non es assignate como approbator pro alcun categoria.",
+	"pageapprovals-no-pending-approvals": "Tu non ha approbationes pendente.",
+	"pageapprovals-pending-approval-count": "Tu ha $1 approbation{{PLURAL:$1||es}} pendente.",
+	"pageapprovals-not-logged-in": "Aperi session pro vider tu approbationes pendente."
 }
