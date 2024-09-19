@@ -12,7 +12,7 @@
 	"manageapprovers": "Gérer les approbateurs",
 	"pageapprovals-status-approved": "APPROUVER",
 	"pageapprovals-status-not-approved": "Non approuvé",
-	"pageapprovals-approve-page-text": "a approuvé cette page",
+	"pageapprovals-approve-page-text": "$1 a approuvé cette page $2",
 	"pageapprovals-approve-button": "Approuver la page",
 	"pageapprovals-unapprove-button": "Désapprouver la page",
 	"right-manage-approvers": "Gérer les approbateurs",
@@ -32,5 +32,6 @@
 	"pageapprovals-pending-approvals-last-edit-by": "Dernier modificateur",
 	"pageapprovals-no-categories": "Vous n'êtes désigné comme approbateur pour aucune catégorie.",
 	"pageapprovals-no-pending-approvals": "Il n’y a aucune approbation en attente.",
+	"pageapprovals-pending-approval-count": "Vous avez $1 {{PLURAL:$1|approbation|approbations}} en attente.",
 	"pageapprovals-not-logged-in": "Connectez-vous pour voir vos approbations en attente."
 }
