@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elefentiste"
+		]
+	},
+	"pageapprovals-approved": "Paje aprobada",
+	"pageapprovals-unapproved": "Paje desaprobada",
+	"pageapprovals-approve-authorization-failed": "Aproba falida. Tu no es autorida per aproba esta paje.",
+	"pageapprovals-unapprove-authorization-failed": "Desaproba falida. Tu no es autorida per desaproba esta paje.",
+	"pageapprovals-approve-invalid-page": "Aproba falida. Esta paje no esiste.",
+	"pageapprovals-unapprove-invalid-page": "Desaproba falida. Esta paje no esiste.",
+	"pageapprovals-pending-approvals-page": "Paje"
+}

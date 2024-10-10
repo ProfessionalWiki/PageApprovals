@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mohammed Qays"
+		]
+	},
+	"pageapprovals-status-approved": "موافق",
+	"pageapprovals-status-not-approved": "لم يتم",
+	"pageapprovals-approve-page-text": "تمت الموافقة على هذه الصفحة بـ $2 $1",
+	"pageapprovals-approve-button": "الموافقة على الصفحة",
+	"pageapprovals-unapprove-button": "صفحات ألغي اعتماد مراجعاتها",
+	"right-manage-approvers": "إدارة الموافقات",
+	"action-manage-approvers": "إدارة الموافقات",
+	"pageapprovals-approved": "قبول الصفحة",
+	"pageapprovals-unapproved": "الصفحة غير مقبولة",
+	"pageapprovals-approve-authorization-failed": "فشلت الموافقة. ليس لديك الحق في الموافقة على هذه الصفحة.",
+	"pageapprovals-unapprove-authorization-failed": "فشلت عملية إلغاء الموافقة. ليس لديك الحق في إلغاء الموافقة على هذه الصفحة.",
+	"pageapprovals-approve-invalid-page": "فشلت الموافقة. هذه الصفحة غير موجودة.",
+	"pageapprovals-pending-approvals-page": "صفحة"
+}
