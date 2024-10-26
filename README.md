@@ -89,7 +89,7 @@ VALUES (1, 'TestCat|TestCat2');
 
 ## Release Notes
 
-### Version 1.0.0 - 2024-0x-xx
+### Version 1.0.0 - 2024-10-28
 
 * Approval UI on regular wiki pages that shows the approval status and allows approvers to change said status
 * API endpoints to approve and unapprove pages
