@@ -6,10 +6,7 @@
 [![Latest Stable Version](https://poser.pugx.org/professional-wiki/page-approvals/v/stable)](https://packagist.org/packages/professional-wiki/page-approvals)
 [![Download count](https://poser.pugx.org/professional-wiki/page-approvals/downloads)](https://packagist.org/packages/professional-wiki/page-approvals)
 
-MediaWiki extension for approving pages.
-
-[Professional.Wiki], the creator of this extension, provides
-[MediaWiki Development], [MediaWiki Hosting], and [MediaWiki Consulting].
+Quality control for your wiki. Mark pages as approved or request review from approvers.
 
 **Table of Contents**
 
@@ -18,6 +15,10 @@ MediaWiki extension for approving pages.
 - [PHP Configuration](#php-configuration)
 - [Development](#development)
 - [Release notes](#release-notes)
+
+
+[Professional Wiki] created this extension and provides
+[MediaWiki Development], [MediaWiki Hosting], and [MediaWiki Consulting] services.
 
 ## Usage Documentation
 
