@@ -99,7 +99,7 @@ VALUES (1, 'TestCat|TestCat2');
 * Compatibility with MediaWiki 1.39 up to 1.43-dev
 * Compatibility with PHP 8.1 up to 8.3
 
-[Professional.Wiki]: https://professional.wiki
+[Professional Wiki]: https://professional.wiki
 [MediaWiki Hosting]: https://pro.wiki
 [MediaWiki Development]: https://professional.wiki/en/mediawiki-development
 [MediaWiki Consulting]: https://professional.wiki/en/mediawiki-consulting-services
