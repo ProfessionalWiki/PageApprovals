@@ -7,6 +7,7 @@
 [![Download count](https://poser.pugx.org/professional-wiki/page-approvals/downloads)](https://packagist.org/packages/professional-wiki/page-approvals)
 
 Quality control for your wiki. Mark pages as approved or request review from approvers.
+Read more in the [Page Approvals documentation](https://professional.wiki/en/extension/page-approvals).
 
 **Table of Contents**
 
