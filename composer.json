@@ -1,7 +1,7 @@
 {
 	"name": "professional-wiki/page-approvals",
 	"type": "mediawiki-extension",
-	"description": "Allows approving MediaWiki pages",
+	"description": "Quality control for MediaWiki. Approve pages, assign approvers to categories, view your approval requests, and see the approval status of pages.",
 	"keywords": [
 		"MediaWiki",
 		"Approvals",
