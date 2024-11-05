@@ -5,7 +5,7 @@
 			"Kghbln"
 		]
 	},
-	"pageapprovals-description": "Ermöglicht es Genehmigern, Seiten als genehmigt zu markieren",
+	"pageapprovals-description": "Ermöglicht das Genehmigen von Inhalten, das Anzeigen deren Genehmigungsstatus sowie das Verwalten von Genehmigungsanfragen",
 	"manageapprovers": "Genehmiger verwalten",
 	"pageapprovals-status-approved": "GENEHMIGT",
 	"pageapprovals-status-not-approved": "Nicht genehmigt",

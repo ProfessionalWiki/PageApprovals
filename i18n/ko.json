@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"*Youngjin",
+			"Ykhwong"
+		]
+	},
+	"pageapprovals-description": "승인자가 문서를 승인한 것으로 표시할 수 있게 허용합니다",
+	"manageapprovers": "승인자 관리",
+	"pageapprovals-status-approved": "승인됨",
+	"pageapprovals-status-not-approved": "승인되지 않음",
+	"pageapprovals-approve-page-text": "$1님이 이 $2 문서를 승인함",
+	"pageapprovals-approve-button": "문서 승인",
+	"pageapprovals-unapprove-button": "문서 승인 취소",
+	"right-manage-approvers": "승인자 관리",
+	"action-manage-approvers": "승인자를 관리할",
+	"pageapprovals-approve-invalid-page": "승인을 실패했습니다. 이 문서는 존재하지 않습니다.",
+	"pageapprovals-unapprove-invalid-page": "승인 취소를 실패했습니다. 이 문서는 존재하지 않습니다.",
+	"pageapprovals-approve-outdated-revision": "승인을 실패했습니다. 문서의 마지막 판만 승인할 수 있습니다.",
+	"pageapprovals-unapprove-outdated-revision": "승인 취소를 실패했습니다. 문서의 마지막 판만 승인을 취소할 수 있습니다.",
+	"pendingapprovals": "보류 중인 승인",
+	"pageapprovals-pending-approvals-page": "문서",
+	"pageapprovals-pending-approvals-last-edit-time": "최근 편집:",
+	"pageapprovals-pending-approvals-last-edit-by": "마지막 편집자",
+	"pageapprovals-no-categories": "당신은 어떠한 분류의 승인자로도 지정되어 있지 않습니다.",
+	"pageapprovals-no-pending-approvals": "보류 중인 승인이 없습니다.",
+	"pageapprovals-not-logged-in": "보류 중인 승인을 보려면 로그인하세요."
+}

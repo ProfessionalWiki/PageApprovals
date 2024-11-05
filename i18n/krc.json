@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"pageapprovals-description": "Викинг ючюн агъач контроль. Бетлени бегитигиз, категориялагъа кёре бегитиучюлени салыгъызы, бегитиуге излемлеригизге къарагъыз эмда бетлени бегитиу статусун кёзде тутугъуз.",
+	"manageapprovers": "Бегитиучюлени оноуу",
+	"pageapprovals-status-approved": "БЕГИТИЛГЕНДИ",
+	"pageapprovals-status-not-approved": "Бегитилмегенди",
+	"pageapprovals-approve-page-text": "$1, бу $2 бетни бегитгенди",
+	"pageapprovals-approve-button": "Бетни Бегит",
+	"pageapprovals-unapprove-button": "Бетни Бегитиуден Чыгъар",
+	"right-manage-approvers": "Бегитиучюлени оноуу",
+	"action-manage-approvers": "бегитиучюлени оноуу",
+	"pageapprovals-approved": "Бет бегитилгенди",
+	"pageapprovals-unapproved": "Бет бегитиуден чыгъарылгъанды",
+	"pageapprovals-approve-authorization-failed": "Бегитиу джетишимсизди. Сен бу бетни бегитирча авторизация этмегенсе.",
+	"pageapprovals-unapprove-authorization-failed": "Бегитиуден чыгъарыу джетишимсизди. Бегитиуден чыгъарырча авторизация этмегенсе.",
+	"pageapprovals-approve-invalid-page": "Бегитиу джетишимсизди. Бу бет джокъду.",
+	"pageapprovals-unapprove-invalid-page": "Бегетиуден чыгъарыу джетишимсизди. Бу бет джокъду.",
+	"pageapprovals-approve-outdated-revision": "Бегитиу джетишимсизди. Сен джангыз бетни ахыр версиясын бегитирге боллукъса.",
+	"pageapprovals-unapprove-outdated-revision": "Бегитиуден чыгъарыу джетишимсизди. Сен джангыз бетни ахыр версиясын бегитиуден чыгъарыргъа боллукъса.",
+	"pendingapprovals": "Сакълагъан бегитиуле",
+	"pageapprovals-pending-approvals-page": "Бет",
+	"pageapprovals-pending-approvals-categories": "Келишген Категорияла",
+	"pageapprovals-pending-approvals-last-edit-time": "Ахыр Тюзетилгени",
+	"pageapprovals-pending-approvals-last-edit-by": "Эм Ахыргъы Редактор",
+	"pageapprovals-no-categories": "Бир категориягъа да бегитиучю болуб аталмагъансыз.",
+	"pageapprovals-no-pending-approvals": "Сакълагъан бегитиулеригиз джокъду.",
+	"pageapprovals-pending-approval-count": "$1 сакълагъан {{PLURAL:$1|бегитиуюнг|бегитиулеринг}} барды.",
+	"pageapprovals-not-logged-in": "Сакълагъан бегитиулеринги кёрюр ючюн кириу эт."
+}

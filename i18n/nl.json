@@ -5,7 +5,7 @@
 			"Siebrand"
 		]
 	},
-	"pageapprovals-description": "Hiermee kunnen goedkeurders pagina’s als goedgekeurd markeren",
+	"pageapprovals-description": "Kwaliteitscontrole voor uw wiki. Keur pagina's goed, wijs goedkeurders toe aan categorieën, bekijk uw goedkeuringsaanvragen en bekijk de goedkeuringsstatus van pagina’s.",
 	"manageapprovers": "Goedkeurders beheren",
 	"pageapprovals-status-approved": "GOEDGEKEURD",
 	"pageapprovals-status-not-approved": "Niet goedgekeurd",

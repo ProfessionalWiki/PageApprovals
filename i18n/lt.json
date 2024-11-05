@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"pageapprovals-description": "Leidžia tvirtintojams pažymėti puslapius kaip patvirtintus",
+	"manageapprovers": "Tvarkyti tvirtintojus",
+	"pageapprovals-status-approved": "PATVIRTINTA",
+	"pageapprovals-status-not-approved": "Nepatvirtinta",
+	"pageapprovals-approve-page-text": "$1 patvirtino šį puslapį $2",
+	"pageapprovals-approve-button": "Patvirtinti puslapį",
+	"pageapprovals-unapprove-button": "Panaikinti puslapio tvirtinimą",
+	"right-manage-approvers": "Tvarkyti tvirtintojus",
+	"action-manage-approvers": "tvarkyti tvirtintojus",
+	"pageapprovals-approved": "Puslapis patvirtintas",
+	"pageapprovals-unapproved": "Puslapis nepatvirtintas",
+	"pageapprovals-approve-authorization-failed": "Patvirtinti nepavyko. Jūs neturite teisės patvirtinti šio puslapio.",
+	"pageapprovals-unapprove-authorization-failed": "Patvirtinimo panaikinimas nepavyko. Jūs neturite teisės patvirtinti šio puslapio.",
+	"pageapprovals-approve-invalid-page": "Patvirtinti nepavyko. Šis puslapis neegzistuoja.",
+	"pageapprovals-unapprove-invalid-page": "Patvirtinimo panaikinimas nepavyko. Šis puslapis neegzistuoja.",
+	"pageapprovals-approve-outdated-revision": "Patvirtinti nepavyko. Galite patvirtinti tik naujausią puslapio versiją.",
+	"pageapprovals-unapprove-outdated-revision": "Patvirtinimo panaikinimas nepavyko. Galite atšaukti tik naujausios puslapio versijos patvirtinimą.",
+	"pendingapprovals": "Laukiama patvirtinimų",
+	"pageapprovals-pending-approvals-page": "Puslapis",
+	"pageapprovals-pending-approvals-categories": "Atitinkančios kategorijos",
+	"pageapprovals-pending-approvals-last-edit-time": "Paskutinį kartą redaguota",
+	"pageapprovals-pending-approvals-last-edit-by": "Paskutinis redaktorius",
+	"pageapprovals-no-categories": "Jūs nesate priskirtas kaip tvirtintojas jokioms kategorijoms.",
+	"pageapprovals-no-pending-approvals": "Neturite laukiančių patvirtinimų.",
+	"pageapprovals-pending-approval-count": "Jūsų laukia $1 {{PLURAL:$1|patvirtinimas|patvirtinimai}}.",
+	"pageapprovals-not-logged-in": "Prisijunkite, kad peržiūrėtumėte laukiančius patvirtinimus."
+}
