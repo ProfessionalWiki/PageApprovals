@@ -4,11 +4,11 @@
 			"Eleassar"
 		]
 	},
-	"pageapprovals-description": "Odobriteljem omogoča, da označijo strani kot odobrene",
+	"pageapprovals-description": "Nadzor kakovosti za vaš viki. Odobrite strani, dodelite kategorijam odobritelje, oglejte si svoje zahtevke za odobritev in oglejte si stanje odobritve strani.",
 	"manageapprovers": "Upravljanje odobriteljev",
 	"pageapprovals-status-approved": "ODOBRENO",
 	"pageapprovals-status-not-approved": "Neodobreno",
-	"pageapprovals-approve-page-text": "je odobril_a to stran",
+	"pageapprovals-approve-page-text": "$1 je odobril_a to stran $2",
 	"pageapprovals-approve-button": "Odobri stran",
 	"pageapprovals-unapprove-button": "Neodobri stran",
 	"right-manage-approvers": "Upravljanje odobriteljev",
