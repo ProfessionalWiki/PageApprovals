@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mohammed Qays"
+			"Mohammed Qays",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"pageapprovals-status-approved": "موافق",
@@ -16,5 +17,7 @@
 	"pageapprovals-approve-authorization-failed": "فشلت الموافقة. ليس لديك الحق في الموافقة على هذه الصفحة.",
 	"pageapprovals-unapprove-authorization-failed": "فشلت عملية إلغاء الموافقة. ليس لديك الحق في إلغاء الموافقة على هذه الصفحة.",
 	"pageapprovals-approve-invalid-page": "فشلت الموافقة. هذه الصفحة غير موجودة.",
-	"pageapprovals-pending-approvals-page": "صفحة"
+	"pageapprovals-pending-approvals-page": "صفحة",
+	"pageapprovals-pending-approvals-last-edit-time": "آخر تعديل في",
+	"pageapprovals-pending-approvals-last-edit-by": "آخر مساهم"
 }
