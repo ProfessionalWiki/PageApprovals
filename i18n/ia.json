@@ -5,7 +5,7 @@
 			"McDutchie"
 		]
 	},
-	"pageapprovals-description": "Permitte al approbatores marcar paginas como approbate",
+	"pageapprovals-description": "Controlo de qualitate pro tu wiki. Approba paginas, assigna approbatores a categorias, examinar tu requestas de approbation, e consultar le stato de approbation de paginas.",
 	"manageapprovers": "Gerer approbatores",
 	"pageapprovals-status-approved": "APPROBATE",
 	"pageapprovals-status-not-approved": "Non approbate",
