@@ -17,6 +17,7 @@
 	"pageapprovals-approved": "문서를 승인했습니다",
 	"pageapprovals-unapproved": "문서의 승인을 해제했습니다",
 	"pageapprovals-approve-authorization-failed": "승인을 실패했습니다. 이 문서를 승인할 권한이 없습니다.",
+	"pageapprovals-unapprove-authorization-failed": "승인 취소를 실패했습니다. 이 문서를 승인 취소할 권한이 없습니다.",
 	"pageapprovals-approve-invalid-page": "승인을 실패했습니다. 이 문서는 존재하지 않습니다.",
 	"pageapprovals-unapprove-invalid-page": "승인 취소를 실패했습니다. 이 문서는 존재하지 않습니다.",
 	"pageapprovals-approve-outdated-revision": "승인을 실패했습니다. 문서의 마지막 판만 승인할 수 있습니다.",
@@ -27,5 +28,6 @@
 	"pageapprovals-pending-approvals-last-edit-by": "마지막 편집자",
 	"pageapprovals-no-categories": "당신은 어떠한 분류의 승인자로도 지정되어 있지 않습니다.",
 	"pageapprovals-no-pending-approvals": "보류 중인 승인이 없습니다.",
+	"pageapprovals-pending-approval-count": "{{PLURAL:$1|승인}} $1개가 보류 중입니다.",
 	"pageapprovals-not-logged-in": "보류 중인 승인을 보려면 로그인하세요."
 }
