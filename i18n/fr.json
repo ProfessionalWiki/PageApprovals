@@ -4,11 +4,12 @@
 			"Goombiis",
 			"Kubuya kanane leopold",
 			"MacOS Weed",
+			"Mahabarata",
 			"Méthodes Bulebe Hangi",
 			"SleaY"
 		]
 	},
-	"pageapprovals-description": "Permet aux approbateurs de marquer les pages comme approuvées",
+	"pageapprovals-description": "Contrôle qualité de votre wiki. Approuvez les pages, attribuez des approbateurs à des catégories, consultez vos demandes d'approbation et le statut d'approbation des pages.",
 	"manageapprovers": "Gérer les approbateurs",
 	"pageapprovals-status-approved": "APPROUVER",
 	"pageapprovals-status-not-approved": "Non approuvé",
