@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hideki Yoshida",
+			"もなー(偽物)"
+		]
+	},
+	"manageapprovers": "承認者を管理する",
+	"pageapprovals-status-approved": "承認済み",
+	"pageapprovals-status-not-approved": "未承認",
+	"pageapprovals-approve-page-text": "$1がこのページを承認しました $2",
+	"pageapprovals-approve-button": "ページを承認する",
+	"pageapprovals-unapprove-button": "ページの承認を取り消す",
+	"right-manage-approvers": "承認者を管理する",
+	"action-manage-approvers": "承認者を管理する",
+	"pageapprovals-approved": "ページが承認されました",
+	"pageapprovals-unapproved": "ページは承認されていません",
+	"pageapprovals-approve-authorization-failed": "承認に失敗しました。このページを承認する権限がありません。",
+	"pageapprovals-unapprove-authorization-failed": "承認解除に失敗しました。このページを承認解除する権限がありません。",
+	"pageapprovals-approve-invalid-page": "承認に失敗しました。このページは存在しません。",
+	"pageapprovals-unapprove-invalid-page": "承認解除に失敗しました。このページは存在しません。",
+	"pageapprovals-approve-outdated-revision": "承認に失敗しました。ページの最新バージョンのみ承認できます。",
+	"pageapprovals-unapprove-outdated-revision": "承認解除に失敗しました。ページの最新バージョンのみ承認解除できます。",
+	"pendingapprovals": "承認待ち",
+	"pageapprovals-pending-approvals-page": "ページ",
+	"pageapprovals-pending-approvals-categories": "一致するカテゴリ",
+	"pageapprovals-pending-approvals-last-edit-time": "最新の編集",
+	"pageapprovals-pending-approvals-last-edit-by": "最新の編集者",
+	"pageapprovals-no-categories": "どのカテゴリーでも承認者として割り当てられていません。",
+	"pageapprovals-no-pending-approvals": "待機中の承認はありません。",
+	"pageapprovals-pending-approval-count": "待機中の{{PLURAL:$1|承認}}が$1件あります。",
+	"pageapprovals-not-logged-in": "待機中の承認を表示するにはログインしてください。"
+}

@@ -24,6 +24,7 @@
 	"pageapprovals-unapprove-outdated-revision": "승인 취소를 실패했습니다. 문서의 마지막 판만 승인을 취소할 수 있습니다.",
 	"pendingapprovals": "보류 중인 승인",
 	"pageapprovals-pending-approvals-page": "문서",
+	"pageapprovals-pending-approvals-categories": "일치하는 분류",
 	"pageapprovals-pending-approvals-last-edit-time": "최근 편집:",
 	"pageapprovals-pending-approvals-last-edit-by": "마지막 편집자",
 	"pageapprovals-no-categories": "당신은 어떠한 분류의 승인자로도 지정되어 있지 않습니다.",

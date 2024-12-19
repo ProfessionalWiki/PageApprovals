@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cabal"
+		]
+	},
+	"pageapprovals-approve-button": "ਸਫ਼ਾ ਮਨਜ਼ੂਰ ਕਰੋ",
+	"right-manage-approvers": "ਪ੍ਰਵਾਨਗੀਆਂ ਦਾ ਪ੍ਰਬੰਧ ਕਰੋ",
+	"action-manage-approvers": "ਪ੍ਰਵਾਨਗੀਆਂ ਦਾ ਪ੍ਰਬੰਧ ਕਰੋ",
+	"pageapprovals-pending-approvals-page": "ਸਫ਼ਾ",
+	"pageapprovals-pending-approvals-categories": "ਮੇਲ ਖਾਂਦੀਆਂ ਸ਼੍ਰੇਣੀਆਂ",
+	"pageapprovals-pending-approvals-last-edit-time": "ਆਖਰੀ ਵਾਰ ਸੋਧਿਆ ਗਿਆ",
+	"pageapprovals-pending-approvals-last-edit-by": "ਤਾਜ਼ਾ ਸੋਧਕ"
+}
