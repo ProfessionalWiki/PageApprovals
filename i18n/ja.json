@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Hideki Yoshida",
+			"Omotecho",
 			"もなー(偽物)"
 		]
 	},
 	"manageapprovers": "承認者を管理する",
 	"pageapprovals-status-approved": "承認済み",
 	"pageapprovals-status-not-approved": "未承認",
-	"pageapprovals-approve-page-text": "$1がこのページを承認しました $2",
+	"pageapprovals-approve-page-text": "$1がこのページ$2を承認しました",
 	"pageapprovals-approve-button": "ページを承認する",
 	"pageapprovals-unapprove-button": "ページの承認を取り消す",
 	"right-manage-approvers": "承認者を管理する",
