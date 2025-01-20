@@ -1,0 +1,23 @@
+{
+	"@metadata": {
+		"authors": [
+			"Darellur",
+			"PanWor"
+		]
+	},
+	"pageapprovals-status-approved": "ZATWIERDZONA",
+	"pageapprovals-status-not-approved": "Nie zatwierdzona",
+	"pageapprovals-approve-button": "Zatwierdź Stronę",
+	"pageapprovals-approved": "Strona zatwierdzona",
+	"pageapprovals-unapproved": "Strona niezatwierdzona",
+	"pageapprovals-approve-authorization-failed": "Zatwierdzenie nie powiodło się. Nie masz uprawnień do zatwierdzenia tej strony.",
+	"pageapprovals-unapprove-authorization-failed": "Anulowanie zatwierdzenia nie powiodło się. Nie masz uprawnień do cofnięcia zatwierdzenia tej strony.",
+	"pageapprovals-approve-outdated-revision": "Zatwierdzenie nie powiodło się. Możesz zatwierdzić tylko najnowszą wersję strony.",
+	"pageapprovals-unapprove-outdated-revision": "Anulowanie zatwierdzenia nie powiodło się. Możesz zatwierdzić tylko najnowszą wersję strony.",
+	"pendingapprovals": "Oczekujące zatwierdzenia",
+	"pageapprovals-pending-approvals-last-edit-time": "Ostatnia edycja:",
+	"pageapprovals-pending-approvals-last-edit-by": "Ostatni edytujący",
+	"pageapprovals-no-pending-approvals": "Nie masz żadnych oczekujących zatwierdzeń.",
+	"pageapprovals-pending-approval-count": "Masz $1 {{PLURAL:$1|oczekujące|oczekujące|oczekujących}} {{PLURAL:$1|zatwierdzenie|zatwierdzenia|zatwierdzeń}}.",
+	"pageapprovals-not-logged-in": "Zaloguj się, aby zobaczyć oczekujące zatwierdzenia."
+}
