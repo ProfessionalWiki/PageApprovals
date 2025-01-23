@@ -5,10 +5,11 @@
 			"GuoPC",
 			"Huajing",
 			"Key0121",
+			"Lakejason0",
 			"XtexChooser"
 		]
 	},
-	"pageapprovals-description": "对您的维基进行质量控制。批准页面，将审核人分配给类别，查看您的审核请求，并查看页面的审核状态。",
+	"pageapprovals-description": "对您的wiki进行质量控制。批准页面，将审核人分配到分类，查看您的批准请求，并查看页面的批准状态。",
 	"manageapprovers": "管理核准员",
 	"pageapprovals-status-approved": "已核准",
 	"pageapprovals-status-not-approved": "未核准",
