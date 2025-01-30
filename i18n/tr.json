@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Brightt11",
+			"LisafBia"
+		]
+	},
+	"pageapprovals-approved": "Sayfa onaylandı",
+	"pageapprovals-unapproved": "Sayfa onaylanmadı",
+	"pageapprovals-approve-authorization-failed": "Onay başarısız oldu. Bu sayfayı onaylama yetkiniz yok.",
+	"pageapprovals-unapprove-authorization-failed": "Onaylamayı kaldırma başarısız oldu. Bu sayfanın onayını kaldırma yetkiniz yok.",
+	"pageapprovals-approve-invalid-page": "Onay başarısız. Bu sayfa mevcut değil.",
+	"pageapprovals-unapprove-invalid-page": "Onaylamayı kaldırma başarısız oldu. Bu sayfa mevcut değil.",
+	"pageapprovals-pending-approvals-page": "Sayfa"
+}
