@@ -25,6 +25,8 @@ Read more in the [Page Approvals documentation](https://professional.wiki/en/ext
 
 See the [Page Approvals usage documentation](https://professional.wiki/en/extension/page-approvals#Usage).
 
+[![Image](https://github.com/user-attachments/assets/7aaf8615-8eaa-4f53-a125-ef02423f4625)](https://professional.wiki/en/extension/page-approvals)
+
 ## Installation
 
 Platform requirements:
