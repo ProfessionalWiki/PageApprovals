@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kareyac",
+			"Okras",
+			"Yurina Tatiana"
+		]
+	},
+	"pageapprovals-status-approved": "ОДОБРЕННАЯ",
+	"pageapprovals-status-not-approved": "Не одобрена",
+	"pageapprovals-approved": "Страница одобрена",
+	"pageapprovals-unapproved": "Страница не одобрена",
+	"pageapprovals-approve-authorization-failed": "Одобрение не удалось. Вы не авторизованы для одобрения этой страницы.",
+	"pageapprovals-unapprove-authorization-failed": "Отмена одобрения не удалась. Вы не авторизованы для отмены одобрения этой страницы.",
+	"pageapprovals-approve-invalid-page": "Одобрение не удалось. Эта страница не существует.",
+	"pageapprovals-unapprove-invalid-page": "Отмена одобрения не удалась. Эта страница не существует.",
+	"pageapprovals-approve-outdated-revision": "Одобрение не удалось. Вы можете одобрить только последнюю версию страницы.",
+	"pageapprovals-unapprove-outdated-revision": "Отмена одобрения не удалась. Вы можете отменить одобрение только последней версии страницы.",
+	"pendingapprovals": "Ожидающие одобрения",
+	"pageapprovals-pending-approvals-page": "Страница",
+	"pageapprovals-pending-approvals-categories": "Соответствующие категории"
+}
