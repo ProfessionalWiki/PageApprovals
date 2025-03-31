@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"*Youngjin",
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
-	"pageapprovals-description": "승인자가 문서를 승인한 것으로 표시할 수 있게 허용합니다",
+	"pageapprovals-description": "위키의 품질 관리용입니다. 문서를 승인하고, 분류에 승인자를 할당하고, 승인 요청을 확인하며, 문서의 승인 상태를 보십시오.",
 	"manageapprovers": "승인자 관리",
 	"pageapprovals-status-approved": "승인됨",
 	"pageapprovals-status-not-approved": "승인되지 않음",
