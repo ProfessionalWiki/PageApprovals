@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"pageapprovals-status-approved": "ODOBRENO",
+	"pageapprovals-approve-page-text": "$1 je odobrio ovu stranicu $2",
+	"pageapprovals-approve-button": "Odobri stranicu",
+	"pageapprovals-pending-approvals-page": "Stranica",
+	"pageapprovals-pending-approvals-categories": "Podudarne kategorije",
+	"pageapprovals-pending-approvals-last-edit-time": "Poslednje uređivanje",
+	"pageapprovals-pending-approvals-last-edit-by": "Poslednji urednik"
+}
