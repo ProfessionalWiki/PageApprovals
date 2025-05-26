@@ -3,6 +3,7 @@
 		"authors": [
 			"Hideki Yoshida",
 			"Omotecho",
+			"Shirayuki",
 			"もなー(偽物)"
 		]
 	},
@@ -27,7 +28,7 @@
 	"pageapprovals-pending-approvals-categories": "一致するカテゴリ",
 	"pageapprovals-pending-approvals-last-edit-time": "最新の編集",
 	"pageapprovals-pending-approvals-last-edit-by": "最新の編集者",
-	"pageapprovals-no-categories": "どのカテゴリーでも承認者として割り当てられていません。",
+	"pageapprovals-no-categories": "どのカテゴリでも承認者として割り当てられていません。",
 	"pageapprovals-no-pending-approvals": "待機中の承認はありません。",
 	"pageapprovals-pending-approval-count": "待機中の{{PLURAL:$1|承認}}が$1件あります。",
 	"pageapprovals-not-logged-in": "待機中の承認を表示するにはログインしてください。"
