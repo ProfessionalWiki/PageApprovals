@@ -53,6 +53,8 @@ Then enable the extension by adding the following to the bottom of your wikis [L
 wfLoadExtension( 'PageApprovals' );
 ```
 
+Run the [update script](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Update.php) which will automatically create the necessary database tables that this extension needs.
+
 You can verify the extension was enabled successfully by opening your wikis Special:Version page.
 
 ## PHP Configuration
