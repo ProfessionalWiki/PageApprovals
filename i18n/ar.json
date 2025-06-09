@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Meno25",
 			"Mohammed Qays",
 			"محمد أحمد عبد الفتاح"
 		]
 	},
+	"pageapprovals-description": "مراقبة جودة ويكي الخاص بك. وافق على الصفحات، وعيّن مُعتمدين للفئات، واطلع على طلبات الموافقة، وشاهد حالة موافقة الصفحات.",
+	"manageapprovers": "إدارة الموافقين",
 	"pageapprovals-status-approved": "موافق",
 	"pageapprovals-status-not-approved": "لم يتم",
 	"pageapprovals-approve-page-text": "تمت الموافقة على هذه الصفحة بـ $2 $1",
@@ -17,7 +20,16 @@
 	"pageapprovals-approve-authorization-failed": "فشلت الموافقة. ليس لديك الحق في الموافقة على هذه الصفحة.",
 	"pageapprovals-unapprove-authorization-failed": "فشلت عملية إلغاء الموافقة. ليس لديك الحق في إلغاء الموافقة على هذه الصفحة.",
 	"pageapprovals-approve-invalid-page": "فشلت الموافقة. هذه الصفحة غير موجودة.",
+	"pageapprovals-unapprove-invalid-page": "فشل إلغاء الموافقة. هذه الصفحة غير موجودة.",
+	"pageapprovals-approve-outdated-revision": "فشلت الموافقة. يمكنك فقط الموافقة على أحدث إصدار من الصفحة.",
+	"pageapprovals-unapprove-outdated-revision": "فشل إلغاء الموافقة. يمكنك فقط إلغاء الموافقة على أحدث إصدار من الصفحة.",
+	"pendingapprovals": "الموافقات المعلقة",
 	"pageapprovals-pending-approvals-page": "صفحة",
+	"pageapprovals-pending-approvals-categories": "تصنيفات مشابهة",
 	"pageapprovals-pending-approvals-last-edit-time": "آخر تعديل في",
-	"pageapprovals-pending-approvals-last-edit-by": "آخر مساهم"
+	"pageapprovals-pending-approvals-last-edit-by": "آخر مساهم",
+	"pageapprovals-no-categories": "لم يتم تعيينك كموافق على أي فئات.",
+	"pageapprovals-no-pending-approvals": "ليس لديك موافقات معلقة.",
+	"pageapprovals-pending-approval-count": "لديك $1 {{PLURAL:$1|موافقة|موافقات}} معلقة.",
+	"pageapprovals-not-logged-in": "قم بتسجيل الدخول لعرض الموافقات المعلقة."
 }
