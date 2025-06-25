@@ -9,7 +9,7 @@
 	"manageapprovers": "Manage approvers",
 	"pageapprovals-status-approved": "APPROVED",
 	"pageapprovals-status-not-approved": "Not Approved",
-	"pageapprovals-approve-page-text": "$1 approved this page $2",
+	"pageapprovals-approve-page-text": "$1 approved this page $2 at $3",
 	"pageapprovals-approve-button": "Approve Page",
 	"pageapprovals-unapprove-button": "Unapprove Page",
 	"right-manage-approvers": "Manage approvers",

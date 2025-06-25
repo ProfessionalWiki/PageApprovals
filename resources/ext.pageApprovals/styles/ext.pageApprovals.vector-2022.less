@@ -1,0 +1,10 @@
+@import 'mediawiki.skin.variables.less';
+
+.vector-page-titlebar {
+	// Align the menu button with the end of the page titlebar, like the ULS button
+	.ext-pageapprovals:last-child {
+		> .cdx-menu-button {
+			margin-inline-end: ( @spacing-75 - @border-width-base ) * -1;
+		}
+	}
+}
