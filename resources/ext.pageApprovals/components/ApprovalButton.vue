@@ -17,7 +17,7 @@
 </template>
 
 <script>
-const { defineComponent, ref, computed, onMounted, watch, inject } = require( 'vue' );
+const { defineComponent, ref, computed, watch, inject } = require( 'vue' );
 const { CdxMenuButton, CdxIcon } = require( '../../codex.js' );
 const { cdxIconCheck, cdxIconClose, cdxIconExpand } = require( '../icons.json' );
 const { setPageApprovalStatus } = require( '../utils/api.js' );
@@ -52,16 +52,14 @@ module.exports = defineComponent( {
 			}
 		} );
 
-		onMounted( () => {
-			watch( pageApproved, ( newValue ) => {
-				rootEl.dataset.mwPageApproved = newValue ? 'true' : 'false';
-			} );
-			watch( approvalTimestamp, ( newValue ) => {
-				rootEl.dataset.mwApprovalTimestamp = newValue;
-			} );
-			watch( approver, ( newValue ) => {
-				rootEl.dataset.mwApprover = newValue;
-			} );
+		watch( pageApproved, ( newValue ) => {
+			rootEl.dataset.mwPageApproved = newValue ? 'true' : 'false';
+		} );
+		watch( approvalTimestamp, ( newValue ) => {
+			rootEl.dataset.mwApprovalTimestamp = newValue;
+		} );
+		watch( approver, ( newValue ) => {
+			rootEl.dataset.mwApprover = newValue;
 		} );
 
 		// eslint-disable-next-line es-x/no-async-functions
