@@ -48,7 +48,7 @@ module.exports = defineComponent( {
 		// Update the relative timestamp in the tooltip on mouse enter
 		const updateTooltip = () => {
 			if ( !props.pageApproved ) {
-				tooltipText.value = null;
+				tooltipText.value = '';
 				return;
 			}
 			const approvedAgo = getRelativeTimestamp( props.approvalTimestamp );
