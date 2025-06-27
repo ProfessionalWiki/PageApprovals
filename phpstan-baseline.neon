@@ -61,11 +61,6 @@ parameters:
 			path: src/Adapters/DatabasePendingApprovalRetriever.php
 
 		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$params of method MediaWiki\\\\Message\\\\Message\\:\\:params\\(\\) expects array\\|float\\|int\\|string\\|Wikimedia\\\\Message\\\\MessageParam\\|Wikimedia\\\\Message\\\\MessageSpecifier, string\\|null given\\.$#"
-			count: 1
-			path: src/EntryPoints/REST/ApprovePageApi.php
-
-		-
 			message: "#^Cannot call method getId\\(\\) on MediaWiki\\\\User\\\\User\\|null\\.$#"
 			count: 1
 			path: src/EntryPoints/Specials/SpecialManageApprovers.php

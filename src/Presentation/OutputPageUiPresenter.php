@@ -21,6 +21,10 @@ class OutputPageUiPresenter {
 			return;
 		}
 
+		$approvalTimestamp = $arguments->approvalTimestamp ?
+			( new MWTimestamp( $arguments->approvalTimestamp ) )->getTimestamp( TS_ISO_8601 ) :
+			null;
+
 		$this->out->setIndicators( [
 			'ext-pageapprovals' => PageApprovals::getInstance()->getTemplateParser()->processTemplate(
 				'PageApprovalWrapper', [
@@ -28,7 +32,7 @@ class OutputPageUiPresenter {
 					'canApprove' => $arguments->userIsApprover ? 'true' : 'false',
 					'approver' => $arguments->approverUserName,
 					// JS expects ISO 8601 format
-					'approvalTimestamp' => ( new MWTimestamp( $arguments->approvalTimestamp ) )->getTimestamp( TS_ISO_8601 )
+					'approvalTimestamp' => $approvalTimestamp
 				]
 			)
 		] );

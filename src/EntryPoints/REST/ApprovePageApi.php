@@ -82,7 +82,7 @@ class ApprovePageApi extends SimpleHandler {
 			'approvalTimestamp' => $this->getFormattedTimestamp( $state->approvalTimestamp ),
 			'approver' => $this->getUserNameFromUserId( $state->approverId ),
 			'message' => ( new Message( 'pageapprovals-approve-page-text' ) )->params(
-				$this->getUserNameFromUserId( $state->approverId ),
+				$this->getUserNameFromUserId( $state->approverId ) ?? '',
 				$this->getFormattedTimestamp( $state->approvalTimestamp )
 			)->plain()
 		] );
