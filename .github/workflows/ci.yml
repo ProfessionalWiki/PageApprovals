@@ -287,4 +287,4 @@ jobs:
           echo "::remove-matcher owner=eslint-compact::"
           echo "::remove-matcher owner=eslint-stylish::"
       - run: npm install
-      - run: npm run test
+      - run: npm run lint
