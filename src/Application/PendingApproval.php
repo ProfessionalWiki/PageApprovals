@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Application;
 
-use TitleValue;
+use MediaWiki\Title\TitleValue;
 
 class PendingApproval {
 

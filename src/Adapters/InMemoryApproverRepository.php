@@ -5,8 +5,6 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
-use Title;
-use function Wikimedia\Parsoid\Wt2Html\TT\array_flatten;
 
 class InMemoryApproverRepository implements ApproverRepository {
 

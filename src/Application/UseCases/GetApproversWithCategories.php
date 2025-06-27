@@ -5,9 +5,9 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Application\UseCases;
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\TitleValue;
 use ProfessionalWiki\PageApprovals\Application\Approver;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
-use TitleValue;
 
 class GetApproversWithCategories {
 

@@ -4,13 +4,12 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Tests\Integration\HookHandler;
 
-use OutputPage;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\ParserOutput;
 use ProfessionalWiki\PageApprovals\EntryPoints\PageApprovalsHooks;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
-use RequestContext;
 use ProfessionalWiki\PageApprovals\PageApprovals;
-use ParserOutput;
-use WikiPage;
 
 /**
  * @group Database

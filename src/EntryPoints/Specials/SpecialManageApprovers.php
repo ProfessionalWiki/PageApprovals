@@ -2,14 +2,13 @@
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
+use MediaWiki\Request\WebRequest;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserFactory;
-use MediaWiki\User\UserGroupManager;
 use ProfessionalWiki\PageApprovals\Application\Approver;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\GetApproversWithCategories;
-use SpecialPage;
 use LightnCandy\LightnCandy;
-use WebRequest;
 
 class SpecialManageApprovers extends SpecialPage {
 

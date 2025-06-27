@@ -4,9 +4,9 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints;
 
-use DatabaseUpdater;
-use OutputPage;
-use ParserOutput;
+use MediaWiki\Installer\DatabaseUpdater;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Parser\ParserOutput;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 use ProfessionalWiki\PageApprovals\Presentation\OutputPageUiPresenter;
 

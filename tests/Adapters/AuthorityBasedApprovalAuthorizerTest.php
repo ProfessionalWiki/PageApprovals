@@ -4,10 +4,10 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Tests\Adapters;
 
+use MediaWiki\User\User;
 use ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApproverRepository;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
-use User;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer

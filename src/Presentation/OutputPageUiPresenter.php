@@ -4,8 +4,8 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Presentation;
 
-use MWTimestamp;
-use OutputPage;
+use MediaWiki\Output\OutputPage;
+use MediaWiki\Utils\MWTimestamp;
 use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\UiArguments;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 

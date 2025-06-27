@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Tests;
 
-use Title;
+use MediaWiki\Title\Title;
 use WikiPage;
 
 class PageApprovalsIntegrationTest extends \MediaWikiIntegrationTestCase {
@@ -40,7 +40,7 @@ class PageApprovalsIntegrationTest extends \MediaWikiIntegrationTestCase {
 		);
 	}
 
-	protected function insertApprovalLogEntry( int $pageId, bool $isApproved, string $timestamp = null ): void {
+	protected function insertApprovalLogEntry( int $pageId, bool $isApproved, ?string $timestamp = null ): void {
 		$this->db->insert(
 			'approval_log',
 			[

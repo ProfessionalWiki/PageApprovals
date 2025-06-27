@@ -4,12 +4,12 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\REST;
 
+use MediaWiki\Message\Message;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\UserIdentityLookup;
-use Message;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\ApprovalState;

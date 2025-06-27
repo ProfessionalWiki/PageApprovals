@@ -5,10 +5,9 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use Iterator;
-use MediaWiki\Permissions\Authority;
+use MediaWiki\Title\Title;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
-use Title;
 use WikiPage;
 
 class AuthorityBasedApprovalAuthorizer implements ApprovalAuthorizer {
