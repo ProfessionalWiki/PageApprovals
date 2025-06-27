@@ -74,13 +74,13 @@ module.exports = defineComponent( {
 				approvalTimestamp.value = new Date().toISOString();
 				approver.value = mw.config.get( 'wgUserName' );
 				pageApproved.value = true;
-				mw.notify( mw.msg( 'pageapprovals-approved' ), { type: 'success', tag: 'pageapprovals' } );
+				mw.notify( mw.msg( 'pageapprovals-approved' ), { type: 'success' } );
 			} else if ( value === 'unapprove' ) {
 				await setPageApprovalStatus( false );
 				approvalTimestamp.value = null;
 				approver.value = null;
 				pageApproved.value = false;
-				mw.notify( mw.msg( 'pageapprovals-unapproved' ), { type: 'success', tag: 'pageapprovals' } );
+				mw.notify( mw.msg( 'pageapprovals-unapproved' ), { type: 'success' } );
 			}
 		}
 

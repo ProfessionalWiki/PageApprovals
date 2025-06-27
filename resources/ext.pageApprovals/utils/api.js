@@ -13,7 +13,7 @@ function setPageApprovalStatus( approve ) {
 		.then( ( data ) => data )
 		.catch( ( error, data ) => {
 			mw.log.error( `API request failed: ${ error }` );
-			mw.notify( data.xhr.responseJSON.message || `API request failed: ${ error }`, { type: 'error', tag: 'pageapprovals' } );
+			mw.notify( data.xhr.responseJSON.message || `API request failed: ${ error }`, { type: 'error' } );
 		} );
 }
 
