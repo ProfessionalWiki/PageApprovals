@@ -2,13 +2,13 @@
 
 namespace ProfessionalWiki\PageApprovals\Tests\Integration;
 
-use FauxRequest;
+use MediaWiki\Request\FauxRequest;
+use MediaWiki\User\User;
 use PermissionsError;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialManageApprovers;
 use ProfessionalWiki\PageApprovals\PageApprovals;
 use SpecialPageTestBase;
-use User;
 
 /**
  * @group Database
@@ -36,7 +36,7 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 		$this->viewPage( user: $this->getTestUser()->getUser() );
 	}
 
-	private function viewPage( User $user = null ): string {
+	private function viewPage( ?User $user = null ): string {
 		[ $output ] = $this->executeSpecialPage(
 			'',
 			null,

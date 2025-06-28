@@ -12,14 +12,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - mw: 'REL1_39'
+          - mw: 'REL1_43'
             php: '8.1'
             experimental: false
-          - mw: 'REL1_41'
+          - mw: 'REL1_43'
             php: '8.2'
-            experimental: false
-          - mw: 'REL1_42'
-            php: '8.3'
             experimental: false
           - mw: 'REL1_43'
             php: '8.3'
@@ -97,7 +94,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - mw: 'REL1_39'
+          - mw: 'REL1_43'
             php: '8.2'
 
     runs-on: ubuntu-latest
@@ -163,7 +160,7 @@ jobs:
       strategy:
         matrix:
           include:
-            - mw: 'REL1_39'
+            - mw: 'REL1_43'
               php: '8.2'
 
       runs-on: ubuntu-latest
@@ -229,7 +226,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - mw: 'REL1_39'
+          - mw: 'REL1_43'
             php: '8.2'
 
     runs-on: ubuntu-latest
@@ -285,9 +282,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - run: |
-          echo "::remove-matcher owner=eslint-compact::"
-          echo "::remove-matcher owner=eslint-stylish::"
-      - run: npm install
-      - run: npm run test
+          node-version: 22
+      - run: npm ci
+      - run: npm run lint

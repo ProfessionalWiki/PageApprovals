@@ -1,7 +1,7 @@
 {
 	"name": "Page Approvals",
 
-	"version": "1.0.0",
+	"version": "2.0.0-alpha",
 
 	"author": [
 		"[https://Professional.Wiki/ Professional.Wiki]"
@@ -14,7 +14,7 @@
 	"descriptionmsg": "pageapprovals-description",
 
 	"requires": {
-		"MediaWiki": ">= 1.39.0"
+		"MediaWiki": ">= 1.43.0"
 	},
 
 	"MessagesDirs": {
@@ -70,21 +70,50 @@
 	},
 
 	"ResourceModules": {
-		"ext.pageApprovals.styles": {
-			"styles": [
-				"PageApprovals.css"
-			]
-		},
-		"ext.pageApprovals.scripts": {
-			"scripts": [
-				"ApprovePage.js"
+		"ext.pageApprovals": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"packageFiles": [
+				"ext.pageApprovals/init.js",
+				"ext.pageApprovals/utils/api.js",
+				"ext.pageApprovals/utils/time.js",
+				"ext.pageApprovals/components/App.vue",
+				"ext.pageApprovals/components/ApprovalButton.vue",
+				"ext.pageApprovals/components/StatusDisplay.vue",
+				{
+					"name": "ext.pageApprovals/icons.json",
+					"callback": "MediaWiki\\ResourceLoader\\CodexModule::getIcons",
+					"callbackParam": [
+						"cdxIconCollapse",
+						"cdxIconExpand",
+						"cdxIconCheck",
+						"cdxIconClose"
+					]
+				}
+			],
+			"skinStyles": {
+				"vector-2022": [
+					"ext.pageApprovals/styles/ext.pageApprovals.vector-2022.less"
+				]
+			},
+			"codexComponents": [
+				"CdxMenuButton",
+				"CdxIcon",
+				"CdxInfoChip",
+				"CdxTooltip"
 			],
 			"dependencies": [
-				"moment"
+				"vue",
+				"mediawiki.api",
+				"mediawiki.notification"
 			],
 			"messages": [
 				"pageapprovals-status-approved",
-				"pageapprovals-status-not-approved"
+				"pageapprovals-status-not-approved",
+				"pageapprovals-approve-page-text",
+				"pageapprovals-approve-button",
+				"pageapprovals-unapprove-button",
+				"pageapprovals-approved",
+				"pageapprovals-unapproved"
 			]
 		},
 		"ext.pageApprovals.manageApprovers.styles": {

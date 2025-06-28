@@ -7,7 +7,7 @@ namespace ProfessionalWiki\PageApprovals\Adapters;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\PendingApproval;
 use ProfessionalWiki\PageApprovals\Application\PendingApprovalRetriever;
-use TitleValue;
+use MediaWiki\Title\TitleValue;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Rdbms\Subquery;

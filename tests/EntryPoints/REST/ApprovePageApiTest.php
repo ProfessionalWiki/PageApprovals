@@ -2,12 +2,12 @@
 
 namespace ProfessionalWiki\PageApprovals\Tests\EntryPoints\REST;
 
-use Language;
-use MWTimestamp;
-use RequestContext;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Language\Language;
 use MediaWiki\Rest\RequestData;
 use MediaWiki\Tests\Rest\Handler\HandlerTestTrait;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
+use MediaWiki\Utils\MWTimestamp;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryHtmlRepository;
 use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;

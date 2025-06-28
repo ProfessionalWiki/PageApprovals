@@ -5,8 +5,8 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
-use Title;
-use TitleValue;
+use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleValue;
 use Wikimedia\Rdbms\IDatabase;
 
 class DatabaseApproverRepository implements ApproverRepository {

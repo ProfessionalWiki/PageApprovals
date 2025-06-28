@@ -5,7 +5,7 @@ declare( strict_types = 1 );
 namespace ProfessionalWiki\PageApprovals\Adapters;
 
 use MediaWiki\Page\WikiPageFactory;
-use ParserOptions;
+use MediaWiki\Parser\ParserOptions;
 
 class PageHtmlRetriever {
 

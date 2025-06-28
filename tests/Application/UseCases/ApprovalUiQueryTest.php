@@ -4,14 +4,14 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Tests\Application\UseCases;
 
-use OutputPage;
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Output\OutputPage;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\InMemoryApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\ApprovalUiQuery;
 use ProfessionalWiki\PageApprovals\Tests\PageApprovalsIntegrationTest;
 use ProfessionalWiki\PageApprovals\Tests\TestDoubles\SucceedingApprovalAuthorizer;
-use RequestContext;
 
 /**
  * @covers \ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery\ApprovalUiQuery
@@ -49,8 +49,8 @@ class ApprovalUiQueryTest extends PageApprovalsIntegrationTest {
 	}
 
 	private function newApprovalUiQuery(
-		InMemoryApprovalLog $approvalLog = null,
-		ApproverRepository $repository = null
+		?InMemoryApprovalLog $approvalLog = null,
+		?ApproverRepository $repository = null
 	): ApprovalUiQuery {
 		return new ApprovalUiQuery(
 			$approvalLog ?? new InMemoryApprovalLog(),

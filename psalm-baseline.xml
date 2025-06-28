@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="src/Adapters/AuthorityBasedApprovalAuthorizer.php">
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$page->getCategories()]]></code>
     </MixedArgumentTypeCoercion>
   </file>
   <file src="src/Adapters/DatabaseApprovalLog.php">
+    <InternalMethod>
+      <code><![CDATA[insert]]></code>
+      <code><![CDATA[selectRow]]></code>
+    </InternalMethod>
     <MixedArgument>
       <code><![CDATA[$row->al_timestamp]]></code>
     </MixedArgument>
-    <PossiblyInvalidPropertyFetch>
-      <code><![CDATA[$row->al_is_approved]]></code>
-      <code><![CDATA[$row->al_timestamp]]></code>
-      <code><![CDATA[$row->al_user_id]]></code>
-      <code><![CDATA[$row->user_name]]></code>
-    </PossiblyInvalidPropertyFetch>
   </file>
   <file src="src/Adapters/DatabaseApproverRepository.php">
+    <InternalMethod>
+      <code><![CDATA[select]]></code>
+      <code><![CDATA[select]]></code>
+      <code><![CDATA[selectRow]]></code>
+      <code><![CDATA[upsert]]></code>
+    </InternalMethod>
     <MixedArgument>
       <code><![CDATA[$row->ac_categories]]></code>
       <code><![CDATA[$row->categories]]></code>
@@ -40,30 +44,46 @@
       <code><![CDATA[string[]]]></code>
     </MixedReturnTypeCoercion>
     <PossiblyInvalidPropertyFetch>
-      <code><![CDATA[$row->ac_categories]]></code>
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->userId]]></code>
     </PossiblyInvalidPropertyFetch>
   </file>
   <file src="src/Adapters/DatabaseHtmlRepository.php">
+    <InternalMethod>
+      <code><![CDATA[selectRow]]></code>
+      <code><![CDATA[upsert]]></code>
+    </InternalMethod>
     <MixedInferredReturnType>
       <code><![CDATA[?string]]></code>
     </MixedInferredReturnType>
     <MixedReturnStatement>
       <code><![CDATA[$row->ah_html]]></code>
     </MixedReturnStatement>
-    <PossiblyInvalidPropertyFetch>
-      <code><![CDATA[$row->ah_html]]></code>
-    </PossiblyInvalidPropertyFetch>
   </file>
   <file src="src/Adapters/DatabasePendingApprovalRetriever.php">
+    <InternalMethod>
+      <code><![CDATA[select]]></code>
+      <code><![CDATA[selectField]]></code>
+    </InternalMethod>
     <MixedArgument>
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->page_title]]></code>
       <code><![CDATA[NS_CATEGORY]]></code>
       <code><![CDATA[NS_CATEGORY]]></code>
     </MixedArgument>
+    <MixedArgumentTypeCoercion>
+      <code><![CDATA[[
+				'cl_to' => $this->normalizeCategoryTitles( $categories ),
+				$this->db->makeList(
+					[
+						'latest_approval.al_is_approved' => 0,
+						'latest_approval.al_is_approved IS NULL'
+					],
+					IDatabase::LIST_OR
+				)
+			]]]></code>
+    </MixedArgumentTypeCoercion>
     <MixedAssignment>
       <code><![CDATA[$name]]></code>
     </MixedAssignment>
@@ -74,11 +94,6 @@
       <code><![CDATA[$row->rev_actor]]></code>
       <code><![CDATA[$row->rev_timestamp]]></code>
     </PossiblyInvalidPropertyFetch>
-  </file>
-  <file src="src/Adapters/PageHtmlRetriever.php">
-    <PossiblyInvalidMethodCall>
-      <code><![CDATA[getRawText]]></code>
-    </PossiblyInvalidMethodCall>
   </file>
   <file src="src/Application/UseCases/GetApproversWithCategories.php">
     <MixedArgument>
@@ -112,6 +127,11 @@
     </InvalidFalsableReturnType>
     <MixedArgument>
       <code><![CDATA[DB_PRIMARY]]></code>
+    </MixedArgument>
+  </file>
+  <file src="src/Presentation/OutputPageUiPresenter.php">
+    <MixedArgument>
+      <code><![CDATA[TS_ISO_8601]]></code>
     </MixedArgument>
   </file>
 </files>

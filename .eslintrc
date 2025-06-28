@@ -1,20 +1,27 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es6",
+		"wikimedia/client",
 		"wikimedia/mediawiki",
 		"wikimedia/jquery"
 	],
 	"env": {
 		"browser": true
 	},
+	"globals": {
+		"exports": true
+	},
 	"rules": {
 		"no-jquery/no-parse-html-literal": "warn",
 		"no-jquery/no-global-selector": "warn",
 		"mediawiki/msg-doc": "warn",
 		"es-x/no-async-functions": "warn",
-		"es-x/no-destructuring": "warn",
 		"no-console": "warn",
-		"no-jquery/no-class-state": "warn"
+		"no-jquery/no-class-state": "warn",
+		"no-implicit-globals": "warn"
+	},
+	"parserOptions": {
+		"ecmaVersion": 11,
+		"sourceType": "module"
 	}
 }

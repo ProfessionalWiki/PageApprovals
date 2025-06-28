@@ -2,13 +2,12 @@
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
-use Html;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\SpecialPage\SpecialPage;
 use ProfessionalWiki\PageApprovals\Application\ApproverRepository;
 use ProfessionalWiki\PageApprovals\Application\PendingApproval;
 use ProfessionalWiki\PageApprovals\Application\PendingApprovalRetriever;
-use SpecialPage;
-use TitleValue;
 
 class SpecialPendingApprovals extends SpecialPage {
 

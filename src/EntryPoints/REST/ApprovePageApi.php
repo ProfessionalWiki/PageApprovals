@@ -4,20 +4,19 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\REST;
 
-use Language;
-use MWTimestamp;
+use MediaWiki\Language\Language;
+use MediaWiki\Message\Message;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\User\UserIdentityLookup;
-use Message;
+use MediaWiki\Utils\MWTimestamp;
 use ProfessionalWiki\PageApprovals\Adapters\PageHtmlRetriever;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\ApprovalState;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
-use RequestContext;
 use Wikimedia\ParamValidator\ParamValidator;
 use WikiPage;
 
@@ -83,7 +82,7 @@ class ApprovePageApi extends SimpleHandler {
 			'approvalTimestamp' => $this->getFormattedTimestamp( $state->approvalTimestamp ),
 			'approver' => $this->getUserNameFromUserId( $state->approverId ),
 			'message' => ( new Message( 'pageapprovals-approve-page-text' ) )->params(
-				$this->getUserNameFromUserId( $state->approverId ),
+				$this->getUserNameFromUserId( $state->approverId ) ?? '',
 				$this->getFormattedTimestamp( $state->approvalTimestamp )
 			)->plain()
 		] );

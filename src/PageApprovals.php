@@ -4,6 +4,8 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals;
 
+use MediaWiki\Context\RequestContext;
+use MediaWiki\Html\TemplateParser;
 use MediaWiki\MediaWikiServices;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApprovalLog;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseApproverRepository;
@@ -22,8 +24,6 @@ use ProfessionalWiki\PageApprovals\EntryPoints\REST\UnapprovePageApi;
 use ProfessionalWiki\PageApprovals\Adapters\AuthorityBasedApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialManageApprovers;
 use ProfessionalWiki\PageApprovals\EntryPoints\Specials\SpecialPendingApprovals;
-use RequestContext;
-use TemplateParser;
 use Wikimedia\Rdbms\IDatabase;
 
 class PageApprovals {

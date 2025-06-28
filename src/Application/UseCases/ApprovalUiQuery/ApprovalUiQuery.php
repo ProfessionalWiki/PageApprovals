@@ -4,7 +4,7 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Application\UseCases\ApprovalUiQuery;
 
-use OutputPage;
+use MediaWiki\Output\OutputPage;
 use ProfessionalWiki\PageApprovals\Application\ApprovalAuthorizer;
 use ProfessionalWiki\PageApprovals\Application\ApprovalLog;
 use ProfessionalWiki\PageApprovals\Application\ApprovalState;

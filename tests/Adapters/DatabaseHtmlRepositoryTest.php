@@ -4,10 +4,10 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\Tests\Adapters;
 
-use IDatabase;
 use MediaWikiIntegrationTestCase;
 use ProfessionalWiki\PageApprovals\Adapters\DatabaseHtmlRepository;
 use ProfessionalWiki\PageApprovals\Application\HtmlRepository;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -31,7 +31,7 @@ class DatabaseHtmlRepositoryTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function newRepository(
-		IDatabase $db = null,
+		?IDatabase $db = null,
 	): HtmlRepository {
 		return new DatabaseHtmlRepository(
 			$db ?? $this->db,
