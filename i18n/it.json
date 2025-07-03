@@ -4,10 +4,11 @@
 			"Beta16"
 		]
 	},
-	"pageapprovals-status-approved": "APPROVATO",
+	"pageapprovals-status-approved": "Approvato",
 	"pageapprovals-status-not-approved": "Non approvato",
-	"pageapprovals-approve-page-text": "$1 ha approvato questa pagina $2",
+	"pageapprovals-approve-page-text": "$1 ha approvato questa pagina $2 alle $3",
 	"pageapprovals-approve-button": "Approva pagina",
+	"pageapprovals-unapprove-button": "Pagina non approvata",
 	"pageapprovals-approved": "Pagina approvata",
 	"pageapprovals-unapproved": "Pagina non approvata",
 	"pageapprovals-pending-approvals-page": "Pagina",

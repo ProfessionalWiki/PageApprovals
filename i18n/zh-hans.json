@@ -13,7 +13,7 @@
 	"manageapprovers": "管理核准员",
 	"pageapprovals-status-approved": "已核准",
 	"pageapprovals-status-not-approved": "未核准",
-	"pageapprovals-approve-page-text": "$1已核准此页面$2",
+	"pageapprovals-approve-page-text": "$1已于$3核准此页面$2",
 	"pageapprovals-approve-button": "核准页面",
 	"pageapprovals-unapprove-button": "取消核准页面",
 	"right-manage-approvers": "管理核准员",

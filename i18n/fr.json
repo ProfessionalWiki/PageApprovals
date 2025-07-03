@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Goombiis",
+			"JLTRY",
 			"Kubuya kanane leopold",
 			"MacOS Weed",
 			"Mahabarata",
@@ -11,9 +12,9 @@
 	},
 	"pageapprovals-description": "Contrôle qualité de votre wiki. Approuvez les pages, attribuez des approbateurs à des catégories, consultez vos demandes d'approbation et le statut d'approbation des pages.",
 	"manageapprovers": "Gérer les approbateurs",
-	"pageapprovals-status-approved": "APPROUVER",
+	"pageapprovals-status-approved": "Approuvé",
 	"pageapprovals-status-not-approved": "Non approuvé",
-	"pageapprovals-approve-page-text": "$1 a approuvé cette page $2",
+	"pageapprovals-approve-page-text": "$1 a approuvé cette page $2 à $3",
 	"pageapprovals-approve-button": "Approuver la page",
 	"pageapprovals-unapprove-button": "Désapprouver la page",
 	"right-manage-approvers": "Gérer les approbateurs",
