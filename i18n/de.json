@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Justman10000",
-			"Kghbln"
+			"Kghbln",
+			"PretzelRocky"
 		]
 	},
 	"pageapprovals-description": "Ermöglicht das Genehmigen von Inhalten, das Anzeigen deren Genehmigungsstatus sowie das Verwalten von Genehmigungsanfragen",
 	"manageapprovers": "Genehmiger verwalten",
-	"pageapprovals-status-approved": "GENEHMIGT",
+	"pageapprovals-status-approved": "Genehmigt",
 	"pageapprovals-status-not-approved": "Nicht genehmigt",
 	"pageapprovals-approve-page-text": "$1 genehmigte diese Seite $2",
 	"pageapprovals-approve-button": "Seite genehmigen",
