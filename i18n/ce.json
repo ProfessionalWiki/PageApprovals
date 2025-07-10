@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"pageapprovals-status-approved": "Магийна",
+	"pageapprovals-status-not-approved": "Магийна дац",
+	"pageapprovals-approved": "АгӀо тӀе эцна",
+	"pageapprovals-unapproved": "АгӀо тӀе ца эцна",
+	"pageapprovals-approve-authorization-failed": "Магор чекхдаккха ца делира. ХӀара агӀо тӀе эца, ахьа авторизаци йина йац.",
+	"pendingapprovals": "Магоре хьоьжурш",
+	"pageapprovals-pending-approvals-page": "АгӀо",
+	"pageapprovals-pending-approvals-categories": "ЦхьаьнайогӀуш йолу категореш"
+}

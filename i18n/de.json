@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"*surak*",
 			"Justman10000",
 			"Kghbln",
 			"PretzelRocky"
@@ -10,7 +11,7 @@
 	"manageapprovers": "Genehmiger verwalten",
 	"pageapprovals-status-approved": "Genehmigt",
 	"pageapprovals-status-not-approved": "Nicht genehmigt",
-	"pageapprovals-approve-page-text": "$1 genehmigte diese Seite $2",
+	"pageapprovals-approve-page-text": "$1 genehmigte diese Seite $2 auf $3",
 	"pageapprovals-approve-button": "Seite genehmigen",
 	"pageapprovals-unapprove-button": "Genehmigung der Seite zurücknehmen",
 	"right-manage-approvers": "Genehmiger verwalten",
