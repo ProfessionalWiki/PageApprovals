@@ -4,12 +4,18 @@
 			"Умар"
 		]
 	},
+	"manageapprovers": "ТӀечӀагӀдархошна урхалла дар",
 	"pageapprovals-status-approved": "Магийна",
 	"pageapprovals-status-not-approved": "Магийна дац",
+	"pageapprovals-approve-button": "АгӀо тӀеэца",
+	"pageapprovals-unapprove-button": "АгӀо тӀеэцар йухадаккха",
+	"right-manage-approvers": "ТӀечӀагӀдархошна урхалла дар",
+	"action-manage-approvers": "тӀечӀагӀдархошна урхалла дар",
 	"pageapprovals-approved": "АгӀо тӀе эцна",
 	"pageapprovals-unapproved": "АгӀо тӀе ца эцна",
 	"pageapprovals-approve-authorization-failed": "Магор чекхдаккха ца делира. ХӀара агӀо тӀе эца, ахьа авторизаци йина йац.",
 	"pendingapprovals": "Магоре хьоьжурш",
 	"pageapprovals-pending-approvals-page": "АгӀо",
-	"pageapprovals-pending-approvals-categories": "ЦхьаьнайогӀуш йолу категореш"
+	"pageapprovals-pending-approvals-categories": "ЦхьаьнайогӀуш йолу категореш",
+	"pageapprovals-pending-approvals-last-edit-time": "ТӀаьххьара хийцамаш"
 }
