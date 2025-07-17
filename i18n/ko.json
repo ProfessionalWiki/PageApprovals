@@ -10,7 +10,7 @@
 	"manageapprovers": "승인자 관리",
 	"pageapprovals-status-approved": "승인됨",
 	"pageapprovals-status-not-approved": "승인되지 않음",
-	"pageapprovals-approve-page-text": "$1님이 이 $2 문서를 승인함",
+	"pageapprovals-approve-page-text": "$1님이 이 $2 문서를 $3에 승인함",
 	"pageapprovals-approve-button": "문서 승인",
 	"pageapprovals-unapprove-button": "문서 승인 취소",
 	"right-manage-approvers": "승인자 관리",
