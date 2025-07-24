@@ -1,0 +1,30 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardoaddad"
+		]
+	},
+	"manageapprovers": "Gerenciar aprovadores",
+	"pageapprovals-status-approved": "Aprovado",
+	"pageapprovals-status-not-approved": "Não aprovado",
+	"pageapprovals-approve-page-text": "$1 aprovado nesta página $2 a $3",
+	"pageapprovals-approve-button": "Aprovar página",
+	"pageapprovals-unapprove-button": "Desaprovar página",
+	"right-manage-approvers": "Gerenciar aprovadores",
+	"action-manage-approvers": "gerenciar aprovadores",
+	"pageapprovals-approved": "Página aprovada",
+	"pageapprovals-unapproved": "Página não aprovada",
+	"pageapprovals-approve-authorization-failed": "Aprovação falhou. Você não está autorizado a aprovar esta página.",
+	"pageapprovals-unapprove-authorization-failed": "A rejeição falhou. Você não está autorizado a rejeitar esta página.",
+	"pageapprovals-approve-invalid-page": "Aprovação falhou. Esta página não existe.",
+	"pageapprovals-unapprove-invalid-page": "A reprovação falhou. Esta página não existe.",
+	"pageapprovals-approve-outdated-revision": "A aprovação falhou. Você só pode aprovar a versão mais recente de uma página.",
+	"pageapprovals-unapprove-outdated-revision": "A rejeição falhou. Você só pode rejeitar a versão mais recente de uma página.",
+	"pendingapprovals": "Aprovações pendentes",
+	"pageapprovals-pending-approvals-page": "Página",
+	"pageapprovals-pending-approvals-categories": "Categorias correspondentes",
+	"pageapprovals-pending-approvals-last-edit-time": "Última edição em",
+	"pageapprovals-pending-approvals-last-edit-by": "Último editor",
+	"pageapprovals-no-categories": "Você não está designado como aprovador para nenhuma categoria.",
+	"pageapprovals-no-pending-approvals": "Você não tem aprovações pendentes."
+}
