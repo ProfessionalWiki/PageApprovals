@@ -93,6 +93,16 @@ VALUES (1, 'TestCat|TestCat2');
 
 ## Release Notes
 
+### Version 2.0.0 - 2025-08-01
+
+* Raided the minimum MediaWiki version from 1.39 to 1.43
+* Added support for MediaWiki 1.44
+* Improved approval UI
+    * More integrated look-and-feel for the approval badge and dropdown (by using Codex components)
+    * Timestamp moved into the tooltip for cleaner presentation
+    * Always show a fully up-to-date timestamp (by generating it via JavaScript)
+* Improved handling for the Vector 2022 skin
+
 ### Version 1.0.0 - 2024-10-28
 
 * Approval UI on regular wiki pages that shows the approval status and allows approvers to change said status
