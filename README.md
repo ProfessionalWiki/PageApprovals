@@ -37,7 +37,7 @@ Platform requirements:
 The recommended way to install the Page Approvals extension is with [Composer] and
 [MediaWiki's built-in support for Composer][Composer install].
 
-On the commandline, go to your wikis root directory. Then run these two commands:
+On the command line, go to your wiki's root directory. Then run these two commands:
 
 ```shell script
 COMPOSER=composer.local.json composer require --no-update professional-wiki/page-approvals:~1.0
@@ -53,9 +53,9 @@ Then enable the extension by adding the following to the bottom of your wikis [L
 wfLoadExtension( 'PageApprovals' );
 ```
 
-Run the [update script](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Update.php) which will automatically create the necessary database tables that this extension needs.
+Run the [update script](https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:Update.php), which will automatically create the necessary database tables that this extension needs.
 
-You can verify the extension was enabled successfully by opening your wikis Special:Version page.
+You can verify the extension was enabled successfully by opening your wiki's Special:Version page.
 
 ## PHP Configuration
 
@@ -92,6 +92,11 @@ VALUES (1, 'TestCat|TestCat2');
 ```
 
 ## Release Notes
+
+### Version 2.1.0 - 2025-08-06
+
+* Added [Admin Links](https://www.mediawiki.org/wiki/Extension:Admin_Links) integration
+* Added ability to add intro text to the `Special:ManageApprovers` page via `MediaWiki:Ext-pageapprovals-manage-intro`
 
 ### Version 2.0.0 - 2025-08-01
 
