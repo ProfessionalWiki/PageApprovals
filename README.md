@@ -96,6 +96,7 @@ VALUES (1, 'TestCat|TestCat2');
 ### Version 2.1.0 - 2025-08-05
 
 * Added [Admin Links](https://www.mediawiki.org/wiki/Extension:Admin_Links) integration
+* Added ability to add intro text to the `Special:ManageApprovers` page via `MediaWiki:Ext-pageapprovals-manage-intro`
 
 ### Version 2.0.0 - 2025-08-01
 
