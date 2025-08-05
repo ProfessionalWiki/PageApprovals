@@ -93,6 +93,10 @@ VALUES (1, 'TestCat|TestCat2');
 
 ## Release Notes
 
+### Version 2.1.0 - 2025-08-05
+
+* Added [Admin Links](https://www.mediawiki.org/wiki/Extension:Admin_Links) integration
+
 ### Version 2.0.0 - 2025-08-01
 
 * Raided the minimum MediaWiki version from 1.39 to 1.43
