@@ -2,6 +2,7 @@
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints\Specials;
 
+use MediaWiki\Html\Html;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserFactory;
@@ -83,6 +84,16 @@ class SpecialManageApprovers extends SpecialPage {
 	private function renderHtml( array $approversCategories ): void {
 		$template = file_get_contents( __DIR__ . '/../../../templates/ManageApprovers.mustache' );
 		$compiledTemplate = LightnCandy::compile( $template, [ 'flags' => LightnCandy::FLAG_MUSTACHE ] );
+
+		if ( $this->msg( 'ext-pageapprovals-manage-intro' )->exists() ) {
+			$this->getOutput()->addHTML(
+				Html::rawElement( 'p',
+					[ 'id' => 'ext-pageapprovals-manage-intro' ],
+					$this->msg( 'ext-pageapprovals-manage-intro' )->parse()
+				)
+			);
+		}
+
 		$this->getOutput()->addHTML(
 			LightnCandy::prepare( $compiledTemplate )(
 				[ 'approvers' => $this->approversToViewModel( $approversCategories ) ]
