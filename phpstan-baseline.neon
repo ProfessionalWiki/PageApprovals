@@ -61,6 +61,26 @@ parameters:
 			path: src/Adapters/DatabasePendingApprovalRetriever.php
 
 		-
+			message: "#^Call to method getSection\\(\\) on an unknown class ALTree\\.$#"
+			count: 1
+			path: src/EntryPoints/PageApprovalsHooks.php
+
+		-
+			message: "#^Call to static method newFromSpecialPage\\(\\) on an unknown class ALItem\\.$#"
+			count: 2
+			path: src/EntryPoints/PageApprovalsHooks.php
+
+		-
+			message: "#^Instantiated class ALRow not found\\.$#"
+			count: 1
+			path: src/EntryPoints/PageApprovalsHooks.php
+
+		-
+			message: "#^Parameter \\$adminLinks of method ProfessionalWiki\\\\PageApprovals\\\\EntryPoints\\\\PageApprovalsHooks\\:\\:onAdminLinks\\(\\) has invalid type ALTree\\.$#"
+			count: 1
+			path: src/EntryPoints/PageApprovalsHooks.php
+
+		-
 			message: "#^Cannot call method getId\\(\\) on MediaWiki\\\\User\\\\User\\|null\\.$#"
 			count: 1
 			path: src/EntryPoints/Specials/SpecialManageApprovers.php

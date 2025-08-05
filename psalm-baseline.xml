@@ -103,6 +103,14 @@
       <code><![CDATA[(int)$approver['userId']]]></code>
     </RedundantCastGivenDocblockType>
   </file>
+  <file src="src/EntryPoints/PageApprovalsHooks.php">
+    <PossiblyUnusedParam>
+      <code><![CDATA[$adminLinks]]></code>
+    </PossiblyUnusedParam>
+    <UndefinedClass>
+      <code><![CDATA[ALTree]]></code>
+    </UndefinedClass>
+  </file>
   <file src="src/EntryPoints/Specials/SpecialManageApprovers.php">
     <PossiblyNullReference>
       <code><![CDATA[getId]]></code>

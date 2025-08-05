@@ -4,6 +4,9 @@ declare( strict_types = 1 );
 
 namespace ProfessionalWiki\PageApprovals\EntryPoints;
 
+use ALItem;
+use ALRow;
+use ALTree;
 use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Parser\ParserOutput;
@@ -41,6 +44,24 @@ class PageApprovalsHooks {
 		( new OutputPageUiPresenter( $out ) )->presentUi(
 			PageApprovals::getInstance()->newApprovalUiQuery()->getUiState( $out )
 		);
+	}
+
+	public static function onAdminLinks( ALTree &$adminLinks ): void {
+		$generalSection = $adminLinks->getSection( wfMessage( 'adminlinks_general' )->text() );
+
+		if ( $generalSection === null ) {
+			return;
+		}
+
+		$extensionsRow = $generalSection->getRow( 'extensions' );
+
+		if ( $extensionsRow === null ) {
+			$extensionsRow = new ALRow( 'extensions' );
+			$generalSection->addRow( $extensionsRow );
+		}
+
+		$extensionsRow->addItem( ALItem::newFromSpecialPage( 'PendingApprovals' ) );
+		$extensionsRow->addItem( ALItem::newFromSpecialPage( 'ManageApprovers' ) );
 	}
 
 }
