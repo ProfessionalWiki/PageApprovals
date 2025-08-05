@@ -58,7 +58,8 @@
 	"Hooks": {
 		"OutputPageParserOutput": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onOutputPageParserOutput",
 		"LoadExtensionSchemaUpdates": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onLoadExtensionSchemaUpdates",
-		"OutputPageBeforeHTML": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onOutputPageBeforeHTML"
+		"OutputPageBeforeHTML": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onOutputPageBeforeHTML",
+		"AdminLinks": "ProfessionalWiki\\PageApprovals\\EntryPoints\\PageApprovalsHooks::onAdminLinks"
 	},
 
 	"config": {
