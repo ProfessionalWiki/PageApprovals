@@ -14,6 +14,7 @@
 	"pageapprovals-approved": "АгӀо тӀе эцна",
 	"pageapprovals-unapproved": "АгӀо тӀе ца эцна",
 	"pageapprovals-approve-authorization-failed": "Магор чекхдаккха ца делира. ХӀара агӀо тӀе эца, ахьа авторизаци йина йац.",
+	"pageapprovals-unapprove-authorization-failed": "Магор йухадаккха ца делира. ХӀара агӀо магор йухадаккха, ахьа авторизаци йина йац.",
 	"pageapprovals-approve-invalid-page": "ТӀечӀагӀйар ца хилира. ХӀара агӀо йац.",
 	"pageapprovals-unapprove-invalid-page": "ТӀечӀагӀйар йухадаккха аьтто ца белира. ХӀара агӀо йац.",
 	"pageapprovals-approve-outdated-revision": "ТӀечӀагӀйар ца хилира. АгӀонан тӀаьххьара верси бен тӀечӀагӀйан йиш йац хьан.",
