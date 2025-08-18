@@ -4,9 +4,11 @@
 			"Умар"
 		]
 	},
+	"pageapprovals-description": "Хьан викина дикалла ларйар. АгӀонаш тӀечӀагӀйе, тӀечӀагӀйаран категорешна тӀебахийта, хьайн тӀечӀагӀйаран дехаршка хьажа, агӀонийн тӀечӀагӀйаран статус хьажа.",
 	"manageapprovers": "ТӀечӀагӀдархошна урхалла дар",
 	"pageapprovals-status-approved": "Магийна",
 	"pageapprovals-status-not-approved": "Магийна дац",
+	"pageapprovals-approve-page-text": "$1 тӀеэцна $2 агӀо $3 мах болуш",
 	"pageapprovals-approve-button": "АгӀо тӀеэца",
 	"pageapprovals-unapprove-button": "АгӀо тӀеэцар йухадаккха",
 	"right-manage-approvers": "ТӀечӀагӀдархошна урхалла дар",
@@ -23,5 +25,9 @@
 	"pageapprovals-pending-approvals-page": "АгӀо",
 	"pageapprovals-pending-approvals-categories": "ЦхьаьнайогӀуш йолу категореш",
 	"pageapprovals-pending-approvals-last-edit-time": "ТӀаьххьара хийцамаш",
-	"pageapprovals-pending-approvals-last-edit-by": "ТӀаьххьара редактор"
+	"pageapprovals-pending-approvals-last-edit-by": "ТӀаьххьара редактор",
+	"pageapprovals-no-categories": "Цхьана а категорина тӀечӀагӀдархо бакъо йела йац хьуна.",
+	"pageapprovals-no-pending-approvals": "ТӀеэцаре хьоьжурш дац хьан.",
+	"pageapprovals-pending-approval-count": "Хьан $1 ду {{PLURAL:$1|тӀечӀагӀдаре}} хьоьжуш.",
+	"pageapprovals-not-logged-in": "ТӀеэца хьоьжучарга хьажа авторизаци йе."
 }
