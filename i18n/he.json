@@ -9,7 +9,7 @@
 	"manageapprovers": "ניהול מאשרים",
 	"pageapprovals-status-approved": "אושר",
 	"pageapprovals-status-not-approved": "לא אושר",
-	"pageapprovals-approve-page-text": "$! {{GENDER:$1|אישר|אישרה}} את הדף $2",
+	"pageapprovals-approve-page-text": "$! {{GENDER:$1|אישר|אישרה}} את הדף $2 ב־$3",
 	"pageapprovals-approve-button": "לאשר דף",
 	"pageapprovals-unapprove-button": "לבטל אישור דף",
 	"right-manage-approvers": "לנהל מאשרים",
