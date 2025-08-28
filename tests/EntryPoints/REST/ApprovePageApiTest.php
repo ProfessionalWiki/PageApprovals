@@ -28,6 +28,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 	private InMemoryApprovalLog $approvalLog;
 	private HtmlRepository $htmlRepository;
 	private Language $language;
+	private RequestContext $requestContext;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -35,6 +36,7 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 		$this->approvalLog = new InMemoryApprovalLog();
 		$this->htmlRepository = new InMemoryHtmlRepository();
 		$this->language = RequestContext::getMain()->getLanguage();
+		$this->requestContext = RequestContext::getMain();
 	}
 
 	public function testApprovePageHappyPath(): void {
@@ -68,7 +70,8 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getRevisionLookup(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
-			$this->language
+			$this->language,
+			$this->requestContext
 		);
 	}
 
@@ -106,7 +109,8 @@ class ApprovePageApiTest extends PageApprovalsIntegrationTest {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getRevisionLookup(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
-			$this->language
+			$this->language,
+			$this->requestContext
 		);
 	}
 
@@ -176,6 +180,20 @@ EOT
 		);
 
 		$this->assertSame( 409, $response->getStatusCode() );
+	}
+
+	public function testRequestContextIsUpdatedWithPageToBeApproved(): void {
+		$page = $this->createPageWithCategories();
+
+		$this->executeHandler(
+			$this->newApprovePageApi(),
+			$this->createValidRequestData( $page->getRevisionRecord()->getId() ),
+		);
+
+		$this->assertSame(
+			$page->getTitle()->getText(),
+			$this->requestContext->getTitle()->getText()
+		);
 	}
 
 }
