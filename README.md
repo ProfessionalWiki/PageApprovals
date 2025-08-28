@@ -93,6 +93,10 @@ VALUES (1, 'TestCat|TestCat2');
 
 ## Release Notes
 
+### Version 2.1.1 - 2025-08-28
+
+* Fixed an issue that caused the incorrect automatic unapproval of pages when using extensions like DisplayTitle 
+
 ### Version 2.1.0 - 2025-08-06
 
 * Added [Admin Links](https://www.mediawiki.org/wiki/Extension:Admin_Links) integration
