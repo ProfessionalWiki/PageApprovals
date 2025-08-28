@@ -22,7 +22,7 @@ class PageApprovalsHooks {
 		if ( self::isApprovablePage( $out ) ) {
 			PageApprovals::getInstance()->newEvaluateApprovalStateAction()->evaluate(
 				pageId: $out->getWikiPage()->getId(),
-				currentPageHtml: $parserOutput->getRawText(),
+				currentPageHtml: PageApprovals::getInstance()->getPageHtmlRetriever()->getPageHtml( $out->getWikiPage()->getId() ),
 			);
 		}
 	}
