@@ -31,7 +31,8 @@ class ApprovePageApi extends SimpleHandler {
 		private WikiPageFactory $wikiPageFactory,
 		private RevisionLookup $revisionLookup,
 		private UserIdentityLookup $userIdentityLookup,
-		private Language $language
+		private Language $language,
+		private RequestContext $requestContext
 	) {
 	}
 
@@ -53,7 +54,7 @@ class ApprovePageApi extends SimpleHandler {
 		$this->approvalLog->approvePage( $page->getId(), $this->getAuthority()->getUser()->getId() );
 
 		// Some extensions, like DisplayTitle, expect the current page to be in the request context.
-		RequestContext::getMain()->setTitle( $page->getTitle() );
+		$this->requestContext->setTitle( $page->getTitle() );
 		$html = $this->pageHtmlRetriever->getPageHtml( $page->getId() );
 		if ( $html !== null ) {
 			$this->htmlRepository->saveApprovedHtml( $page->getId(), $html );
