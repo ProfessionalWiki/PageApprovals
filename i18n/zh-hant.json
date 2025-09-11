@@ -11,7 +11,7 @@
 	"manageapprovers": "管理核准員",
 	"pageapprovals-status-approved": "已核准",
 	"pageapprovals-status-not-approved": "未核准",
-	"pageapprovals-approve-page-text": "$1批准了$2條目",
+	"pageapprovals-approve-page-text": "$1於$3批准了$2條目",
 	"pageapprovals-approve-button": "核准頁面",
 	"pageapprovals-unapprove-button": "取消核准頁面",
 	"right-manage-approvers": "管理核准員",
