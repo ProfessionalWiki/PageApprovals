@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"manageapprovers": "منونکي مهارول",
+	"pageapprovals-status-approved": "منل‌شوی",
+	"pageapprovals-status-not-approved": "نامنل‌شوی",
+	"pageapprovals-approve-page-text": "$1 د $2 مخ په $3 کې منلی",
+	"pageapprovals-approve-button": "مخ منل",
+	"pageapprovals-unapprove-button": "نامنل‌شوی مخ",
+	"right-manage-approvers": "منونکي مهارول",
+	"action-manage-approvers": "منونکي مهارول",
+	"pageapprovals-approved": "منل ومنل شو",
+	"pageapprovals-unapproved": "مخ ونه منل شو",
+	"pendingapprovals": "د منلو په تمه",
+	"pageapprovals-pending-approvals-page": "مخ",
+	"pageapprovals-pending-approvals-categories": "ورته وېشنيزې",
+	"pageapprovals-pending-approvals-last-edit-time": "وروستی ځل سم‌شوی په",
+	"pageapprovals-pending-approvals-last-edit-by": "وروستی سمونگر"
+}
