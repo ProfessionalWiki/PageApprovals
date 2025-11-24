@@ -1,0 +1,33 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"pageapprovals-description": "Control de calidade para o teu wiki. Aproba páxinas, asigna responsables de aprobación ás categorías, revisa as túas solicitudes de aprobación e consulta o estado de aprobación das páxinas.",
+	"manageapprovers": "Xestionar os responsables",
+	"pageapprovals-status-approved": "Aprobada",
+	"pageapprovals-status-not-approved": "Non aprobada",
+	"pageapprovals-approve-page-text": "$1 aprobou esta páxina o $2 ás $3",
+	"pageapprovals-approve-button": "Aprobar a páxina",
+	"pageapprovals-unapprove-button": "Desaprobar a páxina",
+	"right-manage-approvers": "Xestionar os responsables",
+	"action-manage-approvers": "xestionar os responsables",
+	"pageapprovals-approved": "Páxina aprobada",
+	"pageapprovals-unapproved": "Páxina non aprobada",
+	"pageapprovals-approve-authorization-failed": "Fallou a aprobación. Non tes autorización para aprobar esta páxina.",
+	"pageapprovals-unapprove-authorization-failed": "Fallou a desaprobación. Non tes autorización para desaprobar esta páxina.",
+	"pageapprovals-approve-invalid-page": "Fallou a aprobación. Esta páxina non existe.",
+	"pageapprovals-unapprove-invalid-page": "Fallou a desaprobación. Esta páxina non existe.",
+	"pageapprovals-approve-outdated-revision": "Fallou a aprobación. Só podes aprobar a última versión dunha páxina.",
+	"pageapprovals-unapprove-outdated-revision": "Fallou a desaprobación. Só podes desaprobar a última versión dunha páxina.",
+	"pendingapprovals": "Aprobacións pendentes",
+	"pageapprovals-pending-approvals-page": "Páxina",
+	"pageapprovals-pending-approvals-categories": "Categorías coincidentes",
+	"pageapprovals-pending-approvals-last-edit-time": "Última edición o",
+	"pageapprovals-pending-approvals-last-edit-by": "Último editor",
+	"pageapprovals-no-categories": "Non estás asignado como responsable de ningunha categoría.",
+	"pageapprovals-no-pending-approvals": "Non tes ningunha aprobación pendente.",
+	"pageapprovals-pending-approval-count": "Tes $1 {{PLURAL:$1|aprobación pendente|aprobacións pendentes}}.",
+	"pageapprovals-not-logged-in": "Inicia sesión para ver as túas aprobacións pendentes."
+}
