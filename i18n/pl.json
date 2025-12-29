@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Darellur",
-			"PanWor"
+			"PanWor",
+			"Woytecr"
 		]
 	},
-	"pageapprovals-status-approved": "ZATWIERDZONA",
+	"pageapprovals-status-approved": "Zatwierdzona",
 	"pageapprovals-status-not-approved": "Nie zatwierdzona",
-	"pageapprovals-approve-button": "Zatwierdź Stronę",
+	"pageapprovals-approve-button": "Zatwierdź stronę",
 	"pageapprovals-approved": "Strona zatwierdzona",
 	"pageapprovals-unapproved": "Strona niezatwierdzona",
 	"pageapprovals-approve-authorization-failed": "Zatwierdzenie nie powiodło się. Nie masz uprawnień do zatwierdzenia tej strony.",
