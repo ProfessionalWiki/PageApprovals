@@ -38,7 +38,7 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 	 * @param string[] $categories
 	 */
 	private function queryPendingApprovals( array $categories ): IResultWrapper {
-		if ( $this->db->fieldExists( 'categorylinks', 'cl_to', __METHOD__ ) ) {
+		if ( version_compare( MW_VERSION, '1.45', '<' ) ) {
 			return $this->queryPendingApprovalsLegacy( $categories );
 		}
 
