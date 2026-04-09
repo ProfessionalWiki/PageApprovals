@@ -22,7 +22,7 @@ class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest 
 	protected function setUp(): void {
 		parent::setUp();
 
-		$this->tablesUsed = [ 'page', 'revision', 'categorylinks', 'approval_log' ];
+		$this->tablesUsed = [ 'page', 'revision', 'categorylinks', 'linktarget', 'approval_log' ];
 
 		$this->approverRepository = new InMemoryApproverRepository();
 		$this->retriever = new DatabasePendingApprovalRetriever( $this->db, $this->approverRepository );

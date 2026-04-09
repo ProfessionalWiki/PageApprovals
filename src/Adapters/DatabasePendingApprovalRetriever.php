@@ -38,6 +38,18 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 	 * @param string[] $categories
 	 */
 	private function queryPendingApprovals( array $categories ): IResultWrapper {
+		if ( $this->db->fieldExists( 'categorylinks', 'cl_to', __METHOD__ ) ) {
+			return $this->queryPendingApprovalsLegacy( $categories );
+		}
+
+		return $this->queryPendingApprovalsWithLinkTarget( $categories );
+	}
+
+	/**
+	 * Query for MW 1.43–1.44 where categorylinks has cl_to.
+	 * @param string[] $categories
+	 */
+	private function queryPendingApprovalsLegacy( array $categories ): IResultWrapper {
 		$latestApprovalSubquery = $this->getLatestApprovalSubquery();
 
 		return $this->db->select(
@@ -76,6 +88,57 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 			[
 				'revision' => [ 'INNER JOIN', 'page_latest = rev_id' ],
 				'categorylinks' => [ 'INNER JOIN', 'page_id = cl_from' ],
+				'latest_approval' => [ 'LEFT JOIN', 'page_id = latest_approval.al_page_id' ]
+			]
+		);
+	}
+
+	/**
+	 * Query for MW 1.45+ where categorylinks uses cl_target_id referencing the linktarget table.
+	 * @param string[] $categories
+	 */
+	private function queryPendingApprovalsWithLinkTarget( array $categories ): IResultWrapper {
+		$latestApprovalSubquery = $this->getLatestApprovalSubquery();
+
+		return $this->db->select(
+			[
+				'page',
+				'revision',
+				'categorylinks',
+				'linktarget',
+				'latest_approval' => $latestApprovalSubquery
+			],
+			[
+				'page_id',
+				'page_namespace',
+				'page_title',
+				'rev_timestamp',
+				'rev_actor',
+				'GROUP_CONCAT(DISTINCT lt_title) AS categories',
+				'latest_approval.al_is_approved',
+				'latest_approval.al_timestamp'
+			],
+			[
+				'lt_namespace' => NS_CATEGORY,
+				'lt_title' => $this->normalizeCategoryTitles( $categories ),
+				$this->db->makeList(
+					[
+						'latest_approval.al_is_approved' => 0,
+						'latest_approval.al_is_approved IS NULL'
+					],
+					IDatabase::LIST_OR
+				)
+			],
+			__METHOD__,
+			[
+				'GROUP BY' => 'page_id',
+				'ORDER BY' => 'rev_timestamp DESC',
+				'LIMIT' => $this->limit
+			],
+			[
+				'revision' => [ 'INNER JOIN', 'page_latest = rev_id' ],
+				'categorylinks' => [ 'INNER JOIN', 'page_id = cl_from' ],
+				'linktarget' => [ 'INNER JOIN', 'cl_target_id = lt_id' ],
 				'latest_approval' => [ 'LEFT JOIN', 'page_id = latest_approval.al_page_id' ]
 			]
 		);
