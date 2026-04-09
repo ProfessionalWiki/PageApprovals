@@ -64,6 +64,7 @@
   <file src="src/Adapters/DatabasePendingApprovalRetriever.php">
     <InternalMethod>
       <code><![CDATA[select]]></code>
+      <code><![CDATA[select]]></code>
       <code><![CDATA[selectField]]></code>
     </InternalMethod>
     <MixedArgument>
@@ -75,6 +76,17 @@
     <MixedArgumentTypeCoercion>
       <code><![CDATA[[
 				'cl_to' => $this->normalizeCategoryTitles( $categories ),
+				$this->db->makeList(
+					[
+						'latest_approval.al_is_approved' => 0,
+						'latest_approval.al_is_approved IS NULL'
+					],
+					IDatabase::LIST_OR
+				)
+			]]]></code>
+      <code><![CDATA[[
+				'lt_namespace' => NS_CATEGORY,
+				'lt_title' => $this->normalizeCategoryTitles( $categories ),
 				$this->db->makeList(
 					[
 						'latest_approval.al_is_approved' => 0,
