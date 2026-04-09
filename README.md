@@ -32,7 +32,7 @@ See the [Page Approvals usage documentation](https://professional.wiki/en/extens
 Platform requirements:
 
 * [PHP] 8.1 or later (tested up to 8.3)
-* [MediaWiki] 1.43 or later (tested up to 1.45)
+* [MediaWiki] 1.39 or later (1.43 needed for the latest version, tested up to 1.45)
 
 The recommended way to install the Page Approvals extension is with [Composer] and
 [MediaWiki's built-in support for Composer][Composer install].
@@ -40,7 +40,7 @@ The recommended way to install the Page Approvals extension is with [Composer] a
 On the command line, go to your wiki's root directory. Then run these two commands:
 
 ```shell script
-COMPOSER=composer.local.json composer require --no-update professional-wiki/page-approvals:~1.0
+COMPOSER=composer.local.json composer require --no-update professional-wiki/page-approvals:~2.0
 ```
 
 ```shell script
