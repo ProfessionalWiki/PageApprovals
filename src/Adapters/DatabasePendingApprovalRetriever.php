@@ -38,11 +38,15 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 	 * @param string[] $categories
 	 */
 	private function queryPendingApprovals( array $categories ): IResultWrapper {
-		if ( version_compare( MW_VERSION, '1.45', '<' ) ) {
+		if ( $this->hasLegacyCategoryLinksSchema() ) {
 			return $this->queryPendingApprovalsLegacy( $categories );
 		}
 
 		return $this->queryPendingApprovalsWithLinkTarget( $categories );
+	}
+
+	private function hasLegacyCategoryLinksSchema(): bool {
+		return version_compare( MW_VERSION, '1.45', '<' );
 	}
 
 	/**

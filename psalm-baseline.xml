@@ -70,6 +70,7 @@
     <MixedArgument>
       <code><![CDATA[$row->categories]]></code>
       <code><![CDATA[$row->page_title]]></code>
+      <code><![CDATA[MW_VERSION]]></code>
       <code><![CDATA[NS_CATEGORY]]></code>
       <code><![CDATA[NS_CATEGORY]]></code>
     </MixedArgument>
