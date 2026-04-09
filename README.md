@@ -32,7 +32,7 @@ See the [Page Approvals usage documentation](https://professional.wiki/en/extens
 Platform requirements:
 
 * [PHP] 8.1 or later (tested up to 8.3)
-* [MediaWiki] 1.39 or later (tested up to 1.43)
+* [MediaWiki] 1.43 or later (tested up to 1.45)
 
 The recommended way to install the Page Approvals extension is with [Composer] and
 [MediaWiki's built-in support for Composer][Composer install].
@@ -92,6 +92,11 @@ VALUES (1, 'TestCat|TestCat2');
 ```
 
 ## Release Notes
+
+### Version 2.2.0 - 2026-04-09
+
+* Added support for MediaWiki 1.45
+* Removed MW master from PHPUnit CI matrix
 
 ### Version 2.1.1 - 2025-08-28
 
