@@ -36,21 +36,6 @@ parameters:
 			path: src/Adapters/DatabaseHtmlRepository.php
 
 		-
-			message: "#^If condition is always true\\.$#"
-			count: 1
-			path: src/Adapters/DatabasePendingApprovalRetriever.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: src/Adapters/DatabasePendingApprovalRetriever.php
-
-		-
-			message: "#^Method ProfessionalWiki\\\\PageApprovals\\\\Adapters\\\\DatabasePendingApprovalRetriever\\:\\:queryPendingApprovalsWithLinkTarget\\(\\) is unused\\.$#"
-			count: 1
-			path: src/Adapters/DatabasePendingApprovalRetriever.php
-
-		-
 			message: "#^Cannot access property \\$categories on array\\|stdClass\\|false\\.$#"
 			count: 1
 			path: src/Adapters/DatabasePendingApprovalRetriever.php
