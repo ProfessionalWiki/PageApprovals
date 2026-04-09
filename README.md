@@ -96,7 +96,6 @@ VALUES (1, 'TestCat|TestCat2');
 ### Version 2.2.0 - 2026-04-09
 
 * Added support for MediaWiki 1.45
-* Removed MW master from PHPUnit CI matrix
 
 ### Version 2.1.1 - 2025-08-28
 
