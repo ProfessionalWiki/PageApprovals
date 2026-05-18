@@ -14,7 +14,7 @@
 	"pageapprovals-approve-button": "문서 승인",
 	"pageapprovals-unapprove-button": "문서 승인 취소",
 	"right-manage-approvers": "승인자 관리",
-	"action-manage-approvers": "승인자를 관리할",
+	"action-manage-approvers": "승인자 관리",
 	"pageapprovals-approved": "문서를 승인했습니다",
 	"pageapprovals-unapproved": "문서의 승인을 해제했습니다",
 	"pageapprovals-approve-authorization-failed": "승인을 실패했습니다. 이 문서를 승인할 권한이 없습니다.",
