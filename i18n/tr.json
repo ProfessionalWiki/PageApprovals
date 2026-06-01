@@ -2,14 +2,34 @@
 	"@metadata": {
 		"authors": [
 			"Brightt11",
+			"HakanIST",
 			"LisafBia"
 		]
 	},
+	"pageapprovals-description": "Vikiniz için kalite kontrolü. Sayfaları onaylayın, kategorilere onaylayıcı atayın, onay gereksinimlerinizi görüntüleyin.",
+	"manageapprovers": "Onaylayıcıları yönet",
+	"pageapprovals-status-approved": "Onaylandı",
+	"pageapprovals-status-not-approved": "Onaylanmadı",
+	"pageapprovals-approve-page-text": "$1 bu sayfayı $2 tarihinde $3 saatinde onayladı",
+	"pageapprovals-approve-button": "Bu sayfayı onayla",
+	"pageapprovals-unapprove-button": "Bu sayfanın onayını kaldır",
+	"right-manage-approvers": "Onaylayıcıları yönet",
+	"action-manage-approvers": "onaylayıcıları yönetme",
 	"pageapprovals-approved": "Sayfa onaylandı",
 	"pageapprovals-unapproved": "Sayfa onaylanmadı",
 	"pageapprovals-approve-authorization-failed": "Onay başarısız oldu. Bu sayfayı onaylama yetkiniz yok.",
 	"pageapprovals-unapprove-authorization-failed": "Onaylamayı kaldırma başarısız oldu. Bu sayfanın onayını kaldırma yetkiniz yok.",
 	"pageapprovals-approve-invalid-page": "Onay başarısız. Bu sayfa mevcut değil.",
 	"pageapprovals-unapprove-invalid-page": "Onaylamayı kaldırma başarısız oldu. Bu sayfa mevcut değil.",
-	"pageapprovals-pending-approvals-page": "Sayfa"
+	"pageapprovals-approve-outdated-revision": "Onay başarısız oldu. Yalnızca bir sayfanın en son sürümünü onaylayabilirsiniz.",
+	"pageapprovals-unapprove-outdated-revision": "Onay kaldırma başarısız oldu. Yalnızca bir sayfanın en son sürümünün onayını kaldırabilirsiniz.",
+	"pendingapprovals": "Bekleyen onaylar",
+	"pageapprovals-pending-approvals-page": "Sayfa",
+	"pageapprovals-pending-approvals-categories": "Eşleşen Kategoriler",
+	"pageapprovals-pending-approvals-last-edit-time": "Son Düzenlenme Zamanı",
+	"pageapprovals-pending-approvals-last-edit-by": "Son Düzenleyen",
+	"pageapprovals-no-categories": "Herhangi bir kategori için onaylayıcı olarak atanmadınız.",
+	"pageapprovals-no-pending-approvals": "Bekleyen onayınız yok.",
+	"pageapprovals-pending-approval-count": "$1 bekleyen {{PLURAL:$1|onayınız|onayınız}} var.",
+	"pageapprovals-not-logged-in": "Bekleyen onaylarınızı görmek için giriş yapın."
 }
