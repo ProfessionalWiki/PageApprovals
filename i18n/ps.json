@@ -4,6 +4,7 @@
 			"شاه زمان پټان"
 		]
 	},
+	"pageapprovals-description": "ستاسو د ويکي لپاره د څرنگوالي کنترول. مخونه ومنئ، وېشنيزو ته منونکي وټاکئ، خپلې د منلو په تمه غوښتنې وگورئ او د مخونو د منلو دريځ وگورئ.",
 	"manageapprovers": "منونکي مهارول",
 	"pageapprovals-status-approved": "منل‌شوی",
 	"pageapprovals-status-not-approved": "نامنل‌شوی",
@@ -14,9 +15,19 @@
 	"action-manage-approvers": "منونکي مهارول",
 	"pageapprovals-approved": "منل ومنل شو",
 	"pageapprovals-unapproved": "مخ ونه منل شو",
+	"pageapprovals-approve-authorization-failed": "منل نابرياله شول. تاسو د دې مخ د منلو اجازه نه‌لرئ.",
+	"pageapprovals-unapprove-authorization-failed": "نه‌منل نابرياله شول. تاسو د دې مخ د نه‌منلو اجازه نه‌لرئ.",
+	"pageapprovals-approve-invalid-page": "منل نابرياله شول. دا مخ شتون نه‌لري.",
+	"pageapprovals-unapprove-invalid-page": "نه‌منل نابرياله شول. دا مخ شتون نه‌لرئ.",
+	"pageapprovals-approve-outdated-revision": "منل نابرياله شول. تاسو يوازې د يو مخ وروستۍ بلبڼه منلی شئ.",
+	"pageapprovals-unapprove-outdated-revision": "نه‌منل نابرياله شول.تاسو يوازې د يو مخ وروستۍ بلبڼه نامنلی شئ.",
 	"pendingapprovals": "د منلو په تمه",
 	"pageapprovals-pending-approvals-page": "مخ",
 	"pageapprovals-pending-approvals-categories": "ورته وېشنيزې",
 	"pageapprovals-pending-approvals-last-edit-time": "وروستی ځل سم‌شوی په",
-	"pageapprovals-pending-approvals-last-edit-by": "وروستی سمونگر"
+	"pageapprovals-pending-approvals-last-edit-by": "وروستی سمونگر",
+	"pageapprovals-no-categories": "تاسو د هېڅ وېشنيزې د منونکي په توگه ټاکل شوي نه ياست.",
+	"pageapprovals-no-pending-approvals": "د منلو لپاره هېڅ ستاسو په تمه نشته.",
+	"pageapprovals-pending-approval-count": "تاسو $1 په تمه {{PLURAL:$1|منل|مننې}} لرئ.",
+	"pageapprovals-not-logged-in": "د خپلو په تمه منلو کتلو لپاره ننوځئ."
 }
