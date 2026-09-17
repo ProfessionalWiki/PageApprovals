@@ -18,5 +18,6 @@
 	"pageapprovals-unapprove-outdated-revision": "Отмена одобрения не удалась. Вы можете отменить одобрение только последней версии страницы.",
 	"pendingapprovals": "Ожидающие одобрения",
 	"pageapprovals-pending-approvals-page": "Страница",
-	"pageapprovals-pending-approvals-categories": "Соответствующие категории"
+	"pageapprovals-pending-approvals-categories": "Соответствующие категории",
+	"pageapprovals-pending-approvals-last-edit-by": "Последний редактор"
 }
