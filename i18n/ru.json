@@ -6,8 +6,14 @@
 			"Yurina Tatiana"
 		]
 	},
+	"pageapprovals-description": "Контроль качества для вашей вики. Одобряйте страницы, назначайте одобряющих к категориям, просматривайте ваши запросы на одобрение и смотрите статус одобрения страниц.",
+	"manageapprovers": "Управление одобряющими",
 	"pageapprovals-status-approved": "Одобренная",
 	"pageapprovals-status-not-approved": "Не одобрена",
+	"pageapprovals-approve-button": "Одобрить страницу",
+	"pageapprovals-unapprove-button": "Отменить одобрение страницы",
+	"right-manage-approvers": "Управление одобряющими",
+	"action-manage-approvers": "управление одобряющими",
 	"pageapprovals-approved": "Страница одобрена",
 	"pageapprovals-unapproved": "Страница не одобрена",
 	"pageapprovals-approve-authorization-failed": "Одобрение не удалось. Вы не авторизованы для одобрения этой страницы.",
