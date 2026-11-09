@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Exploraz",
 			"Leapofod"
 		]
 	},
-	"pageapprovals-status-approved": "DISETUJUI",
-	"pageapprovals-status-not-approved": "Tidak Disetujui",
-	"pageapprovals-approve-button": "Setujui Halaman",
-	"pageapprovals-unapprove-button": "Tarik Persetujuan Halaman",
+	"pageapprovals-status-approved": "Disetujui",
+	"pageapprovals-status-not-approved": "Tidak disetujui",
+	"pageapprovals-approve-button": "Setujui halaman",
+	"pageapprovals-unapprove-button": "Tarik persetujuan halaman",
 	"pageapprovals-approved": "Halaman disetujui",
 	"pageapprovals-approve-authorization-failed": "Persetujuan gagal. Anda tidak berwenang untuk menyetujui halaman ini.",
 	"pageapprovals-pending-approvals-page": "Halaman",
