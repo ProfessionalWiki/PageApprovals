@@ -132,11 +132,11 @@ class DatabasePendingApprovalRetrieverTest extends PageApprovalsIntegrationTest 
 	private function assertHasPendingApprovalsForPages( array $pages, array $pendingApprovals ): void {
 		$this->assertEqualsCanonicalizing(
 			array_map(
-				fn( $page ) => $page->getTitle()->getText(),
+				static fn( $page ) => $page->getTitle()->getText(),
 				$pages
 			),
 			array_map(
-				fn( $approval ) => $approval->title->getText(),
+				static fn( $approval ) => $approval->title->getText(),
 				$pendingApprovals
 			)
 		);

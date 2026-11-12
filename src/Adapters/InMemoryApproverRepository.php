@@ -39,7 +39,7 @@ class InMemoryApproverRepository implements ApproverRepository {
 	 */
 	public function setApproverCategories( int $userId, array $categoryNames ): void {
 		$this->categoriesPerUser[$userId] = array_map(
-			fn( string $category ) => $category,
+			static fn( string $category ) => $category,
 			$categoryNames
 		);
 	}

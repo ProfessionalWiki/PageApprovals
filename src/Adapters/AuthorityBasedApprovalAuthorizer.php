@@ -33,7 +33,7 @@ class AuthorityBasedApprovalAuthorizer implements ApprovalAuthorizer {
 	 */
 	private function titleArrayObjectToStringArray( Iterator $titles ): array {
 		return array_map(
-			fn( Title $category ) => $category->getText(),
+			static fn( Title $category ) => $category->getText(),
 			iterator_to_array( $titles ),
 		);
 	}
