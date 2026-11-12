@@ -3,6 +3,8 @@ includes:
 
 parameters:
 	level: 9
+	dynamicConstantNames:
+		- MW_VERSION
 	paths:
 		- src
 	scanDirectories:
