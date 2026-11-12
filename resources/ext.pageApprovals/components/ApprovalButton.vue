@@ -62,7 +62,6 @@ module.exports = defineComponent( {
 			rootEl.dataset.mwApprover = newValue;
 		} );
 
-		// eslint-disable-next-line es-x/no-async-functions
 		async function onSelect( value ) {
 			if ( value === 'approve' ) {
 				await setPageApprovalStatus( true );
