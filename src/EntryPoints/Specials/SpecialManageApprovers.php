@@ -17,7 +17,16 @@ class SpecialManageApprovers extends SpecialPage {
 		private readonly ApproverRepository $approverRepository,
 		private readonly UserFactory $userFactory
 	) {
-		parent::__construct( 'ManageApprovers', restriction: 'manage-approvers' );
+		if ( version_compare( MW_VERSION, '1.46', '>=' ) ) {
+			parent::__construct( 'ManageApprovers' );
+		} else {
+			// Before 1.46, MediaWiki checks the restriction given here, not getRestriction()
+			parent::__construct( 'ManageApprovers', 'manage-approvers' );
+		}
+	}
+
+	public function getRestriction(): string {
+		return 'manage-approvers';
 	}
 
 	public function getGroupName(): string {
