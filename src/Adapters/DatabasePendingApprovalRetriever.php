@@ -184,7 +184,7 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 	 */
 	private function normalizeCategoryTitles( array $categories ): array {
 		return array_map(
-			fn( string $category ) => TitleValue::tryNew( NS_CATEGORY, $category )?->getDBkey() ?? '',
+			static fn( string $category ) => TitleValue::tryNew( NS_CATEGORY, $category )?->getDBkey() ?? '',
 			$categories
 		);
 	}
@@ -217,7 +217,7 @@ class DatabasePendingApprovalRetriever implements PendingApprovalRetriever {
 	 */
 	private function getCategoryNamesFromDbKeys( array $categoryDbKeys ): array {
 		return array_filter( array_map(
-			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText() ?? '',
+			static fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText() ?? '',
 			$categoryDbKeys
 		) );
 	}

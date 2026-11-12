@@ -34,7 +34,7 @@ class PageApprovalsIntegrationTest extends \MediaWikiIntegrationTestCase {
 		return implode(
 			"\n",
 			array_map(
-				fn( $category ) => "[[Category:$category]]",
+				static fn( $category ) => "[[Category:$category]]",
 				$categories
 			)
 		);

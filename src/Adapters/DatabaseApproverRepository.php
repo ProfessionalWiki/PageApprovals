@@ -120,7 +120,7 @@ class DatabaseApproverRepository implements ApproverRepository {
 	 */
 	private function getCategoryNamesFromDbKeys( array $categoryDbKeys ): array {
 		return array_filter( array_map(
-			fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText() ?? '',
+			static fn( string $dbKey ) => TitleValue::tryNew( NS_CATEGORY, $dbKey )?->getText() ?? '',
 			$categoryDbKeys
 		) );
 	}

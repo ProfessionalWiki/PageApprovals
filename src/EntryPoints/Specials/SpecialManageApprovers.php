@@ -70,7 +70,7 @@ class SpecialManageApprovers extends SpecialPage {
 				$currentCategories[] = $category;
 				break;
 			case 'delete':
-				$currentCategories = array_filter( $currentCategories, fn( string $cat ) => $cat !== $category );
+				$currentCategories = array_filter( $currentCategories, static fn( string $cat ) => $cat !== $category );
 				break;
 			default:
 				return;

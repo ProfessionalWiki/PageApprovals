@@ -68,7 +68,7 @@ class SpecialManageApproversTest extends SpecialPageTestBase {
 
 		$approvers = $this->approverRepository->getApproversWithCategories();
 
-		$approver = array_filter( $approvers, fn( $approver ) => $approver['userId'] === $userId );
+		$approver = array_filter( $approvers, static fn( $approver ) => $approver['userId'] === $userId );
 		$newApprover = reset( $approver );
 
 		$this->assertNotNull( $newApprover, 'New approver should be added' );
